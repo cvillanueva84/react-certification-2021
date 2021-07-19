@@ -1,38 +1,20 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import styled from 'styled-components';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+const Homepage = styled.section`
+  text-align: center;
+
+  &:h1 {
+    font-size: 3rem;
+    letter-spacing: -2px;
+  }
+`;
 
 function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
-
   return (
-    <section className="homepage" ref={sectionRef}>
+    <Homepage>
       <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    </Homepage>
   );
 }
 
