@@ -1,12 +1,12 @@
 import React from 'react';
 import './Home.styles.css';
-import MainView from '../../components/Home/'
+import MainView from '../../components/Home';
 
 function HomePage() {
   return (
-      <div className="container">
-        <MainView/>
-      </div>
+    <div className="container">
+      <MainView />
+    </div>
   );
 }
 
