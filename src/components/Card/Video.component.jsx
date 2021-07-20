@@ -6,17 +6,14 @@ import {
   CardBody,
   CardFieldset,
   CardDescription,
+  CardImage
 } from './Card.style';
 
 export default function CardVideo({ name, description, image }) {
   return (
     <CardWrapper>
       <CardHeader>
-        <img
-          src={image}
-          style={{ margin: 'auto', width: 200, display: 'block' }}
-          alt=""
-        />
+        <CardImage src={image}/>
       </CardHeader>
       <CardBody>
         <CardFieldset>

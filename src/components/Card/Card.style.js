@@ -155,3 +155,8 @@ export const CardLink = styled.a`
     color: #777;
   }
 `;
+export const CardImage = styled.img`
+  margin: auto;
+  width: 200px;
+  display: block;
+`;

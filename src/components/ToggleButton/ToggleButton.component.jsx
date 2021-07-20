@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckBoxWrapper, CheckBox, CheckBoxLabel } from './ToggleButton.style';
+import { CheckBoxWrapper, CheckBox, CheckBoxLabel, Title } from './ToggleButton.style';
 
 export default function ToggleButton() {
   return (
@@ -7,7 +7,7 @@ export default function ToggleButton() {
       <CheckBoxWrapper>
         <CheckBox id="checkbox" type="checkbox" />
         <CheckBoxLabel htmlFor="checkbox" />
-        <span>Dark mode</span>
+        <Title>dark mode</Title>
       </CheckBoxWrapper>
     </div>
   );

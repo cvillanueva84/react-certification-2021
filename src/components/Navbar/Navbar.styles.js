@@ -59,15 +59,9 @@ export const MenuItem = styled.li`
 
 export const MenuItemRight = styled.li`
   list-style: none;
-  margin-top: 30px;
+  margin-top: 10px;
   height: 80px;
   float: right;
-  @media only screen and (max-width: 1000px) {
-    width: 100%;
-    &:hover {
-      border: none;
-    }
-  }
 `;
 
 export const MenuLink = styled.div`

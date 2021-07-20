@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const CheckBoxWrapper = styled.div`
+  margin-top: 1%;
+  margin-left: 1000px;
   position: relative;
 `;
 export const CheckBoxLabel = styled.label`
@@ -44,4 +46,8 @@ export const CheckBox = styled.input`
   }
 `;
 
-export const Title = styled.span``;
+export const Title = styled.span`
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-size: 15px;
+  text-align: center;
+`;
