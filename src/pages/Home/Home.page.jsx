@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-
+import VideoList from '../../components/Video/VideoList/VideoList.component';
 import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 
@@ -18,6 +18,7 @@ function HomePage() {
   return (
     <section className="homepage" ref={sectionRef}>
       <h1>Welcome to WizeTube</h1>
+      <VideoList />
       {/* {authenticated ? (
         <>
           <h2>Good to have you back</h2>
