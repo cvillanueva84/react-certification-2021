@@ -17,8 +17,8 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
+      <h1>Welcome to WizeTube</h1>
+      {/* {authenticated ? (
         <>
           <h2>Good to have you back</h2>
           <span>
@@ -31,7 +31,7 @@ function HomePage() {
         </>
       ) : (
         <Link to="/login">let me in →</Link>
-      )}
+      )} */}
     </section>
   );
 }

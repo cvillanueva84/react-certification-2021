@@ -1,51 +1,59 @@
 import styled from 'styled-components';
 
 export const NavBar = styled.nav`
-  background: #ff5050;
+  background: #212120;
   padding: 0.5rem 0.5rem;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
+  position: fixed;
   display: flex;
   height: auto;
   padding: 1 1rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   align-items: center;
-  align-content: center;
+  justify-content: center;
 `;
 
 export const HeaderTitle = styled.h1`
-  font-size: 16px;
+  position: absolute;
+  left: 0;
+  padding-top: 2px;
+  padding-left: 4rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: white;
+  color: #e83c42;
   margin: 0px;
-  padding-left: 10px;
 `;
 
 export const BarsIcon = styled.i`
-  font-size: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 8px;
+  font-size: 2rem;
   padding-left: 0.7rem;
-  color: white;
+  color: #e83c42;
   cursor: pointer;
 `;
 export const SearchContainer = styled.div`
-  padding-left: 1.5rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Icon = styled.i`
   position: absolute;
-  margin-top: 8px;
+  margin: 5px 0px;
   padding-left: 5px;
-  color: #cccccc;
-  font-size: 0.8rem;
+  color: #e83c42;
+  font-size: 1.4rem;
 `;
 
 export const SearchField = styled.input`
   background: rgba(255, 255, 255, 0.2);
   padding: 1px;
-  padding-left: 1.5rem;
-  font-size: 0.9rem;
+  width: 100%;
+  padding-left: 2rem;
+  font-size: 1.2rem;
   border: none;
   border-radius: 5px;
   color: white;
@@ -59,7 +67,7 @@ export const SearchField = styled.input`
 export const SwitchWrapper = styled.div`
   position: absolute;
   right: 9rem;
-  top: 0.6rem;
+  top: 0.8rem;
 `;
 
 export const CheckLabel = styled.label`
@@ -81,6 +89,10 @@ export const CheckLabel = styled.label`
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
     transition: 0.2s;
   }
+
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const Check = styled.input`
@@ -90,7 +102,7 @@ export const Check = styled.input`
   width: 42px;
   height: 26px;
   &:checked + ${CheckLabel} {
-    background: #222;
+    background: green;
     &::after {
       content: '';
       display: block;
@@ -100,6 +112,10 @@ export const Check = styled.input`
       margin-left: 21px;
       transition: 0.2s;
     }
+  }
+
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 
@@ -112,11 +128,14 @@ export const Span = styled.span`
   color: white;
   font-weight: 500;
   font-size: 0.9rem;
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
 `;
 
 export const ImgContainer = styled.div`
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   padding: 0px;
   margin: 0px;
   position: absolute;
@@ -127,4 +146,7 @@ export const UserAvatar = styled.img`
   width: 100%;
   height: auto;
   cursor: pointer;
+  @media screen and (max-width: 430px) {
+    display: none;
+  }
 `;
