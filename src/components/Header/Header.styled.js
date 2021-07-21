@@ -22,6 +22,7 @@ export const HeaderTitle = styled.h1`
   font-weight: 700;
   color: #e83c42;
   margin: 0px;
+  cursor: pointer;
 `;
 
 export const BarsIcon = styled.i`
@@ -33,11 +34,25 @@ export const BarsIcon = styled.i`
   padding-left: 0.7rem;
   color: #e83c42;
   cursor: pointer;
+  z-index: 1;
 `;
 export const SearchContainer = styled.div`
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (max-width: 910px) {
+    width: 45%;
+  }
+  @media screen and (max-width: 755px) {
+    width: 30%;
+  }
+  @media screen and (max-width: 650px) {
+    width: 25%;
+  }
+  @media screen and (max-width: 600px) {
+    visibility: hidden;
+  }
 `;
 
 export const Icon = styled.i`
@@ -89,9 +104,8 @@ export const CheckLabel = styled.label`
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
     transition: 0.2s;
   }
-
-  @media screen and (max-width: 500px) {
-    display: none;
+  @media screen and (max-width: 380px) {
+    visibility: hidden;
   }
 `;
 
@@ -102,7 +116,7 @@ export const Check = styled.input`
   width: 42px;
   height: 26px;
   &:checked + ${CheckLabel} {
-    background: green;
+    background: red;
     &::after {
       content: '';
       display: block;
@@ -113,9 +127,8 @@ export const Check = styled.input`
       transition: 0.2s;
     }
   }
-
-  @media screen and (max-width: 500px) {
-    display: none;
+  @media screen and (max-width: 380px) {
+    visibility: hidden;
   }
 `;
 
@@ -128,8 +141,8 @@ export const Span = styled.span`
   color: white;
   font-weight: 500;
   font-size: 0.9rem;
-  @media screen and (max-width: 550px) {
-    display: none;
+  @media screen and (max-width: 380px) {
+    visibility: hidden;
   }
 `;
 
@@ -140,13 +153,13 @@ export const ImgContainer = styled.div`
   margin: 0px;
   position: absolute;
   right: 1.5rem;
+  @media screen and (max-width: 380px) {
+    visibility: hidden;
+  }
 `;
 
 export const UserAvatar = styled.img`
   width: 100%;
   height: auto;
   cursor: pointer;
-  @media screen and (max-width: 430px) {
-    display: none;
-  }
 `;
