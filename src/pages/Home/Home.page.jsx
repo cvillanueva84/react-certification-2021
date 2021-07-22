@@ -18,7 +18,6 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Welcome to WizeTube</h1>
       <VideoList />
       {/* {authenticated ? (
         <>

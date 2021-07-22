@@ -5,12 +5,14 @@ export const NavBar = styled.nav`
   padding: 0.5rem 0.5rem;
   width: 100%;
   position: fixed;
+  z-index: 1;
   display: flex;
   height: auto;
   padding: 1 1rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   align-items: center;
   justify-content: center;
+  --background-primary: #fff;
 `;
 
 export const HeaderTitle = styled.h1`
