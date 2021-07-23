@@ -17,7 +17,7 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
+      <h1>Saludos, soy el Arquero, Emisario de los Gorgonitas</h1>
       {authenticated ? (
         <>
           <h2>Good to have you back</h2>
@@ -26,11 +26,11 @@ function HomePage() {
               ← logout
             </Link>
             <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
+            <Link to="/homeview">show me something cool →</Link>
           </span>
         </>
       ) : (
-        <Link to="/login">let me in →</Link>
+        <Link className="identify" to="/login">¡Identificate! → </Link>
       )}
     </section>
   );
