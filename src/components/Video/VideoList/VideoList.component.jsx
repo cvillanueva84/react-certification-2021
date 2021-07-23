@@ -10,7 +10,11 @@ export default function VideoList() {
 
   return (
     <Container>
-      {items.slice(1).map((item, id) => {
+      {items.slice(1).map((item) => {
+        const {
+          id: { videoId },
+        } = item;
+
         const {
           snippet: {
             thumbnails: {
@@ -29,7 +33,7 @@ export default function VideoList() {
 
         return (
           <VideoItem
-            key={id}
+            key={videoId}
             url={url}
             title={title}
             description={description}

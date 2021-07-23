@@ -6,33 +6,39 @@ export const CardContainer = styled.article`
   margin: 1rem 0;
 `;
 
-export const ImageContainer = styled.div`
-  position: relative;
-`;
+export const ImageContainer = styled.div``;
 
 export const Image = styled.img`
   width: 100%;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  display: block;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
 `;
 
 export const VideoInfo = styled.div`
-  padding: 1rem 0.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.5fr 2.5fr;
+  grid-template-rows: 1fr;
 `;
 export const VideoTitle = styled.h3`
-  text-transform: capitalize;
   margin: 0;
   font-weight: 700;
   cursor: pointer;
+  font-size: 15px;
+  max-width: 300px;
+  line-height: 18px;
+  align-self: center;
 `;
 export const VideoDescription = styled.p`
-  color: black;
-  font-size: 10px;
-  display: block;
+  color: #646566;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  grid-column: 1 / -1;
+  text-align: justify;
 `;
 
 export const ChannelAvatar = styled.img`
-  height: 30px;
+  height: 35px;
+  padding: 0;
+  justify-self: center;
 `;
