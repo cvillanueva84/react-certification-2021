@@ -20,6 +20,7 @@ function Content() {
           title={video.snippet.title}
           description={video.snippet.description}
           image={video.snippet.thumbnails.medium.url}
+          key={video.id.videoId}
         />
       ))}
     </Container>
