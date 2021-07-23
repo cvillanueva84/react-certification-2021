@@ -4,6 +4,7 @@ export const CardContainer = styled.article`
   background: #fff;
   border-radius: 0.5rem;
   margin: 1rem 0;
+  cursor: pointer;
 `;
 
 export const ImageContainer = styled.div``;

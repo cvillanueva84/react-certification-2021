@@ -36,7 +36,7 @@ export const BarsIcon = styled.i`
   padding-left: 0.7rem;
   color: #e83c42;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
 `;
 export const SearchContainer = styled.div`
   width: 50%;
