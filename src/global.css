@@ -1,6 +1,5 @@
 html {
   font-size: 1.125rem;
-  line-height: 1.6;
   font-weight: 400;
   font-family: sans-serif;
   box-sizing: border-box;
@@ -12,37 +11,21 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-body {
   margin: 0;
   padding: 0;
-  text-rendering: optimizeLegibility;
-  background-image: linear-gradient(
-    90deg,
-    #f32121 0,
-    #8a8b8b 19%,
-    #054c5e 42%,
-    #d6df31 79%,
-    #467986 100%
-  );
-  background-size: 400% 400%;
-  background-position: var(--bg-position);
-  transition: background-position 2s ease;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
+
 
 .separator::before {
   content: '•';
-  color: white;
+  color: blue;
   padding: 0.4rem;
 }
 
 a {
   text-decoration: none;
   font-weight: bold;
-  color: white;
+  color: blue;
 }
 
 a:active {

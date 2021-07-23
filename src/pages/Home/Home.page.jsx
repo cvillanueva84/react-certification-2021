@@ -30,7 +30,7 @@ function HomePage() {
           </span>
         </>
       ) : (
-        <Link className="identify" to="/login">¡Identificate! → </Link>
+        <Link className="identify" to="/login">¿Quién eres tú? → </Link>
       )}
     </section>
   );
