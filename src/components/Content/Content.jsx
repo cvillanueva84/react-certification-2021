@@ -21,6 +21,7 @@ function Content() {
           description={video.snippet.description}
           image={video.snippet.thumbnails.medium.url}
           key={video.id.videoId}
+          data-testid="test-elements"
         />
       ))}
     </Container>
