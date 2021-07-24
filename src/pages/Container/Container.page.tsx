@@ -8,9 +8,13 @@ const Content = styled.div`
   background: #f7f9f8;
 `;
 const Main = styled.div`
-  padding: 4rem 0;
+  @media(min-width: 1068px) {
+    margin: 4rem 4rem 4rem 0;
+  }
   width: 100%;
-  border-radius: 2rem;
+  border-radius:  0 0 1rem 1rem;
+  background-color: white;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
 `;
 
 function Container() {
