@@ -1,9 +1,10 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Content from '.';
 
 describe('Content', () => {
-  it('should show a title', () => {
+  it('should render a Object', () => {
     render(<Content />);
+    expect(screen).toBeInstanceOf(Object);
   });
 });
