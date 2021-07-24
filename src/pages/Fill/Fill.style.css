@@ -1,5 +1,32 @@
 .contenedor{
-    width: 80%;
+    width: 90%;
     margin: auto;
     padding-top: 86px;
 }
+
+.contenedor h1{
+    text-align: center;
+}
+
+div.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    margin: 5px 0;
+
+  }
+
+  div.card-item {
+    height: auto;
+    width: 360px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    flex-basis: auto;
+  }
+  
+  .card-item > h2 {
+    color: black;
+    font-size: 1em;
+  }

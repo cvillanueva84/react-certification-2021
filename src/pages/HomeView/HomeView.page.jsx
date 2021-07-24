@@ -6,7 +6,6 @@ import Fill from '../Fill/Fill'
 const HomeView = () => {
 
 
-
   return (
     <div>
       <Header/>

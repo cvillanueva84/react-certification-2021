@@ -1,5 +1,6 @@
 html {
   font-size: 1.125rem;
+  line-height: 1.2;
   font-weight: 400;
   font-family: sans-serif;
   box-sizing: border-box;
@@ -13,6 +14,13 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+body{
+  text-rendering: optimizeLegibility;
+  transition: background-position 2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
