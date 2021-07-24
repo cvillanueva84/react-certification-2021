@@ -57,19 +57,19 @@ const CardBody = styled.p`
   letter-spacing: 0.01071em;
   color: rgba(0, 0, 0, 0.54);
 `;
+const ImageCard = styled.div`
+  display: block;
+  height: 140px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${(props) => props.image});
+`;
 function Card(props) {
-  const ImageCard = styled.div`
-    display: block;
-    height: 140px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(${props.image});
-  `;
   return (
     <Container>
       <ButtonCard>
-        <ImageCard />
+        <ImageCard image={props.image} />
       </ButtonCard>
       <CardContent>
         <TitleVideo>{props.title}</TitleVideo>
