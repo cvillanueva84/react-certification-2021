@@ -16,7 +16,7 @@ const Element = styled.div`
 const Text = styled.p`
   margin: 0;
   margin-left: 0.5rem;
-  color: hsl(0, 0%, 60%);
+  color: hsl(0, 0%, 50%);
   font-weight: lighter;
 `;
 

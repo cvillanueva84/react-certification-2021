@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
+import HomeView from '../../components/HomeView';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -23,6 +24,7 @@ function Container() {
       <SideBar />
       <Main>
         <Header />
+        <HomeView />
       </Main>
     </Content>
   );
