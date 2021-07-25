@@ -18,8 +18,7 @@ const Fill = () => {
   return (
     <div>
       <div className="contenedor">
-        <h1>Contenido...</h1>
-
+        
         <div className="cards">
             {
                 videos.map(vid =>(

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Fill from '../Fill/Fill'
+
+import '../HomeView/HomeView.style.css';
 
 const HomeView = () => {
 
@@ -12,9 +13,6 @@ const HomeView = () => {
 
       <Fill/>
 
-      <pre>
-        <Link to="/"> ← go back</Link>
-      </pre>
     </div>
   );
 };
