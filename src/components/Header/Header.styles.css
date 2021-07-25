@@ -8,6 +8,7 @@
   background-color: var(--header-bg-color);
   position: sticky;
   inset: 0px;
+  z-index: 1;
 }
 .header > div {
   block-size: 100%;

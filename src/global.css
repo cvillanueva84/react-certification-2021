@@ -42,12 +42,10 @@ body {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: white;
+  color: inherit;
+  cursor: auto;
 }
 
-a:active {
-  color: blueviolet;
-}
 
 body::-webkit-scrollbar {
   width: 0.25rem;
@@ -62,10 +60,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 :root {
-  --header-bg-color: rgba(255, 255, 255, 0.9);
+  --header-bg-color: rgba(255, 255, 255, .95);
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
   --bg-primary: #23232e;
   --bg-secondary: #141418;
   --transition-speed: 600ms;
+  color: var(--text-primary);
 }

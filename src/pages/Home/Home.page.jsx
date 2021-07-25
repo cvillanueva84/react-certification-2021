@@ -29,13 +29,13 @@ function HomePage() {
 
   return (
     <section className="homepage">
-      <p>4</p>
       {items.map((item) => (
         <VideoPreview
           key={item.etag}
           thumbnailURL={item.snippet.thumbnails.medium.url}
           title={item.snippet.title}
           description={item.snippet.description}
+          videoID={item.id.videoId}
         />
       ))}
     </section>
