@@ -1,4 +1,4 @@
-.Event {
+.VideoPreviewCard {
   margin: 1%;
   width: 48%;
   border-radius: 15px;
@@ -6,10 +6,10 @@
   flex-shrink: 0;
   background-color: #f4fbff;
 }
-.Event:hover {
-  box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+.VideoPreviewCard:hover {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
 }
-.Event-Details {
+.VideoPreviewCard-Details {
   margin: 20px;
   margin-top: -40px;
   background-color: white;
@@ -18,29 +18,29 @@
   border-radius: 2px;
   text-align: center;
 }
-.Event-Description {
+.VideoPreviewCard-Description {
   text-align: left;
 }
-.Event-ImageContainer {
+.VideoPreviewCard-ImageContainer {
   width: 100%;
   margin-block: 0;
   margin-inline: 0;
 }
-.Event-Image {
+.VideoPreviewCard-Image {
   width: inherit;
   height: 200px;
   object-fit: cover;
 }
 
 @media screen and (max-width: 767px) {
-  .Event {
+  .VideoPreviewCard {
     margin: 5%;
     width: 90%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .Event {
+  .VideoPreviewCard {
     margin: 3%;
     width: 94%;
   }

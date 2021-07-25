@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import VideoPreview from '../../components/VideoPreview';
+import VideoPreviewCard from '../../components/VideoPreviewCard';
 
 import './Home.styles.css';
 
@@ -30,9 +30,9 @@ function HomePage() {
   return (
     <section className="homepage">
       {items.map((item) => (
-        <VideoPreview
+        <VideoPreviewCard
           key={item.etag}
-          thumbnailURL={item.snippet.thumbnails.medium.url}
+          thumbnailURL={item.snippet.thumbnails.high.url}
           title={item.snippet.title}
           description={item.snippet.description}
           videoID={item.id.videoId}
