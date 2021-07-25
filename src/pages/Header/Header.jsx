@@ -14,7 +14,7 @@ const lightTheme = {
 
 const darkTheme = {
   ...commontheme,
-  bg: '#121212',
+  bg: '#242526',
   text: '#fff',
 };
 
@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.bg};
 
-    transition: 0.5s;
+    transition: 0.8s;
   }
 `;
 
@@ -73,12 +73,11 @@ const Header = () => {
                     <HeaderButton
                       onClick={() => setMode("light")}
                       className="toggle_left"
-                    ><i className="fas fa-sun"></i></HeaderButton>
-
+                    ><span role="img" aria-label="sun">🌞</span></HeaderButton>
                     <HeaderButton
                       onClick={() => setMode("dark")}
                       className="toggle_right"
-                    ><i className="fas fa-moon"></i></HeaderButton>
+                    ><span role="img" aria-label="moon">🌜</span></HeaderButton>
                   </div>
                 </div>
 
