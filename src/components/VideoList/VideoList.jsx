@@ -14,9 +14,10 @@ const VideoList = () => {
       const {
         data: { items },
       } = await axios.get(baseURL);
-      setVideos(items);
+      const aux = [...items];
+      aux.shift();
+      setVideos(aux);
       // console.log(data.items.map((el) => el.snippet.description));
-      // console.log(items);
     }
     getVideos();
   }, []);
