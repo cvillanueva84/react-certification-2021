@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { FaCheckCircle } from 'react-icons/fa';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: clamp(10rem, 100%, 15rem);
+  width: 15rem;
   margin: 1rem;
+  @media(max-width: 629px) {
+    width: 100%;
+  }
   `;
 const Image = styled.img`
   width: 100%;
@@ -18,6 +23,9 @@ const Image = styled.img`
 
   &:hover {
     filter: brightness(0.7);
+  }
+  @media (max-width: 629px) {
+    height: 10rem;
   }
 `;
 const VideoInfo = styled.div`
@@ -33,6 +41,11 @@ const ChannelImage = styled.img`
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
 `;
 const VideoText = styled.div`
   border-radius: 100%;
@@ -52,11 +65,18 @@ const Title = styled.p`
 const ChannelTitle = styled.p`
   margin: 0;
   font-size: 0.6rem;
-  font-weight: lighter;
+  font-weight: 500;
   display: inline;
   overflow: hidden;
   white-space: nowrap;
   color: hsl(0, 0%, 60%);
+  display: flex;
+  align-items: center;
+`;
+const CheckIcon = styled(FaCheckCircle)`
+  color: #c70d32;
+  margin: auto 0;
+  margin-right: 0.2rem;
 `;
 
 function VideoHome(props: any) {
@@ -71,7 +91,7 @@ function VideoHome(props: any) {
         />
         <VideoText>
           <Title>{props.title.substring(0, 33)}</Title>
-          <ChannelTitle>{props.channelTitle.substring(0, 33)}</ChannelTitle>
+          <ChannelTitle> <CheckIcon /> {props.channelTitle.substring(0, 33)}</ChannelTitle>
         </VideoText>
       </VideoInfo>
     </Container>

@@ -23,13 +23,14 @@ const Text = styled.p`
 
 function SideBarOption(props: any) {
 
-  const Icon = styled(props.icon)`
-    color: hsl(0, 0%, 75%);
-  `;
+  const Icon = props.icon;
+  const style = {
+    color: 'hsl(0, 0%, 75%)'
+  };
 
   return (
     <Element>
-      <Icon />
+      <Icon style={style} />
       <Text>{props.children}</Text>
     </Element>
   );

@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 html {
   font-size: 1.125rem;
   line-height: 1.6;
   font-weight: 400;
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -50,4 +52,19 @@ a:active {
 }
 
 hr {
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* border-radius: 10px; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 80%);
+  border-radius: 10px;
 }

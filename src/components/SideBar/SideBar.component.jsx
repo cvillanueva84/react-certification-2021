@@ -9,7 +9,7 @@ import { TiStarFullOutline } from 'react-icons/ti';
 import { IoSettingsSharp, IoMoon} from 'react-icons/io5';
 
 const Container = styled.div`
-  width: 25rem;
+  width: 20rem;
   padding: 2rem;
   @media (max-width: 1068px) {
     display: none;
