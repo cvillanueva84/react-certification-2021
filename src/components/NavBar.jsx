@@ -189,7 +189,9 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              data-testid="search-input"
+              type="text"
+              placeholder="Search..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
