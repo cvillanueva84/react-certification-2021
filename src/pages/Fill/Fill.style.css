@@ -4,6 +4,12 @@
   width: 90%;
 }
 
+@media (max-width: 480px) {
+  .contenedor {
+      padding-top: 200px;
+  }
+}
+
 div.cards {
   display: flex;
   flex-flow: row wrap;
@@ -26,7 +32,6 @@ div .card-item {
 
 
 div .card-item h2 {
-  color: black;
   font-size: 1.5em;
   margin: 5px 0;
   text-align: center;
