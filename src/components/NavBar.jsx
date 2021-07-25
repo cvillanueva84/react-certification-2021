@@ -199,11 +199,17 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <FormGroup style={{marginTop: '5px'}}>
-                <FormControlLabel 
-                control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
+            <FormGroup style={{ marginTop: '5px' }}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={auth}
+                    onChange={handleChange}
+                    aria-label="login switch"
+                  />
+                }
                 label={auth ? 'Dark Mode' : 'Dark Mode'}
-                />
+              />
             </FormGroup>
             <IconButton
               edge="end"
