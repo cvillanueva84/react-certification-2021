@@ -67,7 +67,7 @@ function SideBar() {
   return (
     <Container>
       <UserDetails />
-      <Options>
+      <Options data-testid="options">
         {
           NoLoggedOptions.map(option => (
             <SideBarOption key={option.id} icon={option.icon}>{option.name}</SideBarOption>

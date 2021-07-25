@@ -1,1 +1,1 @@
-export { default } from './VideoHome.component.tsx';
+export { default } from './VideoHome.component';

@@ -1,1 +1,1 @@
-export { default } from './SideBarOption.component.tsx';
+export { default } from './SideBarOption.component';

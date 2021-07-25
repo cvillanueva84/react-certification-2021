@@ -19,7 +19,7 @@ const Avatar = styled.img`
 function UserDetails() {
   return (
     <React.Fragment>
-      <Avatar src={require('../../img/default-user.png')} href='user profile image'/>
+      <Avatar src={require('../../img/default-user.png')} href='user profile image' data-testid="avatar"/>
       <Name>{'Example Name'}</Name>
       <Email>{'example@example.com'}</Email>
     </React.Fragment>

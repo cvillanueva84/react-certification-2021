@@ -79,11 +79,11 @@ const CheckIcon = styled(FaCheckCircle)`
   margin-right: 0.2rem;
 `;
 
-function VideoHome(props: any) {
+function VideoHome(props) {
 
   return (
     <Container>
-      <Image src={props.thumbnail} />
+      <Image src={props.thumbnail} alt='Video Thumbnail' />
       <VideoInfo>
         <ChannelImage
           src={require('../../img/default-user.png')}

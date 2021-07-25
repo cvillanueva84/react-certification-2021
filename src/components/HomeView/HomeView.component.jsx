@@ -28,7 +28,7 @@ function HomeView() {
   return (
     <Wrapper>
       <Heading>For You</Heading>
-      <VideoContainer>
+      <VideoContainer data-testid="videos">
         {/* {Data.regionCode} */}
         {Data.items.map((video, index) => {
           const title = video.snippet.title;

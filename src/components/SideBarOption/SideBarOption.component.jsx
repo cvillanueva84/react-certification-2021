@@ -21,7 +21,7 @@ const Text = styled.p`
 `;
 
 
-function SideBarOption(props: any) {
+function SideBarOption(props) {
 
   const Icon = props.icon;
   const style = {

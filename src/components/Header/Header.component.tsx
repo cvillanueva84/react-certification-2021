@@ -46,7 +46,7 @@ function Header() {
       <Button>
         <HiMenuAlt1 />
       </Button>
-      <Logo />
+      <Logo data-testid="logo" />
       <Button>
         <BiSearchAlt />
       </Button>

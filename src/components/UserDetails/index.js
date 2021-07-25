@@ -1,1 +1,1 @@
-export { default } from './UserDetails.component.tsx';
+export { default } from './UserDetails.component';
