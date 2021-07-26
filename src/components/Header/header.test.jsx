@@ -1,23 +1,22 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
-import Header from '../Header'
+import Header from '.';
 
 describe('header', () => {
-
   beforeEach(() => {
-    render(<Header />)
-  })
+    render(<Header />);
+  });
 
   test('should contain control fro dark mode theme', () => {
-    const darkModeToggle = screen.getByRole('checkbox')
+    const darkModeToggle = screen.getByRole('checkbox');
 
-    expect(darkModeToggle).toBeInTheDocument()
-  })
+    expect(darkModeToggle).toBeInTheDocument();
+  });
 
   test('should contain search input', () => {
-    const inputSearchEl = screen.getByPlaceholderText(/Search.../i)
+    const inputSearchEl = screen.getByPlaceholderText(/Search.../i);
 
-    expect(inputSearchEl).toBeInTheDocument()
-  })
-})
+    expect(inputSearchEl).toBeInTheDocument();
+  });
+});
