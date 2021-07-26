@@ -1,0 +1,21 @@
+.side-menu-container {
+  background-color: #c2c3ff;
+  color: black;
+  height: 0;
+  left: 0;
+  min-width: 250px;
+  overflow: hidden;
+  position: absolute;
+  top: 3.5em;
+  width: 16%;
+  transition: height 0.25s ease-in;
+  -webkit-transition: height 0.25s ease-in;
+}
+
+.side-menu-container.active {
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 9px 12px 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 9px 12px 5px rgba(0, 0, 0, 0.35);
+  height: calc(100% - 3.5em);
+  transition: height 0.25s ease-in;
+  -webkit-transition: height 0.25s ease-in;
+}

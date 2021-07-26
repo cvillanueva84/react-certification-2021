@@ -1,0 +1,38 @@
+/***************MENU TOGGLE****************/
+.header-icon span {
+  cursor: pointer;
+}
+
+/***************SEARCH BAR****************/
+.search-bar {
+  align-items: center;
+  display: flex;
+}
+
+.search-bar input,
+.search-bar button {
+  border: none;
+  height: 2.5em;
+}
+
+.search-bar input {
+  background-color: #c2c3ff;
+  border-radius: 4px 0 0 4px;
+  color: #191a5e;
+  width: 100%;
+}
+
+.search-bar button {
+  background-color: #191a5e;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+/***************PROFILE MENU****************/
+.input-icon {
+  background-color: #c2c3ff;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 2em;
+  width: 2em;
+}
