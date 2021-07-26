@@ -36,17 +36,17 @@ function Header() {
                         </ButtonMenu>
                     </Link>
                 </LeftSection>
-                <InputHeader placeholder='Search here' />
+                <InputHeader data-testid="input-header" placeholder='Search here' />
                 <RightSection>
                     <FormControl component="fieldset">
                         <FormGroup>
                             <FormControlLabel
-                                control={<Switch color="primary" checked={state.checked} onChange={handleChange} name="dark-mode" />}
+                                control={<Switch data-testid="switch-header" color="primary" checked={state.checked} onChange={handleChange} name="dark-mode" />}
                                 label="Dark mode"
                             />
                         </FormGroup>
                     </FormControl>
-                    <UserLogIn>
+                    <UserLogIn data-testid="login-header">
                         <a>Log In</a>
                     </UserLogIn>
                 </RightSection>
