@@ -24,7 +24,7 @@ function Header() {
 
     return (
         <>
-            <StyledHeader>
+            <StyledHeader data-testid="header">
                 <LeftSection>
                     <Bars />
                     <Link to="/">

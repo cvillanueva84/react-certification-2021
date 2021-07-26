@@ -9,7 +9,7 @@ import {
 function AllVideos() {
 
     return (
-        <>
+        <div data-testid="header">
             <h2>Videos</h2>
             <StyledVideos>
                 {videos.items.map((video, i) => (
@@ -23,7 +23,7 @@ function AllVideos() {
                     />
                 ))}
             </StyledVideos>
-        </>
+        </div>
     );
 }
 

@@ -9,7 +9,7 @@ import {
 function HomePage() {
 
   return (
-    <StyledHome>
+    <StyledHome data-testid="home-page">
       <AllVideos />
     </StyledHome>
   );
