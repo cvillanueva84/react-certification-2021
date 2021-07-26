@@ -6,6 +6,7 @@ import Header from './Header';
 describe('Test Header', () => {
     const wrapper = shallow(<Header/>);
 
+
     it('should render provided properties', () => {
         expect(wrapper).toMatchSnapshot();
     });
@@ -25,5 +26,14 @@ describe('Test Header', () => {
         expect(buttons.length).toBe(3);
     });
 
-    
+    it('should Them Mode', () => {
+        const theme = wrapper.find('ThemeProvider');
+        expect(theme.length).toBe(0);
+    });
+
+    it('should Them Mode', () => {
+        const styles = wrapper.find('GlobalStyles');
+        expect(styles.length).toBe(0);
+    });
+
 });

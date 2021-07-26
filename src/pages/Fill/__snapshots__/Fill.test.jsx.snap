@@ -1,3 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test Fill should have videos 1`] = `
+<div>
+  <div
+    className="contenedor"
+  >
+    <div
+      className="cards"
+    />
+  </div>
+</div>
+`;
+
+exports[`Test Fill should have videos 2`] = `
+<div
+  className="card-item"
+>
+  <img />
+  <h2 />
+  <p />
+</div>
+`;
+
 exports[`Test Fill should render 1`] = `ShallowWrapper {}`;

@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import HomeView from "./HomeView.page";
 
 describe('Test HomeView', () => {
-    it('should look good', () => {
+    it('should render', () => {
         const wrapper = shallow(<HomeView/>);
         expect(wrapper).toMatchSnapshot();
     });
