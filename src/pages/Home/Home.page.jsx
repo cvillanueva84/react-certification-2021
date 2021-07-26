@@ -46,7 +46,7 @@ const VideoCard = styled.div`
   }
 `;
 
-function HomePage() {
+export const HomePage = () => {
   // const history = useHistory();
   const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -93,6 +93,6 @@ function HomePage() {
       ))}
     </section>
   );
-}
+};
 
 export default HomePage;

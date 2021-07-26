@@ -100,7 +100,7 @@ const Header = styled.nav`
   }
 `;
 
-function App() {
+export const App = () => {
   useLayoutEffect(() => {
     const { body } = document;
 
@@ -158,6 +158,6 @@ function App() {
       </AuthProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
