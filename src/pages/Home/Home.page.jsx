@@ -1,38 +1,23 @@
 import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import mockVideos from '../../mock/youtube-videos-mock.json';
+import Cards from '../../components/Cards';
+import styled from 'styled-components';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+const Grid = styled.section`
+  display: grid;
+  gap: 2.5rem;
+  padding: 2rem;
+
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+`;
 
 function HomePage() {
-  const history = useHistory();
   const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello Friend!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <Grid className="grid" ref={sectionRef}>
+      <Cards videos={mockVideos}></Cards>
+    </Grid>
   );
 }
 
