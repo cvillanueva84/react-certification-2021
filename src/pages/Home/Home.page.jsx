@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './Home.styles.js';
 import AllVideos from '../../components/AllVideos'
 

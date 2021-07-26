@@ -47,7 +47,7 @@ function Header() {
                         </FormGroup>
                     </FormControl>
                     <UserLogIn data-testid="login-header">
-                        <a>Log In</a>
+                        <p>Log In</p>
                     </UserLogIn>
                 </RightSection>
             </StyledHeader >

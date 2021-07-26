@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Video from '../Video/Video.component'
 import videos from '../../mocks/youtube-videos.json';
 

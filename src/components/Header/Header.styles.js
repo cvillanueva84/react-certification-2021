@@ -66,6 +66,9 @@ const UserLogIn = styled.div`
     &:hover {
         cursor: pointer;
     }
+    p {
+        margin: 5px 0px;
+    }
 `;
 
 const RightSection = styled.section`
@@ -78,26 +81,6 @@ const RightSection = styled.section`
 
     @media screen and (max-width: 850px) {
         display: none;
-    }
-`;
-
-const LeftMenu = styled.section`
-    top: 0;
-    flex: 1 0 auto;
-    height: 100%;
-    width: 200px;
-    display: flex;
-    outline: 0;
-    z-index: 1200;
-    position: fixed;
-    overflow-y: auto;
-    flex-direction: column;
-    background-color: white;
-    ul {
-        list-style: none;
-    }
-    li {
-        color: black;
     }
 `;
 
