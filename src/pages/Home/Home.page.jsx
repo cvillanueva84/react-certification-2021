@@ -1,38 +1,35 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+import Navbar from '../../components/Navbar';
+import SideMenu from '../../components/SideMenu/SideMenu.component';
+import CardVideoDisplayer from '../../components/CardVideo/CardVideo.component';
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+function HomePage({ theme, setTheme }) {
+  const [videos, setVideos] = useState([]);
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  useEffect(() => {
+    const URL_MOCK_FILE =
+      'https://gist.githubusercontent.com/jparciga/1d4dd34fb06ba74237f8966e2e777ff5/raw/f3af25f1505deb67e2cc9ee625a633f24d8983ff/youtube-videos-mock.json';
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(URL_MOCK_FILE);
+        const json = await response.json();
+        setVideos(Object.values(json.items));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <>
+      <Navbar />
+      <SideMenu theme={theme} setTheme={setTheme} />
+      <CardVideoDisplayer videos={videos} />
+    </>
   );
 }
 
