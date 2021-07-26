@@ -1,39 +1,27 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import Header from '../../components/Header';
+import { HeaderTitle, HomeCardsContainer } from './HomeComponents';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+import VideoCard from '../../components/ui/VideoCard';
+import dataMock from '../../utils/mocks/youtube-videos-mock.json';
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
-
+function Home() {
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <div>
+      <Header />
+      <HeaderTitle>Welcome to the Challenge!</HeaderTitle>
+      <HomeCardsContainer>
+        {dataMock.items.map(({ etag, snippet }) => (
+          <VideoCard
+            key={etag}
+            title={snippet.title}
+            imgUrl={snippet.thumbnails.medium.url}
+            description={snippet.description}
+          />
+        ))}
+      </HomeCardsContainer>
+    </div>
   );
 }
 
-export default HomePage;
+export default Home;
