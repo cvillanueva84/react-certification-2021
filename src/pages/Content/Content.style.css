@@ -1,0 +1,22 @@
+.content {
+  width: 100%;
+  left: 0;
+  top: 1440px;
+  position: relative;
+  z-index: -1;
+}
+
+.title {
+  margin: 20px;
+  font-size: 48px;
+  text-align: center;
+}
+
+.videos {
+  margin: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+}
