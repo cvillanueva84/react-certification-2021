@@ -10,6 +10,7 @@ function VideoPreviewCard({ thumbnailURL, title, description, videoID }) {
         className="VideoPreviewCard-URL"
         href={`https://www.youtube.com/watch?v=${videoID}`}
         target="_blanck"
+        role="button"
       >
         <figure className="VideoPreviewCard-ImageContainer">
           <img className="VideoPreviewCard-Image" src={thumbnailURL} alt={title} />
