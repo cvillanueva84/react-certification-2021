@@ -1,0 +1,35 @@
+ PASS  src/components/AllVideos/AllVideos.test.js (6.071s)
+ PASS  src/pages/Home/Home.test.js
+ PASS  src/components/App/App.test.js (7.617s)
+ PASS  src/components/Header/Header.test.js (7.628s)
+--------------------------|----------|----------|----------|----------|-------------------|
+File                      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+--------------------------|----------|----------|----------|----------|-------------------|
+All files                 |    86.96 |      100 |    71.43 |    86.96 |                   |
+ src                      |        0 |      100 |      100 |        0 |                   |
+  index.js                |        0 |      100 |      100 |        0 |                 7 |
+ src/components/AllVideos |      100 |      100 |      100 |      100 |                   |
+  AllVideos.component.jsx |      100 |      100 |      100 |      100 |                   |
+  AllVideos.styles.js     |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/App       |        0 |      100 |        0 |        0 |                   |
+  App.component.jsx       |        0 |      100 |        0 |        0 |                 9 |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Header    |    90.91 |      100 |       50 |    90.91 |                   |
+  Header.component.jsx    |       75 |      100 |       50 |       75 |                22 |
+  Header.styles.js        |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/components/Video     |      100 |      100 |      100 |      100 |                   |
+  Video.component.jsx     |      100 |      100 |      100 |      100 |                   |
+  Video.styles.js         |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+ src/pages/Home           |      100 |      100 |      100 |      100 |                   |
+  Home.page.jsx           |      100 |      100 |      100 |      100 |                   |
+  Home.styles.js          |      100 |      100 |      100 |      100 |                   |
+  index.js                |        0 |        0 |        0 |        0 |                   |
+--------------------------|----------|----------|----------|----------|-------------------|
+
+Test Suites: 4 passed, 4 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        13.576s
