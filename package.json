@@ -10,7 +10,8 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "styled-components": "^5.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,14 +22,21 @@
     "lint:fix": "eslint ./src --ext .js,.jsx --fix"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-flowtype": "^5.8.2",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.13",
     "prettier": "^2.1.1",

@@ -1,9 +1,15 @@
 import React from 'react';
+import Header from '../Header';
 
-import './Layout.styles.css';
+// import './Layout.styles.css';
 
-function Layout({ children }) {
-  return <main className="container">{children}</main>;
+function Layout({ children, themeToggler }) {
+  return (
+    <>
+      <Header themeToggler={themeToggler} />
+      <main>{children}</main>
+    </>
+  );
 }
 
 export default Layout;
