@@ -14,7 +14,7 @@ function Video(props) {
                 src={imageUrl}
                 alt={"video" + etag}
             />
-            <InfoVideo>
+            <InfoVideo data-testid="info-video">
                 <h3>{title}</h3>
                 <AuthorInfo>
                     <p>{channelTitle}</p>

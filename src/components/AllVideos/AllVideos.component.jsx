@@ -9,9 +9,9 @@ import {
 function AllVideos() {
 
     return (
-        <div data-testid="header">
+        <div data-testid="all-videos">
             <h2>Videos</h2>
-            <StyledVideos>
+            <StyledVideos data-testid="video-card">
                 {videos.items.map((video, i) => (
                     <Video
                         key={i}
