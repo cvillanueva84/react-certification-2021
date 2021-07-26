@@ -1,8 +1,13 @@
+body{
+  background-color: antiquewhite;
+}
+
 .login {
   width: 300px;
 }
 
 .login h1 {
+  font-size: 1.5rem;
   text-align: center;
   letter-spacing: -1px;
 }
@@ -28,12 +33,12 @@
 }
 
 .form-group input {
-  color: white;
+  color: rgb(49, 48, 48);
   font-size: 1.2rem;
   width: 100%;
   padding: 0.4rem 0.6rem;
   border-radius: 3px;
-  border: 1px solid white;
+  border: 1px solid blue;
   background-color: rgba(0, 0, 0, 0.1);
 }
 

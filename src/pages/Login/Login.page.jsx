@@ -18,6 +18,7 @@ function LoginPage() {
   return (
     <section className="login">
       <h1>Welcome Gorgonita!</h1>
+      <br/>
       <form onSubmit={authenticate} className="login-form">
         <div className="form-group">
           <label htmlFor="username">
@@ -33,6 +34,7 @@ function LoginPage() {
         </div>
         <button type="submit">login</button>
       </form>
+      <br/>
       <pre>
         <Link to="/"> ← go back</Link>
       </pre>

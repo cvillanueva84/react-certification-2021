@@ -5,12 +5,11 @@ import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
+import HomeView from '../../pages/HomeView';
 import Private from '../Private';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
-import { HomeView } from '../../pages/HomeView/HomeView';
 //import SecretPage from '../../pages/Secret';
-//import { Header } from '../../pages/Header';
 
 
 function App() {
@@ -36,15 +35,19 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
 
-        <Layout>
           <Switch>
 
+            
             <Route exact path="/">
-              <HomePage/>
+              <Layout>
+                <HomePage/>
+              </Layout>
             </Route>
 
             <Route exact path="/login">
-              <LoginPage />
+              <Layout>
+                <LoginPage />
+              </Layout>
             </Route>
 
             <Private exact path="/homeview">
@@ -52,11 +55,12 @@ function App() {
             </Private>
             
             <Route path="*">
-              <NotFound />
+              <Layout>
+                <NotFound />
+              </Layout>
             </Route>
 
           </Switch>
-        </Layout>
 
       </AuthProvider>
     </BrowserRouter>
