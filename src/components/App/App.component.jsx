@@ -1,58 +1,46 @@
-import React, { useLayoutEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from 'react';
 
-import AuthProvider from '../../providers/Auth';
-import HomePage from '../../pages/Home';
-import LoginPage from '../../pages/Login';
-import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
-import Fortune from '../Fortune';
-import Layout from '../Layout';
-import { random } from '../../utils/fns';
+import Header from '../Header';
+import Videos from '../Videos/Videos.component';
+import result from '../../mock/youtube-videos-mock';
 
-function App() {
-  useLayoutEffect(() => {
-    const { body } = document;
+import './App.styles.css';
 
-    function rotateBackground() {
-      const xPercent = random(100);
-      const yPercent = random(100);
-      body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleToggle = this.handleToggle.bind(this);
+    this.state = { toggleStatus: false };
+  }
+
+  handleToggle() {
+    this.setState((prevState) => ({
+      toggleStatus: !prevState.toggleStatus,
+    }));
+  }
+
+  render() {
+    if (this.state.toggleStatus) {
+      return (
+        <div className="dark-mode">
+          <Header
+            onHandleToggle={this.handleToggle}
+            toggleStatus={this.state.toggleStatus}
+          />
+          <Videos videoList={result.items} />
+        </div>
+      );
     }
-
-    const intervalId = setInterval(rotateBackground, 3000);
-    body.addEventListener('click', rotateBackground);
-
-    return () => {
-      clearInterval(intervalId);
-      body.removeEventListener('click', rotateBackground);
-    };
-  }, []);
-
-  return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
-      </AuthProvider>
-    </BrowserRouter>
-  );
+    return (
+      <div>
+        <Header
+          onHandleToggle={this.handleToggle}
+          toggleStatus={this.state.toggleStatus}
+        />
+        <Videos videoList={result.items} />
+      </div>
+    );
+  }
 }
 
 export default App;
