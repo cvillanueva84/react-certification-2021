@@ -1,0 +1,14 @@
+.caja{    
+    display: flex; 
+    max-width: 300px;
+    margin: 0 auto; 
+    flex-direction: column;    
+}
+
+@media screen and (min-width: 900px){
+    .caja{
+        max-width: 1100px;        
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
