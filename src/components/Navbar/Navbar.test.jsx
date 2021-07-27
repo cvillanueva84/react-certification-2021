@@ -11,4 +11,8 @@ describe('Navbar', () => {
   it('must display a Dark mode text', () => {
     expect(screen.queryByText(/dark mode/i)).toBeInTheDocument();
   });
+  it('should contain Search input', () => {
+    const searchInput = screen.getByPlaceholderText(/search/i);
+    expect(searchInput).toBeInTheDocument();
+  });
 });

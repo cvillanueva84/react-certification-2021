@@ -8,6 +8,5 @@ beforeEach(() => render(<VideoList />));
 describe('VideoList', () => {
   it('must display a title', () => {
     expect(screen.queryByText(/welcome to the challenge!/i)).toBeInTheDocument();
-    // console.log(prettyDOM(exp));
   });
 });
