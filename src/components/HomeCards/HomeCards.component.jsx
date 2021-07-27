@@ -14,7 +14,11 @@ function HomeCards({ videoId, imgUrl, title, description }) {
   return (
     <>
       <Card>
-        <CardLink href={`https://www.youtube.com/watch?v=${videoId}`} target="_blank">
+        <CardLink
+          href={`https://www.youtube.com/watch?v=${videoId}`}
+          target="_blank"
+          role="button"
+        >
           <CardHeader src={imgUrl} alt={title} />
           <CardBody>
             <CardTitle>{title}</CardTitle>
