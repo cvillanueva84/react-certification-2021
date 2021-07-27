@@ -8,11 +8,11 @@ import {
   faToggleOn,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './Header.styles.css';
+import StyledHeader from '../StyledHeader';
 
 function Header(props) {
   return (
-    <header className="page__header">
+    <StyledHeader>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -49,7 +49,7 @@ function Header(props) {
           </ul>
         </div>
       </nav>
-    </header>
+    </StyledHeader>
   );
 }
 

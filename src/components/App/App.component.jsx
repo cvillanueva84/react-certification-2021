@@ -1,10 +1,9 @@
 import React from 'react';
 
+import StyledDiv from '../StyledDiv';
 import Header from '../Header';
 import Videos from '../Videos/Videos.component';
 import result from '../../mock/youtube-videos-mock';
-
-import './App.styles.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,13 +21,13 @@ class App extends React.Component {
   render() {
     if (this.state.toggleStatus) {
       return (
-        <div className="dark-mode">
+        <StyledDiv toggleStatus={this.state.toggleStatus}>
           <Header
             onHandleToggle={this.handleToggle}
             toggleStatus={this.state.toggleStatus}
           />
           <Videos videoList={result.items} />
-        </div>
+        </StyledDiv>
       );
     }
     return (
