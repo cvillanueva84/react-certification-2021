@@ -8,7 +8,7 @@ const Nav = styled.nav`
   padding: 10px 5%;
   background: #7289da;
   font-size: 10px;
-  opacity: 0.75;
+  opacity: 0.95;
   position: sticky;
   top: 0;
   z-index: 100;
