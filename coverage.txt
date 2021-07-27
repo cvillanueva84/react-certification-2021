@@ -1,0 +1,53 @@
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   21.21 |    33.33 |      25 |   21.21 |
+ src               |       0 |      100 |     100 |       0 |
+  index.js         |       0 |      100 |     100 |       0 | 7
+ ...components/App |       0 |      100 |       0 |       0 |
+  ...component.jsx |       0 |      100 |       0 |       0 | 9
+  index.js         |       0 |        0 |       0 |       0 |
+ ...ponents/Avatar |       0 |      100 |       0 |       0 |
+  ...component.jsx |       0 |      100 |       0 |       0 | 5-14
+  index.js         |       0 |        0 |       0 |       0 |
+ ...onents/Content |     100 |      100 |     100 |     100 |
+  ...component.jsx |     100 |      100 |     100 |     100 |
+  index.js         |       0 |        0 |       0 |       0 |
+ ...ponents/Header |       0 |      100 |       0 |       0 |
+  ...component.jsx |       0 |      100 |       0 |       0 | 10-35
+  index.js         |       0 |        0 |       0 |       0 |
+ ...ponents/Layout |       0 |      100 |       0 |       0 |
+  ...component.jsx |       0 |      100 |       0 |       0 | 5-8
+  index.js         |       0 |        0 |       0 |       0 |
+ ...omponents/Logo |       0 |      100 |       0 |       0 |
+  ...component.jsx |       0 |      100 |       0 |       0 | 5-14
+  index.js         |       0 |        0 |       0 |       0 |
+ ...ts/SearchInput |     100 |      100 |     100 |     100 |
+  ...component.jsx |     100 |      100 |     100 |     100 |
+  index.js         |       0 |        0 |       0 |       0 |
+ ...ts/ThemeSwitch |       0 |      100 |       0 |       0 |
+  ...component.jsx |       0 |      100 |       0 |       0 | 6-15
+  index.js         |       0 |        0 |       0 |       0 |
+ ...ents/VideoCard |     100 |      100 |     100 |     100 |
+  ...component.jsx |     100 |      100 |     100 |     100 |
+  ...ard.styled.js |     100 |      100 |     100 |     100 |
+  index.js         |       0 |        0 |       0 |       0 |
+ src/mocks         |       0 |        0 |       0 |       0 |
+  videos.js        |       0 |        0 |       0 |       0 |
+ src/pages/Home    |     100 |      100 |     100 |     100 |
+  Home.page.jsx    |     100 |      100 |     100 |     100 |
+  index.js         |       0 |        0 |       0 |       0 |
+ ...pages/NotFound |       0 |      100 |       0 |       0 |
+  ...ound.page.jsx |       0 |      100 |       0 |       0 | 7
+  index.js         |       0 |        0 |       0 |       0 |
+ ...providers/Auth |       0 |        0 |       0 |       0 |
+  ....provider.jsx |       0 |        0 |       0 |       0 | 6-36
+  index.js         |       0 |        0 |       0 |       0 |
+ src/utils         |   18.18 |      100 |      25 |   18.18 |
+  constants.js     |       0 |      100 |     100 |       0 | 1
+  date.js          |     100 |      100 |     100 |     100 |
+  fns.js           |       0 |      100 |       0 |       0 | 2
+  storage.js       |       0 |      100 |       0 |       0 | 1-13
+ src/utils/hooks   |       0 |      100 |       0 |       0 |
+  useFortune.js    |       0 |      100 |       0 |       0 | 5-28
+-------------------|---------|----------|---------|---------|-------------------

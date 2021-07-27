@@ -1,39 +1,29 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import styled from 'styled-components';
+import VideoCard from '../../components/VideoCard';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+import videos from '../../mocks/videos';
 
 function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
-
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <VideosWrapper>
+      {videos.items.map((video) => (
+        <VideoCard
+          key={video.etag}
+          title={video.snippet.title}
+          thumbnail={video.snippet.thumbnails.medium.url}
+          channelTitle={video.snippet.channelTitle}
+          publishedAt={video.snippet.publishedAt}
+        />
+      ))}
+    </VideosWrapper>
   );
 }
 
 export default HomePage;
+
+const VideosWrapper = styled.section`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 12px;
+`;
