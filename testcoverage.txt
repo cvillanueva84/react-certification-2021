@@ -1,0 +1,25 @@
+ PASS  src/components/Header/Header.test.jsx
+ PASS  src/components/Layout/Layout.test.jsx
+ PASS  src/pages/Home/Home.test.jsx
+ PASS  src/components/Videos/ListVideos/ListVideos.test.jsx
+ PASS  src/components/SearchInput/SearchInput.test.jsx
+ PASS  src/components/Videos/VideoCard/VideoCard.test.jsx
+------------------------------|----------|----------|----------|----------|-------------------|
+File                          |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------------|----------|----------|----------|----------|-------------------|
+All files                     |      100 |      100 |      100 |      100 |                   |
+ components/Header            |      100 |      100 |      100 |      100 |                   |
+  Header.component.jsx        |      100 |      100 |      100 |      100 |                   |
+ components/Videos/ListVideos |      100 |      100 |      100 |      100 |                   |
+  ListVideos.component.jsx    |      100 |      100 |      100 |      100 |                   |
+ components/Videos/VideoCard  |      100 |      100 |      100 |      100 |                   |
+  VideoCard.component.jsx     |      100 |      100 |      100 |      100 |                   |
+ pages/Home                   |      100 |      100 |      100 |      100 |                   |
+  Home.page.jsx               |      100 |      100 |      100 |      100 |                   |
+------------------------------|----------|----------|----------|----------|-------------------|
+
+Test Suites: 6 passed, 6 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        4.77s
+Ran all test suites related to changed files.
