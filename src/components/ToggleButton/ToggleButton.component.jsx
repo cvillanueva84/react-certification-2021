@@ -7,7 +7,6 @@ import {
 } from './ToggleButton.styles';
 
 export default function Toggle({ text, checked, setChecked }) {
-
   return (
     <ToggleContainer>
       <ToggleSwitch>
