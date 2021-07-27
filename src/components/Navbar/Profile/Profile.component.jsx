@@ -10,7 +10,7 @@ const Avatar = styled.div`
 `;
 
 const Profile = () => {
-  return <Avatar />;
+  return <Avatar data-testid="profile-pic" />;
 };
 
 export default Profile;

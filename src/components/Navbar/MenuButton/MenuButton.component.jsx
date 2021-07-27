@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const MenuButton = (props) => {
   return (
     <StyledBurger>
-      <div />
-      <div />
-      <div />
+      <div data-testid="burger-top"/>
+      <div data-testid="burger-mid"/>
+      <div data-testid="burger-bot"/>
     </StyledBurger>
   );
 };

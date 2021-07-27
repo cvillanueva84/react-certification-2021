@@ -66,10 +66,9 @@ text-overflow: ellipsis;
 `
 
 export const VideoCard = () => {
-  console.log(data);
   return data.items.map((item) => {
     return (
-      <Card>
+      <Card key={item.etag}>
         <CardContent>
           <CardImage src={item.snippet.thumbnails.medium.url} />
           <CardText>
