@@ -1,9 +1,14 @@
 import React from 'react';
-
-import './Layout.styles.css';
+import Navbar from '../Navbar/Navbar';
+import { Main } from './Layout.style';
 
 function Layout({ children }) {
-  return <main className="container">{children}</main>;
+  return (
+    <Main>
+      <Navbar />
+      {children}
+    </Main>
+  );
 }
 
 export default Layout;

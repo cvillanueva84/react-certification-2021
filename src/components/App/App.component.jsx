@@ -1,15 +1,21 @@
 import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import { createGlobalStyle } from 'styled-components';
 import AuthProvider from '../../providers/Auth';
-import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
-import Fortune from '../Fortune';
 import Layout from '../Layout';
+import VideoList from '../VideoList/VideoList';
 import { random } from '../../utils/fns';
+
+const GlobalStyles = createGlobalStyle`
+ body{
+    margin: 0;
+    padding:0;
+ }
+`;
 
 function App() {
   useLayoutEffect(() => {
@@ -34,9 +40,10 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Layout>
+          <GlobalStyles />
           <Switch>
             <Route exact path="/">
-              <HomePage />
+              <VideoList />
             </Route>
             <Route exact path="/login">
               <LoginPage />
@@ -48,7 +55,6 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-          <Fortune />
         </Layout>
       </AuthProvider>
     </BrowserRouter>
