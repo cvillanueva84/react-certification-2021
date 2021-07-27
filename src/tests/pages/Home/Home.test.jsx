@@ -11,5 +11,6 @@ describe('Mini Challenge 2', () => {
         expect(
             screen.getByRole("heading", {name:/Welcome to the Challenge!/i})).toBeInTheDocument()
     })
+
     
 })

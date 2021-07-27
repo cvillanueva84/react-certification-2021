@@ -13,7 +13,7 @@ const Titulo = styled.p`
 
 function Video({ title, imagen, description, llave }) {
   return (
-    <div key={llave} className="col-sm-6 col-lg-4 col-xl-3">
+    <div role="listitem" key={llave} className="col-sm-6 col-lg-4 col-xl-3">
       <div className="card h-100">
         <img src={imagen} className="img-fluid" alt={title} />
         <div className="card-body">
