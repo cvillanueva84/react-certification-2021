@@ -4,7 +4,7 @@ import { items } from '../../mocks/youtube-videos-mock.json';
 
 import { ContentWrapper, CardContainer, Card, CardThumbnail, CardContent } from './Content.styles';
 
-const Content = () => {
+const Content = () =>{
     return (
         <ContentWrapper>
             <CardContainer>

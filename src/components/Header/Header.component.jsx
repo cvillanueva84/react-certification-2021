@@ -2,7 +2,7 @@ import React from 'react';
 import { HeaderBody, HeaderContainer, Hamburguer, Search, ToggleBox, Profile } from './Header.styles';
 
 
-function Header() {
+function Header(){
     return (
         <HeaderContainer>
             <HeaderBody>
