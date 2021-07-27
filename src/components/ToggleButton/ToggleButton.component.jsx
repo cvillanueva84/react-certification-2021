@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import {ToggleContainer, DialogButton} from './ToggleButton.styled';
-
+import { ToggleContainer, DialogButton } from './ToggleButton.styled';
 
 function ToggleButton() {
   const [selected, setSelected] = useState(false);

@@ -4,8 +4,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { FiSearch } from 'react-icons/fi';
 import { HiUserCircle } from 'react-icons/hi';
 import ToggleButton from '../ToggleButton/ToggleButton.component';
-import {HeaderWrapper, Input, Button, FlexCentered} from './Header.styled';
-
+import { HeaderWrapper, Input, Button, FlexCentered } from './Header.styled';
 
 function Header() {
   return (

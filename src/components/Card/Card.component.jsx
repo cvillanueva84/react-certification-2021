@@ -1,6 +1,5 @@
 import React from 'react';
-import {CardWrapper, HeaderWrapper, H6, P} from './Card.styled';
-
+import { CardWrapper, HeaderWrapper, H6, P } from './Card.styled';
 
 function Card({ image, title, description }) {
   return (
