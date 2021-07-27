@@ -1,0 +1,46 @@
+-----------------------------|----------|----------|----------|----------|-------------------|
+File                         |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-----------------------------|----------|----------|----------|----------|-------------------|
+All files                    |    41.67 |       25 |    42.11 |    41.67 |                   |
+ src                         |        0 |      100 |      100 |        0 |                   |
+  index.jsx                  |        0 |      100 |      100 |        0 |                 7 |
+ src/components/App          |        0 |      100 |        0 |        0 |                   |
+  App.component.jsx          |        0 |      100 |        0 |        0 |                13 |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/components/Card         |      100 |      100 |      100 |      100 |                   |
+  Card.component.jsx         |      100 |      100 |      100 |      100 |                   |
+  Card.styled.js             |      100 |      100 |      100 |      100 |                   |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/components/Content      |      100 |      100 |      100 |      100 |                   |
+  Content.component.jsx      |      100 |      100 |      100 |      100 |                   |
+  Content.styled.js          |      100 |      100 |      100 |      100 |                   |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/components/Header       |      100 |      100 |      100 |      100 |                   |
+  Header.component.jsx       |      100 |      100 |      100 |      100 |                   |
+  Header.styled.js           |      100 |      100 |      100 |      100 |                   |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/components/Layout       |      100 |      100 |      100 |      100 |                   |
+  Layout.component.jsx       |      100 |      100 |      100 |      100 |                   |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/components/ToggleButton |    85.71 |       50 |       75 |    85.71 |                   |
+  ToggleButton.component.jsx |    66.67 |      100 |       50 |    66.67 |                 8 |
+  ToggleButton.styled.js     |      100 |       50 |      100 |      100 |             34,35 |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/pages/Home              |        0 |        0 |        0 |        0 |                   |
+  Home.page.jsx              |        0 |        0 |        0 |        0 |... 15,16,25,28,31 |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/pages/HomeOld           |        0 |        0 |        0 |        0 |                   |
+  Home.page.jsx              |        0 |        0 |        0 |        0 |8,9,10,13,14,15,18 |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/pages/Login             |        0 |      100 |        0 |        0 |                   |
+  Login.page.jsx             |        0 |      100 |        0 |        0 |   8,9,12,13,14,17 |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+ src/pages/NotFound          |        0 |      100 |        0 |        0 |                   |
+  NotFound.page.jsx          |        0 |      100 |        0 |        0 |                 7 |
+  index.js                   |        0 |        0 |        0 |        0 |                   |
+-----------------------------|----------|----------|----------|----------|-------------------|
+
+Test Suites: 4 passed, 4 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        3.508s
