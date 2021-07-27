@@ -1,0 +1,55 @@
+
+------------------------|----------|----------|----------|----------|-------------------|
+File                    |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------|----------|----------|----------|----------|-------------------|
+All files               |    17.02 |        0 |        0 |    17.02 |                   |
+ src                    |        0 |      100 |      100 |        0 |                   |
+  index.js              |        0 |      100 |      100 |        0 |              7,51 |
+ src/components/App     |        0 |      100 |        0 |        0 |                   |
+  App.component.jsx     |        0 |      100 |        0 |        0 |... 25,27,28,29,33 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/components/Card    |     62.5 |      100 |        0 |     62.5 |                   |
+  Card.component.jsx    |     62.5 |      100 |        0 |     62.5 |          18,34,35 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/components/Cards   |        0 |        0 |        0 |        0 |                   |
+  Cards.component.jsx   |        0 |        0 |        0 |        0 |          5,8,9,17 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/components/Fortune |        0 |      100 |        0 |        0 |                   |
+  Fortune.component.jsx |        0 |      100 |        0 |        0 |               7,9 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/components/Header  |    57.14 |        0 |        0 |    57.14 |                   |
+  Header.component.jsx  |    57.14 |        0 |        0 |    57.14 |... 15,116,117,119 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/components/Layout  |        0 |      100 |        0 |        0 |                   |
+  Layout.component.jsx  |        0 |      100 |        0 |        0 |                 5 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/components/Private |        0 |        0 |        0 |        0 |                   |
+  Private.component.jsx |        0 |        0 |        0 |        0 |            7,9,10 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/pages/Home         |        0 |      100 |        0 |        0 |                   |
+  Home.page.jsx         |        0 |      100 |        0 |        0 |           6,15,17 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/pages/Login        |        0 |      100 |        0 |        0 |                   |
+  Login.page.jsx        |        0 |      100 |        0 |        0 |   8,9,12,13,14,17 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/pages/NotFound     |        0 |      100 |        0 |        0 |                   |
+  NotFound.page.jsx     |        0 |      100 |        0 |        0 |                 7 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/pages/Secret       |        0 |      100 |        0 |        0 |                   |
+  Secret.page.jsx       |        0 |      100 |        0 |        0 |                 5 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/providers/Auth     |     5.88 |        0 |        0 |     5.88 |                   |
+  Auth.provider.jsx     |     5.88 |        0 |        0 |     5.88 |... 28,31,32,33,36 |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/utils              |    22.22 |      100 |        0 |    22.22 |                   |
+  constants.js          |      100 |      100 |      100 |      100 |                   |
+  fns.js                |        0 |      100 |        0 |        0 |                 2 |
+  storage.js            |    14.29 |      100 |        0 |    14.29 |      3,4,5,7,8,13 |
+ src/utils/hooks        |        0 |      100 |        0 |        0 |                   |
+  useFortune.js         |        0 |      100 |        0 |        0 |... 17,19,21,25,28 |
+------------------------|----------|----------|----------|----------|-------------------|
+Test Suites: 3 failed, 3 total
+Tests:       5 failed, 5 total
+Snapshots:   0 total
+Time:        8.072s
+Ran all test suites.
