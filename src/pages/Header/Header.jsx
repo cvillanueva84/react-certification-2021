@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './Header.style.css';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+//import { useFetchVideos } from '../../hooks/useFetchVideos';
 
 const commontheme = {
   fontFam: 'Arial',
@@ -36,13 +38,29 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Header = () => {
+
+export const Header = ({setCategorias}) => {
+
+  const [inputValue, setValue] = useState('');
+
   const [mode, setMode] = useState('light');
 
+  const handleInputText = (e) => {
+    setValue(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //console.log('Submit!', inputValue);
+    setCategorias(categoria => [inputValue, ...categoria]);
+    setValue('');
+  }
+
+
   return (
-    <div>
+      <div>
       <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
-        <GlobalStyles />
+        <GlobalStyles/>
         <div className="header">
           <div className="contenedor-header">
 
@@ -52,16 +70,20 @@ const Header = () => {
                 <HeaderButton><i className="fab fa-youtube"></i></HeaderButton>
               </div>
 
-
-
               <div className="center-header-left">
               <div className="box_input">
                 <div className="align_box_input">
-                  <input
-                    type="text"
-                    placeholder="Buscador"
-                  />
-                  <span className="square_input"><i className="fas fa-search"></i></span>
+
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      type="text"
+                      value={inputValue}
+                      onChange={handleInputText}
+                      placeholder="Search..."
+                    ></input>
+                  </form>
+
+                  <span className="square_input"><i onSubmit={handleSubmit} className="fas fa-search"></i></span>
                 </div>
               </div>
               </div>
@@ -85,9 +107,6 @@ const Header = () => {
 
 
 
-
-             
-
               <div className="right-header">
                 <HeaderButton><i className="fas fa-user-graduate"></i></HeaderButton>
               </div>
@@ -96,7 +115,9 @@ const Header = () => {
         </div>
       </ThemeProvider>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+Header.propTypes = {
+setCategorias: PropTypes.func.isRequired
+}

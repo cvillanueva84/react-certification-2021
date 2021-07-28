@@ -1,26 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFetchVideos } from '../../hooks/useFetchVideos';
 import { CardItem } from '../../components/CardItem';
-import { getVids } from '../../components/helpers/getVids';
+import PropTypes from 'prop-types';
 import './Fill.style.css';
 
-const Fill = () => {
-  const [videos, setVideos] = useState([]);
 
-  getVids().then((vids) => {
-    setVideos(vids);
-  });
+export const Fill = ({categoria}) => {
+
+  const{items:videos, loading} = useFetchVideos(categoria);
 
   return (
     <div>
       <div className="contenedor">
+        {loading && <h2>Loading...</h2>}
         <div className="cards">
-          {videos.map((vid) => (
+          {videos.map(vid => (
             <CardItem key={vid.id} {...vid} />
           ))}
         </div>
+        <hr/>
       </div>
     </div>
   );
 };
 
-export default Fill;
+
+Fill.propTypes = {
+  categoria: PropTypes.string.isRequired
+}

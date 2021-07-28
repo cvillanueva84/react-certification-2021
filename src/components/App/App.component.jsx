@@ -1,11 +1,11 @@
 import React from 'react';
+import { HomeView } from '../../pages/HomeView/HomeView.page'
 //import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 //import AuthProvider from '../../providers/Auth';
 //import HomePage from '../../pages/Home';
 //import LoginPage from '../../pages/Login';
 //import NotFound from '../../pages/NotFound';
-import HomeView from '../../pages/HomeView';
 //import Private from '../Private';
 //import Layout from '../Layout';
 

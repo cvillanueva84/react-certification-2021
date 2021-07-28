@@ -1,18 +1,28 @@
-import React from 'react';
-import Header from '../Header/Header';
-import Fill from '../Fill/Fill';
+import React, { useState } from 'react';
+import { Header } from '../Header/Header';
+import { Fill } from '../Fill/Fill'
 
 import '../HomeView/HomeView.style.css';
 
-const HomeView = () => {
+export const HomeView = ({defaultCategorias=[]}) => {
 
+  const [categorias, setCategorias] = useState(defaultCategorias);
 
   return (
     <div>
-        <Header/>
-        <Fill/>
+        <Header setCategorias={setCategorias}/>
+        <ol>
+          {
+            categorias.map(categoria => 
+              <Fill
+                key={categoria}
+                categoria={categoria}
+              />
+              )
+          }
+        </ol>
+      
     </div>
   );
 };
 
-export default HomeView;

@@ -1,0 +1,1562 @@
+		Apuntes React
+
+Hola mundo: 
+
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);
+
+
+
+
+
+
+
+	
+		JSX
+
+Se llama JSX y es una extensión de sintaxis de JavaScript. Recomendamos usarlo con React para describir cómo debería verse la interfaz de usuario. JSX puede recordarle un lenguaje de plantilla, pero viene con todo el poder de JavaScript.
+
+
+Puede usar comillas para especificar cadenas literales como atributos:
+
+	const element = <div tabIndex="0"></div>;
+
+También puede utilizar llaves para incrustar una expresión de JavaScript en un atributo:
+	
+	const element = <img src={user.avatarUrl}></img>;
+
+
+No coloque comillas entre llaves al incrustar una expresión de JavaScript en un atributo. Debe usar comillas (para valores de cadena) o llaves (para expresiones), pero no ambas en el mismo atributo.
+
+
+Si una etiqueta está vacía, puede cerrarla inmediatamente con />, como XML
+
+Las etiquetas JSX pueden contener elementos secundarios.
+
+
+JSX previene los ataques de inyección.
+
+
+
+
+
+
+
+
+		Elementos de renderización
+
+
+Los elementos son los bloques de construcción más pequeños de las aplicaciones React.
+
+Un elemento describe lo que quiere ver en la pantalla:
+
+	const element = <h1>Hello, world</h1>;
+
+
+	Renderizando un elemento en el DOM
+
+Digamos que hay un <div>lugar en su archivo HTML:
+
+	<div id="root"></div>
+
+A esto lo llamamos un nodo DOM "raíz" porque todo lo que hay dentro será administrado por React DOM.
+Las aplicaciones creadas solo con React suelen tener un único nodo DOM raíz. Si está integrando React en una aplicación existente, puede tener tantos nodos DOM raíz aislados como desee.
+Para renderizar un elemento React en un nodo DOM raíz, pase ambos a ReactDOM.render():
+
+	const element = <h1>Hello, world</h1>;
+	ReactDOM.render(element, document.getElementById('root'));
+
+
+
+		Actualización del elemento renderizado
+
+Los elementos de React son inmutables . Una vez que crea un elemento, no puede cambiar sus hijos o atributos. 
+Con nuestro conocimiento hasta ahora, la única forma de actualizar la interfaz de usuario es crear un nuevo elemento y pasarlo a ReactDOM.render().
+
+
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
+
+
+
+
+
+
+
+
+
+
+		Componentes y accesorios
+
+Los componentes le permiten dividir la interfaz de usuario en piezas independientes y reutilizables, y pensar en cada pieza de forma aislada. Esta página proporciona una introducción a la idea de componentes.
+
+Conceptualmente, los componentes son como funciones de JavaScript. Aceptan entradas arbitrarias (llamadas "props") y devuelven elementos React que describen lo que debería aparecer en la pantalla.
+
+La forma más sencilla de definir un componente es escribir una función de JavaScript:
+
+	function Welcome(props) {
+	  return <h1>Hello, {props.name}</h1>;
+	}
+
+Esta función es un componente React válido porque acepta un único argumento de objeto "props" (que significa propiedades) con datos y devuelve un elemento React. Llamamos a estos componentes "componentes de función" porque son, literalmente, funciones de JavaScript.
+
+
+	Renderizado de un componente 
+
+Anteriormente, solo encontramos elementos React que representan etiquetas DOM:
+
+	const element = <div />;
+
+Sin embargo, los elementos también pueden representar componentes definidos por el usuario:
+
+	const element = <Welcome name="Sara" />;
+
+Cuando React ve un elemento que representa un componente definido por el usuario, pasa atributos JSX y elementos secundarios a este componente como un solo objeto. A este objeto lo llamamos "utilería".
+
+
+Por ejemplo, este código muestra "Hola, Sara" en la página:
+
+	function Welcome(props) {
+	  return <h1>Hello, {props.name}</h1>;
+	}
+
+	const element = <Welcome name="Sara" />;
+	ReactDOM.render(
+	  element,
+	  document.getElementById('root')
+	);
+
+Recapitulemos lo que sucede en este ejemplo:
+
+1- Llamamos ReactDOM.render()con el <Welcome name="Sara" />elemento.
+2- React llama al Welcome componente con {name: 'Sara'}los accesorios.
+3- Nuestro Welcomecomponente devuelve un <h1>Hello, Sara</h1>elemento como resultado.
+4- React DOM actualiza eficientemente el DOM para que coincida <h1>Hello, Sara</h1>.
+
+Nota: Siempre comience los nombres de los componentes con una letra mayúscula.
+
+React trata los componentes que comienzan con letras minúsculas como etiquetas DOM. Por ejemplo, <div />representa una etiqueta div HTML, pero <Welcome />representa un componente y debe Welcomeestar dentro del alcance.
+
+
+	Composicion de componentes
+
+Los componentes pueden hacer referencia a otros componentes en su salida. Esto nos permite utilizar la misma abstracción de componentes para cualquier nivel de detalle. Un botón, un formulario, un diálogo, una pantalla: en las aplicaciones React, todos estos se expresan comúnmente como componentes.
+
+Por ejemplo, podemos crear un Appcomponente que se renderice Welcomemuchas veces:
+
+	function Welcome(props) {
+	  return <h1>Hello, {props.name}</h1>;
+	}
+
+	function App() {
+	  return (
+	    <div>
+	      <Welcome name="Sara" />
+	      <Welcome name="Cahal" />
+	      <Welcome name="Edite" />
+	    </div>
+	  );
+	}
+
+	ReactDOM.render(
+	  <App />,
+	  document.getElementById('root')
+	);
+
+
+Por lo general, las nuevas aplicaciones de React tienen un solo Appcomponente en la parte superior. Sin embargo, si integra React en una aplicación existente, puede comenzar de abajo hacia arriba con un pequeño componente como Buttony gradualmente llegar a la parte superior de la jerarquía de vistas.
+
+
+	Extraer componentes
+
+No tenga miedo de dividir los componentes en componentes más pequeños.
+
+	Los accesorios son de solo lectura
+
+Las funciones se denominan “puras” porque no intentan cambiar sus entradas y siempre devuelven el mismo resultado para las mismas entradas.
+
+Todos los componentes de React deben actuar como funciones puras con respecto a sus accesorios.
+
+
+
+
+
+
+
+
+
+
+	
+	Estado y ciclo de vida
+
+En esta sección, aprenderemos cómo hacer que el Clockcomponente sea realmente reutilizable y encapsulado. Configurará su propio temporizador y se actualizará a sí mismo cada segundo.
+
+Podemos comenzar encapsulando cómo se ve el reloj:
+
+	function Clock(props) {
+	  return (
+	    <div>
+	      <h1>Hello, world!</h1>
+	      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+	    </div>
+	  );
+	}
+
+	function tick() {
+	  ReactDOM.render(
+	    <Clock date={new Date()} />,
+	    document.getElementById('root')
+	  );
+	}
+
+	setInterval(tick, 1000);
+
+Sin embargo, pasa por alto un requisito crucial: el hecho de que Clockconfigure un temporizador y actualice la interfaz de usuario cada segundo debería ser un detalle de implementación del Clock.
+
+Idealmente, queremos escribir esto una vez y tener la Clock actualización en sí:
+
+	ReactDOM.render(
+	  <Clock />,
+	  document.getElementById('root')
+	);
+
+Para implementar esto, necesitamos agregar "estado" al Clockcomponente.
+
+El estado es similar a los accesorios, pero es privado y está totalmente controlado por el componente.
+
+	
+	Convertir una función en una clase
+
+Puede convertir un componente de función como Clocken una clase en cinco pasos:
+
+1.- Cree una clase ES6 , con el mismo nombre, que se extienda React.Component.
+2.- Agregue un único método vacío llamado render().
+3.- Mueva el cuerpo de la función al render()método.
+4.- Reemplazar propscon this.propsen el render()cuerpo.
+5.- Elimina la declaración de función vacía restante.
+
+	class Clock extends React.Component {
+	  render() {
+	    return (
+	      <div>
+	        <h1>Hello, world!</h1>
+	        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+	      </div>
+	    );
+	  }
+	}
+
+Clock ahora se define como una clase en lugar de una función.
+
+Se renderllamará al método cada vez que ocurra una actualización, pero siempre que rendericemos <Clock />en el mismo nodo DOM, solo Clockse usará una única instancia de la clase. Esto nos permite utilizar funciones adicionales como el estado local y los métodos de ciclo de vida.
+
+
+	Agregar un estado local a una clase
+
+Pasaremos datede los apoyos al estado en tres pasos:
+
+1.- Reemplazar this.props.datecon this.state.dateen el render()método:
+
+	class Clock extends React.Component {
+	  render() {
+	    return (
+	      <div>
+	        <h1>Hello, world!</h1>
+	        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+	      </div>
+	    );
+	  }
+	}
+
+2.- Agregue un constructor de clase que asigne la inicial this.state:
+
+	class Clock extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {date: new Date()};
+	  }
+
+	  render() {
+	    return (
+	      <div>
+	        <h1>Hello, world!</h1>
+	        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+	      </div>
+	    );
+	  }
+	}
+
+
+Observe cómo pasamos propsal constructor base:
+
+	  constructor(props) {
+	    super(props);
+	    this.state = {date: new Date()};
+	  }
+
+Los componentes de la clase siempre deben llamar al constructor base con props.
+
+3.- Retire el dateaccesorio del <Clock />elemento:
+
+	ReactDOM.render(
+	  <Clock />,
+	  document.getElementById('root')
+	);
+
+Más tarde, agregaremos el código del temporizador al componente en sí.
+
+El resultado se ve así:
+
+	class Clock extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {date: new Date()};
+	  }
+
+	  render() {
+	    return (
+	      <div>
+	        <h1>Hello, world!</h1>
+	        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+	      </div>
+	    );
+	  }
+	}
+
+	ReactDOM.render(
+	  <Clock />,
+	  document.getElementById('root')
+	);
+
+A continuación, Clockconfiguraremos su propio temporizador y lo actualizaremos cada segundo.
+
+	
+	Agregar métodos de ciclo de vida a una clase
+
+En aplicaciones con muchos componentes, es muy importante liberar los recursos que toman los componentes cuando se destruyen.
+
+Queremos configurar un temporizador cada vez que Clockse procese en el DOM por primera vez. Esto se llama "montaje" en React.
+
+También queremos borrar ese temporizador siempre que se elimine el DOM producido por Clock. Esto se llama "desmontar" en React.
+
+Podemos declarar métodos especiales en la clase del componente para ejecutar algún código cuando un componente se monta y desmonta:
+
+	class Clock extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {date: new Date()};
+	  }
+
+	  componentDidMount() {
+	  }
+
+	  componentWillUnmount() {
+	  }
+
+	  render() {
+	    return (
+	      <div>
+	        <h1>Hello, world!</h1>
+	        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+	      </div>
+	    );
+	  }
+	}
+
+
+Estos métodos se denominan "métodos de ciclo de vida".
+
+El componentDidMount()método se ejecuta después de que la salida del componente se haya procesado en el DOM. Este es un buen lugar para configurar un temporizador:
+
+	  componentDidMount() {
+	    this.timerID = setInterval(
+	      () => this.tick(),
+	      1000
+	    );
+	  }
+
+Observe cómo guardamos la ID del temporizador directamente en this( this.timerID).
+
+Si bien this.propsReact lo configura y this.statetiene un significado especial, puede agregar campos adicionales a la clase manualmente si necesita almacenar algo que no participa en el flujo de datos (como un ID de temporizador).
+
+Derribaremos el temporizador en el componentWillUnmount()método del ciclo de vida:
+
+	 componentWillUnmount() {
+	    clearInterval(this.timerID);
+	  }
+
+
+Finalmente, implementaremos un método llamado tick()que el Clockcomponente se ejecutará cada segundo.
+
+Se utilizará this.setState()para programar actualizaciones para el estado local del componente:
+
+	class Clock extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {date: new Date()};
+	  }
+
+	  componentDidMount() {
+	    this.timerID = setInterval(
+	      () => this.tick(),
+	      1000
+	    );
+	  }
+
+	  componentWillUnmount() {
+	    clearInterval(this.timerID);
+	  }
+
+	  tick() {
+	    this.setState({
+	      date: new Date()
+	    });
+	  }
+
+	  render() {
+	    return (
+	      <div>
+	        <h1>Hello, world!</h1>
+	        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+	      </div>
+	    );
+	  }
+	}
+
+	ReactDOM.render(
+	  <Clock />,
+	  document.getElementById('root')
+	);
+
+Ahora el reloj marca cada segundo.
+
+Recapitulemos rápidamente lo que está sucediendo y el orden en que se llaman los métodos:
+
+1.- Cuando <Clock />se pasa a ReactDOM.render(), React llama al constructor del Clockcomponente. Dado que Clocknecesita mostrar la hora actual, se inicializa this.statecon un objeto que incluye la hora actual. Posteriormente actualizaremos este estado.
+
+2.- React luego llama al método Clockdel componente render(). Así es como React aprende lo que debe mostrarse en la pantalla. React luego actualiza el DOM para que coincida con la Clocksalida de renderización.
+
+3.- Cuando la Clock salida se inserta en el DOM, React llama al componentDidMount()método del ciclo de vida. En su interior, el Clockcomponente le pide al navegador que configure un temporizador para llamar al tick()método del componente una vez por segundo.
+
+4.- Cada segundo, el navegador llama al tick()método. En su interior, el Clockcomponente programa una actualización de la interfaz de usuario llamando setState()con un objeto que contiene la hora actual. Gracias a la setState()llamada, React sabe que el estado ha cambiado y render()vuelve a llamar al método para saber qué debería estar en la pantalla. Esta vez, this.state.dateel render()método será diferente, por lo que la salida del render incluirá la hora actualizada. React actualiza el DOM en consecuencia.
+
+5.- Si el Clockcomponente se elimina alguna vez del DOM, React invoca el componentWillUnmount()método del ciclo de vida para detener el temporizador.
+
+
+
+
+
+
+		Manejo de eventos
+
+Manejar eventos con elementos React es muy similar a manejar eventos en elementos DOM. Hay algunas diferencias de sintaxis:
+-Los eventos de React se nombran usando camelCase, en lugar de minúsculas.
+-Con JSX, pasa una función como controlador de eventos, en lugar de una cadena.
+		
+Por ejemplo, el HTML:
+
+	<button onclick="activateLasers()">
+	  Activate Lasers
+	</button>
+
+es ligeramente diferente en React:
+
+	<button onClick={activateLasers}>
+	  Activate Lasers
+	</button>
+
+Otra diferencia es que no puede regresar falsepara evitar el comportamiento predeterminado en React. Debe llamar preventDefaultexplícitamente. Por ejemplo, con HTML simple, para evitar el comportamiento de envío predeterminado del formulario, puede escribir:
+
+	<form onsubmit="console.log('You clicked submit.'); return false">
+	  <button type="submit">Submit</button>
+	</form>
+
+En React, esto podrìa ser: 
+
+	function Form() {
+	  function handleSubmit(e) {
+	    e.preventDefault();
+	    console.log('You clicked submit.');
+	  }
+
+	  return (
+	    <form onSubmit={handleSubmit}>
+	      <button type="submit">Submit</button>
+	    </form>
+	  );
+	}
+
+Cuando usa React, generalmente no necesita llamar addEventListenerpara agregar oyentes a un elemento DOM después de que se crea. En su lugar, solo proporcione un oyente cuando el elemento se procese inicialmente.
+
+Cuando define un componente usando una clase ES6 , un patrón común es que un controlador de eventos sea un método en la clase. Por ejemplo, este Togglecomponente genera un botón que permite al usuario alternar entre los estados "ON" y "OFF":
+
+	class Toggle extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {isToggleOn: true};
+
+	    // This binding is necessary to make `this` work in the callback
+	    this.handleClick = this.handleClick.bind(this);
+	  }
+
+	  handleClick() {
+	    this.setState(prevState => ({
+	      isToggleOn: !prevState.isToggleOn
+	    }));
+	  }
+
+	  render() {
+	    return (
+	      <button onClick={this.handleClick}>
+	        {this.state.isToggleOn ? 'ON' : 'OFF'}
+	      </button>
+	    );
+	  }
+	}
+
+	ReactDOM.render(
+	  <Toggle />,
+	  document.getElementById('root')
+	);
+
+Debe tener cuidado con el significado de las thisdevoluciones de llamada en JSX. En JavaScript, los métodos de clase no están vinculados por defecto. Si te olvidas de enlazar this.handleClicky pasarlo onClick, thisserá undefinedcuando se llame realmente a la función.
+
+Este no es un comportamiento específico de React; es parte de cómo funcionan las funciones en JavaScript . Generalmente, si se refiere a un método sin ()después, como onClick={this.handleClick}, debe vincular ese método.
+
+
+	Pasar argumentos a los controladores de eventos
+
+Dentro de un bucle, es común querer pasar un parámetro adicional a un controlador de eventos. Por ejemplo, si ides el ID de fila, cualquiera de los siguientes funcionaría:
+
+	<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+	<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+
+Las dos líneas anteriores son equivalentes y usan funciones de flecha y Function.prototype.bindrespectivamente.
+
+En ambos casos, el eargumento que representa el evento React se pasará como un segundo argumento después del ID. Con una función de flecha, tenemos que pasarla explícitamente, pero con bindcualquier otro argumento se reenvía automáticamente.
+
+
+
+
+
+
+
+
+
+
+
+
+	Representación condicional
+
+En React, puede crear distintos componentes que encapsulan el comportamiento que necesita. Luego, puede renderizar solo algunos de ellos, dependiendo del estado de su aplicación.
+
+
+La representación condicional en React funciona de la misma manera que las condiciones en JavaScript. Use operadores de JavaScript como ifo el operador condicional para crear elementos que representen el estado actual y deje que React actualice la interfaz de usuario para que coincida con ellos.
+
+Considere estos dos componentes:
+
+	function UserGreeting(props) {
+	  return <h1>Welcome back!</h1>;
+	}
+
+	function GuestGreeting(props) {
+	  return <h1>Please sign up.</h1>;
+	}
+
+Crearemos un Greetingcomponente que muestre cualquiera de estos componentes dependiendo de si un usuario está conectado:
+
+	function Greeting(props) {
+	  const isLoggedIn = props.isLoggedIn;
+	  if (isLoggedIn) {
+	    return <UserGreeting />;
+	  }
+	  return <GuestGreeting />;
+	}
+
+	ReactDOM.render(
+	  // Try changing to isLoggedIn={true}:
+	  <Greeting isLoggedIn={false} />,
+	  document.getElementById('root')
+	);
+
+
+Este ejemplo muestra un saludo diferente según el valor de isLoggedInprop.
+
+
+
+	Variables de elementos
+
+Puede utilizar variables para almacenar elementos. Esto puede ayudarlo a renderizar condicionalmente una parte del componente mientras que el resto de la salida no cambia.
+
+Considere estos dos nuevos componentes que representan los botones Cerrar sesión e Iniciar sesión:
+
+	function LoginButton(props) {
+	  return (
+	    <button onClick={props.onClick}>
+	      Login
+	    </button>
+	  );
+	}
+
+	function LogoutButton(props) {
+	  return (
+	    <button onClick={props.onClick}>
+	      Logout
+	    </button>
+	  );
+	}
+
+
+En el siguiente ejemplo, crearemos un componente con estado llamado LoginControl.
+
+Se renderizará <LoginButton />o <LogoutButton />dependiendo de su estado actual. También renderizará un <Greeting />del ejemplo anterior:
+
+	class LoginControl extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.handleLoginClick = this.handleLoginClick.bind(this);
+	    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+	    this.state = {isLoggedIn: false};
+	  }
+
+	  handleLoginClick() {
+	    this.setState({isLoggedIn: true});
+	  }
+
+	  handleLogoutClick() {
+	    this.setState({isLoggedIn: false});
+	  }
+
+	  render() {
+	    const isLoggedIn = this.state.isLoggedIn;
+	    let button;
+	    if (isLoggedIn) {
+	      button = <LogoutButton onClick={this.handleLogoutClick} />;
+	    } else {
+	      button = <LoginButton onClick={this.handleLoginClick} />;
+	    }
+
+	    return (
+	      <div>
+	        <Greeting isLoggedIn={isLoggedIn} />
+	        {button}
+	      </div>
+	    );
+	  }
+	}
+
+	ReactDOM.render(
+	  <LoginControl />,
+	  document.getElementById('root')
+	);
+
+Si bien declarar una variable y usar una ifdeclaración es una buena manera de renderizar un componente condicionalmente, a veces es posible que desee usar una sintaxis más corta. Hay algunas formas de incorporar condiciones en JSX, que se explican a continuación.
+
+
+
+	Inline If con operador lógico &&
+
+Puede incrustar expresiones en JSX envolviéndolas entre llaves. Esto incluye el &&operador lógico de JavaScript . Puede ser útil para incluir condicionalmente un elemento:
+
+	function Mailbox(props) {
+	  const unreadMessages = props.unreadMessages;
+	  return (
+	    <div>
+	      <h1>Hello!</h1>
+	      {unreadMessages.length > 0 &&
+	        <h2>
+	          You have {unreadMessages.length} unread messages.
+	        </h2>
+	      }
+	    </div>
+	  );
+	}
+
+	const messages = ['React', 'Re: React', 'Re:Re: React'];
+	ReactDOM.render(
+	  <Mailbox unreadMessages={messages} />,
+	  document.getElementById('root')
+	);
+
+
+Funciona porque en JavaScript, true && expressionsiempre evalúa expressiony false && expressionsiempre evalúa false.
+
+Por lo tanto, si la condición es true, el elemento inmediatamente posterior &&aparecerá en la salida. Si es así false, React lo ignorará y lo omitirá.
+
+Tenga en cuenta que devolver una expresión falsa seguirá provocando que se omita el elemento after, &&pero devolverá la expresión falsa. En el siguiente ejemplo, <div>0</div>será devuelto por el método render.
+
+
+	render() {
+	  const count = 0;
+	  return (
+	    <div>
+	      { count && <h1>Messages: {count}</h1>}
+	    </div>
+	  );
+	}
+
+
+
+
+	Inline If-Else con operador condicional
+
+Otro método para representar elementos de forma condicional en línea es utilizar el operador condicional de JavaScript condition ? true : false.
+
+En el siguiente ejemplo, lo usamos para renderizar condicionalmente un pequeño bloque de texto.
+
+
+	render() {
+	  const isLoggedIn = this.state.isLoggedIn;
+	  return (
+	    <div>
+	      The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+	    </div>
+	  );
+	}
+
+También se puede usar para expresiones más grandes, aunque es menos obvio lo que está sucediendo:
+
+	render() {
+	  const isLoggedIn = this.state.isLoggedIn;
+	  return (
+	    <div>
+	      {isLoggedIn
+	        ? <LogoutButton onClick={this.handleLogoutClick} />
+	        : <LoginButton onClick={this.handleLoginClick} />
+	      }
+	    </div>
+	  );
+	}
+
+Al igual que en JavaScript, depende de usted elegir un estilo apropiado en función de lo que usted y su equipo consideren más legible. Recuerde también que cuando las condiciones se vuelven demasiado complejas, puede ser un buen momento para extraer un componente .
+
+
+
+	Evitar que el componente se renderice 
+
+En casos excepcionales, es posible que desee que un componente se oculte aunque haya sido renderizado por otro componente. Para hacer este retorno en nulllugar de su salida de render.
+
+En el siguiente ejemplo, <WarningBanner />se representa según el valor de la propiedad llamada warn. Si el valor de la propiedad es false, entonces el componente no se procesa:
+
+	function WarningBanner(props) {
+	  if (!props.warn) {
+	    return null;
+	  }
+
+	  return (
+	    <div className="warning">
+	      Warning!
+	    </div>
+	  );
+	}
+
+	class Page extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {showWarning: true};
+	    this.handleToggleClick = this.handleToggleClick.bind(this);
+	  }
+
+	  handleToggleClick() {
+	    this.setState(state => ({
+	      showWarning: !state.showWarning
+	    }));
+	  }
+
+	  render() {
+	    return (
+	      <div>
+	        <WarningBanner warn={this.state.showWarning} />
+	        <button onClick={this.handleToggleClick}>
+	          {this.state.showWarning ? 'Hide' : 'Show'}
+	        </button>
+	      </div>
+	    );
+	  }
+	}
+
+	ReactDOM.render(
+	  <Page />,
+	  document.getElementById('root')
+	);
+
+Regresar nulldel rendermétodo de un componente no afecta la activación de los métodos del ciclo de vida del componente. Por ejemplo componentDidUpdate, todavía se llamará.
+
+
+
+
+
+		Listas y claves 
+
+Primero, repasemos cómo transforma listas en JavaScript.
+
+Dado el código a continuación, usamos la map()función para tomar una matriz numbersy duplicar sus valores. Asignamos la nueva matriz devuelta por map()a la variable doubledy la registramos:
+
+	const numbers = [1, 2, 3, 4, 5];
+	const doubled = numbers.map((number) => number * 2);
+	console.log(doubled);
+
+Este código se registra [2, 4, 6, 8, 10]en la consola.
+
+En React, transformar matrices en listas de elementos es casi idéntico.
+
+
+	Renderizado de varios componentes
+
+Puede crear colecciones de elementos e incluirlos en JSX usando llaves {}.
+
+A continuación, recorremos la numbersmatriz utilizando la map()función de JavaScript . Devolvemos un <li>elemento para cada artículo. Finalmente, asignamos la matriz de elementos resultante a listItems:
+
+	const numbers = [1, 2, 3, 4, 5];
+	const listItems = numbers.map((number) =>
+	  <li>{number}</li>
+	);
+
+Incluimos la listItemsmatriz completa dentro de un <ul>elemento y la representamos en el DOM :
+
+	ReactDOM.render(
+	  <ul>{listItems}</ul>,
+	  document.getElementById('root')
+	);
+
+Este código muestra una lista de viñetas de números entre 1 y 5.
+
+
+	Componente de lista basica 
+
+Por lo general, representaría listas dentro de un componente .
+
+Podemos refactorizar el ejemplo anterior en un componente que acepta una matriz numbers y genera una lista de elementos.
+
+	function NumberList(props) {
+	  const numbers = props.numbers;
+	  const listItems = numbers.map((number) =>
+	    <li>{number}</li>
+	  );
+	  return (
+	    <ul>{listItems}</ul>
+	  );
+	}
+
+	const numbers = [1, 2, 3, 4, 5];
+	ReactDOM.render(
+	  <NumberList numbers={numbers} />,
+	  document.getElementById('root')
+	);
+
+
+Cuando ejecute este código, recibirá una advertencia de que se debe proporcionar una clave para los elementos de la lista. Una "clave" es un atributo de cadena especial que debe incluir al crear listas de elementos. Discutiremos por qué es importante en la siguiente sección.
+
+Asignemos keya los elementos de nuestra lista en el interior numbers.map()y solucionemos el problema de la clave que falta.
+
+	function NumberList(props) {
+	  const numbers = props.numbers;
+	  const listItems = numbers.map((number) =>
+	    <li key={number.toString()}>
+	      {number}
+	    </li>
+	  );
+	  return (
+	    <ul>{listItems}</ul>
+	  );
+	}
+
+	const numbers = [1, 2, 3, 4, 5];
+	ReactDOM.render(
+	  <NumberList numbers={numbers} />,
+	  document.getElementById('root')
+	);
+
+
+
+	Llaves
+
+Las claves ayudan a React a identificar qué elementos han cambiado, se han agregado o se han eliminado. Se deben dar claves a los elementos dentro de la matriz para darles una identidad estable:
+
+	const numbers = [1, 2, 3, 4, 5];
+	const listItems = numbers.map((number) =>
+	  <li key={number.toString()}>
+	    {number}
+	  </li>
+	);
+
+La mejor forma de elegir una clave es utilizar una cadena que identifique de forma única un elemento de la lista entre sus hermanos. La mayoría de las veces usaría ID de sus datos como claves:
+
+	const todoItems = todos.map((todo) =>
+	  <li key={todo.id}>
+	    {todo.text}
+	  </li>
+	);
+
+Cuando no tenga ID estables para los elementos renderizados, puede usar el índice del elemento como clave como último recurso:
+
+	const todoItems = todos.map((todo, index) =>
+	  // Only do this if items have no stable IDs
+	  <li key={index}>
+	    {todo.text}
+	  </li>
+	);
+
+No recomendamos utilizar índices para las claves si el orden de los elementos puede cambiar.
+
+Si elige no asignar una clave explícita a los elementos de la lista, React utilizará de forma predeterminada índices como claves.
+
+
+	Extraer componentes con claves
+
+Las claves solo tienen sentido en el contexto de la matriz circundante.
+
+Por ejemplo, si extrae un ListItemcomponente, debe mantener la clave en los <ListItem />elementos de la matriz en lugar de en el <li>elemento en ListItemsí.
+
+	function ListItem(props) {
+	  // Correct! There is no need to specify the key here:
+	  return <li>{props.value}</li>;
+	}
+
+	function NumberList(props) {
+	  const numbers = props.numbers;
+	  const listItems = numbers.map((number) =>
+	    // Correct! Key should be specified inside the array.
+	    <ListItem key={number.toString()} value={number} />
+	  );
+	  return (
+	    <ul>
+	      {listItems}
+	    </ul>
+	  );
+	}
+
+	const numbers = [1, 2, 3, 4, 5];
+	ReactDOM.render(
+	  <NumberList numbers={numbers} />,
+	  document.getElementById('root')
+	);
+
+
+
+Una buena regla general es que los elementos dentro de la map()llamada necesitan claves.
+
+
+	Las llaves solo deben ser únicas entre hermanos
+
+Las claves sirven como una pista para React pero no pasan a sus componentes. Si necesita el mismo valor en su componente, páselo explícitamente como un accesorio con un nombre diferente:
+
+	const content = posts.map((post) =>
+	  <Post
+	    key={post.id}
+	    id={post.id}
+	    title={post.title} />
+	);
+
+Con el ejemplo anterior, el Postcomponente puede leer props.id, pero no props.key.
+
+
+
+
+	Inscrustar map() en JSX
+
+En los ejemplos anteriores, declaramos una listItemsvariable separada y la incluimos en JSX:
+
+	function NumberList(props) {
+	  const numbers = props.numbers;
+	  const listItems = numbers.map((number) =>
+	    <ListItem key={number.toString()}
+	              value={number} />
+	  );
+	  return (
+	    <ul>
+	      {listItems}
+	    </ul>
+	  );
+	}
+
+
+JSX permite incrustar cualquier expresión entre llaves para que podamos incluir el map()resultado en línea :
+
+	function NumberList(props) {
+	  const numbers = props.numbers;
+	  return (
+	    <ul>
+	      {numbers.map((number) =>
+	        <ListItem key={number.toString()}
+	                  value={number} />
+	      )}
+	    </ul>
+	  );
+	}
+
+
+A veces, esto da como resultado un código más claro, pero también se puede abusar de este estilo. Al igual que en JavaScript, depende de usted decidir si vale la pena extraer una variable para facilitar la lectura. Tenga en cuenta que si el map()cuerpo está demasiado anidado, podría ser un buen momento para extraer un componente .
+
+
+
+
+
+
+
+
+
+		Formularios
+
+
+Los elementos de formulario HTML funcionan de manera un poco diferente a otros elementos DOM en React, porque los elementos de formulario naturalmente mantienen algún estado interno. Por ejemplo, este formulario en HTML simple acepta un solo nombre:
+
+	<form>
+	  <label>
+	    Name:
+	    <input type="text" name="name" />
+	  </label>
+	  <input type="submit" value="Submit" />
+	</form>
+
+Este formulario tiene el comportamiento de formulario HTML predeterminado de navegar a una nueva página cuando el usuario envía el formulario. Si desea este comportamiento en React, simplemente funciona. Pero en la mayoría de los casos, es conveniente tener una función de JavaScript que maneje el envío del formulario y tenga acceso a los datos que el usuario ingresó en el formulario. La forma estándar de lograr esto es con una técnica llamada "componentes controlados".
+
+
+
+	Componentes controlados 
+
+En HTML, los elementos de formulario como <input>, <textarea>y <select>normalmente mantienen su propio estado y lo actualizan según la entrada del usuario. En React, el estado mutable generalmente se mantiene en la propiedad de estado de los componentes y solo se actualiza con setState().
+
+Podemos combinar los dos haciendo que el estado React sea la "única fuente de verdad". Luego, el componente React que genera un formulario también controla lo que sucede en ese formulario en la entrada posterior del usuario. Un elemento de formulario de entrada cuyo valor es controlado por React de esta manera se denomina "componente controlado".
+
+Por ejemplo, si queremos que el ejemplo anterior registre el nombre cuando se envía, podemos escribir el formulario como un componente controlado:
+
+	class NameForm extends React.Component {
+	  constructor(props) {
+	    super(props);
+	    this.state = {value: ''};
+
+	    this.handleChange = this.handleChange.bind(this);
+	    this.handleSubmit = this.handleSubmit.bind(this);
+	  }
+
+	  handleChange(event) {
+	    this.setState({value: event.target.value});
+	  }
+
+	  handleSubmit(event) {
+	    alert('A name was submitted: ' + this.state.value);
+	    event.preventDefault();
+	  }
+
+	  render() {
+	    return (
+	      <form onSubmit={this.handleSubmit}>
+	        <label>
+	          Name:
+	          <input type="text" value={this.state.value} onChange={this.handleChange} />
+	        </label>
+	        <input type="submit" value="Submit" />
+	      </form>
+	    );
+	  }
+	}
+
+
+Dado que el valueatributo se establece en nuestro elemento de formulario, el valor mostrado siempre será this.state.value, lo que hace que el estado de React sea la fuente de la verdad. Dado que se handleChangeejecuta con cada pulsación de tecla para actualizar el estado de React, el valor mostrado se actualizará a medida que el usuario escriba.
+
+Con un componente controlado, el valor de la entrada siempre es impulsado por el estado React. Si bien esto significa que debe escribir un poco más de código, ahora también puede pasar el valor a otros elementos de la interfaz de usuario o restablecerlo desde otros controladores de eventos.
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+		Composicion vs Herencia 
+
+React tiene un modelo de composición poderoso, y recomendamos usar la composición en lugar de la herencia para reutilizar el código entre componentes.
+
+
+	Contencion
+
+Algunos componentes no conocen a sus hijos de antemano. Esto es especialmente común para componentes como Sidebaro Dialogque representan "cajas" genéricas.
+
+Recomendamos que dichos componentes utilicen el childrenaccesorio especial para pasar elementos secundarios directamente a su salida:
+
+	function FancyBorder(props) {
+	  return (
+	    <div className={'FancyBorder FancyBorder-' + props.color}>
+	      {props.children}
+	    </div>
+	  );
+	}
+
+Esto permite que otros componentes les pasen hijos arbitrarios anidando el JSX:
+
+	function WelcomeDialog() {
+	  return (
+	    <FancyBorder color="blue">
+	      <h1 className="Dialog-title">
+	        Welcome
+	      </h1>
+	      <p className="Dialog-message">
+	        Thank you for visiting our spacecraft!
+	      </p>
+	    </FancyBorder>
+	  );
+	}
+
+Todo lo que <FancyBorder>esté dentro de la etiqueta JSX se pasa al FancyBordercomponente como un childrenaccesorio. Dado que se FancyBorderrenderiza {props.children}dentro de a <div>, los elementos pasados ​​aparecen en la salida final.
+
+Si bien esto es menos común, a veces es posible que necesite varios "agujeros" en un componente. En tales casos, puede crear su propia convención en lugar de usar children:
+
+	function SplitPane(props) {
+	  return (
+	    <div className="SplitPane">
+	      <div className="SplitPane-left">
+	        {props.left}
+	      </div>
+	      <div className="SplitPane-right">
+	        {props.right}
+	      </div>
+	    </div>
+	  );
+	}
+
+	function App() {
+	  return (
+	    <SplitPane
+	      left={
+	        <Contacts />
+	      }
+	      right={
+	        <Chat />
+	      } />
+	  );
+	}
+
+Los elementos reaccionan como <Contacts />y <Chat />son solo objetos, por lo que puede pasarlos como accesorios como cualquier otro dato. Este enfoque puede recordarle las "ranuras" en otras bibliotecas, pero no hay limitaciones sobre lo que puede pasar como accesorios en React.
+
+
+Paso 1: Divida la interfaz de usuario en una jerarquía de componentes
+Paso 2: compila una versión estática en React
+Paso 3: identificar la representación mínima (pero completa) del estado de la interfaz de usuario
+Paso 4: Identifique dónde debería vivir su estado
+Paso 5: agregar flujo de datos inverso
+
+
+
+	Reglas de Hooks
+
+Los hooks son funciones de JavaScript, pero imponen dos reglas adicionales:
+
+1.- Solo llame a Hooks en el nivel superior . No llame a Hooks dentro de bucles, condiciones o funciones anidadas.
+
+2.- Solo llame a Hooks desde los componentes de la función React . No llame a Hooks desde funciones regulares de JavaScript. (Solo hay otro lugar válido para llamar a Hooks: sus propios Hooks personalizados. Aprenderemos sobre ellos en un momento).
+
+
+
+
+
+
+
+
+		Reconciliación
+
+React proporciona una API declarativa para que no tenga que preocuparse por los cambios exactos en cada actualización. Esto hace que escribir aplicaciones sea mucho más fácil, pero puede que no sea obvio cómo se implementa en React. Este artículo explica las elecciones que hicimos en el algoritmo de "diferenciación" de React para que las actualizaciones de los componentes sean predecibles y lo suficientemente rápidas para las aplicaciones de alto rendimiento.
+
+
+	Motivación
+
+Cuando usa React, en un solo momento puede pensar en la render()función como la creación de un árbol de elementos de React. En la próxima actualización de estado o accesorios, esa render()función devolverá un árbol diferente de elementos de React. Luego, React necesita descubrir cómo actualizar de manera eficiente la interfaz de usuario para que coincida con el árbol más reciente.
+
+Existen algunas soluciones genéricas a este problema algorítmico de generar el número mínimo de operaciones para transformar un árbol en otro. Sin embargo, los algoritmos de última generación tienen una complejidad del orden de O (n 3 ) donde n es el número de elementos del árbol.
+
+Si usáramos esto en React, mostrar 1000 elementos requeriría del orden de mil millones de comparaciones. Esto es demasiado caro. En cambio, React implementa un algoritmo heurístico O (n) basado en dos suposiciones:
+
+1.- Dos elementos de diferentes tipos producirán árboles diferentes.
+2.- El desarrollador puede insinuar qué elementos secundarios pueden ser estables en diferentes renderizados con un keyaccesorio.
+
+En la práctica, estos supuestos son válidos para casi todos los casos de uso prácticos.
+
+
+	El algoritmo de diferenciación 
+
+Al diferenciar dos árboles, React primero compara los dos elementos raíz. El comportamiento es diferente según los tipos de elementos raíz.
+
+	
+	Elementos de diferentes tipos
+
+Siempre que los elementos raíz tengan diferentes tipos, React derribará el árbol viejo y construirá el nuevo árbol desde cero. Pasar de <a>a <img>, o de <Article>a <Comment>, o de <Button>a <div>: cualquiera de ellos conducirá a una reconstrucción completa.
+
+Al derribar un árbol, los nodos DOM antiguos se destruyen. Las instancias de componentes reciben componentWillUnmount(). Al construir un nuevo árbol, se insertan nuevos nodos DOM en el DOM. Las instancias de componentes reciben UNSAFE_componentWillMount()y luego componentDidMount(). Cualquier estado asociado con el árbol antiguo se pierde.
+
+Cualquier componente debajo de la raíz también se desmontará y se destruirá su estado. Por ejemplo, al diferenciar:
+
+	<div>
+	  <Counter />
+	</div>
+
+	<span>
+	  <Counter />
+	</span>
+
+Esto destruirá el viejo Countery volverá a montar uno nuevo.
+
+	
+	Elementos DOM del mismo tipo
+
+Al comparar dos elementos DOM de React del mismo tipo, React observa los atributos de ambos, mantiene el mismo nodo DOM subyacente y solo actualiza los atributos modificados. Por ejemplo:
+
+	<div className="before" title="stuff" />
+
+	<div className="after" title="stuff" />
+
+Al comparar estos dos elementos, React sabe que solo debe modificar el classNameen el nodo DOM subyacente.
+
+Al actualizar style, React también sabe actualizar solo las propiedades que cambiaron. Por ejemplo:
+
+	<div style={{color: 'red', fontWeight: 'bold'}} />
+
+	<div style={{color: 'green', fontWeight: 'bold'}} />
+
+Al convertir entre estos dos elementos, React sabe que solo debe modificar el colorestilo, no el fontWeight.
+
+Después de manejar el nodo DOM, React luego recurre a los niños.
+
+
+	Llaves
+
+Para resolver este problema, React admite un keyatributo. Cuando los niños tienen claves, React usa la clave para hacer coincidir los niños en el árbol original con los niños en el árbol siguiente. Por ejemplo, agregar keya nuestro ejemplo ineficiente anterior puede hacer que la conversión del árbol sea eficiente:
+
+	<ul>
+	  <li key="2015">Duke</li>
+	  <li key="2016">Villanova</li>
+	</ul>
+
+	<ul>
+	  <li key="2014">Connecticut</li>
+	  <li key="2015">Duke</li>
+	  <li key="2016">Villanova</li>
+	</ul>
+
+
+Ahora React sabe que el elemento con clave '2014'es el nuevo, y los elementos con claves '2015'y '2016'se acaban de mover.
+
+En la práctica, encontrar una clave no suele ser difícil. Es posible que el elemento que va a mostrar ya tenga una ID única, por lo que la clave puede provenir de sus datos:
+
+
+	<li key={item.id}>{item.name}</li>
+
+
+
+
+***********************************************************************************************************************
+2.- Intro to Testing
+Fuentes:
+https://www.guru99.com/test-driven-development.html
+
+
+			
+			What is TDD? (Culture and best practices)
+
+
+
+	¿Qué es el desarrollo basado en pruebas (TDD)?
+
+
+Test Driven Development (TDD) es un enfoque de desarrollo de software en el que se desarrollan casos de prueba para especificar y validar lo que hará el código. En términos simples, los casos de prueba para cada funcionalidad se crean y prueban primero y si la prueba falla, el nuevo código se escribe para pasar la prueba y hacer que el código sea simple y sin errores.
+
+El desarrollo basado en pruebas comienza con el diseño y desarrollo de pruebas para cada pequeña funcionalidad de una aplicación. El marco TDD indica a los desarrolladores que escriban código nuevo solo si una prueba automatizada ha fallado. Esto evita la duplicación de código. La forma completa de TDD es un desarrollo impulsado por pruebas.
+
+El concepto simple de TDD es escribir y corregir las pruebas fallidas antes de escribir código nuevo (antes del desarrollo). Esto ayuda a evitar la duplicación de código, ya que escribimos una pequeña cantidad de código a la vez para pasar las pruebas. (Las pruebas no son más que condiciones de requisitos que debemos probar para cumplirlas).
+
+TDD a veces también se denomina Test First Development.
+
+
+
+
+
+	Cómo realizar la prueba TDD
+
+Los siguientes pasos definen cómo realizar la prueba TDD:
+
+1.-Agrega una prueba.
+2.-Ejecute todas las pruebas y vea si falla alguna nueva.
+3.-Escribe un código.
+4.-Ejecute pruebas y refactorice el código.
+5.-Repetir.
+
+
+
+El ciclo TDD Define
+
+1.- Escribe una prueba
+2.- Hazlo correr
+3.- Cambie el código para hacerlo bien, Refactorizar
+4.- Repita el proceso
+
+
+Algunas aclaraciones sobre TDD:
+
+El enfoque TDD no se trata de "Pruebas" ni de "Diseño".
+TDD no significa "escribir algunas de las pruebas y luego construir un sistema que pase las pruebas".
+TDD no significa "hacer muchas pruebas".
+
+
+		
+		¿Qué es la aceptación TDD y Developer TDD?
+
+
+
+Hay dos niveles de TDD
+
+1.- Aceptación TDD (ATDD): Con ATDD se escribe una única prueba de aceptación. Esta prueba cumple el requisito de la especificación o satisface el comportamiento del sistema. Después de eso, escriba solo el código de producción / funcionalidad suficiente para cumplir con esa prueba de aceptación. La prueba de aceptación se centra en el comportamiento general del sistema. ATDD también se conocía como desarrollo impulsado por el comportamiento (BDD) .
+
+2.- Developer TDD: Con Developer TDD, escribe una prueba de desarrollador única, es decir, una prueba unitaria y luego solo el código de producción suficiente para cumplir con esa prueba. La prueba unitaria se centra en cada pequeña funcionalidad del sistema. El desarrollador TDD simplemente se llama TDD.
+
+
+--> El objetivo principal de ATDD y TDD es especificar requisitos detallados y ejecutables para su solución justo a tiempo (JIT). JIT significa tomar solo aquellos requisitos en consideración que son necesarios en el sistema. Así que aumente la eficiencia.
+
+
+
+
+
+
+
+		Escalado de TDD a través del desarrollo basado en modelos ágiles (AMDD)
+
+
+TDD es muy bueno en especificaciones y validaciones detalladas. No puede pensar en problemas más importantes, como el diseño general, el uso del sistema o la interfaz de usuario. AMDD aborda los problemas de escalado ágil que TDD no aborda.
+
+Por lo tanto, AMDD se utiliza para problemas mayores.
+
+En el desarrollo impulsado por modelos (MDD), se crean modelos extensos antes de escribir el código fuente.
+
+Visualizar es uno de los procesos TDD de predecir / imaginar pruebas que se realizarán durante la primera semana del proyecto. El objetivo principal de la visualización es identificar el alcance del sistema y la arquitectura del sistema. Se realizan requisitos de alto nivel y modelado de arquitectura para una visualización exitosa.
+
+Es el proceso en el que no se realiza una especificación detallada del software / sistema, sino que se exploran los requisitos del software / sistema, lo que define la estrategia general del proyecto.
+
+
+Iteración 0: Visualización
+Hay dos sub-activaciones principales.
+
+1.-Previsión de requisitos iniciales.
+Puede llevar varios días identificar los requisitos de alto nivel y el alcance del sistema. El enfoque principal es explorar el modelo de uso, el modelo de dominio inicial y el modelo de interfaz de usuario (UI).
+
+2.-Visualización arquitectónica inicial.
+También se necesitan varios días para identificar la arquitectura del sistema. Permite establecer orientaciones técnicas para el proyecto. El enfoque principal es explorar diagramas de tecnología, flujo de interfaz de usuario (UI), modelos de dominio y casos de cambio.
+
+
+
+	Modelado de iteraciones
+
+
+Aquí el equipo debe planificar el trabajo que se realizará para cada iteración.
+
+Se utiliza un proceso ágil para cada iteración, es decir, durante cada iteración, se agregará un nuevo elemento de trabajo con prioridad.
+Se tendrá en cuenta el primer trabajo de mayor prioridad. Los elementos de trabajo agregados pueden volver a priorizarse o eliminarse de la pila de elementos en cualquier momento.
+El equipo analiza cómo van a implementar cada requisito. El modelado se utiliza para este propósito.
+El análisis y diseño del modelado se realiza para cada requisito que se va a implementar para esa iteración.
+
+
+
+
+	Modelo de asalto
+
+
+Esto también se conoce como modelado justo a tiempo.
+
+Aquí la sesión de modelado involucra a un equipo de 2/3 miembros que discuten temas en papel o pizarra.
+Un miembro del equipo le pedirá a otro que modele con ellos. Esta sesión de modelado tomará aproximadamente de 5 a 10 minutos. Donde los miembros del equipo se reúnen para compartir pizarra / papel.
+Exploran los problemas hasta que no encuentran la causa principal del problema. Justo a tiempo, si un miembro del equipo identifica el problema que quiere resolver, recibirá la ayuda rápida de otros miembros del equipo.
+Luego, otros miembros del grupo exploran el problema y luego todos continúan como antes. También se denomina como modelado stand-up o sesiones de control de calidad del cliente.
+
+
+
+
+	Desarrollo basado en pruebas (TDD)
+
+
+Promueve las pruebas de confirmación del código de su aplicación y la especificación detallada.
+Tanto la prueba de aceptación (requisitos detallados) como las pruebas de desarrollador (prueba unitaria) son entradas para TDD.
+TDD hace que el código sea más simple y claro. Permite al desarrollador mantener menos documentación.
+
+
+
+	Reseñas
+
+
+Esto es opcional. Incluye inspecciones de códigos y revisiones de modelos.
+Esto se puede hacer para cada iteración o para todo el proyecto.
+Esta es una buena opción para dar retroalimentación al proyecto.
+
+
+
+
+	Desarrollo impulsado por pruebas (TDD) vs. Desarrollo basado en modelos ágiles (AMDD)
+
+TDD acorta el ciclo de retroalimentación de programación
+AMDD acorta el ciclo de retroalimentación de modelado.
+
+TDD es una especificación detallada
+AMDD funciona para problemas mayores
+
+TDD promueve el desarrollo de código de alta calidad
+AMDD promueve la comunicación de alta calidad con las partes interesadas y los desarrolladores.
+
+TDD habla con programadores
+AMDD habla con Business Analyst , partes interesadas y profesionales de datos.
+
+TDD no orientado visualmente
+AMDD orientado visualmente
+
+TDD tiene un alcance limitado para trabajos de software
+AMDD tiene un alcance amplio que incluye a las partes interesadas. Implica trabajar hacia un entendimiento común
+
+Ambos apoyan el desarrollo evolutivo
+
+
+
+
+		Ventajas de TDD
+
+Las siguientes son las principales ventajas del desarrollo basado en pruebas en ingeniería de software:
+
+
+	->Notificación temprana de errores.
+Los desarrolladores prueban su código, pero en el mundo de las bases de datos, esto a menudo consiste en pruebas manuales o scripts únicos. Con TDD, crea, con el tiempo, un conjunto de pruebas automatizadas que usted y cualquier otro desarrollador pueden volver a ejecutar a voluntad.
+
+
+	->Código mejor diseñado, más limpio y más extensible.
+-Ayuda a comprender cómo se utilizará el código y cómo interactúa con otros módulos.
+-Da como resultado una mejor decisión de diseño y un código más mantenible.
+-TDD permite escribir código más pequeño con una sola responsabilidad en lugar de procedimientos monolíticos con múltiples responsabilidades. Esto hace que el código sea más sencillo de entender.
+-TDD también obliga a escribir solo código de producción para pasar las pruebas según los requisitos del usuario.
+
+
+	->Confianza para refactorizar
+-Si refactoriza el código, puede haber posibilidades de rupturas en el código. Por lo tanto, al tener un conjunto de pruebas automatizadas, puede corregir esas interrupciones antes del lanzamiento. Se dará una advertencia adecuada si se encuentran interrupciones cuando se utilizan pruebas automatizadas.
+-El uso de TDD debería dar como resultado un código más rápido y extensible con menos errores que se pueden actualizar con riesgos mínimos.
+
+
+	->Bueno para el trabajo en equipo
+En ausencia de cualquier miembro del equipo, otros miembros del equipo pueden aprender fácilmente y trabajar en el código. También ayuda a compartir conocimientos, lo que hace que el equipo sea más eficaz en general.
+
+
+	->Bueno para desarrolladores
+Aunque los desarrolladores tienen que dedicar más tiempo a escribir casos de prueba TDD, se necesita mucho menos tiempo para depurar y desarrollar nuevas funciones. Escribirás un código más limpio y menos complicado.
+
+
+
+	Resumen
+
+-TDD significa desarrollo impulsado por pruebas.
+-Significado de TDD: Es un proceso de modificación del código para pasar una prueba diseñada previamente.
+-Se hace más hincapié en el código de producción que en el diseño de casos de prueba.
+-El desarrollo impulsado por pruebas es un proceso de modificación del código para pasar una prueba diseñada previamente.
+-En Ingeniería de Software, a veces se lo conoce como "Prueba Primero Desarrollo".
+-Las pruebas TDD incluyen la refactorización de un código, es decir, cambiar / agregar cierta cantidad de código al código existente sin afectar el comportamiento del código.
+-Cuando se utiliza la programación TDD, el código se vuelve más claro y fácil de entender.
+
+
+
+
+
+
+
+
+
+			Snapshot Testing: https://jestjs.io/docs/snapshot-testing
+
+Las pruebas instantáneas son una herramienta muy útil siempre que desee asegurarse de que su interfaz de usuario no cambie inesperadamente.
+
+Un caso de prueba de instantánea típico representa un componente de la interfaz de usuario, toma una instantánea y luego la compara con un archivo de instantánea de referencia almacenado junto con la prueba. La prueba fallará si las dos instantáneas no coinciden: el cambio es inesperado o la instantánea de referencia debe actualizarse a la nueva versión del componente de la interfaz de usuario.
+
+
+	Actualización de instantáneas
+
+Es sencillo detectar cuándo falla una prueba de instantánea después de que se ha introducido un error. Cuando eso suceda, siga adelante, solucione el problema y asegúrese de que sus pruebas de instantáneas vuelvan a pasar. Ahora, hablemos del caso en el que una prueba de instantánea falla debido a un cambio de implementación intencional.
+
+	Modo de instantánea interactiva
+
+Las instantáneas fallidas también se pueden actualizar de forma interactiva en el modo de reloj: Menu con opciones
+
+	Instantanea en linea
+
+Las instantáneas en línea se comportan de manera idéntica a las instantáneas externas ( .snaparchivos), excepto que los valores de las instantáneas se vuelven a escribir automáticamente en el código fuente. Esto significa que puede obtener los beneficios de las instantáneas generadas automáticamente sin tener que cambiar a un archivo externo para asegurarse de que se haya escrito el valor correcto.
+
+
+	Coincidentes de propiedades
+
+A menudo, hay campos en el objeto que desea capturar y que se generan (como ID y fechas). Si intenta tomar una instantánea de estos objetos, forzarán la instantánea a fallar en cada ejecución.Para estos casos, Jest permite proporcionar un comparador asimétrico para cualquier propiedad. Estos comparadores se verifican antes de escribir o probar la instantánea y luego se guardan en el archivo de instantánea en lugar del valor recibido
+
+Cualquier valor dado que no sea un comparador se verificará exactamente y se guardará en la instantánea
+
+	
+
+	Mejores prácticas
+
+Las instantáneas son una herramienta fantástica para identificar cambios inesperados en la interfaz dentro de su aplicación, ya sea que esa interfaz sea una respuesta de API, interfaz de usuario, registros o mensajes de error. Al igual que con cualquier estrategia de prueba, existen algunas prácticas recomendadas que debe conocer y pautas que debe seguir para poder utilizarlas de manera eficaz.
+
+1.- Trate las instantáneas como código
+2.- Las pruebas deben ser deterministas
+3.- Utilice nombres de instantáneas descriptivas
+
+
+
+*******************
+Style Components 
+
+const Box = styled(Button)`
+	font-size: 1em;
+	margin: 1em;
+`;
+
+->Media Querys
+->Keyframes
+->Server Side Rendering 
+->Global Styles
+
+
+# with npm
+npm install --save styled-components
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
