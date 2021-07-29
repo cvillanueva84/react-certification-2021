@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 // import { Link, useHistory } from 'react-router-dom';
 // import { useAuth } from '../../providers/Auth';
 import { VideoCard } from './Home.styled';
+import { VideoCardContent } from '../../components/VideoCardContent/VideoCardContent.component';
 import youtubeData from '../../youtube-videos-mock';
 import './Home.styles.css';
 
@@ -35,17 +36,7 @@ function HomePage() {
       )} */}
       {youtubeData.items.map((video) => (
         <VideoCard key={video.etag}>
-          <img
-            className="videoCardMedia"
-            src={video.snippet.thumbnails.high.url}
-            alt={video.kind}
-          />
-          <div className="videoTextContainer">
-            <h3 className="videoCardTitle">{video.snippet.title}</h3>
-            <span className="videoCardDescription">
-              {video.snippet.description || 'Este video no cuenta con descripción'}
-            </span>
-          </div>
+          <VideoCardContent video={video} />
         </VideoCard>
       ))}
     </section>
