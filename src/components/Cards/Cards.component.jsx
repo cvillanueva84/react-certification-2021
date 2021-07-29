@@ -1,23 +1,22 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Card from '../../components/Card';
 
 function Cards(props) {
+  const filteredVideos = props.videos.items.filter(
+    (video) => video.id.kind === 'youtube#video'
+  );
   return (
-    <Fragment>
-      {props.videos.items.map((video) => {
-        if (video.id.kind === 'youtube#video') {
-          return (
-            <Card
-              image={video.snippet.thumbnails.high.url}
-              title={video.snippet.title}
-              description={video.snippet.description}
-            ></Card>
-          );
-        } else {
-          return null;
-        }
+    <>
+      {filteredVideos.map((video) => {
+        return (
+          <Card
+            image={video.snippet.thumbnails.high.url}
+            title={video.snippet.title}
+            description={video.snippet.description}
+          ></Card>
+        );
       })}
-    </Fragment>
+    </>
   );
 }
 

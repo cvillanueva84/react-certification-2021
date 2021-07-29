@@ -1,35 +1,21 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Card } from './Card.component';
-const video = [
-  {
-    snippet: {
-      title: 'Test title',
-      description: 'Test description',
-      thumbnails: {
-        high: {
-          url: 'https://i.ytimg.com/vi/nmXMgqjQzls/hqdefault.jpg',
-        },
-      },
-    },
-  },
-];
+import Card from './Card.component';
+
 describe('Card', () => {
   beforeEach(() => {
     render(
       <Card
-        image={video.snippet.thumbnails.high.url}
-        title={video.snippet.title}
-        description={video.snippet.description}
+        image="https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s800-c-k-c0xffffffff-no-rj-mo"
+        title="Test title"
+        description="Test description"
       ></Card>
     );
   });
   test('should contains a title', () => {
-    const title = screen.queryByText('Test title');
-    expect(title).toBeInTheDocument();
+    expect(screen.getByText(/title/i)).toBeInTheDocument();
   });
   test('should contains a description', () => {
-    const description = screen.queryByText('Test description');
-    expect(description).toBeInTheDocument();
+    expect(screen.getByText('Test description')).toBeInTheDocument();
   });
 });

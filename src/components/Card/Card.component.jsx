@@ -15,7 +15,7 @@ const CardBody = styled.div`
 const ImageCard = styled.div`
   width: 100%;
   height: 10rem;
-  background-image: url(${(props) => props.imageC});
+  background-image: url(${(props) => props.imageUrl});
   background-position: center;
   background-repeat: no-repeat;
 `;
@@ -30,11 +30,10 @@ const Description = styled.div`
   font-size: 0.7rem;
 `;
 
-function Card(props) {
-  const { image, title, description } = props;
+function Card({ image, title, description }) {
   return (
     <CardBody>
-      <ImageCard imageC={image}></ImageCard>
+      <ImageCard imageUrl={image}></ImageCard>
       <WraperText>
         <Title>{title}</Title>
         <Description>{description}</Description>

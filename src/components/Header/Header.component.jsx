@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../providers/Auth';
+//import { useAuth } from '../../providers/Auth';
 
 const HeaderBody = styled.div`
   background-color: white;
@@ -108,14 +108,14 @@ const CheckBox = styled.input`
 `;
 
 function Header() {
-  const history = useHistory();
-  const { authenticated, logout } = useAuth();
+  // const history = useHistory();
+  // const { authenticated, logout } = useAuth();
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  // function deAuthenticate(event) {
+  //   event.preventDefault();
+  //   logout();
+  //   history.push('/');
+  // }
   return (
     <HeaderBody>
       <Logo />
@@ -127,13 +127,14 @@ function Header() {
           <CheckBoxLabel htmlFor="checkbox" />
         </CheckBoxWrapper>
         <Button>
-          {authenticated ? (
+          Login
+          {/* {authenticated ? (
             <Link to="/" onClick={deAuthenticate}>
               ← logout
             </Link>
           ) : (
             <Link to="/login">Login</Link>
-          )}
+          )} */}
         </Button>
       </HeaderItems>
     </HeaderBody>
