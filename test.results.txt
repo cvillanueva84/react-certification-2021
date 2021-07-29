@@ -1,0 +1,62 @@
+------------------------------------|----------|----------|----------|----------|-------------------|
+File                                |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------------------|----------|----------|----------|----------|-------------------|
+All files                           |    61.29 |    33.33 |    60.61 |    61.29 |                   |
+ src                                |        0 |      100 |      100 |        0 |                   |
+  index.js                          |        0 |      100 |      100 |        0 |                 8 |
+ src/common                         |      100 |      100 |      100 |      100 |                   |
+  Element.styled.js                 |      100 |      100 |      100 |      100 |                   |
+ src/components/App                 |      100 |      100 |      100 |      100 |                   |
+  App.component.jsx                 |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/Fortune             |        0 |      100 |        0 |        0 |                   |
+  Fortune.component.jsx             |        0 |      100 |        0 |        0 |               7,9 |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/Header              |      100 |      100 |      100 |      100 |                   |
+  Header.component.jsx              |      100 |      100 |      100 |      100 |                   |
+  Header.styled.component.jsx       |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/Layout              |      100 |      100 |      100 |      100 |                   |
+  Layout.component.jsx              |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/Private             |        0 |        0 |        0 |        0 |                   |
+  Private.component.jsx             |        0 |        0 |        0 |        0 |            7,9,10 |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/SearchBox           |      100 |      100 |      100 |      100 |                   |
+  SearchBox.component.jsx           |      100 |      100 |      100 |      100 |                   |
+  SearchBox.styled.component.jsx    |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/UserSettings        |      100 |      100 |      100 |      100 |                   |
+  UserSettings.component.jsx        |      100 |      100 |      100 |      100 |                   |
+  UserSettings.styled.component.jsx |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/VideoCard           |      100 |      100 |      100 |      100 |                   |
+  VideoCard.component.jsx           |      100 |      100 |      100 |      100 |                   |
+  VideoCard.styled.component.jsx    |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/components/VideoList           |      100 |      100 |      100 |      100 |                   |
+  VideoList.component.jsx           |      100 |      100 |      100 |      100 |                   |
+  VideoList.styled.component.jsx    |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/pages/Home                     |      100 |      100 |      100 |      100 |                   |
+  Home.page.jsx                     |      100 |      100 |      100 |      100 |                   |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/pages/Login                    |        0 |      100 |        0 |        0 |                   |
+  Login.page.jsx                    |        0 |      100 |        0 |        0 |   8,9,12,13,14,17 |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/pages/NotFound                 |        0 |      100 |        0 |        0 |                   |
+  NotFound.page.jsx                 |        0 |      100 |        0 |        0 |                 7 |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/pages/Secret                   |        0 |      100 |        0 |        0 |                   |
+  Secret.page.jsx                   |        0 |      100 |        0 |        0 |                 5 |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/providers/Auth                 |    52.94 |        0 |       40 |    52.94 |                   |
+  Auth.provider.jsx                 |    52.94 |        0 |       40 |    52.94 |... 13,27,28,32,33 |
+  index.js                          |        0 |        0 |        0 |        0 |                   |
+ src/utils                          |    77.78 |      100 |      100 |    77.78 |                   |
+  constants.js                      |      100 |      100 |      100 |      100 |                   |
+  fns.js                            |      100 |      100 |      100 |      100 |                   |
+  storage.js                        |    71.43 |      100 |      100 |    71.43 |               7,8 |
+ src/utils/hooks                    |        0 |      100 |        0 |        0 |                   |
+  useFortune.js                     |        0 |      100 |        0 |        0 |... 17,19,21,25,28 |
+------------------------------------|----------|----------|----------|----------|-------------------|
