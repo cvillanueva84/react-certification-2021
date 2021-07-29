@@ -195,7 +195,6 @@ function Header() {
           </DivInput>
         </SearchDiv>
       </LeftHeader>
-
       <RightHeader>
         <div>
           <SwitchBtn>
