@@ -201,7 +201,7 @@ function Header() {
           <SwitchBtn>
             <IconButton>
               <LabelIconButton>
-                <Input type="checkbox" />
+                <Input name="search" type="checkbox" />
                 <Thumb />
               </LabelIconButton>
               <TouchRipple />
