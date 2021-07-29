@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from '../Header/Header';
 import { Fill } from '../Fill/Fill'
 
@@ -6,10 +6,15 @@ import '../HomeView/HomeView.style.css';
 
 export const HomeView = ({defaultCategorias=[]}) => {
 
+  //Sorry, I want to prof the useEffect
   const [categorias, setCategorias] = useState(defaultCategorias);
+  useEffect(() => {
+    categorias.shift();
+  }, [categorias])
 
   return (
     <div>
+      
         <Header setCategorias={setCategorias}/>
         <ol>
           {

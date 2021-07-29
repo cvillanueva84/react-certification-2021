@@ -1534,6 +1534,981 @@ npm install --save styled-components
 
 
 
+***************************************************************************************************
+
+React testing library 
+
+npm install --save-dev @ testing-library / react
+
+Es una solución muy ligero para probar componentes reaccionan. Proporciona funciones de utilidad de luz en 
+la parte superior de react-domy react-dom/test-utils, de una manera que alienta mejores prácticas de prueba.
+
+Esta biblioteca fomenta que sus aplicaciones sean más accesibles y le permite acercar sus pruebas al uso de 
+sus componentes de la forma en que lo hará un usuario, lo que permite que sus pruebas le den más confianza 
+de que su aplicación funcionará cuando un usuario real la use.
+
+Esta biblioteca es un reemplazo de Enzyme . Si bien puede seguir estas pautas utilizando la propia Enzyme, 
+hacer cumplir esto es más difícil debido a todas las utilidades adicionales que proporciona Enzyme (utilidades 
+que facilitan los detalles de implementación de prueba).
+
+Imports
+
+// import dependencies
+import React from 'react'
+
+// import API mocking utilities from Mock Service Worker
+import {rest} from 'msw'
+import {setupServer} from 'msw/node'
+
+// import react-testing methods
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+
+// add custom jest matchers from jest-dom
+import '@testing-library/jest-dom/extend-expect'
+// the component to test
+import Fetch from '../fetch'
+
+
+test('loads and displays greeting', async () => {
+  // Arrange
+  // Act
+  // Assert
+})
+
+
+
+Mocks 
+
+Utilice la setupServerfunción de mswpara simular una solicitud de API que realiza nuestro componente probado.
+
+// declare which API requests to mock
+const server = setupServer(
+  // capture "GET /greeting" requests
+  rest.get('/greeting', (req, res, ctx) => {
+    // respond using a mocked JSON body
+    return res(ctx.json({greeting: 'hello there'}))
+  }),
+)
+
+// establish API mocking before all tests
+beforeAll(() => server.listen())
+// reset any request handlers that are declared as a part of our tests
+// (i.e. for testing one-time error scenarios)
+afterEach(() => server.resetHandlers())
+// clean up once the tests are done
+afterAll(() => server.close())
+
+// ...
+
+test('handlers server error', async () => {
+  server.use(
+    // override the initial "GET /greeting" request handler
+    // to return a 500 Server Error
+    rest.get('/greeting', (req, res, ctx) => {
+      return res(ctx.status(500))
+    }),
+  )
+
+  // ...
+})
+
+
+
+
+
+
+
+Arrange 
+
+El rendermétodo procesa un elemento React en el DOM.
+
+render ( < Fetch url = " / greeting " /> )  
+
+
+
+Act 
+
+El fireEventmétodo le permite disparar eventos para simular acciones del usuario.
+
+fireEvent . haga clic en ( screen . getByText ( 'Cargar saludo' ) )
+
+// esperar hasta que la promesa de solicitud `get` se resuelva y
+// el componente llama a setState y vuelve a renderizar.
+// `waitFor` espera hasta que la devolución de llamada no arroje un error
+
+esperar esperarPor ( ( ) =>  
+  // getByRole arroja un error si no puede encontrar un elemento
+  pantalla . getByRole ( 'título' ) ,
+)
+
+
+Assert 
+
+// assert that the alert message is correct using
+// toHaveTextContent, a custom matcher from jest-dom.
+expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+
+// assert that the button is not disabled using
+// toBeDisabled, a custom matcher from jest-dom.
+expect(screen.getByRole('button')).not.toBeDisabled()
+
+
+Ejemplo: fetch.js 
+
+import React, {useState, useReducer} from 'react'
+import axios from 'axios'
+
+const initialState = {
+  error: null,
+  greeting: null,
+}
+
+function greetingReducer(state, action) {
+  switch (action.type) {
+    case 'SUCCESS': {
+      return {
+        error: null,
+        greeting: action.greeting,
+      }
+    }
+    case 'ERROR': {
+      return {
+        error: action.error,
+        greeting: null,
+      }
+    }
+    default: {
+      return state
+    }
+  }
+}
+
+export default function Fetch({url}) {
+  const [{error, greeting}, dispatch] = useReducer(
+    greetingReducer,
+    initialState,
+  )
+  const [buttonClicked, setButtonClicked] = useState(false)
+
+  const fetchGreeting = async url =>
+    axios
+      .get(url)
+      .then(response => {
+        const {data} = response
+        const {greeting} = data
+        dispatch({type: 'SUCCESS', greeting})
+        setButtonClicked(true)
+      })
+      .catch(error => {
+        dispatch({type: 'ERROR', error})
+      })
+
+  const buttonText = buttonClicked ? 'Ok' : 'Load Greeting'
+
+  return (
+    <div>
+      <button onClick={() => fetchGreeting(url)} disabled={buttonClicked}>
+        {buttonText}
+      </button>
+      {greeting && <h1>{greeting}</h1>}
+      {error && <p role="alert">Oops, failed to fetch!</p>}
+    </div>
+  )
+}
+
+
+
+
+
+
+Descripción general de las pruebas 
+
+Hay algunas formas de probar los componentes de React. En términos generales, se dividen en dos categorías:
+
+Representar árboles de componentes en un entorno de prueba simplificado y hacer valer sus resultados.
+Ejecución de una aplicación completa en un entorno de navegador realista (también conocido como 
+pruebas "de un extremo a otro").
+
+
+
+Herramientas recomendadas
+
+
+Jest es un ejecutor de pruebas de JavaScript que le permite acceder al DOM a través dejsdom. Si 
+bien jsdom es solo una aproximación de cómo funciona el navegador, a menudo es lo suficientemente 
+bueno para probar los componentes de React. Jest proporciona una gran velocidad de iteración combinada 
+con funciones poderosas como módulos de simulación y temporizadores para que pueda tener más control 
+sobre cómo se ejecuta el código.
+
+React Testing Library es un conjunto de ayudantes que le permiten probar los componentes de React sin 
+depender de sus detalles de implementación. Este enfoque hace que la refactorización sea muy sencilla y 
+también lo impulsa hacia las mejores prácticas de accesibilidad. Aunque no proporciona una forma de 
+renderizar "superficialmente" un componente sin sus hijos, un corredor de pruebas como Jest le permite hacer 
+esto burlándose .
+
+
+
+
+
+
+
+API - React testing Library 
+
+React Testing Libraryreexporta todo DOM Testing Library, así como estos métodos:
+
+
+	render 
+
+function render(
+  ui: React.ReactElement<any>,
+  options?: {
+    /* You won't often use this, expand below for docs on options */
+  },
+): RenderResult
+
+
+
+Render into a container which is appended to document.body.
+
+import {render} from '@testing-library/react';
+render(<div />)
+
+
+
+import {render} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+
+
+test('renders a message', () => {
+  const {container, getByText} = render(<Greeting />)
+  expect(getByText('Hello, world!')).toBeInTheDocument()
+  expect(container.firstChild).toMatchInlineSnapshot(`
+    <h1>Hello, World!</h1>
+  `)
+})
+
+
+
+render opciones
+
+A menudo no necesitará especificar opciones, pero si alguna vez lo hace, aquí están las opciones 
+disponibles que podría proporcionar como un segundo argumento render.
+
+
+
+
+
+
+	container 
+
+De forma predeterminada, React Testing Librarycreará un divy lo agregará dival document.body y aquí 
+es donde se renderizará su componente React. Si proporciona su propio elemento HTMLE a containertravés 
+de esta opción, no se agregará document.bodyautomáticamente.
+
+Por ejemplo: si está realizando una prueba unitaria de un tablebodyelemento, no puede ser hijo de a div. 
+En este caso, puede especificar a tablecomo render container.
+
+const table = document.createElement('table')
+
+const {container} = render(<TableBody {...props} />, {
+  container: document.body.appendChild(table),
+})
+
+
+
+	baseElement 
+
+Si containerse especifica, entonces este valor predeterminado es, de lo contrario, este valor 
+predeterminado es document.body. Esto se usa como el elemento base para las consultas, así como lo que se 
+imprime cuando lo usa debug().
+
+
+	hydrate 
+
+Si hydrate se establece en true, se renderizará con ReactDOM.hydrate . Esto puede ser útil si está utilizando 
+la representación del lado del servidor y usa ReactDOM.hydrate para montar sus componentes.
+
+
+	wrapper 
+
+Pase un React Component como la wrapperopción para renderizarlo alrededor del elemento interno. Esto es 
+más útil para crear funciones de renderizado personalizadas reutilizables para proveedores de datos comunes. 
+
+
+	queries
+
+Consultas para enlazar. Reemplaza el conjunto predeterminado de a DOM Testing Librarymenos que se combine.
+
+// Example, a function to traverse table contents
+import * as tableQueries from 'my-table-query-libary'
+import {queries} from '@testing-library/react'
+
+const {getByRowColumn, getByText} = render(<MyTable />, {
+  queries: {...queries, ...tableQueries},
+})
+
+
+Consulte los ayudantes para obtener orientación sobre el uso de funciones de utilidad para crear 
+consultas personalizadas.
+
+Las consultas personalizadas también se pueden agregar globalmente siguiendo la guía de renderización personalizada .
+
+
+
+	render Resultado 
+
+El render método devuelve un objeto que tiene algunas propiedades: ...queries 
+
+La característica más importante de renderes que las consultas de DOM Testing Library se devuelven 
+automáticamente con su primer argumento vinculado al baseElement , que por defecto es document.body.
+
+Ejemplo: 
+
+const {getByLabelText, queryAllByTestId} = render(<Component />)
+
+container 
+
+El nodo DOM que lo contiene de su React Element renderizado (renderizado usando ReactDOM.render). 
+Es un div. Este es un nodo DOM normal, por lo que puede llamar, container.querySelectoretc. para inspeccionar 
+a los niños.
+
+
+Consejo: para obtener el elemento raíz de su elemento renderizado, use container.firstChild.
+
+
+
+
+	baseElement 
+
+El nodo DOM contenedor donde se procesa su React Element en el contenedor. Si no especifica 
+baseElementen las opciones de render, se utilizará de forma predeterminada document.body.
+
+Esto es útil cuando el componente que desea probar presenta algo fuera del div contenedor, por ejemplo, 
+cuando desea realizar una prueba instantánea de su componente del portal, que presenta su HTML directamente 
+en el cuerpo.
+
+NOTA: Se recomienda usar screen.debug en su lugar.
+
+Este método es un atajo para console.log(prettyDOM(baseElement)).
+
+import React from 'react'
+import {render} from '@testing-library/react'
+
+const HelloWorld = () => <h1>Hello World</h1>
+const {debug} = render(<HelloWorld />)
+debug()
+// <div>
+//   <h1>Hello World</h1>
+// </div>
+// you can also pass an element: debug(getByTestId('messages'))
+// and you can pass all the same arguments to debug as you can
+// to prettyDOM:
+// const maxLengthToPrint = 10000
+// debug(getByTestId('messages'), maxLengthToPrint, {highlight: false})
+
+Este es un envoltorio simple alrededor del prettyDOMcual también se expone y de donde proviene DOM Testing Library.
+
+
+
+
+
+	rerender 
+
+Probablemente sea mejor si prueba el componente que está realizando la actualización de accesorios 
+para asegurarse de que los accesorios se actualicen correctamente (consulte la sección Principios rectores ). 
+Dicho esto, si prefiere actualizar los accesorios de un componente renderizado en su prueba, esta función se 
+puede usar para actualizar los accesorios del componente renderizado.
+
+import {render} from '@testing-library/react'
+
+const {rerender} = render(<NumberDisplay number={1} />)
+
+// re-render the same component with different props
+rerender(<NumberDisplay number={2} />)
+
+
+	unmount 
+
+Esto hará que se desmonte el componente renderizado. Esto es útil para probar lo que sucede cuando su 
+componente se elimina de la página (como probar que no deja controladores de eventos dando vueltas causando 
+pérdidas de memoria).
+
+Este método es una abstracción bastante pequeña sobre ReactDOM.unmountComponentAtNode
+
+import {render} from '@testing-library/react'
+
+const {container, unmount} = render(<Login />)
+unmount()
+// your component has been unmounted and now: container.innerHTML === ''
+
+
+
+
+	asFragment
+
+Devuelve una parte DocumentFragmentde su componente renderizado. Esto puede ser útil si necesita 
+evitar enlaces en vivo y ver cómo reacciona su componente a los eventos.
+
+import React, {useState} from 'react'
+import {render, fireEvent} from '@testing-library/react'
+
+const TestComponent = () => {
+  const [count, setCounter] = useState(0)
+
+  return (
+    <button onClick={() => setCounter(count => count + 1)}>
+      Click to increase: {count}
+    </button>
+  )
+}
+
+const {getByText, asFragment} = render(<TestComponent />)
+const firstRender = asFragment()
+
+fireEvent.click(getByText(/Click to increase/))
+
+// This will snapshot only the difference between the first render, and the
+// state of the DOM after the click event.
+// See https://github.com/jest-community/snapshot-diff
+expect(firstRender).toMatchDiffSnapshot(asFragment())
+
+
+
+	cleanup
+
+Desmonta árboles de React que se montaron con render .
+
+Tenga en cuenta que esto se hace automáticamente si el marco de prueba que está utilizando es compatible 
+con el afterEachglobal y se inyecta en su entorno de prueba (como mocha, Jest y Jasmine). De lo contrario, 
+deberá realizar limpiezas manuales después de cada prueba.
+
+Por ejemplo, si está utilizando el marco de pruebas ava , entonces necesitaría usar el test.afterEachgancho de 
+esta manera:
+
+import {cleanup, render} from '@testing-library/react'
+import test from 'ava'
+
+test.afterEach(cleanup)
+
+test('renders into document', () => {
+  render(<div />)
+  // ...
+})
+
+// ... more tests ...
+
+
+No llamar cleanupcuando ha llamado renderpodría resultar en una pérdida de memoria y pruebas que no 
+son "idempotentes" (lo que puede conducir a errores difíciles de depurar en sus pruebas).
+
+
+
+
+
+	act 
+
+Este es un envoltorio ligero alrededor de la react-dom/test-utils actfunción . Todo lo que hace es 
+reenviar todos los argumentos a la función act si su versión de react es compatible act. Se recomienda 
+tilizar la importación de @testing-library/reactmás react-dom/test-utilspor motivos de coherencia.
+
+
+
+
+
+	About queries 
+
+Las consultas son los métodos que Testing Library le brinda para encontrar elementos en la página. 
+Hay varios tipos de consultas ("obtener", "buscar", "consultar"); la diferencia entre ellos es si la consulta 
+arrojará un error si no se encuentra ningún elemento o si devolverá una Promesa y volverá a intentarlo. 
+Dependiendo del contenido de la página que esté seleccionando, diferentes consultas pueden ser más o menos apropiadas. 
+
+Después de seleccionar un elemento, puede usar la API de eventos o el evento del usuario para activar eventos y 
+simular las interacciones del usuario con la página, o usar Jest y jest-dom para hacer afirmaciones sobre el elemento.
+
+
+Hay métodos auxiliares de la biblioteca de pruebas que funcionan con consultas. A medida que los elementos aparecen 
+y desaparecen en respuesta a las acciones, las API de Async como waitForo las findByconsultas se pueden utilizar 
+para esperar los cambios en el DOM. Para buscar solo elementos secundarios de un elemento específico, puede 
+usar within. Si es necesario, también hay algunas opciones que puede configurar , como el tiempo de espera 
+para reintentos y el atributo testID predeterminado.
+
+Ejemplo:
+
+import {render, screen} from '@testing-library/react' // (or /dom, /vue, ...)
+
+test('should show login form', () => {
+  render(<Login />)
+  const input = screen.getByLabelText('Username')
+  // Events and assertions...
+})
+
+
+Tipos de consultas #
+Elementos individuales
+getBy...: Devuelve el nodo coincidente para una consulta y arroja un error descriptivo si ningún elemento coincide o si se encuentra más de una coincidencia (utilícelo getAllByen su lugar si se espera más de un elemento).
+queryBy...: Devuelve el nodo coincidente para una consulta y lo devuelve nullsi ningún elemento coincide. Esto es útil para afirmar un elemento que no está presente. Lanza un error si se encuentra más de una coincidencia (utilícelo queryAllByen su lugar si está bien).
+findBy...: Devuelve una Promesa que se resuelve cuando se encuentra un elemento que coincide con la consulta dada. La promesa se rechaza si no se encuentra ningún elemento o si se encuentra más de un elemento después de un tiempo de espera predeterminado de 1000 ms. Si necesita encontrar más de un elemento, use findAllBy.
+Elementos múltiples
+getAllBy...: Devuelve una matriz de todos los nodos coincidentes para una consulta y arroja un error si ningún elemento coincide.
+queryAllBy...: Devuelve una matriz de todos los nodos coincidentes para una consulta y devuelve una matriz vacía ( []) si ningún elemento coincide.
+findAllBy...: Devuelve una promesa que se resuelve en una matriz de elementos cuando se encuentran elementos que coinciden con la consulta dada. La promesa se rechaza si no se encuentran elementos después de un tiempo de espera predeterminado de 1000ms.
+findByLos métodos son una combinación de getBy*consultas y waitFor. Aceptan las waitForopciones como último argumento (es decir await screen.findByText('text', queryOptions, waitForOptions))
+
+
+Prioridad #
+Según los Principios Rectores , su prueba debe parecerse a la forma en que los usuarios interactúan con su código 
+(componente, página, etc.) tanto como sea posible. Teniendo esto en cuenta, recomendamos este orden de prioridad:
+
+Consultas accesibles para todos Consultas que reflejan la experiencia de los usuarios visuales / del mouse, 
+así como de aquellos que usan tecnología de asistencia:
+
+getByRole: Se puede utilizar para consultar todos los elementos que se exponen en el árbol de accesibilidad . Con la nameopción puede filtrar los elementos devueltos por su nombre accesible . Esta debería ser su principal preferencia para casi todo. No hay mucho que no pueda obtener con esto (si no puede, es posible que su interfaz de usuario sea inaccesible). Muy a menudo, esto va a ser utilizado con la nameopción de este modo: getByRole('button', {name: /submit/i}). Consulta la lista de roles .
+getByLabelText: Este método es realmente bueno para campos de formulario. Al navegar por el formulario de un sitio web, los usuarios encuentran elementos mediante el texto de la etiqueta. Este método emula ese comportamiento, por lo que debería ser su principal preferencia.
+getByPlaceholderText: Un marcador de posición no sustituye a una etiqueta . Pero si eso es todo lo que tiene, entonces es mejor que las alternativas.
+getByText: Fuera de los formularios, el contenido de texto es la principal forma en que los usuarios encuentran elementos. Este método se puede utilizar para buscar elementos no interactivos (como divs, spans y párrafos).
+getByDisplayValue: El valor actual de un elemento de formulario puede ser útil cuando se navega por una página con valores completados.
+
+Consultas semánticas Selectores compatibles con HTML5 y ARIA. Tenga en cuenta que la experiencia del 
+usuario al interactuar con estos atributos varía mucho entre los navegadores y la tecnología de asistencia:
+
+getByAltText: Si el elemento es una que los soportes altde texto ( img, areay input), entonces usted puede utilizar esto para encontrar ese elemento.
+getByTitle: Los lectores de pantalla no leen el atributo de título de forma constante y no es visible de forma predeterminada para los usuarios videntes.
+
+ID de prueba
+getByTestId: El usuario no puede verlos (ni escucharlos), por lo que esto solo se recomienda para los casos en los que no se puede hacer coincidir por rol o texto o no tiene sentido (por ejemplo, el texto es dinámico).
+
+
+Uso de consultas #
+Las consultas base de la biblioteca de pruebas DOM requieren que pase a containercomo primer argumento. 
+La mayoría de las implementaciones de framework de Testing Library proporcionan una versión predefinida de 
+estas consultas cuando procesa sus componentes con ellas, lo que significa que no tiene que proporcionar un contenedor . Además, si solo desea realizar una consulta document.body, puede usar la screenexportación como se muestra a continuación ( screense recomienda usar ).
+
+El argumento principal de una consulta puede ser una cadena , una expresión regular o una función . 
+También hay opciones para ajustar cómo se analiza el texto del nodo. Consulte TextMatch para obtener 
+documentación sobre lo que se puede pasar a una consulta.
+
+Dados los siguientes elementos DOM (que pueden ser renderizados por React, Vue, Angular o código HTML simple):
+
+<body>
+  <div id="app">
+    <label for="username-input">Username</label>
+    <input id="username-input" />
+  </div>
+</body>
+
+Puede usar una consulta para encontrar un elemento (byLabelText, en este caso):
+
+import {screen, getByLabelText} from '@testing-library/dom'
+
+// With screen:
+const inputNode1 = screen.getByLabelText('Username')
+
+// Without screen, you need to provide a container:
+const container = document.querySelector('#app')
+const inputNode2 = getByLabelText(container, 'Username')
+
+
+
+
+
+	screen 
+
+Todas las consultas exportadas por DOM Testing Library aceptan a containercomo primer argumento. 
+Debido a que consultar todo document.bodyes muy común, DOM Testing Library también exporta un screenobjeto 
+que tiene todas las consultas que están vinculadas previamente document.body(usando la withinfuncionalidad). 
+Los contenedores como React Testing Library se reexportan screenpara que pueda usarlos de la misma manera.
+
+Así es como se usa:
+
+import {render, screen} from '@testing-library/react'
+
+render(
+  <div>
+    <label htmlFor="example">Example</label>
+    <input id="example" />
+  </div>,
+)
+
+const exampleInput = screen.getByLabelText('Example')
+
+Necesita un entorno DOM global para usar screen. Si está usando jest, con testEnvironment configurado en 
+jsdom, un entorno DOM global estará disponible para usted.
+
+
+
+
+	TextMatch 
+
+La mayoría de las API de consulta toman a TextMatchcomo argumento, lo que significa que el 
+argumento puede ser una cadena , una expresión regular o una función que devuelve true una coincidencia 
+y false una discrepancia.
+
+Ejemplo: 
+
+Dado el siguiente HTML:
+< div > Hello World </ div >
+
+Se encuentra el div:
+
+// Matching a string:
+screen.getByText('Hello World') // full string match
+screen.getByText('llo Worl', {exact: false}) // substring match
+screen.getByText('hello world', {exact: false}) // ignore case
+
+// Matching a regex:
+screen.getByText(/World/) // substring match
+screen.getByText(/world/i) // substring match, ignore case
+screen.getByText(/^hello world$/i) // full string match, ignore case
+screen.getByText(/Hello W?oRlD/i) // substring match, ignore case, searches for "hello world" or "hello orld"
+
+// Matching with a custom function:
+screen.getByText((content, element) => content.startsWith('Hello'))
+
+
+No encontrará el div: 
+
+// full string does not match
+screen.getByText('Goodbye World')
+
+// case-sensitive regex with different case
+screen.getByText(/hello world/)
+
+// function looking for a span when it's actually a div:
+screen.getByText((content, element) => {
+  return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
+})
+
+
+Precisión #
+Las consultas que toman a TextMatchtambién aceptan un objeto como argumento final que puede contener 
+opciones que afectan la precisión de la coincidencia de cadenas:
+
+exact: Predeterminado a true; coincide con cadenas completas, distingue entre mayúsculas y minúsculas. 
+Cuando es falso, coincide con subcadenas y no distingue entre mayúsculas y minúsculas.
+exactno tiene efecto sobre regexo functionargumentos.
+En la mayoría de los casos, el uso de una expresión regular en lugar de una cadena le da más control sobre la coincidencia aproximada y debería preferirse { exact: false }.
+normalizer: Una función opcional que anula el comportamiento de normalización.
+
+Ejemplos de normalización : 
+
+Para realizar una coincidencia con el texto sin recortar:
+
+pantalla . getByText ( 'texto' , { 
+  normalizador : getDefaultNormalizer ( { trim : false } ) ,  
+} )
+Para anular la normalización para eliminar algunos caracteres Unicode mientras se mantiene parte (pero no todos) del comportamiento de normalización incorporado:
+
+pantalla . getByText ( 'texto' , { 
+  normalizador : str =>  
+    getDefaultNormalizer ( { recorte : falso } ) ( str ) . reemplazar ( / [\ u200E- \ u200F] * / g , '' ) ,  
+} )
+
+
+
+	Depuracion 
+
+
+screen.debug 
+
+Por conveniencia, la pantalla también expone un debugmétodo además de las consultas. Este método es 
+esencialmente un atajo para console.log(prettyDOM()). Admite la depuración del documento, un solo elemento o 
+una matriz de elementos.
+
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// debug document
+screen.debug()
+// debug single element
+screen.debug(screen.getByText('test'))
+// debug multiple elements
+screen.debug(screen.getAllByText('multi-test'))
+
+
+screen.logTestingPlaygroundURL()
+
+Para depurar usando testing-playground , la pantalla expone este método conveniente que registra una URL que se puede abrir en un navegador.
+
+importar { screen } desde '@ testing-library / dom'   
+
+documento . cuerpo . innerHTML = `  
+  <button> probar </button>
+  <span> prueba múltiple </span>
+  <div> prueba múltiple </div>
+'
+
+// registra el documento completo en testing-playground
+pantalla . logTestingPlaygroundURL ( )
+// registrar un solo elemento
+pantalla . logTestingPlaygroundURL ( screen . getByText ( 'prueba' ) )
+
+
+*************************************************************
+
+			Hooks 
+
+Son una nueva adición en React 16.8. Te permiten usar el estado y otras funciones de React sin escribir una clase.
+
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+Los Hooks no reemplazan su conocimiento de los conceptos de React. En cambio, los Hooks proporcionan 
+una API más directa a los conceptos de React que ya conoce: accesorios, estado, contexto, referencias 
+y ciclo de vida. Como mostraremos más adelante, los Hooks también ofrecen una nueva y poderosa forma de combinarlos.
+
+
+	Estado hook:
+
+Ejemplo contador:
+
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+
+Aquí useStatehay un gancho (hablaremos sobre lo que esto significa en un momento). Lo 
+llamamos dentro de un componente de función para agregarle un estado local. React conservará este 
+estado entre re-renderizaciones. useStatedevuelve un par: el valor del estado actual y una función que 
+le permite actualizarlo. Puede llamar a esta función desde un controlador de eventos o desde otro lugar. 
+Es similar a this.setStateuna clase, excepto que no fusiona el estado antiguo y el nuevo. (Vamos a mostrar 
+un ejemplo comparando useStatea this.stateen Usando el gancho Estado .)
+
+El único argumento para useStatees el estado inicial. En el ejemplo anterior, es 0porque nuestro contador 
+comienza desde cero. Tenga en cuenta que this.state, a diferencia de esto , el estado aquí no tiene que ser 
+un objeto, aunque puede serlo si lo desea. El argumento de estado inicial solo se usa durante el primer renderizado.
+
+
+Declarar múltiples variables de estado
+
+
+Puede utilizar State Hook más de una vez en un solo componente:
+
+function ExampleWithManyStates() {
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('banana');
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  // ...
+}
+
+La sintaxis de desestructuración de matrices nos permite dar diferentes nombres a las variables 
+de estado que declaramos llamando useState. Estos nombres no forman parte de la useStateAPI. En cambio, 
+React asume que si llamas useStatemuchas veces, lo haces en el mismo orden durante cada render.
+
+¿Qué es un Hook? 
+
+Son funciones que le permiten "conectarse" al estado de React y las características del ciclo de vida de los 
+componentes de la función. Los hooks no funcionan dentro de las clases, te permiten usar React sin clases. 
+
+
+
+
+UseEffect
+
+useEffect, agrega la capacidad de realizar efectos secundarios desde un componente de función. 
+Tiene el mismo propósito que componentDidMount, componentDidUpdatey componentWillUnmounten las clases React, 
+pero unificado en una única API. (Mostraremos ejemplos que se comparan useEffectcon estos métodos en Uso del 
+gancho de efectos ).
+
+Por ejemplo, este componente establece el título del documento después de que React actualice el DOM:
+
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+Cuando llama useEffect, le está diciendo a React que ejecute su función de "efecto" después de eliminar 
+los cambios en el DOM. Los efectos se declaran dentro del componente para que tengan acceso a sus accesorios 
+y estado. De forma predeterminada, React ejecuta los efectos después de cada renderizado, incluido el primer render.
+
+
+Los efectos también pueden especificar opcionalmente cómo "limpiar" después de ellos devolviendo una función. 
+Por ejemplo, este componente usa un efecto para suscribirse al estado en línea de un amigo y se limpia al 
+cancelar la suscripción:
+
+import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+
+
+
+En este ejemplo, React se daría de baja de nuestro ChatAPIcuando el componente se desmonta, así como 
+antes de volver a ejecutar el efecto debido a un renderizado posterior.
+
+Al igual que con useState, puede usar más de un efecto en un componente:
+
+function FriendStatusWithCounter(props) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+  const [isOnline, setIsOnline] = useState(null);
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+  // ...
+
+
+
+
+  Reglas de los Hooks:
+
+Los hooks son funciones de JavaScript, pero imponen dos reglas adicionales:
+
+1.- Solo llame a Hooks en el nivel superior . No llame a Hooks dentro de bucles, condiciones o funciones anidadas.
+2.-Solo llame a Hooks desde los componentes de la función React . No llame a Hooks desde funciones regulares 
+de JavaScript. (Solo hay otro lugar válido para llamar a Hooks: sus propios Hooks personalizados.
+
+
+
+
+	Resumen Hooks 
+
+//UseState 
+Devuelve un valor con estado y una función para actualizarlo.
+Util para formularios, poner los valores de referencias con un set 
+El operador sprend nos da un copia ...
+La función setState se usa para actualizar el estado. Acepta un nuevo valor de estado y 
+sitúa en la cola una nueva renderización del componente.
+
+//UseCounter
+Para evitar hacerlo con useState, existe useCounter
+extrae la logica de mi contador 
+
+
+//UseEffect
+Acepta una función que contiene código imperativo, posiblemente código efectivo.
+Ejecutar un efecto cuando ocurra algo en nuestro componente 
+Atrapa si algo en especifico esta cambiando 
+Conviene poner la funcion en eventos en variables (const) para tener referencia a ella y hacer limpieza
+Para un form conviene hacer un customHook con useState y handleInpuText para que lo podamos reutilizar 
+
+//useFetch
+Breaking bad API -> https://breakingbadapi.com/
+Sirve para hacer conexion a APIs, tiene un state con la info: data, loading, error
+El fetch es una promesa que regresa otra promesa fetch(url).then(resp => resp.json()).then(data => {} return state 
+
+
+//useRef
+Es para tener una variables que cambia 
+useRef devuelve un objeto ref mutable cuya propiedad .current se inicializa con el 
+argumento pasado (initialValue). El objeto devuelto se mantendrá persistente durante 
+la vida completa del componente.
+
+//useLayoutEffect
+Documentacion --> https://es.reactjs.org/docs/hooks-reference.html#uselayouteffect
+La firma es idéntica a useEffect, pero se dispara de forma síncrona después de todas las mutaciones de DOM. 
+Use esto para leer el diseño del DOM y volver a renderizar de forma sincrónica. 
+Las actualizaciones programadas dentro de useLayoutEffect se vaciarán sincrónicamente, antes de que 
+el navegador tenga la oportunidad de pintar.
+
+//memo
+Memoriza algo si los props cambian 
+
+//useMemo
+Memoriza un resultado para que no se tenga que estar ejecutando 
+
+//¿Qué es un Reducer?
+1. Es una función común y corriente
+2. Debe de ser una función pura
+    No debe de tener efectos secundarios
+    No debe de realizar tareas asincronas 
+    Debe de retornar siempre un nuevo estado (No debe de mutar)
+    No debe de llamar localStorage o SessionStorage 
+    No debe de requerir mas que una accion 
+3. Debe de retornar un nuevo estado 
+4. Usualmente solo recibe dos argumentos(initialState) y la accion a ejecutar 
+
+
+//Funcionamineto del Reducer
+Empieza con un estado inicial = State 
+State -> Pagina o Vista -> Accion -> Reducer(Tiene los planos de que puede hacer con el state) 
+https://es.reactjs.org/docs/hooks-reference.html#usereducer
+
+Una alternativa a useState. Acepta un reducer de tipo (state, action) => newState y 
+devuelve el estado actual emparejado con un método dispatch. (Si está familiarizado con Redux, 
+ya sabe cómo funciona).
+
+useReducer a menudo es preferible a useState cuando se tiene una lógica compleja que involucra 
+múltiples subvalores o cuando el próximo estado depende del anterior. useReducer además 
+te permite optimizar el rendimiento para componentes que activan actualizaciones profundas, 
+porque puedes pasar hacia abajo dispatch en lugar de callbacks.
+
+
+//useContext
+Sirve para comunicacion de componentes sin propiedades .
 
 
 
@@ -1542,18 +2517,32 @@ npm install --save styled-components
 
 
 
+CREANDO TUS PROPIOS Hooks
+
+Un Hook personalizado es una función de JavaScript cuyo nombre comienza con ” use” y que puede llamar a otros Hooks. Por ejemplo, a useFriendStatuscontinuación se muestra nuestro primer Hook personalizado:
+
+import { useState, useEffect } from 'react';
+
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+    };
+  });
+
+  return isOnline;
+}
 
 
-
-
-
-
-
-
-
-
-
-
+Los Hooks personalizados son una convención que se deriva naturalmente del diseño de Hooks, en 
+lugar de una función de React.
 
 
 
