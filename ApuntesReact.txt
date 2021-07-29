@@ -1534,6 +1534,24 @@ npm install --save styled-components
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ***************************************************************************************************
 
 React testing library 
@@ -1745,6 +1763,11 @@ depender de sus detalles de implementación. Este enfoque hace que la refactoriz
 también lo impulsa hacia las mejores prácticas de accesibilidad. Aunque no proporciona una forma de 
 renderizar "superficialmente" un componente sin sus hijos, un corredor de pruebas como Jest le permite hacer 
 esto burlándose .
+
+
+
+
+
 
 
 
@@ -2543,6 +2566,419 @@ function useFriendStatus(friendID) {
 
 Los Hooks personalizados son una convención que se deriva naturalmente del diseño de Hooks, en 
 lugar de una función de React.
+
+
+
+
+
+
+
+
+MOCKS 
+
+Las funciones simuladas le permiten probar los enlaces entre el código borrando la implementación real 
+de una función, capturando llamadas a la función (y los parámetros pasados ​​en esas llamadas), capturando 
+instancias de funciones de constructor cuando se crean instancias con newy permitiendo la configuración de 
+tiempo de prueba de valores de retorno.
+
+Hay dos formas de simular funciones: ya sea creando una función simulada para usar en el código de prueba o 
+escribiendo una manual mockpara anular la dependencia de un módulo.
+
+
+
+
+Using a mock función 
+
+Imaginemos que estamos probando una implementación de una función forEach, que invoca una devolución de 
+llamada para cada elemento en una matriz proporcionada.
+
+function forEach(items, callback) {
+  for (let index = 0; index < items.length; index++) {
+    callback(items[index]);
+  }
+}
+
+Para probar esta función, podemos usar una función de simulación e inspeccionar el estado de la simulación 
+para asegurarnos de que la devolución de llamada se invoque como se esperaba.
+
+const mockCallback = jest.fn(x => 42 + x);
+forEach([0, 1], mockCallback);
+
+// The mock function is called twice
+expect(mockCallback.mock.calls.length).toBe(2);
+
+// The first argument of the first call to the function was 0
+expect(mockCallback.mock.calls[0][0]).toBe(0);
+
+// The first argument of the second call to the function was 1
+expect(mockCallback.mock.calls[1][0]).toBe(1);
+
+// The return value of the first call to the function was 42
+expect(mockCallback.mock.results[0].value).toBe(42);
+
+
+
+.mock property 
+
+Todas las funciones simuladas tienen esta .mockpropiedad especial , que es donde se guardan los datos sobre 
+cómo se ha llamado a la función y qué función devuelve. La .mockpropiedad también rastrea el valor de this 
+para cada llamada, por lo que también es posible inspeccionar esto:
+
+const myMock = jest.fn();
+
+const a = new myMock();
+const b = {};
+const bound = myMock.bind(b);
+bound();
+
+console.log(myMock.mock.instances);
+// > [ <a>, <b> ]
+
+
+Estos miembros simulados son muy útiles en las pruebas para afirmar cómo se llaman, 
+instancian o qué devuelven estas funciones:
+
+// The function was called exactly once
+expect(someMockFunction.mock.calls.length).toBe(1);
+
+// The first arg of the first call to the function was 'first arg'
+expect(someMockFunction.mock.calls[0][0]).toBe('first arg');
+
+// The second arg of the first call to the function was 'second arg'
+expect(someMockFunction.mock.calls[0][1]).toBe('second arg');
+
+// The return value of the first call to the function was 'return value'
+expect(someMockFunction.mock.results[0].value).toBe('return value');
+
+// This function was instantiated exactly twice
+expect(someMockFunction.mock.instances.length).toBe(2);
+
+// The object returned by the first instantiation of this function
+// had a `name` property whose value was set to 'test'
+expect(someMockFunction.mock.instances[0].name).toEqual('test');
+
+
+Valores de retornos simulados 
+
+Las funciones simuladas también se pueden usar para inyectar valores de prueba en su código durante una prueba:
+
+const myMock = jest.fn();
+console.log(myMock());
+// > undefined
+
+myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValue(true);
+
+console.log(myMock(), myMock(), myMock(), myMock());
+// > 10, 'x', true, true
+
+Las funciones simuladas también son muy efectivas en el código que usa un estilo funcional de paso de 
+continuación. El código escrito en este estilo ayuda a evitar la necesidad de códigos auxiliares complicados 
+que recrean el comportamiento del componente real que representan, a favor de inyectar valores directamente en la 
+prueba justo antes de su uso.
+
+
+const filterTestFn = jest.fn();
+
+// Make the mock return `true` for the first call,
+// and `false` for the second call
+filterTestFn.mockReturnValueOnce(true).mockReturnValueOnce(false);
+
+const result = [11, 12].filter(num => filterTestFn(num));
+
+console.log(result);
+// > [11]
+console.log(filterTestFn.mock.calls[0][0]); // 11
+console.log(filterTestFn.mock.calls[1][0]); // 12
+
+La mayoría de los ejemplos del mundo real en realidad implican obtener una función simulada en un 
+componente dependiente y configurarla, pero la técnica es la misma. En estos casos, intente evitar la 
+tentación de implementar lógica dentro de cualquier función que no se esté probando directamente.
+
+
+Mocking Modules 
+
+Supongamos que tenemos una clase que busca usuarios de nuestra API. La clase usa axios para llamar a la 
+API y luego devuelve el data atributo que contiene a todos los usuarios:
+
+// users.js
+import axios from 'axios';
+
+class Users {
+  static all() {
+    return axios.get('/users.json').then(resp => resp.data);
+  }
+}
+
+export default Users;
+
+
+Ahora, para probar este método sin llegar a la API (y así crear pruebas lentas y frágiles), podemos usar 
+la jest.mock(...)función para simular automáticamente el módulo axios.
+
+Una vez que simulamos el módulo, podemos proporcionar un mockResolvedValuepara .getque devuelva los datos 
+que queremos que nuestra prueba confirme. En efecto, estamos diciendo que queremos axios.get('/users.json')
+devolver una respuesta falsa.
+
+
+// users.test.js
+import axios from 'axios';
+import Users from './users';
+
+jest.mock('axios');
+
+test('should fetch users', () => {
+  const users = [{name: 'Bob'}];
+  const resp = {data: users};
+  axios.get.mockResolvedValue(resp);
+
+  // or you could use the following depending on your use case:
+  // axios.get.mockImplementation(() => Promise.resolve(resp))
+
+  return Users.all().then(data => expect(data).toEqual(users));
+});
+
+
+Mock implementation 
+
+Aún así, hay casos en los que es útil ir más allá de la capacidad de especificar valores de retorno y 
+reemplazar por completo la implementación de una función simulada. Esto se puede hacer con jest.fnel 
+mockImplementationOncemétodo o en funciones simuladas.
+
+const myMockFn = jest.fn(cb => cb(null, true));
+
+myMockFn((err, val) => console.log(val));
+// > true
+
+El mockImplementationmétodo es útil cuando necesita definir la implementación predeterminada de una función 
+simulada que se crea a partir de otro módulo:
+
+// foo.js
+module.exports = function () {
+  // some implementation;
+};
+
+// test.js
+jest.mock('../foo'); // this happens automatically with automocking
+const foo = require('../foo');
+
+// foo is a mock function
+foo.mockImplementation(() => 42);
+foo();
+// > 42
+
+Cuando necesite recrear un comportamiento complejo de una función simulada de manera que múltiples 
+llamadas a funciones produzcan resultados diferentes, use el mockImplementationOncemétodo:
+
+const myMockFn = jest
+  .fn()
+  .mockImplementationOnce(cb => cb(null, true))
+  .mockImplementationOnce(cb => cb(null, false));
+
+myMockFn((err, val) => console.log(val));
+// > true
+
+myMockFn((err, val) => console.log(val));
+// > false
+
+Cuando la función simulada se queda sin implementaciones definidas con mockImplementationOnce, 
+ejecutará la implementación predeterminada establecida con jest.fn(si está definida):
+
+const myMockFn = jest
+  .fn(() => 'default')
+  .mockImplementationOnce(() => 'first call')
+  .mockImplementationOnce(() => 'second call');
+
+console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn());
+// > 'first call', 'second call', 'default', 'default'
+
+Para los casos en los que tenemos métodos que normalmente están encadenados (y, por lo tanto, siempre deben 
+regresar this), tenemos una API dulce para simplificar esto en forma de una .mockReturnThis()función que 
+también se encuentra en todos los simulacros:
+
+const myObj = {
+  myMethod: jest.fn().mockReturnThis(),
+};
+
+// is the same as
+
+const otherObj = {
+  myMethod: jest.fn(function () {
+    return this;
+  }),
+};
+
+
+Coincidentes personalizados 
+
+Finalmente, para que sea menos exigente afirmar cómo se han llamado las funciones simuladas, 
+hemos agregado algunas funciones de comparador personalizadas para usted:
+
+// The mock function was called at least once
+expect(mockFunc).toHaveBeenCalled();
+
+// The mock function was called at least once with the specified args
+expect(mockFunc).toHaveBeenCalledWith(arg1, arg2);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);
+
+// All calls and the name of the mock is written as a snapshot
+expect(mockFunc).toMatchSnapshot();
+
+Estos emparejadores son azúcar para formas comunes de inspeccionar la .mockpropiedad. Siempre puede 
+hacer esto manualmente usted mismo si eso es más de su gusto o si necesita hacer algo más específico:
+
+// The mock function was called at least once
+expect(mockFunc.mock.calls.length).toBeGreaterThan(0);
+
+// The mock function was called at least once with the specified args
+expect(mockFunc.mock.calls).toContainEqual([arg1, arg2]);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc.mock.calls[mockFunc.mock.calls.length - 1]).toEqual([
+  arg1,
+  arg2,
+]);
+
+// The first arg of the last call to the mock function was `42`
+// (note that there is no sugar helper for this specific of an assertion)
+expect(mockFunc.mock.calls[mockFunc.mock.calls.length - 1][0]).toBe(42);
+
+// A snapshot will check that a mock was invoked the same number of times,
+// in the same order, with the same arguments. It will also assert on the name.
+expect(mockFunc.mock.calls).toEqual([[arg1, arg2]]);
+expect(mockFunc.getMockName()).toBe('a mock name');
+
+
+
+
+
+
+
+
+Firing Events
+
+Nota: La mayoría de los proyectos tienen algunos casos de uso fireEvent, pero la mayoría de las veces 
+probablemente debería usar @testing-library/user-event.
+
+fireEvent(node: HTMLElement, event: Event)
+
+Eventos DOM de fire 
+
+// <button>Submit</button>
+fireEvent(
+  getByText(container, 'Submit'),
+  new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+  }),
+)
+
+
+fireEvent[eventName]
+
+fireEvent[eventName](node: HTMLElement, eventProperties: Object)
+
+Métodos de conveniencia para disparar eventos DOM. Consulte src / event-map.js para obtener una lista 
+completa y la predeterminada eventProperties.
+
+target : cuando un evento se distribuye en un elemento, el evento tiene el elemento sujeto en una propiedad 
+llamada target. Para su comodidad, si proporciona una targetpropiedad en el eventProperties(segundo argumento), 
+esas propiedades se asignarán al nodo que recibe el evento.
+
+Esto es particularmente útil para un evento de cambio:
+
+fireEvent.change(getByLabelText(/username/i), {target: {value: 'a'}})
+
+// note: attempting to manually set the files property of an HTMLInputElement
+// results in an error as the files property is read-only.
+// this feature works around that by using Object.defineProperty.
+fireEvent.change(getByLabelText(/picture/i), {
+  target: {
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})],
+  },
+})
+
+// Note: The 'value' attribute must use ISO 8601 format when firing a
+// change event on an input of type "date". Otherwise the element will not
+// reflect the changed value.
+
+// Invalid:
+fireEvent.change(input, {target: {value: '24/05/2020'}})
+
+// Valid:
+fireEvent.change(input, {target: {value: '2020-05-24'}})
+
+
+dataTransfer : los eventos de arrastre tienen una dataTransferpropiedad que contiene los datos 
+transferidos durante la operación. Para su comodidad, si proporciona una dataTransferpropiedad en el 
+eventProperties(segundo argumento), esas propiedades se agregarán al evento.
+
+Esto debe usarse principalmente para probar las interacciones de arrastrar y soltar.
+
+fireEvent.drop(getByLabelText(/drop files here/i), {
+  dataTransfer: {
+    files: [new File(['(⌐□_□)'], 'chucknorris.png', {type: 'image/png'})],
+  },
+})
+
+
+
+Los eventos de teclado : Hay tres tipos de eventos relacionados con la entrada de
+ teclado - keyPress, keyDowny keyUp. Al disparar estos, debe hacer referencia a un elemento en el DOM y la 
+ clave que desea disparar.
+
+fireEvent.keyDown(domNode, {key: 'Enter', code: 'Enter'})
+
+fireEvent.keyDown(domNode, {key: 'A', code: 'KeyA'})
+
+
+createEvent[eventName]
+
+createEvent[eventName](node: HTMLElement, eventProperties: Object)
+
+Métodos de conveniencia para crear eventos DOM que luego se pueden activar fireEvent, lo que le permite 
+tener una referencia al evento creado: esto podría ser útil si necesita acceder a propiedades de eventos que 
+no se pueden iniciar mediante programación (como timeStamp).
+
+
+const myEvent = createEvent.click(node, {button: 2})
+fireEvent(node, myEvent)
+// myEvent.timeStamp can be accessed just like any other properties from myEvent
+// note: The access to the events created by `createEvent` is based on the native event API,
+// Therefore, native properties of HTMLEvent object (e.g. `timeStamp`, `cancelable`, `type`) should be set using Object.defineProperty
+// For more info see: https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+También puede crear eventos genéricos:
+
+// simulate the 'input' event on a file input
+fireEvent(
+  input,
+  createEvent('input', input, {
+    target: {files: inputFiles},
+    ...init,
+  }),
+)
+
+
+Using Jest function mocks 
+
+Las funciones Mock de Jest se pueden usar para probar que se llamó a una devolución de llamada pasada a la 
+función, o cómo se llamó cuando el evento que debería activar la función de devolución de llamada activa la 
+devolución de llamada enlazada.
+
+import {render, screen, fireEvent} from '@testing-library/react'
+
+const Button = ({onClick, children}) => (
+  <button onClick={onClick}>{children}</button>
+)
+
+test('calls onClick prop when clicked', () => {
+  const handleClick = jest.fn()
+  render(<Button onClick={handleClick}>Click Me</Button>)
+  fireEvent.click(screen.getByText(/click me/i))
+  expect(handleClick).toHaveBeenCalledTimes(1)
+})
 
 
 

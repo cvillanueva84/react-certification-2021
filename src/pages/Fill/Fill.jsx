@@ -12,7 +12,7 @@ export const Fill = ({categoria}) => {
   return (
     <div>
       <div className="contenedor">
-        {loading && <h2>Loading...</h2>}
+        {loading ? <h1>Loading...</h1> : <h1>{categoria}</h1>}
         <div className="cards">
           {videos.map(vid => (
             <CardItem key={vid.id} {...vid} />
