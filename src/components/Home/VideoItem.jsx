@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const VideoContainer = styled.div`
-  /* width: calc((100% / 4) - 60px); */
-  /* border: 1px solid gray; */
   margin: 10px;
 `;
 const VideoTitle = styled.h3`

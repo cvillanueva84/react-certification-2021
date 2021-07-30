@@ -40,9 +40,6 @@ export const Navbar = () => {
       </Links>
       <SearchBar />
       <Links href="#about">Perfil</Links>
-      {/* <button type="button" href="#" className="icon" onClick="myFunction()">
-        <i className="fa fa-bars" />
-      </button> */}
     </Bar>
   );
 };

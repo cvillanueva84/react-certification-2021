@@ -46,9 +46,6 @@ export const SearchBar = () => {
     <Bar className="topnav" id="myTopnav">
       <SearchInput placeholder="Buscar" />
       <SearchButton name="buscar">buscar</SearchButton>
-      {/* <button type="button" href="#" className="icon" onClick="myFunction()">
-        <i className="fa fa-bars" />
-      </button> */}
     </Bar>
   );
 };
