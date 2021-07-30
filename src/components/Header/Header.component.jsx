@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+//import { Link, useHistory } from 'react-router-dom';
 //import { useAuth } from '../../providers/Auth';
 
 const HeaderBody = styled.div`
@@ -116,6 +116,19 @@ function Header() {
   //   logout();
   //   history.push('/');
   // }
+  // handleSubmit = async (termFromSearchBar) => {
+  //   alert('Buscar: ' + termFromSearchBar);
+  //   // const response = await youtube.get('/search', {
+  //   //     params: {
+  //   //         q: termFromSearchBar
+  //   //     }
+  //   // })
+
+  //   // this.setState({
+  //   //     videos: response.data.items
+  //   // })
+  //   // console.log("this is resp",response);
+  // };
   return (
     <HeaderBody>
       <Logo />
