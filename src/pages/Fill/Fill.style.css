@@ -14,19 +14,21 @@
 }
 
 h1{
-  font-family: sans-serif;
+  font-family: monospace;
+  text-transform: capitalize;
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
+  margin-top: 5px;
 }
 
-div.cards {
+.cards {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
   margin: 5px 0;
 }
 
-div .card-item {
+.card-item {
   border: 1px solid #ddd;
   border-radius: 10px;
   height: auto;
@@ -38,21 +40,25 @@ div .card-item {
   -moz-box-shadow: 6px 9px 16px -1px rgba(0, 0, 0, 0.53);
 }
 
+.card-item Link{
+  background-color: red
+}
 
 
-div .card-item h2 {
+
+.card-item h2 {
   font-size: 1.5em;
   margin: 5px 0;
   text-align: center;
 }
 
-div .card-item p{
+.card-item p{
   margin: auto;
   margin-bottom: 5px;
   text-align: justify;
 }
 
-div .card-item img{
+.card-item img{
   border-radius: 10px;;
   height: auto;
   width: 100%;
@@ -61,7 +67,7 @@ div .card-item img{
 
 
 @media (min-width: 320px) and (max-width: 768px) {
-  div.card-item {
+  .card-item {
     border-radius: 5px;
     height: auto;
     margin: 10px;

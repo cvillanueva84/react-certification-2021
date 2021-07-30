@@ -7,6 +7,7 @@ import './Fill.style.css';
 
 export const Fill = ({categoria}) => {
 
+
   const{items:videos, loading} = useFetchVideos(categoria);
 
   return (
@@ -18,7 +19,6 @@ export const Fill = ({categoria}) => {
             <CardItem key={vid.id} {...vid} />
           ))}
         </div>
-        <hr/>
       </div>
     </div>
   );

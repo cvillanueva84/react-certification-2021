@@ -1,6 +1,8 @@
 import React from 'react';
-import { HomeView } from '../../pages/HomeView/HomeView.page'
-//import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { Header } from '../../pages/Header/Header';
+import { HomeView } from '../../pages/HomeView/HomeView.page';
+import { VideoDetails } from '../../pages/VideoDetails/VideoDetails'
 
 //import AuthProvider from '../../providers/Auth';
 //import HomePage from '../../pages/Home';
@@ -14,7 +16,17 @@ function App() {
 
   return (
 
-    <HomeView/>
+    <Router>
+      <>
+        <Header/>
+        <Switch>
+          <Route exact path ="/" component={HomeView}/>
+          <Route exact path="/videoDetails/:videoId" component={VideoDetails}/>
+          <Redirect to="/"/>
+        </Switch>
+      </>
+    </Router>
+
 
 
     /*

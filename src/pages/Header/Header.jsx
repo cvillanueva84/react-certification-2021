@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import './Header.style.css';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 //import { useFetchVideos } from '../../hooks/useFetchVideos';
@@ -52,8 +52,10 @@ export const Header = ({setCategorias}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //console.log('Submit!', inputValue);
-    setCategorias(categoria => [inputValue, ...categoria]);
-    setValue('');
+    if(inputValue.trim().length > 2){
+      setCategorias(categoria => [inputValue, ...categoria]);
+      setValue('');
+    }
   }
 
 
@@ -116,8 +118,4 @@ export const Header = ({setCategorias}) => {
       </ThemeProvider>
     </div>
   )
-}
-
-Header.propTypes = {
-setCategorias: PropTypes.func.isRequired
 }
