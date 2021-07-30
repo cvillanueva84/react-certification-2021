@@ -13,13 +13,11 @@ export default function CardVideo({ name, description, image }) {
   return (
     <CardWrapper>
       <CardHeader>
-        <CardImage src={image}/>
+        <CardImage src={image} alt={"NO IMAGE"}/>
       </CardHeader>
       <CardBody>
         <CardFieldset>
           <CardHeading>{name}</CardHeading>
-        </CardFieldset>
-        <CardFieldset>
           <CardDescription>{description}</CardDescription>
         </CardFieldset>
       </CardBody>

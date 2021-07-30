@@ -1,12 +1,13 @@
 import React from 'react';
+import { Container } from '../../Global.styles';
 import mockData from '../../mock/youtube-video-mock.json';
-import CardVideo from '../Card/Video.component';
+import CardVideo from '../Card/Card.component';
 import { Cards, Title } from './Main.style';
 
 export default function MainView() {
   return (
-    <div className="main-view">
-      <Title className="main-text">Welcome to the Challenge!</Title>
+    <Container>
+      <Title>Welcome to the Challenge!</Title>
       <Cards>
         {mockData.items.map((data) => {
           return (
@@ -19,6 +20,6 @@ export default function MainView() {
           );
         })}
       </Cards>
-    </div>
+    </Container>
   );
 }
