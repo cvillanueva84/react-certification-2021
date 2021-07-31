@@ -1,6 +1,7 @@
 import React from 'react';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { BiSearchAlt } from 'react-icons/bi';
+import ToggleButton from '../ToggleButton/ToggleButton.component';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -20,15 +21,6 @@ const Container = styled.div`
   }
 `;
 
-const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  border: none;
-  color: palevioletred;
-  font-size: 1.5rem;
-  cursor: Pointer;
-`;
 const logo_img = require('../../img/youtube-logo.png');
 
 const Logo = styled.div`
@@ -43,13 +35,9 @@ const Logo = styled.div`
 function Header() {
   return (
     <Container>
-      <Button>
-        <HiMenuAlt1 />
-      </Button>
+      <ToggleButton icon={HiMenuAlt1} />
       <Logo data-testid="logo" />
-      <Button>
-        <BiSearchAlt />
-      </Button>
+      <ToggleButton icon={BiSearchAlt} />
     </Container>
   );
 }

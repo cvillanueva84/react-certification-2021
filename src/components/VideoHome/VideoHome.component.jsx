@@ -8,7 +8,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 15rem;
-  margin: 1rem;
+  padding: 1rem;
   @media(max-width: 629px) {
     width: 100%;
   }
@@ -49,18 +49,19 @@ const ChannelImage = styled.img`
 `;
 const VideoText = styled.div`
   border-radius: 100%;
-  width: 1.5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  border-radius: 0;
 `;
 const Title = styled.p`
   margin: 0;
   font-size: 0.8rem;
   font-weight: bold;
-  display: inline;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const ChannelTitle = styled.p`
   margin: 0;
@@ -72,6 +73,8 @@ const ChannelTitle = styled.p`
   color: hsl(0, 0%, 60%);
   display: flex;
   align-items: center;
+  text-overflow: ellipsis;
+  max-inline-size: 12.8rem;
 `;
 const CheckIcon = styled(FaCheckCircle)`
   color: #c70d32;
@@ -90,8 +93,8 @@ function VideoHome(props) {
           href="user profile image"
         />
         <VideoText>
-          <Title>{props.title.substring(0, 33)}</Title>
-          <ChannelTitle> <CheckIcon /> {props.channelTitle.substring(0, 33)}</ChannelTitle>
+          <Title>{props.title}</Title>
+          <ChannelTitle> <CheckIcon /> {props.channelTitle}</ChannelTitle>
         </VideoText>
       </VideoInfo>
     </Container>
