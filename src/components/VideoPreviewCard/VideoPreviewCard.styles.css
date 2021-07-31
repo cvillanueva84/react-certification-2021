@@ -1,0 +1,47 @@
+.VideoPreviewCard {
+  margin: 1%;
+  width: 48%;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #f4fbff;
+}
+.VideoPreviewCard:hover {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
+}
+.VideoPreviewCard-Details {
+  margin: 20px;
+  margin-top: -40px;
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  border-radius: 2px;
+  text-align: center;
+}
+.VideoPreviewCard-Description {
+  text-align: left;
+}
+.VideoPreviewCard-ImageContainer {
+  width: 100%;
+  margin-block: 0;
+  margin-inline: 0;
+}
+.VideoPreviewCard-Image {
+  width: inherit;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 767px) {
+  .VideoPreviewCard {
+    margin: 5%;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .VideoPreviewCard {
+    margin: 3%;
+    width: 94%;
+  }
+}

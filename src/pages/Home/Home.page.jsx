@@ -1,37 +1,42 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
-import { useAuth } from '../../providers/Auth';
+import VideoPreviewCard from '../../components/VideoPreviewCard';
+
 import './Home.styles.css';
 
 function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  useEffect(() => {
+    fetch(
+      'https://gist.githubusercontent.com/jparciga/1d4dd34fb06ba74237f8966e2e777ff5/raw/f3af25f1505deb67e2cc9ee625a633f24d8983ff/youtube-videos-mock.json'
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.items);
+        },
+        () => {
+          setIsLoaded(true);
+        }
+      );
+  }, []);
+
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
+    <section className="homepage">
+      {items.map((item) => (
+        <VideoPreviewCard
+          key={item.etag}
+          thumbnailURL={item.snippet.thumbnails.high.url}
+          title={item.snippet.title}
+          description={item.snippet.description}
+          videoID={item.id.videoId}
+        />
+      ))}
     </section>
   );
 }
