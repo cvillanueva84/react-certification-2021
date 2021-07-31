@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Bar = styled.div`
@@ -41,11 +41,23 @@ const SearchButton = styled.button`
   font-size: 16px;
 `;
 
-export const SearchBar = () => {
+export const SearchBar = ({ setSearch }) => {
+  const [input, setInput] = useState('');
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+
+  const handleClick = () => {
+    setSearch(input);
+  };
+
   return (
     <Bar className="topnav" id="myTopnav">
-      <SearchInput placeholder="Buscar" />
-      <SearchButton name="buscar">buscar</SearchButton>
+      <SearchInput value={input} onChange={handleChange} placeholder="Buscar" />
+      <SearchButton onClick={handleClick} name="buscar">
+        buscar
+      </SearchButton>
     </Bar>
   );
 };

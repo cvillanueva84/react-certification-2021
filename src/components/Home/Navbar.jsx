@@ -32,13 +32,13 @@ const Links = styled.a`
   font-size: 17px;
 `;
 
-export const Navbar = () => {
+export const Navbar = ({ setSearch }) => {
   return (
     <Bar className="topnav" id="myTopnav">
       <Links href="#home" className="active">
         Toggle
       </Links>
-      <SearchBar />
+      <SearchBar setSearch={setSearch} />
       <Links href="#about">Perfil</Links>
     </Bar>
   );
