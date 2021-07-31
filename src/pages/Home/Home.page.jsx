@@ -17,7 +17,6 @@ function HomePage() {
         (result) => {
           setIsLoaded(true);
           setItems(result.items);
-          console.log(result.items);
         },
         () => {
           setIsLoaded(true);
