@@ -9,6 +9,8 @@ const Toggle = styled.button`
   color: palevioletred;
   font-size: 1.5rem;
   cursor: Pointer;
+  display: flex;
+  align-items: center;
 `;
 
 function ToggleButton(props) {
@@ -16,7 +18,7 @@ function ToggleButton(props) {
   const Icon = props.icon;
 
   return (
-    <Toggle>
+    <Toggle onClick={props.onClick}>
       <Icon />
     </Toggle>
   );
