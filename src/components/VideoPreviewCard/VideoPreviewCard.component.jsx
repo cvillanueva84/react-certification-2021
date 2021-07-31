@@ -9,6 +9,7 @@ function VideoPreviewCard({ thumbnailURL, title, description, videoID }) {
       <a
         className="VideoPreviewCard-URL"
         href={`https://www.youtube.com/watch?v=${videoID}`}
+        role="button"
         target="_blank"
         rel="noopener noreferrer"
       >
