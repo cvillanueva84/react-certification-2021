@@ -3,7 +3,7 @@ import { API_KEY } from "../constants";
 export const getVids = async (categoria) => {
   
   //const key = process.env.REACT_APP_API_KEY;
-  const urlYoutube = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&order=rating&q=${encodeURI(categoria)}&type=video&key=${API_KEY}`;
+  const urlYoutube = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&order=relevance&q=${encodeURI(categoria)}&type=video&key=${API_KEY}`;
   const respuesta = await fetch(urlYoutube);
   const { items } = await respuesta.json();
 

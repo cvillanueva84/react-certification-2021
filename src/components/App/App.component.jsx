@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { Header } from '../../pages/Header/Header';
+//import { Header } from '../../pages/Header/Header';
 import { HomeView } from '../../pages/HomeView/HomeView.page';
 import { VideoDetails } from '../../pages/VideoDetails/VideoDetails'
 
@@ -18,7 +18,6 @@ function App() {
 
     <Router>
       <>
-        <Header/>
         <Switch>
           <Route exact path ="/" component={HomeView}/>
           <Route exact path="/videoDetails/:videoId" component={VideoDetails}/>

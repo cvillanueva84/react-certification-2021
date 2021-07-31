@@ -104,13 +104,14 @@ export const Header = ({setCategorias}) => {
                     ><span role="img" aria-label="moon">🌜</span></HeaderButton>
                   </div>
                 </div>
-
               </div>
 
 
 
               <div className="right-header">
-                <HeaderButton><i className="fas fa-user-graduate"></i></HeaderButton>
+                <HeaderButton
+                  onClick={()=>{alert('Coming soon...')}}
+                ><i className="fas fa-user-graduate"></i></HeaderButton>
               </div>
 
           </div>

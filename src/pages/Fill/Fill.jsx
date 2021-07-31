@@ -4,9 +4,7 @@ import { CardItem } from '../../components/CardItem';
 import PropTypes from 'prop-types';
 import './Fill.style.css';
 
-
 export const Fill = ({categoria}) => {
-
 
   const{items:videos, loading} = useFetchVideos(categoria);
 
