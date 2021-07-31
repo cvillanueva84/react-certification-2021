@@ -3,9 +3,9 @@ import { useParams } from 'react-router';
 import '../Header/Header.style.css';
 import './VideoDetails.css';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-//import { useFetchVideos } from '../../hooks/useFetchVideos';
-
-
+import { useFetchVideos } from '../../hooks/useFetchVideos';
+import { CardItem } from '../../components/CardItem';
+//import {data} from '../../mock/videoData';
 
 const commontheme = {
     fontFam: 'Arial',
@@ -43,14 +43,18 @@ const GlobalStyles = createGlobalStyle`
 
 
 
-export const VideoDetails = ({history}) => {
+export const VideoDetails = ({ history }) => {
 
-    const { videoId } = useParams();
+    const { videoId, categoria } = useParams();
     //const videoId = 'F4neLJQC1_E';
     const [mode, setMode] = useState('light');
 
+    const { items: videos } = useFetchVideos(categoria);
+    console.log(videos);
 
-    //const { items: videos } = useFetchVideos(categoria);
+    
+    const result = videos.find((vid) => vid.videoId === videoId);
+    console.log(result);
 
 
     return (
@@ -80,14 +84,15 @@ export const VideoDetails = ({history}) => {
                         </div>
 
                         <div className="right-header">
-                            <HeaderButton onClick={() => { alert('Proximanete...') }} ><i className="fas fa-user-graduate"></i></HeaderButton>
+                            <HeaderButton onClick={() => { alert('Coming soon...') }} ><i className="fas fa-user-graduate"></i></HeaderButton>
                         </div>
 
                     </div>
                 </div>
 
-                <div className="contenedor">
 
+
+                <div className="contenedor">
                     <div className="video-details">
                         <div className="video-details-vid">
                             <iframe
@@ -100,14 +105,28 @@ export const VideoDetails = ({history}) => {
 
                         </div>
                         <div className="video-details-text">
-                            <h2>Soy el titulo del video</h2>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi harum, illo culpa 
-                                saepe perferendis veniam possimus consequuntur reprehenderit dicta, quos corrupti 
+                            <h2>Titulo</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi harum, illo culpa
+                                saepe perferendis veniam possimus consequuntur reprehenderit dicta, quos corrupti
                                 ccusamus ab reiciendis ipsum iste nesciunt labore omnis fugiat.</p>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                 </div>
+
+                <div className="contenedor-sugeridos">
+                    <h3>Sugeridos: </h3>
+                    <div className="sugeridos">
+                        {videos.map(vid => (
+                            <CardItem
+                                key={vid.id}
+                                {...vid}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+
 
             </ThemeProvider>
         </div>

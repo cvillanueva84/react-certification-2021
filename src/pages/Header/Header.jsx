@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 //import PropTypes from 'prop-types';
 import './Header.style.css';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-//import { useFetchVideos } from '../../hooks/useFetchVideos';
 
 const commontheme = {
   fontFam: 'Arial',

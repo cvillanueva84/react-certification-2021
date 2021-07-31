@@ -42,16 +42,17 @@ h1{
 
 
 .card-item h2 {
-  font-size: 1.5em;
+  font-size: 20px;
   margin: 5px 0;
   text-align: center;
+  line-height: 20px;
 }
 
 .card-item p{
-  margin: auto;
+  margin: 10px auto;
   margin-bottom: 10px;
   text-align: justify;
-  
+  font-size: 15px;
 }
 
 .card-item img{
@@ -87,9 +88,4 @@ h1{
     margin: 10px;
     width: 80%;
   }
-}
-
-
-.video{
-  display: none;
 }
