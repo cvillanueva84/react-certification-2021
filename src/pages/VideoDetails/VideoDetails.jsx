@@ -43,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
 
 
 
-export const VideoDetails = ({history, categoria}) => {
+export const VideoDetails = ({history}) => {
 
     const { videoId } = useParams();
     //const videoId = 'F4neLJQC1_E';
@@ -89,7 +89,7 @@ export const VideoDetails = ({history, categoria}) => {
                 <div className="contenedor">
 
                     <div className="video-details">
-                        <div clasName="video-details-vid">
+                        <div className="video-details-vid">
                             <iframe
                                 allowFullScreen
                                 frameBorder="0"
@@ -99,7 +99,7 @@ export const VideoDetails = ({history, categoria}) => {
                             />
 
                         </div>
-                        <div clasName="video-details-text">
+                        <div className="video-details-text">
                             <h2>Soy el titulo del video</h2>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi harum, illo culpa 
                                 saepe perferendis veniam possimus consequuntur reprehenderit dicta, quos corrupti 
@@ -108,14 +108,6 @@ export const VideoDetails = ({history, categoria}) => {
                     </div>
                     <hr/>
                 </div>
-
-
-
-
-
-
-
-
 
             </ThemeProvider>
         </div>
