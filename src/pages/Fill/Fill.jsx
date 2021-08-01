@@ -8,16 +8,19 @@ export const Fill = ({categoria}) => {
 
   const{items:videos, loading} = useFetchVideos(categoria);
 
-
   return (
     <div>
       <div className="contenedor">
         {loading ? <h1>Loading...</h1> : <h1>{categoria}</h1>}
         <div className="cards">
           {videos.map(vid => (
-            <CardItem key={vid.id} {...vid} />
+              <CardItem 
+              key={vid.id} 
+              {...vid} 
+              />
           ))}
         </div>
+
       </div>
     </div>
   );

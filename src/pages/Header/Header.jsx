@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 //import PropTypes from 'prop-types';
 import './Header.style.css';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-//import { useFetchVideos } from '../../hooks/useFetchVideos';
 
 const commontheme = {
   fontFam: 'Arial',
@@ -85,7 +84,9 @@ export const Header = ({setCategorias}) => {
                     ></input>
                   </form>
 
-                  <span className="square_input"><i onSubmit={handleSubmit} className="fas fa-search"></i></span>
+                  <span 
+                    className="square_input"
+                    ><i onSubmit={handleSubmit} className="fas fa-search"></i></span>
                 </div>
               </div>
               </div>

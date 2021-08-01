@@ -5,20 +5,13 @@ exports[`Test Fill should have videos 1`] = `
   <div
     className="contenedor"
   >
+    <h1>
+      Loading...
+    </h1>
     <div
       className="cards"
     />
   </div>
-</div>
-`;
-
-exports[`Test Fill should have videos 2`] = `
-<div
-  className="card-item"
->
-  <img />
-  <h2 />
-  <p />
 </div>
 `;
 

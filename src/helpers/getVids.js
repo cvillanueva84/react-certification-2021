@@ -14,6 +14,7 @@ export const getVids = async (categoria) => {
       title: video.snippet.title,
       description: video.snippet.description,
       url: video.snippet.thumbnails.medium.url,
+      categoria: categoria
     };
   });
 

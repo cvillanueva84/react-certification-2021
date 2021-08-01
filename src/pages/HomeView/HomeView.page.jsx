@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from '../Header/Header';
 import { Fill } from '../Fill/Fill'
-
 import '../HomeView/HomeView.style.css';
-import { VideoDetails } from '../VideoDetails/VideoDetails';
+
 
 export const HomeView = ({ defaultCategorias = [] }) => {
 
-  //Sorry, I want to prof the useEffect
+
   const [categorias, setCategorias] = useState(defaultCategorias);
   useEffect(() => {
     categorias.shift();
@@ -16,7 +15,7 @@ export const HomeView = ({ defaultCategorias = [] }) => {
   return (
     <div>
 
-      <Header setCategorias={setCategorias} />
+      <Header setCategorias={setCategorias}/>
       <ol>
         {
           categorias.map(categoria =>
@@ -27,16 +26,6 @@ export const HomeView = ({ defaultCategorias = [] }) => {
           )
         }
       </ol>
-
-      <div className="video">
-        {categorias.map(categoria => 
-            <VideoDetails
-            key={categoria}
-            categoria={categoria}
-            />
-          )
-        }
-      </div>
 
     </div>
   );

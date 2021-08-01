@@ -20,7 +20,7 @@ function App() {
       <>
         <Switch>
           <Route exact path ="/" component={HomeView}/>
-          <Route exact path="/videoDetails/:videoId" component={VideoDetails}/>
+          <Route exact path="/videoDetails/:videoId&:categoria" component={VideoDetails}/>
           <Redirect to="/"/>
         </Switch>
       </>

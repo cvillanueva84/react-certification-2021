@@ -1556,7 +1556,7 @@ npm install --save styled-components
 
 React testing library 
 
-npm install --save-dev @ testing-library / react
+npm install --save-dev @testing-library/react
 
 Es una solución muy ligero para probar componentes reaccionan. Proporciona funciones de utilidad de luz en 
 la parte superior de react-domy react-dom/test-utils, de una manera que alienta mejores prácticas de prueba.
