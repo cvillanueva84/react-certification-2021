@@ -1,12 +1,21 @@
 import React from 'react';
-import Card from '../../components/Card';
-import { Link } from 'react-router-dom';
-function Cards(props) {
+import RelatedVideo from '../../components/RelatedVideo';
+import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Box = styled.div`
+  width: 500px;
+  height: 500px;
+  //padding: 40px;
+  //margin: 20px auto;
+  overflow: scroll;
+`;
+function ListOfRelatedVideos(props) {
   const filteredVideos = props.videos.items.filter(
     (video) => video.id.kind === 'youtube#video'
   );
   return (
-    <>
+    <Box>
       {filteredVideos.map((video) => {
         return (
           <Link
@@ -18,16 +27,15 @@ function Cards(props) {
               },
             }}
           >
-            <Card
+            <RelatedVideo
               image={video.snippet.thumbnails.high.url}
               title={video.snippet.title}
-              description={video.snippet.description}
-            ></Card>
+            ></RelatedVideo>
           </Link>
         );
       })}
-    </>
+    </Box>
   );
 }
 
-export default Cards;
+export default ListOfRelatedVideos;
