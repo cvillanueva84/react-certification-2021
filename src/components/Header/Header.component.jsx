@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SEARCH_TERM_KEY, DATA_VIDEOS_KEY } from '../../utils/constants';
+import { storage } from '../../utils/storage';
+//import useYouTubeApi from '../../utils/hooks/useYouTube2';
 //import { Link, useHistory } from 'react-router-dom';
 //import { useAuth } from '../../providers/Auth';
 
@@ -116,23 +119,26 @@ function Header() {
   //   logout();
   //   history.push('/');
   // }
-  // handleSubmit = async (termFromSearchBar) => {
-  //   alert('Buscar: ' + termFromSearchBar);
-  //   // const response = await youtube.get('/search', {
-  //   //     params: {
-  //   //         q: termFromSearchBar
-  //   //     }
-  //   // })
 
-  //   // this.setState({
-  //   //     videos: response.data.items
-  //   // })
-  //   // console.log("this is resp",response);
-  // };
+  //const { data, loading, error, fetchVideos } = useYouTubeApi();
+  function handleChange(event) {
+    storage.set(SEARCH_TERM_KEY, event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert(
+      "I can't re-render the info in the cards because I did not how share the new info to the component CARDS xD but the searchTerm is: " +
+        storage.get(SEARCH_TERM_KEY)
+    );
+    //fetchVideos(storage.get(SEARCH_TERM_KEY));
+  }
   return (
     <HeaderBody>
       <Logo />
-      <Search placeholder="Search ..." />
+      <form onSubmit={handleSubmit}>
+        <Search onChange={handleChange} placeholder="Search..." />
+      </form>
       <HeaderItems>
         Dark mode
         <CheckBoxWrapper>

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Cards from '../../components/Cards';
 import styled from 'styled-components';
-import youtube from '../../apis/youtube';
-
+import { useYouTube } from '../../utils/hooks/useYouTube';
+import mockVideos from '../../mock/youtube-videos-mock.json';
 const Grid = styled.section`
   display: grid;
   gap: 2.5rem;
@@ -13,18 +13,10 @@ const Grid = styled.section`
 
 function HomePage() {
   const sectionRef = useRef(null);
-  const [dataVideos, setDataVideos] = useState({ items: [] });
-  useEffect(async () => {
-    const response = await youtube.get('/search', {
-      params: {
-        q: 'love of lesbian',
-      },
-    });
-    setDataVideos(response.data);
-  }, []);
   return (
     <Grid className="grid" ref={sectionRef}>
-      <Cards videos={dataVideos}></Cards>
+      {/* <Cards videos={useYouTube('Lennon')}></Cards> */}
+      <Cards videos={mockVideos}></Cards>
     </Grid>
   );
 }

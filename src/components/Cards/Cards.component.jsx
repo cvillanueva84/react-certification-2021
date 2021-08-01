@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../../components/Card';
-
+import { Link, useHistory } from 'react-router-dom';
 function Cards(props) {
   const filteredVideos = props.videos.items.filter(
     (video) => video.id.kind === 'youtube#video'
@@ -9,11 +9,21 @@ function Cards(props) {
     <>
       {filteredVideos.map((video) => {
         return (
-          <Card
-            image={video.snippet.thumbnails.high.url}
-            title={video.snippet.title}
-            description={video.snippet.description}
-          ></Card>
+          <Link
+            to={{
+              pathname: `/${video.id.videoId}`,
+              state: {
+                videoTitle: video.snippet.title,
+                videoDescription: video.snippet.description,
+              },
+            }}
+          >
+            <Card
+              image={video.snippet.thumbnails.high.url}
+              title={video.snippet.title}
+              description={video.snippet.description}
+            ></Card>
+          </Link>
         );
       })}
     </>

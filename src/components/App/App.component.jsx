@@ -5,9 +5,8 @@ import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
+import VideoDetailsView from '../../pages/VideoDetailsView';
 import Private from '../Private';
-import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
 
@@ -36,19 +35,20 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <HomePage />
+              <HomePage prueba="hola " />
             </Route>
             <Route exact path="/login">
               <LoginPage />
             </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
+            {/* <Private exact path="/secret"> */}
+            <Route path="/:id">
+              <VideoDetailsView />
+            </Route>
+            {/* </Private> */}
             <Route path="*">
               <NotFound />
             </Route>
           </Switch>
-          <Fortune />
         </Layout>
       </AuthProvider>
     </BrowserRouter>
