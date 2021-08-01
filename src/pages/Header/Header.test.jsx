@@ -1,39 +1,35 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 import '@testing-library/jest-dom';
-import Header from './Header';
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Header } from './Header';
 
 describe('Test Header', () => {
-    const wrapper = shallow(<Header/>);
-
-
-    it('should render provided properties', () => {
-        expect(wrapper).toMatchSnapshot();
+    it('should has 4 buttons', () => {
+        render(<Header />);
+        expect(screen.getAllByRole("button").length).toBe(4);
     });
 
-    it('should render input', () => {
-        const buttons = wrapper.find('input');
-        expect(buttons.length).toBe(1);
+    it('should has placeholder Search...', () => {
+        render(<Header />);
+        expect(screen.getAllByPlaceholderText("Search...").length).toBe(1);
     });
 
-    it('should render spans', () => {
-        const buttons = wrapper.find('span');
-        expect(buttons.length).toBe(3);
+    it('should has sun', () => {
+        render(<Header />);
+        expect(screen.getAllByText("🌞").length).toBe(1);
     });
 
-    it('should render spans', () => {
-        const buttons = wrapper.find('i');
-        expect(buttons.length).toBe(3);
+    it('should has moon', () => {
+        render(<Header />);
+        expect(screen.getAllByText("🌜").length).toBe(1);
     });
 
-    it('should Them Mode', () => {
-        const theme = wrapper.find('ThemeProvider');
-        expect(theme.length).toBe(0);
-    });
-
-    it('should Them Mode', () => {
-        const styles = wrapper.find('GlobalStyles');
-        expect(styles.length).toBe(0);
-    });
+    /*
+    it('should click', () => {
+        const handleClick = jest.fn();
+        render(<button onClick={handleClick}></button>);
+        fireEvent.click(screen.getAllByText("🌞"));
+        expect(handleClick).toHaveBeenCalledTimes(1);
+    });*/
 
 });

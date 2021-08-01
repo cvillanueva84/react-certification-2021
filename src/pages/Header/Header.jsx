@@ -84,7 +84,9 @@ export const Header = ({setCategorias}) => {
                     ></input>
                   </form>
 
-                  <span className="square_input"><i onSubmit={handleSubmit} className="fas fa-search"></i></span>
+                  <span 
+                    className="square_input"
+                    ><i onSubmit={handleSubmit} className="fas fa-search"></i></span>
                 </div>
               </div>
               </div>

@@ -1,7 +1,8 @@
 import React from 'react'
 import {shallow} from 'enzyme';
 import '@testing-library/jest-dom';
-import HomeView from "./HomeView.page";
+//import { render, screen } from "@testing-library/react";
+import { HomeView } from "./HomeView.page";
 
 describe('Test HomeView', () => {
     it('should render', () => {
@@ -19,6 +20,12 @@ describe('Test HomeView', () => {
     it('should have fill', () => {
         const wrapper = shallow(<HomeView/>);
         const fill = wrapper.find('Fill');
-        expect(fill.length).toEqual(1);
+        expect(fill.length).toEqual(0);
     });
+
+    /*
+    it('should other', () => {
+        render(<HomeView/>);
+        expect(screen.getAllByText("Header").length).toBe(0);
+    });*/
 });
