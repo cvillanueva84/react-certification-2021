@@ -15,7 +15,7 @@ const Input = styled.input`
 
 function SearchInput(props) {
   return (
-    <Input placeholder="Search" type="text" />
+    <Input onChange={props.handleChange} placeholder="Search" type="text" />
   );
 }
 

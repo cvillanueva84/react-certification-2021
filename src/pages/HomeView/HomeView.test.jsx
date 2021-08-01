@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import HomeView from './HomeView.component';
+import HomeView from './HomeView.page';
 
 describe('<HomeView />', () => {
   test('Section Title is rendered', async () => {

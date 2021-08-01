@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoHome from '../VideoHome'
-import Data from '../../utils/youtube-videos-mocks.json';
+import VideoHome from '../../components/VideoHome';
 
 const Wrapper = styled.div`
   height: 78vh;
@@ -23,14 +22,14 @@ const Heading = styled.p`
   margin: 1rem 0 0 1rem;
 `;
 
-function HomeView() {
+function HomeView(props) {
 
   return (
     <Wrapper>
-      <Heading>For You</Heading>
+      <Heading>{props.query || 'For You'}</Heading>
       <VideoContainer data-testid="videos">
         {/* {Data.regionCode} */}
-        {Data.items.map((video, index) => {
+        {props.videos?.items?.map((video, index) => {
           const title = video.snippet.title;
           const channelTitle = video.snippet.channelTitle;
           const thumbnail = video.snippet.thumbnails.medium.url;

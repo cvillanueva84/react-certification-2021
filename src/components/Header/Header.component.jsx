@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { HiMenuAlt1 } from 'react-icons/hi';
-import { BiSearchAlt } from 'react-icons/bi';
-import { IoClose } from 'react-icons/io5';
-import ToggleButton from '../ToggleButton/ToggleButton.component';
 import SearchInput from '../SearchInput/SearchInput.component';
 import styled, {css} from 'styled-components';
+
+// ICONS
+import { HiMenuAlt1 } from 'react-icons/hi';
+import { BiSearchAlt } from 'react-icons/bi';
+import { IoClose, IoSearchCircleSharp } from 'react-icons/io5';
+import ToggleButton from '../ToggleButton/ToggleButton.component';
 
 const Container = styled.div`
   width: 100%;
@@ -44,7 +46,7 @@ const Logo = styled.div`
   `};
 `;
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.form`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -54,21 +56,25 @@ const SearchContainer = styled.div`
   `};
 `;
 
-function Header() {
+function Header(props) {
 
-  const [isSearch, setIsSearch] = useState(true);
-  const [searchText, setSearchText] = useState('Hey');
+  const [isSearch, setIsSearch] = useState(false);
+  const [searchText, setSearchText] = useState(null);
 
   const toggleSearch = () => setIsSearch(!isSearch);
   const handleChange = (event) => setSearchText(event.target.value);
-
+  const search = (event) => {
+    event.preventDefault();
+    props.setQuery(searchText)
+  };
 
   return (
     <Container>
       <ToggleButton icon={HiMenuAlt1} />
       <Logo isSearch={isSearch} data-testid="logo" />
-      <SearchContainer isSearch={isSearch}>
+      <SearchContainer onSubmit={search} isSearch={isSearch}>
         {isSearch && <SearchInput handleChange={handleChange}/>}
+        {isSearch && <ToggleButton onClick={search} icon={IoSearchCircleSharp}/>}
         <ToggleButton onClick={toggleSearch} icon={isSearch ? IoClose : BiSearchAlt} />
       </SearchContainer>
     </Container>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom"; 
 
 import { FaCheckCircle } from 'react-icons/fa';
 
@@ -12,7 +13,11 @@ const Container = styled.div`
   @media(max-width: 629px) {
     width: 100%;
   }
-  `;
+`;
+const RouterLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+`;
 const Image = styled.img`
   width: 100%;
   height: 8.1rem;
@@ -86,7 +91,9 @@ function VideoHome(props) {
 
   return (
     <Container>
-      <Image src={props.thumbnail} alt='Video Thumbnail' />
+      <RouterLink to='/watch/123'>
+        <Image src={props.thumbnail} alt='Video Thumbnail' />
+      </RouterLink>
       <VideoInfo>
         <ChannelImage
           src={require('../../img/default-user.png')}
