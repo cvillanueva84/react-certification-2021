@@ -5,6 +5,7 @@ import './VideoDetails.css';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { useFetchVideos } from '../../hooks/useFetchVideos';
 import { CardItem } from '../../components/CardItem';
+import { VideoDat } from '../../components/VideoDat';
 //import {data} from '../../mock/videoData';
 
 const commontheme = {
@@ -50,11 +51,6 @@ export const VideoDetails = ({ history }) => {
     const [mode, setMode] = useState('light');
 
     const { items: videos } = useFetchVideos(categoria);
-    console.log(videos);
-
-    
-    const result = videos.find((vid) => vid.videoId === videoId);
-    console.log(result);
 
 
     return (
@@ -99,16 +95,21 @@ export const VideoDetails = ({ history }) => {
                                 allowFullScreen
                                 frameBorder="0"
                                 title="rick roll"
-                                src={`https://www.youtube.com/embed/${videoId}?autoplay=0`}
+                                src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             />
 
                         </div>
                         <div className="video-details-text">
-                            <h2>Titulo</h2>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi harum, illo culpa
-                                saepe perferendis veniam possimus consequuntur reprehenderit dicta, quos corrupti
-                                ccusamus ab reiciendis ipsum iste nesciunt labore omnis fugiat.</p>
+                            {
+                                videos.filter((vid) => vid.videoId===videoId).map((dato) => (
+                                    <VideoDat
+                                        key={dato.id}
+                                        title={dato.title}
+                                        description={dato.description}
+                                    />
+                                ))
+                            }
                         </div>
                     </div>
                     <hr />
