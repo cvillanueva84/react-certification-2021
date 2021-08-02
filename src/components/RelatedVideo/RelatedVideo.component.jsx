@@ -1,39 +1,55 @@
 import React from 'react';
 import styled from 'styled-components';
 const CardBody = styled.div`
-  width: 100%;
-  height: 20rem;
-  cursor: pointer;
-  box-shadow: #000 1px 1px 0, #000 2px 2px 0, #000 3px 3px 0, #000 4px 4px 0,
-    #000 5px 5px 0, #000 6px 6px 0, #000 7px 7px 0, #000 8px 8px 0;
+  display: flex;
+  width: 29rem;
+  height: 8rem;
   :hover {
     background-color: #f8f7f7;
-    box-shadow: red 1px 1px 0, red 2px 2px 0, red 3px 3px 0, red 4px 4px 0, red 5px 5px 0,
-      red 6px 6px 0, red 7px 7px 0, red 8px 8px 0;
+  }
+  @media (max-width: 1200px) {
+    width: 19rem;
+    height: 6rem;
+  }
+  @media (max-width: 935px) {
+    width: 39rem;
+    height: 10rem;
   }
 `;
 const ImageCard = styled.div`
-  width: 100%;
-  height: 10rem;
+  width: 15rem;
+  height: 7rem;
   background-image: url(${(props) => props.imageUrl});
   background-position: center;
   background-repeat: no-repeat;
-`;
-const WraperText = styled.div`
-  padding: 0.5rem;
+  @media (max-width: 1200px) {
+    width: 5rem;
+    height: 5rem;
+  }
+  @media (max-width: 935px) {
+    width: 20rem;
+    height: 9rem;
+  }
 `;
 const Title = styled.div`
+  width: 15rem;
+  padding-left: 0.5rem;
   font-weight: 600;
   font-size: 1.1rem;
+  overflow: hidden;
+  @media (max-width: 1200px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 935px) {
+    font-size: 1.1rem;
+  }
 `;
 
 function RelatedVideo({ image, title }) {
   return (
     <CardBody>
       <ImageCard imageUrl={image}></ImageCard>
-      <WraperText>
-        <Title>{title}</Title>
-      </WraperText>
+      <Title>{title}</Title>
     </CardBody>
   );
 }

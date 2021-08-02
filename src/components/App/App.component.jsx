@@ -35,7 +35,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <HomePage prueba="hola " />
+              <HomePage />
             </Route>
             <Route exact path="/login">
               <LoginPage />

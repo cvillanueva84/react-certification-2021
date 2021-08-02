@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SEARCH_TERM_KEY, DATA_VIDEOS_KEY } from '../../utils/constants';
+import { SEARCH_TERM_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
-//import useYouTubeApi from '../../utils/hooks/useYouTube2';
 //import { Link, useHistory } from 'react-router-dom';
 //import { useAuth } from '../../providers/Auth';
 
@@ -119,19 +118,19 @@ function Header() {
   //   logout();
   //   history.push('/');
   // }
+  const [searchTerm, setSerchTerm] = useState('Hombres G');
 
-  //const { data, loading, error, fetchVideos } = useYouTubeApi();
   function handleChange(event) {
-    storage.set(SEARCH_TERM_KEY, event.target.value);
+    setSerchTerm(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     alert(
-      "I can't re-render the info in the cards because I did not how share the new info to the component CARDS xD but the searchTerm is: " +
-        storage.get(SEARCH_TERM_KEY)
+      "I can't show the info in the cards because I did not how update the new info to the component CARDS xD but if You change of page, You will see the new videos with the searchTerm : " +
+        searchTerm
     );
-    //fetchVideos(storage.get(SEARCH_TERM_KEY));
+    storage.set(SEARCH_TERM_KEY, searchTerm);
   }
   return (
     <HeaderBody>

@@ -11,6 +11,7 @@ function useYouTube(searchTerm) {
             q: searchTerm,
           },
         });
+        console.log('Buscando' + searchTerm);
         setDataVideos(response.data);
       } catch (error) {
         console.error('No videos: ', error);

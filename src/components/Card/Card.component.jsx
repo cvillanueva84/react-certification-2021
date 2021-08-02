@@ -28,6 +28,7 @@ const Title = styled.div`
 `;
 const Description = styled.div`
   font-size: 0.7rem;
+  overflow: hidden;
 `;
 
 function Card({ image, title, description }) {

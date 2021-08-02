@@ -4,11 +4,16 @@ import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Box = styled.div`
-  width: 500px;
-  height: 500px;
-  //padding: 40px;
-  //margin: 20px auto;
-  overflow: scroll;
+  width: 30rem;
+  height: 48rem;
+  overflow-y: scroll;
+  @media (max-width: 1200px) {
+    width: 20rem;
+  }
+  @media (max-width: 935px) {
+    width: 40rem;
+    height: 50rem;
+  }
 `;
 function ListOfRelatedVideos(props) {
   const filteredVideos = props.videos.items.filter(

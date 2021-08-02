@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Cards from '../../components/Cards';
 import styled from 'styled-components';
 import { useYouTube } from '../../utils/hooks/useYouTube';
 import mockVideos from '../../mock/youtube-videos-mock.json';
+import { storage } from '../../utils/storage';
+import { SEARCH_TERM_KEY } from '../../utils/constants';
 const Grid = styled.section`
   display: grid;
   gap: 2.5rem;
@@ -13,10 +15,18 @@ const Grid = styled.section`
 
 function HomePage() {
   const sectionRef = useRef(null);
+  // let dataVideos;
+  // let youTubeVideos = useYouTube(storage.get(SEARCH_TERM_KEY));
+  // if (storage.get(SEARCH_TERM_KEY) === null) {
+  //   dataVideos = mockVideos;
+  // } else {
+  //   dataVideos = youTubeVideos;
+  // }
   return (
     <Grid className="grid" ref={sectionRef}>
       {/* <Cards videos={useYouTube('Lennon')}></Cards> */}
       <Cards videos={mockVideos}></Cards>
+      {/* <Cards videos={dataVideos}></Cards> */}
     </Grid>
   );
 }
