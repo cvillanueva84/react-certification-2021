@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -9,7 +9,6 @@ import {
   SearchDiv,
   DivSearchIcon,
   DivInput,
-  InputSearch,
   SwitchBtn,
   IconButton,
   LabelIconButton,
@@ -21,28 +20,7 @@ import {
   DivAvatar,
 } from './Header.styled';
 
-import useYoutubeApi from '../helpers/useYoutubeApi';
-
-function Header() {
-  const { data, loading, error, fetchSearch } = useYoutubeApi();
-  const [value, setValue] = useState('hello');
-
-  useEffect(() => {
-    //fetchSearch(value);
-    console.log(data);
-    // eslint-disable-next-line
-  }, []);
-
-  const enterPressed = (event) => {
-    console.log(value);
-    //fetchSearch(value);
-    event.preventDefault();
-  };
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
+function Header({ children, enterPressed }) {
   return (
     <Container>
       <LeftHeader>
@@ -52,12 +30,7 @@ function Header() {
             <DivSearchIcon>
               <SearchIcon />
             </DivSearchIcon>
-            <InputSearch
-              placeholder="Search..."
-              type="text"
-              value={value}
-              onChange={handleChange}
-            />
+            {children}
           </DivInput>
         </SearchDiv>
       </LeftHeader>

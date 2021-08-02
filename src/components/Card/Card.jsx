@@ -6,19 +6,24 @@ import {
   TitleVideo,
   CardBody,
   ImageCard,
+  LinkCard,
 } from './Card.styled';
 
 function Card(props) {
+  const { image, title, description, videoId } = props;
+  console.log(videoId);
   return (
-    <Container>
-      <ButtonCard>
-        <ImageCard image={props.image} />
-      </ButtonCard>
-      <CardContent>
-        <TitleVideo>{props.title}</TitleVideo>
-        <CardBody>{props.description}</CardBody>
-      </CardContent>
-    </Container>
+    <LinkCard to={`/view/${videoId}`}>
+      <Container>
+        <ButtonCard>
+          <ImageCard image={image} />
+        </ButtonCard>
+        <CardContent>
+          <TitleVideo>{title}</TitleVideo>
+          <CardBody>{description}</CardBody>
+        </CardContent>
+      </Container>
+    </LinkCard>
   );
 }
 

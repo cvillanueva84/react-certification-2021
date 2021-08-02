@@ -51,23 +51,6 @@ export const DivInput = styled.div`
   align-items: center;
 `;
 
-export const InputSearch = styled.input`
-  color: white;
-  border-radius: 4px;
-  border: 0;
-  height: 1.1876em;
-  margin: 0;
-  display: block;
-  padding: 10px 7px 8px 48px;
-  min-width: 0;
-  background: none;
-  box-sizing: content-box;
-  &:focus {
-    border: 0;
-    outline: none;
-  }
-`;
-
 export const SwitchBtn = styled.span`
   width: 58px;
   height: 38px;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 345px;
@@ -9,6 +10,10 @@ export const Container = styled.div`
   border-radius: 4px;
   overflow: hidden;
   background-color: #fff;
+`;
+
+export const LinkCard = styled(Link)`
+  text-decoration: none;
 `;
 
 export const ButtonCard = styled.button`

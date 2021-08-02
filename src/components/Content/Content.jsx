@@ -1,16 +1,16 @@
 import React from 'react';
 import Card from '../Card';
-import Data from './MockData';
 import { Container } from './Content.styled';
 
-function Content() {
+function Content({ data }) {
   return (
     <Container>
-      {Data.items.map((video) => (
+      {data.map((video) => (
         <Card
           title={video.snippet.title}
           description={video.snippet.description}
           image={video.snippet.thumbnails.medium.url}
+          videoId={video.id.videoId}
           key={video.id.videoId}
         />
       ))}
