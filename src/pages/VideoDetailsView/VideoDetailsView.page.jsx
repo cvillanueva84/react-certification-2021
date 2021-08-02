@@ -53,7 +53,7 @@ function VideoDetailsView() {
   const { videoTitle, videoDescription } = location.state;
   const url = 'https://www.youtube.com/embed/' + id;
   let dataVideos;
-  let youTubeVideos = useYouTube(storage.get(SEARCH_TERM_KEY));
+  let youTubeVideos = useYouTube();
   if (storage.get(SEARCH_TERM_KEY) === null) {
     dataVideos = mockVideos;
   } else {

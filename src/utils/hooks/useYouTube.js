@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import YouTube from '../../apis/YouTube';
-
-function useYouTube(searchTerm) {
+import { SEARCH_TERM_KEY } from '../constants';
+import { storage } from '../storage';
+function useYouTube() {
   const [dataVideos, setDataVideos] = useState({ items: [] });
   useEffect(() => {
     async function findVideos() {
       try {
         const response = await YouTube.get('/search', {
           params: {
-            q: searchTerm,
+            q: storage.get(SEARCH_TERM_KEY),
           },
         });
-        console.log('Buscando' + searchTerm);
         setDataVideos(response.data);
       } catch (error) {
         console.error('No videos: ', error);
