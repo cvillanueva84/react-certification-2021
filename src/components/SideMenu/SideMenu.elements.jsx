@@ -30,9 +30,9 @@ const SideMenuOption = styled.li`
   }
 `;
 
-export function SideMenuItem({ Icon, text }) {
+export function SideMenuItem({ Icon, text, fun }) {
   return (
-    <SideMenuOption>
+    <SideMenuOption onClick={fun}>
       <Icon size="2rem" />
       {text}
     </SideMenuOption>
