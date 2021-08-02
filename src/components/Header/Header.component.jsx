@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchInput from '../SearchInput/SearchInput.component';
 import styled, {css} from 'styled-components';
+import { Link } from "react-router-dom"; 
 
 // ICONS
 import { HiMenuAlt1 } from 'react-icons/hi';
@@ -71,7 +72,9 @@ function Header(props) {
   return (
     <Container>
       <ToggleButton icon={HiMenuAlt1} />
-      <Logo isSearch={isSearch} data-testid="logo" />
+      <Link to="/">
+        <Logo isSearch={isSearch} data-testid="logo" />
+      </Link>
       <SearchContainer onSubmit={search} isSearch={isSearch}>
         {isSearch && <SearchInput handleChange={handleChange}/>}
         {isSearch && <ToggleButton onClick={search} icon={IoSearchCircleSharp}/>}

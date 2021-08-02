@@ -19,6 +19,7 @@ const Main = styled.div`
   width: 100%;
   border-radius: 0 0 1rem 1rem;
   background-color: white;
+  min-height: 85.5vh;
   
   @media (min-width: 1068px) {
     border-radius: 1rem;

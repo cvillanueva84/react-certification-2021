@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 15rem;
-  padding: 1rem;
+  padding: ${props => props.isRelated ? '0.4rem 0;' : '1rem;'};
   @media(max-width: 629px) {
     width: 100%;
   }
@@ -87,11 +87,11 @@ const CheckIcon = styled(FaCheckCircle)`
   margin-right: 0.2rem;
 `;
 
-function VideoHome(props) {
+function VideoList(props) {
 
   return (
-    <Container>
-      <RouterLink to='/watch/123'>
+    <Container isRelated={props.isRelated}>
+      <RouterLink to={`/watch/${props.id}`}>
         <Image src={props.thumbnail} alt='Video Thumbnail' />
       </RouterLink>
       <VideoInfo>
@@ -108,4 +108,4 @@ function VideoHome(props) {
   );
 }
 
-export default VideoHome;
+export default VideoList;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import VideoHome from './VideoHome.component';
+import VideoList from './VideoList.component';
 
-describe('<VideoHome />', () => {
+describe('<VideoList />', () => {
   it('Video should render correctly', () => {
     const mockVideo = {
       id: 'video-id',
@@ -11,7 +11,7 @@ describe('<VideoHome />', () => {
       thumbnail: 'video-thumbnail',
       channelTitle: 'video-channel-name',
     };
-    const { getByText, getByAltText } = render(<VideoHome title={mockVideo.title} thumbnail={mockVideo.thumbnail} channelTitle={mockVideo.channelTitle} />);
+    const { getByText, getByAltText } = render(<VideoList title={mockVideo.title} thumbnail={mockVideo.thumbnail} channelTitle={mockVideo.channelTitle} />);
 
     const title = getByText(mockVideo.title);
     const channelTitle = getByText(mockVideo.channelTitle);

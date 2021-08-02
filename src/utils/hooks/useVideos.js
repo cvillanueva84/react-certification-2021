@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import Data from '../../utils/youtube-videos-mocks.json'
+import Data from '../../utils/related-videos.json'
 
 const API_URL =
   'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20';
-const API_KEY = 'some key';
+const API_KEY = 'AIzaSyBaJpEB63-mbuXIkIAL7_qbv7gJNoHCHHk';
 // GET https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=4Y4YSpF6d6w&key={YOUR_API_KEY}
 
 function useVideos() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoHome from '../../components/VideoHome';
+import VideoHome from '../../components/VideoList';
 
 const Wrapper = styled.div`
   height: 78vh;
@@ -28,15 +28,16 @@ function HomeView(props) {
     <Wrapper>
       <Heading>{props.query || 'For You'}</Heading>
       <VideoContainer data-testid="videos">
-        {/* {Data.regionCode} */}
         {props.videos?.items?.map((video, index) => {
           const title = video.snippet.title;
           const channelTitle = video.snippet.channelTitle;
           const thumbnail = video.snippet.thumbnails.medium.url;
+          const id = video.id.videoId;
 
           return (
             <VideoHome
-              key={video.etag}
+              key={id}
+              id={id}
               title={title}
               thumbnail={thumbnail}
               channelTitle={channelTitle}

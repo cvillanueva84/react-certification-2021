@@ -1,0 +1,227 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "4p1hxt0l2QBwgGG9UbdfSbcvwBY",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "MX",
+  "pageInfo": {
+    "totalResults": 133,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "4yEmHPGIKMZWNM0SMMWM2ewDeUs",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "WDPjEgW3Bpw"
+      },
+      "snippet": {
+        "publishedAt": "2021-08-01T07:09:14Z",
+        "channelId": "UCJEuW59O2puQ6gT6k4eyfXA",
+        "title": "Halo Infinite Bots Are Just Styling On Us Now...",
+        "description": "Thanks to roru2164 for letting me share this clip with you guys! \nOriginal post here: https://www.reddit.com/r/halo/comments/ov1nzj/if_you_had_told_me_that_halo_would_add_bots_that/\n\nIf you want to have your clips (or other media) featured please fill out this google form:\nhttps://forms.gle/Ch36rXime7XGUp4AA\n\nIf you wanna support the channel you can join here:\nhttps://www.youtube.com/channel/UCJEuW59O2puQ6gT6k4eyfXA/join\n\n►Catch me live here: https://www.twitch.tv/arrrash \n►Watch my main content here: https://www.youtube.com/arrrash\n►Get more clips here: https://www.youtube.com/channel/UCVWjwsi7OXoSpRNx1VUKgEQ\n\nFollow me on the things at: \n►https://twitter.com/Arrrrash \n►https://discord.gg/VbNFynJ\n►https://reddit.com/r/arrrash\n►https://www.instagram.com/arrrash_/\n►https://www.tiktok.com/@arrrash\n\nSupport me through my Amazon Affiliate link: https://amzn.to/2lptqvX\n\nFor business inquiries: arrrashgaming@gmail.com\n\n#Halo #HaloMCC #HaloInfinite",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/WDPjEgW3Bpw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/WDPjEgW3Bpw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/WDPjEgW3Bpw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/WDPjEgW3Bpw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "Arrrash tv",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-08-01T07:09:14Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "5fUrMsb0b28cU5m4rn1yq52UlB8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ZSfK8Qvnw0w"
+      },
+      "snippet": {
+        "publishedAt": "2021-07-30T18:11:37Z",
+        "channelId": "UCfR6D-fKu50WXGjoHptJI4A",
+        "title": "Halo Infinite WTF & Funny Moments #1",
+        "description": "Halo Infinite Technical Preview Flight Beta Test Funny Moments, WTF Fails & Halo Bloopers Compilation #1\n\n►Submit Your Clips Here: https://www.SingleHaloClips.com\n\n►SingleHaloClips:\nYoutube: https://www.youtube.com/user/SingleHaloClips?sub_confirmation=1\nTwitter: http://www.twitter.com/SingleHaloClips\nDiscord: https://discord.gg/3H5Nt66\n\n🎮Players:\nFrosty: twitch.tv/Frosty\nSnip3down: twitch.tv/Snip3down\nDigiPall: youtube.com/channel/UCiogTE4QHur8oVPMSSSM5EQ\niSpiteful: twitch.tv/iSpiteful\nFireMonkey: twitch.tv/FireMonkey\nLEGIQN: twitch.tv/LEGIQN\nMintBlitz: twitch.tv/MintBlitz\nUberNick: twitch.tv/UberNick\nmoistcr1tikal: twitch.tv/moistcr1tikal\nuPenguin: twitch.tv/uPenguin\nMatabertus: twitch.tv/Matabertus\nimluky98: twitch.tv/imluky98\nRoyal2: twitch.tv/Royal2\nSavieer: twitch.tv/Savieer\nTwo_EEzy: twitch.tv/Two_EEzy\nMilk: twitter.com/theMilkWay_\nEli_X: twitch.tv/Eli_X\nOathxX024: twitch.tv/OathxX024\nEvadeR: twitch.tv/EvadeR\nShyClover: twitch.tv/ShyClover\nLxthuL: twitch.tv/LxthuL\niTr3v: twitch.tv/iTr3v\nRocketpig: twitch.tv/Rocketpig\n\n🎧Music:\nRobert Spurling - \"Overcome\"\niTunes: https://itunes.apple.com/au/artist/robert-spurling/id975833514\nGoogle Play: https://goo.gl/uzPLhx\nAmazon MP3: https://goo.gl/2OLFQA\nSpotify: https://goo.gl/DfiZIV\n\n#HaloInfinite #Halo #HaloMoments #HaloInfiniteGameplay #HaloInfiniteMoments #HaloInfiniteHighlights",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ZSfK8Qvnw0w/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ZSfK8Qvnw0w/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ZSfK8Qvnw0w/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/ZSfK8Qvnw0w/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/ZSfK8Qvnw0w/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "SingleHaloClips",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-07-30T18:11:37Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "klBl3pLRA96RvmVIEOCXdD2lJFg",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EVwO59ftTzw"
+      },
+      "snippet": {
+        "publishedAt": "2021-08-01T05:28:17Z",
+        "channelId": "UCtwbBBBVOeYzHClqCsInzVA",
+        "title": "Halo Infinite bot tries a pro gamer move",
+        "description": "those things terrifies me",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EVwO59ftTzw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EVwO59ftTzw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EVwO59ftTzw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/EVwO59ftTzw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/EVwO59ftTzw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Ulises Ramos",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-08-01T05:28:17Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "nb2SV5zNv0NYjfnSwS_Ds8A5kwk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "8K9hTasd2EU"
+      },
+      "snippet": {
+        "publishedAt": "2021-08-01T19:35:22Z",
+        "channelId": "UCp8tGDdroiepbkGmIEUR7_g",
+        "title": "Secrets And Easter Eggs You Didn‘t Notice (Halo Infinite Flight)",
+        "description": "We got our first personal look at Halo Infinite's multiplayer over the last few days with the Halo Infinite flight. And of course we have been looking into the Halo Infinite multiplayer maps in the search for hidden Easter eggs and secrets. Here are the first Halo Infinite Easter eggs you probably didn't notice before. \n\nPodcast: https://www.youtube.com/channel/UCpJvLnMNmJYAUxKmfTfBrYw\nRocketsloth2: https://www.youtube.com/channel/UCrNHifmtYxDuQ-_nmPuZY_g\nPatreon: https://www.patreon.com/rocketsloth\nLivestreams: https://www.twitch.tv/rocketslothyt\nJoin our Discord: https://discord.gg/rocketsloth\nBecome a Member and join our Channel! https://goo.gl/Dpahpo\n\nIntroduction 0:00 - 1:32\nLive Fire Easter Eggs 1:33 - 4:03\nRecharge Easter Eggs 4:04 - 5:12\nBazaar Easter Eggs 5:13 - 9:44\nHalo Infinite Menu/Lore Easter Eggs 9:45 - 11:26\nOutro 11:27 - 12:11",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8K9hTasd2EU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8K9hTasd2EU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8K9hTasd2EU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/8K9hTasd2EU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/8K9hTasd2EU/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Rocket Sloth",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-08-01T19:35:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "mrrxExRF9oLy-y26yiF1_t9MzXQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "OH74BGYMWjo"
+      },
+      "snippet": {
+        "publishedAt": "2021-05-05T10:57:38Z",
+        "channelId": "UCp8tGDdroiepbkGmIEUR7_g",
+        "title": "Halo Vehicles In Places They Are NOT Supposed To Be (Halo Glitches)",
+        "description": "Glitching around with the Halo Vehicles sandbox and doing different glitches has always been a fun part of any Halo game, whether it be Halo CE, Halo 2, Halo, ODST, Reach, Halo 4 or Halo 5. We took it upon us to purposefully take Halo Vehicles in places they are not supposed to be. \n\nPodcast: https://www.youtube.com/channel/UCpJvLnMNmJYAUxKmfTfBrYw\nRocketsloth2: https://www.youtube.com/channel/UCrNHifmtYxDuQ-_nmPuZY_g\nPatreon: https://www.patreon.com/rocketsloth\nLivestreams: https://www.twitch.tv/rocketslothyt\nJoin our Discord: https://discord.gg/rocketsloth\nBecome a Member and join our Channel! https://goo.gl/Dpahpo",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/OH74BGYMWjo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/OH74BGYMWjo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/OH74BGYMWjo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/OH74BGYMWjo/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/OH74BGYMWjo/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Rocket Sloth",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-05-05T10:57:38Z"
+      }
+    }
+  ]
+}
