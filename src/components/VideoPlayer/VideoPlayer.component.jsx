@@ -21,6 +21,7 @@ function VideoPlayer(props) {
   return (
     <Container>
       <Frame
+        role='iframe'
         width="853"
         height="480"
         src={`https://www.youtube.com/embed/${props.id}`}

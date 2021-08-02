@@ -18,7 +18,7 @@ function ToggleButton(props) {
   const Icon = props.icon;
 
   return (
-    <Toggle onClick={props.onClick}>
+    <Toggle role="toggle" onClick={props.onClick}>
       <Icon />
     </Toggle>
   );

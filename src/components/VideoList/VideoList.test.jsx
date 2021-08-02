@@ -11,6 +11,7 @@ describe('<VideoList />', () => {
       title: 'video-title',
       thumbnail: 'video-thumbnail',
       channelTitle: 'video-channel-name',
+      isRelated: true,
     };
     const { getByText, getByAltText } = render(<BrowserRouter><VideoList {...mockVideo} /></BrowserRouter>);
 

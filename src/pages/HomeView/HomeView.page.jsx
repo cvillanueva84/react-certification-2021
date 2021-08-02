@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import VideoHome from '../../components/VideoList';
+import VideoList from '../../components/VideoList';
 
 const Wrapper = styled.div`
   height: 78vh;
@@ -33,7 +33,7 @@ function HomeView(props) {
 
   return (
     <Wrapper>
-      <Heading>{props.query || 'For You'}</Heading>
+      <Heading>{'For You'}</Heading>
       <VideoContainer data-testid="videos">
         {props.videos?.items?.map((video, index) => {
           const title = video.snippet.title;
@@ -42,7 +42,7 @@ function HomeView(props) {
           const id = video.id.videoId;
 
           return (
-            <VideoHome
+            <VideoList
               key={id}
               id={id}
               title={title}

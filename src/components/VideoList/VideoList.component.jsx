@@ -90,7 +90,7 @@ const CheckIcon = styled(FaCheckCircle)`
 function VideoList(props) {
 
   return (
-    <Container isRelated={props.isRelated}>
+    <Container isRelated={props.isRelated} role="video">
       <RouterLink to={`/watch/${props.id}`}>
         <Image src={props.thumbnail} alt='Video Thumbnail' />
       </RouterLink>

@@ -55,7 +55,7 @@ function VideoMain(props) {
       <TagTitle>Tags</TagTitle>
       <TagContainer>
         {tags?.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+          <Tag role="tag" key={tag}>{tag}</Tag>
         ))}
       </TagContainer>
     </Container>

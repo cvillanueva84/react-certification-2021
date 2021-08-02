@@ -15,7 +15,7 @@ const TagDiv = styled.div`
 
 function Tag(props) {
   return (
-    <TagDiv>
+    <TagDiv role="tag">
       {props.children}
     </TagDiv>
   );
