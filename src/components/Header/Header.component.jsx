@@ -46,15 +46,20 @@ const Logo = styled.div`
     }
   `};
 `;
-
-const SearchContainer = styled.form`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   ${props => props.isSearch && css`
     width: 100%;
     max-width: 30rem;
-  `};
+    `};
+    `;
+const SearchContainer = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 `;
 
 function Header(props) {
@@ -62,11 +67,13 @@ function Header(props) {
   const [isSearch, setIsSearch] = useState(false);
   const [searchText, setSearchText] = useState(null);
 
-  const toggleSearch = () => setIsSearch(!isSearch);
+  const toggleSearch = () => {setIsSearch(!isSearch)};
   const handleChange = (event) => setSearchText(event.target.value);
+  
   const search = (event) => {
     event.preventDefault();
-    props.setQuery(searchText)
+    if (!searchText) return;
+    props.changeUrl(`&q=${searchText}`);
   };
 
   return (
@@ -75,11 +82,13 @@ function Header(props) {
       <Link to="/">
         <Logo isSearch={isSearch} data-testid="logo" />
       </Link>
-      <SearchContainer onSubmit={search} isSearch={isSearch}>
-        {isSearch && <SearchInput handleChange={handleChange}/>}
-        {isSearch && <ToggleButton onClick={search} icon={IoSearchCircleSharp}/>}
+      <Wrapper isSearch={isSearch}>
+        <SearchContainer onSubmit={search}>
+          {isSearch && <SearchInput handleChange={handleChange}/>}
+          {isSearch && <ToggleButton onClick={search} icon={IoSearchCircleSharp}/>}
+        </SearchContainer>
         <ToggleButton onClick={toggleSearch} icon={isSearch ? IoClose : BiSearchAlt} />
-      </SearchContainer>
+      </Wrapper>
     </Container>
   );
 }

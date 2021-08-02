@@ -1,43 +1,81 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import Data from '../../utils/related-videos.json'
 
-const API_URL =
-  'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20';
-const API_KEY = 'AIzaSyBaJpEB63-mbuXIkIAL7_qbv7gJNoHCHHk';
-// GET https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=4Y4YSpF6d6w&key={YOUR_API_KEY}
+const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20';
+const VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&type=video';
+const API_KEY = 'some api';
 
 function useVideos() {
-  const [query, setQuery] = useState(null);
-  const [videos, setVideos] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const searchUrl = `${SEARCH_URL}&key=${API_KEY}`;
+  const videoUrl = `${VIDEO_URL}&key=${API_KEY}`;
+  const [url, setUrl] = useState(searchUrl);
+
+  const [state, dispatch] = useReducer(dataFetchReducer, {
+    isLoading: false,
+    isError: false,
+    data: null,
+  });
+
+  const changeUrl = (params) => {
+    if (params.includes('&id=')) {
+      setUrl(videoUrl + params);
+      console.log(videoUrl + params);
+    } else {
+      setUrl(searchUrl + params);
+      console.log(searchUrl + params);
+    }
+  }
+
+  function dataFetchReducer(state, action) {
+    switch (action.type) {
+      case 'FETCH_INIT':
+        return {
+          ...state,
+          isLoading: true,
+          isError: false,
+        };
+      case 'FETCH_SUCCESS':
+        return {
+          ...state,
+          isLoading: false,
+          isError: false,
+          data: action.payload,
+        };
+      case 'FETCH_FAILURE':
+        return {
+          ...state,
+          isLoading: false,
+          isError: true,
+        };
+      default:
+        throw new Error();
+    }
+  }
 
   useEffect(() => {
     
     async function fetchData() {
-      //For test purposes
+      // For test purposes
       if (true) {
-        setVideos(Data);
+        dispatch({ type: 'FETCH_SUCCESS', payload: Data });
         return;
       }
+      dispatch({ type: 'FETCH_INIT' });
       try {
-        setLoading(true);
-        const response = await fetch(`${API_URL}&key=${API_KEY}${query ? '&q=$' + query : ''}`);
+        const response = await fetch(url);
         const data = await response.json();
         console.log(data);
-        setVideos(data);
-
+        dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {
+        dispatch({ type: 'FETCH_FAILURE' });
         console.error('Bad data: ', error);
-        
-      } finally {
-        setLoading(false);
       }
     }
 
-    fetchData();
-  }, [query]);
+    if ( url !== searchUrl ) fetchData();
+  }, [url]);
 
-  return [{ query, videos, loading }, setQuery];
+  return [state, changeUrl];
 }
 
 export { useVideos };

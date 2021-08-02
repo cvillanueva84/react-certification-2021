@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import VideoHome from '../../components/VideoList';
 
@@ -7,7 +7,10 @@ const Wrapper = styled.div`
   /* height: 85.5vh; */
   overflow-y: auto;
   @media (max-width: 1068px) {
-    height: 91vh;
+    height: 92.6vh;
+  }
+  @media (max-width: 600px) {
+    height: 94.5vh;
   }
 `;
 const VideoContainer = styled.div`
@@ -23,6 +26,10 @@ const Heading = styled.p`
 `;
 
 function HomeView(props) {
+
+  useEffect(() => {
+    props.changeUrl(`&`);
+  }, [])
 
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import VideoHome from '../VideoList';
+import VideList from '../VideoList';
 
 const Container = styled.div`
   padding: 1rem;
@@ -25,16 +25,28 @@ function RelatedVideos(props) {
   return (
     <Container>
       <Title>Up next</Title>
+      {
+        props.videos?.items[0]?.snippet &&
       <Videos>
         {props.videos?.items?.map((video, index) => {
-          const title = video.snippet.title;
-          const channelTitle = video.snippet.channelTitle;
-          const thumbnail = video.snippet.thumbnails.medium.url;
+          let id = '';
+          let title = '';
+          let channelTitle = '';
+          let thumbnail = '';
+          try {
+            id = video.id.videoId;
+            title = video.snippet.title;
+            channelTitle = video.snippet.channelTitle;
+            thumbnail = video.snippet.thumbnails.medium.url;
+          } catch {
+            return null;
+          }
 
           return (
-            <VideoHome
+            <VideList
               isRelated={true}
-              key={video.etag}
+              key={id}
+              id={id}
               title={title}
               thumbnail={thumbnail}
               channelTitle={channelTitle}
@@ -42,6 +54,7 @@ function RelatedVideos(props) {
           );
         })}
       </Videos>
+      }
     </Container>
   );
 }

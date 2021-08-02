@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom"; 
 
 import VideoList from './VideoList.component';
 
@@ -11,7 +12,7 @@ describe('<VideoList />', () => {
       thumbnail: 'video-thumbnail',
       channelTitle: 'video-channel-name',
     };
-    const { getByText, getByAltText } = render(<VideoList title={mockVideo.title} thumbnail={mockVideo.thumbnail} channelTitle={mockVideo.channelTitle} />);
+    const { getByText, getByAltText } = render(<BrowserRouter><VideoList {...mockVideo} /></BrowserRouter>);
 
     const title = getByText(mockVideo.title);
     const channelTitle = getByText(mockVideo.channelTitle);

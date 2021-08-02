@@ -19,7 +19,7 @@ const Main = styled.div`
   width: 100%;
   border-radius: 0 0 1rem 1rem;
   background-color: white;
-  min-height: 85.5vh;
+  /* min-height: 85.5vh; */
   
   @media (min-width: 1068px) {
     border-radius: 1rem;
@@ -29,7 +29,7 @@ const Main = styled.div`
 
 function App() {
 
-  const [{ query, videos, loading }, setQuery] = useVideos();
+  const [{ isLoading, isError, data }, changeUrl] = useVideos();
 
   return (
     <BrowserRouter>
@@ -37,12 +37,12 @@ function App() {
         <Layout>
           <SideBar />
           <Main>
-            <Header setQuery={setQuery} />
+            <Header changeUrl={changeUrl} />
             <Switch>
               <Route exact path="/">
-                <HomeView query={query} videos={videos} loading={loading} />
+                <HomeView videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl}/>
               </Route>
-              <Route exact path="/watch/:id" render={(props) => <Video {...props}/>} />
+              <Route exact path="/watch/:id" render={(props) => <Video videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl} {...props}/>} />
               <Route path="*">
                 <NotFound />
               </Route>
