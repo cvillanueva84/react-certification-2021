@@ -1,6 +1,6 @@
 import React from 'react';
 import RelatedVideo from '../../components/RelatedVideo';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Box = styled.div`
@@ -24,6 +24,7 @@ function ListOfRelatedVideos(props) {
       {filteredVideos.map((video) => {
         return (
           <Link
+            key={video.id.videoId}
             to={{
               pathname: `/${video.id.videoId}`,
               state: {

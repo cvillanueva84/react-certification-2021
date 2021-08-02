@@ -10,6 +10,7 @@ function Cards(props) {
       {filteredVideos.map((video) => {
         return (
           <Link
+            key={video.id.videoId}
             to={{
               pathname: `/${video.id.videoId}`,
               state: {

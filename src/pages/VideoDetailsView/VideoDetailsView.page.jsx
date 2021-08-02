@@ -52,16 +52,16 @@ function VideoDetailsView() {
   const location = useLocation();
   const { videoTitle, videoDescription } = location.state;
   const url = 'https://www.youtube.com/embed/' + id;
-  // let dataVideos;
-  // let youTubeVideos = useYouTube(storage.get(SEARCH_TERM_KEY));
-  // if (storage.get(SEARCH_TERM_KEY) === null) {
-  //   dataVideos = mockVideos;
-  // } else {
-  //   dataVideos = youTubeVideos;
-  //   console.log('no lo es');
-  // }
+  let dataVideos;
+  let youTubeVideos = useYouTube(storage.get(SEARCH_TERM_KEY));
+  if (storage.get(SEARCH_TERM_KEY) === null) {
+    dataVideos = mockVideos;
+  } else {
+    dataVideos = youTubeVideos;
+    console.log('no lo es');
+  }
   return (
-    <Grid className="grid">
+    <Grid data-testid="location-videoDetailsView" className="grid">
       <VideoDetails>
         <pre>
           <Link to="/"> ← go back</Link>
@@ -70,9 +70,9 @@ function VideoDetailsView() {
         <Title>{videoTitle}</Title>
         <Description>{videoDescription}</Description>
       </VideoDetails>
-      <ListOfRelatedVideos videos={mockVideos}></ListOfRelatedVideos>
+      {/* <ListOfRelatedVideos videos={mockVideos}></ListOfRelatedVideos> */}
       {/* <ListOfRelatedVideos videos={useYouTube('Lennon')}></ListOfRelatedVideos> */}
-      {/* <ListOfRelatedVideos videos={dataVideos}></ListOfRelatedVideos> */}
+      <ListOfRelatedVideos videos={dataVideos}></ListOfRelatedVideos>
     </Grid>
   );
 }
