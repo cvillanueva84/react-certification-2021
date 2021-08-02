@@ -8,23 +8,19 @@ describe('Navbar', () => {
   test('should contain search input', () => {
     render(<Navbar />);
 
-    const searchInput = screen.getByPlaceholderText(/Search/i);
-
-    expect(searchInput).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Search/i)).toBeInTheDocument();
   });
 
   test('should contain search button', () => {
     render(<Navbar />);
 
-    const searchButton = screen.queryByRole('button');
-
-    expect(searchButton).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
-  test('should contain search input', () => {
+  test('should contain logo on navbar', () => {
     render(<Navbar />);
 
-    const imageAlt = screen.getByAltText('Wizeline Academy logo');
-    expect(imageAlt).toBeInTheDocument();
+    const altText = 'Wizeline Academy logo';
+    expect(screen.getByAltText(altText)).toBeInTheDocument();
   });
 });

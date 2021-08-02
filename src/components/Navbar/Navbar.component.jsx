@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconContext } from 'react-icons';
 import { MdMenu, MdSearch, MdAccountCircle } from 'react-icons/md';
 import wizelineAcademyLogo from '../../img/academy-color-transparent-283x300.png';
 import Toggle from '../ToggleButton/ToggleButton.component';
@@ -18,36 +19,37 @@ import {
 
 function Navbar() {
   const [IsChecked, setIsChecked] = React.useState(false);
-  const iconStyles = { fontSize: '30px' };
 
   return (
     <>
-      <Nav>
-        <NavLeft>
-          <NavIcon>
-            <MdMenu style={iconStyles} />
-          </NavIcon>
-          <NavIcon>
-            <img to="/" src={wizelineAcademyLogo} alt="Wizeline Academy logo" />
-          </NavIcon>
-        </NavLeft>
-        <NavCenter>
-          <SearchForm>
-            <StyledInput type="text" placeholder="Search" />
-            <SearchButton type="submit">
-              <MdSearch style={iconStyles} />
-            </SearchButton>
-          </SearchForm>
-        </NavCenter>
-        <NavRight>
-          <Toggle text="Mode" checked={IsChecked} setChecked={setIsChecked} />
-          <Avatar>
-            <AvatarButton>
-              <MdAccountCircle style={iconStyles} />
-            </AvatarButton>
-          </Avatar>
-        </NavRight>
-      </Nav>
+      <IconContext.Provider value={{ color: 'white', size: '30px' }}>
+        <Nav>
+          <NavLeft>
+            <NavIcon>
+              <MdMenu />
+            </NavIcon>
+            <NavIcon>
+              <img to="/" src={wizelineAcademyLogo} alt="Wizeline Academy logo" />
+            </NavIcon>
+          </NavLeft>
+          <NavCenter>
+            <SearchForm>
+              <StyledInput type="text" placeholder="Search" />
+              <SearchButton type="submit">
+                <MdSearch />
+              </SearchButton>
+            </SearchForm>
+          </NavCenter>
+          <NavRight>
+            <Toggle text="Mode" checked={IsChecked} setChecked={setIsChecked} />
+            <Avatar>
+              <AvatarButton>
+                <MdAccountCircle />
+              </AvatarButton>
+            </Avatar>
+          </NavRight>
+        </Nav>
+      </IconContext.Provider>
     </>
   );
 }

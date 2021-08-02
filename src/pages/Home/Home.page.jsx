@@ -1,6 +1,6 @@
 import React from 'react';
 import data from '../../mock/youtube-videos-mock.json';
-import HomeCards from '../../components/HomeCards/HomeCards.component';
+import HomeCard from '../../components/HomeCard/HomeCard.component';
 
 import { CardsGrid, Homepage } from './Home.styles';
 
@@ -11,7 +11,7 @@ function HomePage() {
       <CardsGrid>
         {data.items.map((item) => {
           return (
-            <HomeCards
+            <HomeCard
               key={item.etag}
               videoId={item.id.videoId}
               imgUrl={item.snippet.thumbnails.default.url}
