@@ -38,8 +38,6 @@ export const CardVideoImage = styled.img`
   width: 100%;
   aspect-ratio: 16/9;
   height: auto;
-
-  background: yellow;
 `;
 
 const CardVideoBottomContainer = styled.div`
@@ -67,11 +65,16 @@ const CardVideoDescription = styled.p`
 `;
 
 export function CardVideoBottom({ title, description }) {
+  function trucateText(text) {
+    const maxLength = 50;
+    return text.length <= maxLength ? text : `${text.substring(0, maxLength)}...`;
+  }
+
   return (
     <>
       <CardVideoBottomContainer>
         <CardVideoTitle>{title}</CardVideoTitle>
-        <CardVideoDescription>{description}</CardVideoDescription>
+        <CardVideoDescription>{trucateText(description)}</CardVideoDescription>
       </CardVideoBottomContainer>
     </>
   );

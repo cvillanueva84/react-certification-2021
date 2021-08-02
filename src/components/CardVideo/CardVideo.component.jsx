@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import LinkVideo from '../Link.element';
 import {
   CardVideoDisplayerContainer,
   CardVideoContainer,
@@ -6,28 +7,40 @@ import {
   CardVideoBottom,
 } from './CardVideo.elements';
 
-function CardVideo({ video }) {
+export function CardVideo({ video, id }) {
+  const urlVideo = `/watch?v=${id}`;
+
   return (
     <>
-      <CardVideoContainer>
-        <CardVideoImage src={video.snippet.thumbnails.high.url} />
-        <CardVideoBottom
-          title={video.snippet.title}
-          description={video.snippet.description}
-        />
-      </CardVideoContainer>
+      <LinkVideo to={urlVideo}>
+        <CardVideoContainer>
+          <CardVideoImage src={video.snippet.thumbnails.high.url} />
+          <CardVideoBottom
+            title={video.snippet.title}
+            description={video.snippet.description}
+          />
+        </CardVideoContainer>
+      </LinkVideo>
     </>
   );
 }
 
 function CardVideoDisplayer({ videos }) {
+  const [listVideos, setListVideo] = useState();
+
+  useEffect(() => {
+    if (videos) {
+      setListVideo(
+        videos.map((video) => (
+          <CardVideo id={video.id.videoId} key={video.etag} video={video} />
+        ))
+      );
+    }
+  }, [videos]);
+
   return (
     <>
-      <CardVideoDisplayerContainer>
-        {videos.map((video) => (
-          <CardVideo key={video.etag} video={video} />
-        ))}
-      </CardVideoDisplayerContainer>
+      <CardVideoDisplayerContainer>{listVideos}</CardVideoDisplayerContainer>
     </>
   );
 }

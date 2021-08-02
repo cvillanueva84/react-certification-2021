@@ -1,1 +1,1 @@
-export { default } from './CardVideo.component';
+export { default, CardVideo } from './CardVideo.component';

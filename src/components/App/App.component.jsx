@@ -8,10 +8,10 @@ import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
-import Fortune from '../Fortune';
 import Layout from '../Layout';
 
 import { GlobalStyle, themes } from '../../globalStyles';
+import VideoPlayer from '../../pages/VideoPlayer';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -27,6 +27,9 @@ function App() {
                 <Route exact path="/">
                   <HomePage theme={theme} setTheme={setTheme} />
                 </Route>
+                <Route path="/watch">
+                  <VideoPlayer theme={theme} setTheme={setTheme} />
+                </Route>
                 <Route exact path="/login">
                   <LoginPage />
                 </Route>
@@ -37,7 +40,6 @@ function App() {
                   <NotFound />
                 </Route>
               </Switch>
-              <Fortune />
             </Layout>
           </AuthProvider>
         </BrowserRouter>

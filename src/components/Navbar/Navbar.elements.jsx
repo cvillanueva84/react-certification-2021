@@ -70,10 +70,10 @@ const SearchButton = styled.button`
   margin-right: 1rem;
 `;
 
-export function SearchBar() {
+export function SearchBar({ inputRef, handleSubmit }) {
   return (
-    <FormSearch>
-      <InputSearch type="text" placeholder="Search" />
+    <FormSearch onSubmit={handleSubmit}>
+      <InputSearch type="text" placeholder="Search" ref={inputRef} />
       <SearchButton>
         <FaSearch size="1rem" />
       </SearchButton>
