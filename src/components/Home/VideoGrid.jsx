@@ -19,12 +19,11 @@ const VideoContainer = styled.div`
   }
 `;
 
-export const VideoGrid = ({ items }) => {
-  console.log(items);
+export const VideoGrid = ({ items, setSelectedVideo }) => {
   return (
     <VideoContainer>
       {items.map((video) => (
-        <VideoItem {...video} key={video.etag} />
+        <VideoItem setSelectedVideo={setSelectedVideo} {...video} key={video.etag} />
       ))}
     </VideoContainer>
   );

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const VideoContainer = styled.div`
   margin: 10px;
+  cursor: pointer;
 `;
 const VideoTitle = styled.h3`
   color: #ffffff;
@@ -13,9 +14,13 @@ const VideoText = styled.p`
 `;
 
 export const VideoItem = (props) => {
-  // console.log(props);
+  const { setSelectedVideo } = props;
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+    // console.log(video);
+  };
   return (
-    <VideoContainer>
+    <VideoContainer onClick={() => handleVideoClick(props)}>
       <img
         width="100%"
         height="200px"
