@@ -18,7 +18,7 @@ export const DarkTheme = {
   background_color: '#202020',
   text_color: 'white',
   icon_color: '#909090',
-  scrollbar_track_color: 'black',
+  scrollbar_track_color: '#202020',
   navbar_height: NAVBAR_HEIGHT,
   sidemenu_width: SIDE_MENU_WIDTH,
 };
