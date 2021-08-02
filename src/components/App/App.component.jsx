@@ -5,13 +5,15 @@ import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
-import Fortune from '../Fortune';
+import Video from '../../pages/VideoTemplate/Video.page';
+import Navbar from '../Navabar';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import { AppContext, useAppContextValue } from '../../utils/AppContext';
 
 function App() {
+  const appContextValue = useAppContextValue();
+
   useLayoutEffect(() => {
     const { body } = document;
 
@@ -31,27 +33,29 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
-      </AuthProvider>
-    </BrowserRouter>
+    <AppContext.Provider value={appContextValue}>
+      <BrowserRouter>
+        <AuthProvider>
+          <Layout>
+            <div style={{ height: '100%', width: '100%' }}>
+              <Navbar />
+              <Switch>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+                <Route exact path="/login">
+                  <LoginPage />
+                </Route>
+                <Route path="/:id" component={Video} />
+                <Route path="*">
+                  <NotFound />
+                </Route>
+              </Switch>
+            </div>
+          </Layout>
+        </AuthProvider>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 
