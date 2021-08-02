@@ -18,9 +18,8 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      
       <h1>Welcome to the Challenge!</h1>
-      <VideoList/>
+      <VideoList />
 
       {authenticated ? (
         <>
