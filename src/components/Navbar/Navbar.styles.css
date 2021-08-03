@@ -41,8 +41,10 @@
         align-items: center;
         background-color: skyblue; 
         display: flex; 
-        justify-content: space-between;
+        justify-content: space-between;                
+        width:100%; 
 }
+
     .bars{
         border: none; 
         background: transparent;
@@ -50,14 +52,28 @@
         cursor: pointer;
         margin-right: 1.2rem;
     }
+    .search{
+        font-size: 1.4rem;
+    }
+    .formulario{        
+        display: flex;
+        align-items: center;
+    }
+    .search-b{
+        border: none; 
+        background-color: transparent;    
+        margin-left: 0.5rem;
+        cursor: pointer;
+    }
     .search-box{
         font-size: 1.1rem;
         padding: 0.25rem;
         width: 90%;
         border: none;
         outline: none;
-        border-radius: 0.25rem;
+        border-radius: 0.25rem;                
     }
+    
     @media screen and (min-width: 600px){
         .search-box{
             width: 300px;

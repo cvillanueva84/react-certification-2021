@@ -3,17 +3,24 @@ import videos from '../../videos.js';
 import Card from '../Card/Card.component.jsx';
 import './ListVideos.styles.css'; 
 
-function ListVideos({List}){
-    
+function ListVideos({List,dataVideos, hideList}){
+
+    React.useEffect(()=>{
+        console.log('Data videos: ')
+        console.log(dataVideos); 
+    },[])
     
     return (
         <div>            
             <div className = "caja">
-            {List.map(item=>{
-                return(
-                    <Card elemento = {item}/>                    
-                )
-            })}            
+            {
+                dataVideos.items.map(item=>{
+                    console.log(item); 
+                    return(                        
+                        <Card element = {item.snippet} hideList = {hideList} item = {item}/>
+                    )
+                })
+            }                     
             </div>
             
         </div>
