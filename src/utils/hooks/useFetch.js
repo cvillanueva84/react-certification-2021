@@ -15,7 +15,7 @@ export const useFetch = () => {
           params: {
             part: 'snippet',
             chart: 'mostPopular',
-            maxResults: 4,
+            maxResults: 20,
             pageToken: '',
           },
         });
@@ -24,7 +24,7 @@ export const useFetch = () => {
           params: {
             part: 'snippet',
             type: 'video',
-            maxResults: 4,
+            maxResults: 20,
             q: query,
           },
         });
@@ -40,7 +40,7 @@ export const useFetch = () => {
           params: {
             part: 'snippet',
             relatedToVideoId: query,
-            maxResults: 4,
+            maxResults: 20,
             type: 'video',
           },
         });
