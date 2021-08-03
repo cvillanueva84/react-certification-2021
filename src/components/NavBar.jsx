@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NavBar = ({ className }) => {
+const NavBar = ({ className, handleSearchField, handleSearchButton }) => {
   return (
     <>
       <div className={className}>
         <div>
           <div style={{marginRight:7, color:'white'}}>Home</div>
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" onChange={handleSearchField} />
+          <button type="button" onClick={handleSearchButton} >Search</button>
         </div>
 
         <div >
