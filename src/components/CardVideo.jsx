@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CardVideo = ({className, title, description, picture}) => {
+const CardVideo = ({className, title, description, picture, url, showDetailView}) => {
     return (
         <>
-            <div className={className}>
+            <div className={className} 
+            onClick={() => showDetailView(url, title, description)} >
                 <div>
                     <div>
                         <img src={picture} alt="Picture" height="140" width="345" />

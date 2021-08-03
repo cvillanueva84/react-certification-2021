@@ -13,14 +13,17 @@ describe('video cards are rendered', () => {
                     key={index} 
                     title={video.snippet.title} 
                     description={video.snippet.description} 
-                    picture={video.snippet.thumbnails.medium.url} 
+                    picture={video.snippet.thumbnails.medium.url}
+                    url={video.id.videoId}
+                    showDetailView={() => console.log("Accion mostrar vista detail")} 
                 />);
-            
+
             //Check that at least one of the rendered elements has in its content the card's title
-            //defined in the youtube-videos-mock file
-            const videoTitle = screen.getAllByText(video.snippet.title, {exact: false});
-            //Checks that the array of selected elements has at least one item
-            expect(videoTitle.length).toBeGreaterThanOrEqual(1);
-        });
+        //defined in the youtube-videos-mock file
+        const videoTitle = screen.getAllByText(video.snippet.title, {exact: false});
+        //Checks that the array of selected elements has at least one item
+        expect(videoTitle.length).toBeGreaterThanOrEqual(1);
+            
+        }); 
     });
 });
