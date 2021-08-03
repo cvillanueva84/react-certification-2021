@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer } from 'react';
-import Data from '../../utils/related-videos.json'
+// import Data from '../../utils/related-videos.json'
 
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20';
 const VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&type=video';
@@ -19,10 +19,8 @@ function useVideos() {
   const changeUrl = (params) => {
     if (params.includes('&id=')) {
       setUrl(videoUrl + params);
-      console.log(videoUrl + params);
     } else {
       setUrl(searchUrl + params);
-      console.log(searchUrl + params);
     }
   }
 
@@ -56,10 +54,10 @@ function useVideos() {
     
     async function fetchData() {
       // For test purposes
-      if (true) {
-        dispatch({ type: 'FETCH_SUCCESS', payload: Data });
-        return;
-      }
+      // if (true) {
+      //   dispatch({ type: 'FETCH_SUCCESS', payload: Data });
+      //   return;
+      // }
       dispatch({ type: 'FETCH_INIT' });
       try {
         const response = await fetch(url);
@@ -73,7 +71,7 @@ function useVideos() {
     }
 
     if ( url !== searchUrl ) fetchData();
-  }, [url]);
+  }, [url, searchUrl]);
 
   return [state, changeUrl];
 }

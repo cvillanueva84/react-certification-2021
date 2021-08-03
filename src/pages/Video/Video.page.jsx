@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import VideoMain from '../../components/VideoMain';
 import RelatedVideos from '../../components/RelatedVideos';
 
-import VideoInfo from '../../utils/video-data.json'
 import { useVideos } from '../../utils/hooks/useVideos';
-import RelatedVideosData from '../../utils/related-videos.json'
 
 const Container = styled.div`
   width: 100%;
@@ -31,15 +29,16 @@ function VideoHome(props) {
 
   useEffect(() => {
     props.changeUrl(`&id=${props.match.params.id}`);
-    changeUrl(`&relatedToVideoId=${props.match.params.id}`)
-    console.log(111)
   }, [props.match.params.id])
+  useEffect(() => {
+    changeUrl(`&relatedToVideoId=${props.match.params.id}`)
+  }, [changeUrl, props.match.params.id])
 
   return (
     <Container>
       {
         props.videos?.items &&
-        <VideoMain id={props.match.params.id} video={props.videos?.items[0]} />
+        <VideoMain id={props.match.params.id} video={props.videos?.items[0]} isLoading={isLoading} isError={isError} />
       }
       {
         data?.items &&
