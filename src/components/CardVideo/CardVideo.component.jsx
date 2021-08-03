@@ -14,7 +14,7 @@ export function CardVideo({ video, id }) {
     <>
       <LinkVideo to={urlVideo}>
         <CardVideoContainer>
-          <CardVideoImage src={video.snippet.thumbnails.high.url} />
+          <CardVideoImage src={(video.snippet.thumbnails.high.url)? video.snippet.thumbnails.high.url: video.snippet.thumbnails.default.url } />
           <CardVideoBottom
             title={video.snippet.title}
             description={video.snippet.description}
