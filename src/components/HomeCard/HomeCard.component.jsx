@@ -1,4 +1,6 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import {
   Card,
   CardLink,
@@ -9,15 +11,14 @@ import {
 } from './HomeCard.styles';
 
 function HomeCard({ videoId, imgUrl, title, description }) {
+  const history = useHistory();
+
+  const handleClick = () => history.push(`/videoDetails/${videoId}`);
   if (!videoId) return <></>;
   return (
     <>
       <Card>
-        <CardLink
-          href={`https://www.youtube.com/watch?v=${videoId}`}
-          target="_blank"
-          role="button"
-        >
+        <CardLink onClick={handleClick}>
           <CardHeader src={imgUrl} alt={title} />
           <CardBody>
             <CardTitle>{title}</CardTitle>

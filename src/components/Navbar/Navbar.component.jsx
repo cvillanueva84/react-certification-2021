@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { MdMenu, MdSearch, MdAccountCircle } from 'react-icons/md';
 import wizelineAcademyLogo from '../../img/academy-color-transparent-283x300.png';
@@ -18,7 +19,14 @@ import {
 } from './Navbar.styles';
 
 function Navbar() {
-  const [IsChecked, setIsChecked] = React.useState(false);
+  const [IsChecked, setIsChecked] = useState(false);
+  const history = useHistory();
+
+  const handleSearch = (event) => {
+    if (event.key === 'Enter' && event.target.value.lenght > 0) {
+      history.push(`/search/${event.target.value}`);
+    }
+  };
 
   return (
     <>
@@ -33,8 +41,8 @@ function Navbar() {
             </NavIcon>
           </NavLeft>
           <NavCenter>
-            <SearchForm>
-              <StyledInput type="text" placeholder="Search" />
+            <SearchForm onSubmit={handleSearch}>
+              <StyledInput type="text" placeholder="Search" onKeyDown={handleSearch} />
               <SearchButton type="submit">
                 <MdSearch />
               </SearchButton>
@@ -53,4 +61,5 @@ function Navbar() {
     </>
   );
 }
+
 export default Navbar;
