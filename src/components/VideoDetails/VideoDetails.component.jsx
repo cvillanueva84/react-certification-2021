@@ -9,22 +9,20 @@ function VideoDetails(props){
     const [videoSelected, setVideoSelected] = React.useState(props.videoSelected);
 
     React.useEffect(()=>{
-        // console.log('Info video from video details')
-        //     console.log('props.videoSelected.id.videoId')
-        // console.log(props.videoSelected.snippet.title)
+        
         dataFromSearch(); 
         
     },[idVideo])
     
     const dataFromSearch = (busqueda) =>{         
-        // setShowDetails(false); 
+        
         fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&&key=${apiKey}&type=video&maxResults=8&q=${searchSuggestions}`)
              .then(res => {
                  return res.json()
              })
              .then(data => {
                  console.log('SUGERENCIAS'); 
-                // setDataVideos(data); 
+                
                 console.log(data)
                 setSuggestion(data.items);
              }).catch(error=> console.log(error))
