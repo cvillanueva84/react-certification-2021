@@ -11,7 +11,7 @@ describe('Navbar component', () => {
 
     it('should render Logo', () => {
         const { container } = render(<Navbar />)
-        const navbar = container.querySelector('img')
-        expect(navbar).toBeInTheDocument()
+        const logo = container.querySelector('img')
+        expect(logo).toBeInTheDocument()
     })
 })
