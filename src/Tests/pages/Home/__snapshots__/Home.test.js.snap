@@ -1,0 +1,795 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the < HomePage/> component should show the < HomePage/> component correctly 1`] = `
+<SectionContainer
+  className="homepage-container"
+>
+  <div
+    className="homepage__title"
+  >
+    <h2
+      style={
+        Object {
+          "marginLeft": "4rem",
+          "marginTop": "2rem",
+        }
+      }
+    >
+      Our videos:
+    </h2>
+  </div>
+  <VideoListContainer
+    className="homepage__video"
+  >
+    <VideoList
+      key="UCPGzT4wecuWM0BH9mPiulXg"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Wizeline transforms how teams build technology. Its customers accelerate the delivery of innovative products with proven solutions, which combine Wizeline's ...",
+          "liveBroadcastContent": "upcoming",
+          "publishTime": "2014-09-27T01:39:18Z",
+          "publishedAt": "2014-09-27T01:39:18Z",
+          "thumbnails": Object {
+            "default": Object {
+              "url": "https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s88-c-k-c0xffffffff-no-rj-mo",
+            },
+            "high": Object {
+              "url": "https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s800-c-k-c0xffffffff-no-rj-mo",
+            },
+            "medium": Object {
+              "url": "https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s240-c-k-c0xffffffff-no-rj-mo",
+            },
+          },
+          "title": "Wizeline",
+        }
+      }
+    />
+    <VideoList
+      key="nmXMgqjQzls"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Follow Hector Padilla, Wizeline Director of Engineering, for a lively tour of our office. In 2018, Wizeline opened its stunning new office in Guadalajara, Jalisco, ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-09-30T23:54:32Z",
+          "publishedAt": "2019-09-30T23:54:32Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/nmXMgqjQzls/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/nmXMgqjQzls/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Video Tour | Welcome to Wizeline Guadalajara",
+        }
+      }
+    />
+    <VideoList
+      key="HYyRZiwBWc8"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Wizeline continues to offer a Silicon Valley culture in burgeoning innovation hubs like Mexico and Vietnam. In 2018, our Guadalajara team moved into a ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-04-18T18:48:04Z",
+          "publishedAt": "2019-04-18T18:48:04Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline Guadalajara | Bringing Silicon Valley to Mexico",
+        }
+      }
+    />
+    <VideoList
+      key="Po3VwR_NNGk"
+      video={
+        Object {
+          "channelId": "UCXmAOGwFYxIq5qrScJeeV4g",
+          "channelTitle": "El Economista TV",
+          "description": "En el 2014, Bismarck fundó Wizeline, compañía tecnológica que trabaja con los corporativos ofreciendo una plataforma para que desarrollen software de forma ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-03-05T03:52:55Z",
+          "publishedAt": "2019-03-05T03:52:55Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/Po3VwR_NNGk/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/Po3VwR_NNGk/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/Po3VwR_NNGk/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline hace sentir a empleados como en casa",
+        }
+      }
+    />
+    <VideoList
+      key="7PtYNO6g7eI"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Engineering a better tomorrow. Wizeline is a global software development company that helps its clients solve their biggest challenges with design and ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-04-12T20:00:45Z",
+          "publishedAt": "2019-04-12T20:00:45Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/7PtYNO6g7eI/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/7PtYNO6g7eI/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/7PtYNO6g7eI/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "We Are Wizeline",
+        }
+      }
+    />
+    <VideoList
+      key="YuW0CE_8i1I"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Our vibrant Mexico City office is home to agile software engineers, talented UX designers, and brilliant data scientists. Learn about the rich history of Mexico City.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2018-12-13T21:51:39Z",
+          "publishedAt": "2018-12-13T21:51:39Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/YuW0CE_8i1I/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/YuW0CE_8i1I/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/YuW0CE_8i1I/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline Thrives in Mexico City",
+        }
+      }
+    />
+    <VideoList
+      key="CHzlSGRvWPs"
+      video={
+        Object {
+          "channelId": "UCUsm-fannqOY02PNN67C0KA",
+          "channelTitle": "Noticieros Televisa",
+          "description": "El plan de Wizeline, una empresa de inteligencia artificial, para ayudar a crecer la comunidad de ciencia de datos en CDMX y todo el país, a través de cursos ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2017-03-08T22:41:43Z",
+          "publishedAt": "2017-03-08T22:41:43Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/CHzlSGRvWPs/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/CHzlSGRvWPs/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/CHzlSGRvWPs/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline",
+        }
+      }
+    />
+    <VideoList
+      key="cjO2fJy8asM"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Fernando Espinoza shares his experience working as an engineering manager at Wizeline and mentoring other engineers. Learn about Fernando's passions ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2018-09-25T17:45:19Z",
+          "publishedAt": "2018-09-25T17:45:19Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/cjO2fJy8asM/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/cjO2fJy8asM/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/cjO2fJy8asM/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "A Day in the Life of an Engineering Manager at Wizeline",
+        }
+      }
+    />
+    <VideoList
+      key="zClI9OjgKXM"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-04-24T20:22:17Z",
+          "publishedAt": "2020-04-24T20:22:17Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/zClI9OjgKXM/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/zClI9OjgKXM/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/zClI9OjgKXM/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline Technical Writing Academy | Featuring Eduardo Ocejo",
+        }
+      }
+    />
+    <VideoList
+      key="8bz9R61oY5o"
+      video={
+        Object {
+          "channelId": "UCUP6qv-_EIL0hwTsJaKYnvw",
+          "channelTitle": "Azteca Noticias",
+          "description": "Empresas de Silicon Valley buscan establecerse en México por el gran talento que hay en nuestro país. Es una investigación de Roberto Domínguez.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-09-26T15:28:46Z",
+          "publishedAt": "2019-09-26T15:28:46Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/8bz9R61oY5o/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/8bz9R61oY5o/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/8bz9R61oY5o/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Silicon Valley en México",
+        }
+      }
+    />
+    <VideoList
+      key="7dJFraOqcoQ"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Juan Pablo, known as Gianpa at Wizeline, is a software engineer in our Mexico City office. Gianpa focuses on Android apps, is an integral part of our culture, ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-07-02T17:40:20Z",
+          "publishedAt": "2019-07-02T17:40:20Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/7dJFraOqcoQ/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/7dJFraOqcoQ/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/7dJFraOqcoQ/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Why Wizeline? featuring Juan Pablo Villa in Mexico City",
+        }
+      }
+    />
+    <VideoList
+      key="w-Qwc_XJrWc"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "There's no doubt that 2020 has been an unprecedented year. However, amidst all the chaos, we achieved remarkable growth in various areas of our business.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-12-31T16:26:44Z",
+          "publishedAt": "2020-12-31T16:26:44Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/w-Qwc_XJrWc/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/w-Qwc_XJrWc/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/w-Qwc_XJrWc/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline&#39;s 2020 Year in Review",
+        }
+      }
+    />
+    <VideoList
+      key="rjir_cHTl5w"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-04-29T20:37:26Z",
+          "publishedAt": "2019-04-29T20:37:26Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/rjir_cHTl5w/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/rjir_cHTl5w/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/rjir_cHTl5w/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Why Wizeline? featuring Hugo Lopez in Mexico City",
+        }
+      }
+    />
+    <VideoList
+      key="DcFK1x3NHGY"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "A quick look at why people join Wizeline, what motivates us as a team and what it's like to work in our Guadalajara office. Learn more and apply here: ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2016-09-01T18:02:11Z",
+          "publishedAt": "2016-09-01T18:02:11Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/DcFK1x3NHGY/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/DcFK1x3NHGY/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/DcFK1x3NHGY/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Why Wizeline? (We&#39;re Hiring in Mexico!)",
+        }
+      }
+    />
+    <VideoList
+      key="3BzYWAqZgFw"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Oswaldo is a software engineering in Wizeline's Mexico City office. He joined Wizeline because of the camaraderie and deep sense of commitment of our teams.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-07-02T17:45:28Z",
+          "publishedAt": "2019-07-02T17:45:28Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/3BzYWAqZgFw/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/3BzYWAqZgFw/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/3BzYWAqZgFw/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Why Wizeline? featuring Oswaldo Herrera in Mexico City",
+        }
+      }
+    />
+    <VideoList
+      key="3KVFmT-Tp2w"
+      video={
+        Object {
+          "channelId": "UCd6MoB9NC6uYN2grvUNT-Zg",
+          "channelTitle": "Amazon Web Services",
+          "description": "Central de socios de APN - https://amzn.to/2S7tIXM Fundada en 2014, Wizeline es una compañía joven e innovadora que nació en la nube para ofrecer soporte ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-02-11T17:55:19Z",
+          "publishedAt": "2019-02-11T17:55:19Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/3KVFmT-Tp2w/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/3KVFmT-Tp2w/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/3KVFmT-Tp2w/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Caso de Éxito AWS: Wizeline [Spanish]",
+        }
+      }
+    />
+    <VideoList
+      key="aKuPmY2m1Ro"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-12-27T20:47:29Z",
+          "publishedAt": "2019-12-27T20:47:29Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/aKuPmY2m1Ro/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/aKuPmY2m1Ro/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/aKuPmY2m1Ro/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline&#39;s 2019 Year in Review",
+        }
+      }
+    />
+    <VideoList
+      key="24sTHUyWhRM"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Founder & CEO Bismarck Lepe on growth opportunities at Wizeline and his career-path experience as an early Google employee. Join our team!",
+          "liveBroadcastContent": "none",
+          "publishTime": "2016-10-05T00:03:32Z",
+          "publishedAt": "2016-10-05T00:03:32Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/24sTHUyWhRM/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/24sTHUyWhRM/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/24sTHUyWhRM/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "[1 of 2] Wizeline CEO shares career lessons from Google",
+        }
+      }
+    />
+    <VideoList
+      key="IxGc1gSqB3A"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Tania discovered her interest in Big Data while working at Wizeline and took Wizeline Academy courses to skill up and join the data team. Now, she works on ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2021-02-04T17:45:11Z",
+          "publishedAt": "2021-02-04T17:45:11Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/IxGc1gSqB3A/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/IxGc1gSqB3A/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/IxGc1gSqB3A/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline Data Engineering featuring Tania Reyes",
+        }
+      }
+    />
+    <VideoList
+      key="NP1gAnbeNno"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "A small but mighty (and growing) team, the Queretaro crew has taken ownership of growing the office and brand, speaking at university events, hosting tech ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-11-12T20:45:18Z",
+          "publishedAt": "2019-11-12T20:45:18Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/NP1gAnbeNno/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/NP1gAnbeNno/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/NP1gAnbeNno/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Wizeline Querétaro | Mexico&#39;s New Knowledge Economy (We&#39;re hiring!)",
+        }
+      }
+    />
+    <VideoList
+      key="F6Krwu6lUc8"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Science and technology always caught Miriam's attention. One of her ultimate goals as a Senior Engineer Manager and Lead from the Mobile Team at Wizeline ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-10-23T04:15:31Z",
+          "publishedAt": "2020-10-23T04:15:31Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/F6Krwu6lUc8/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/F6Krwu6lUc8/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/F6Krwu6lUc8/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Miriam Godinez | Women in Leadership at Wizeline",
+        }
+      }
+    />
+    <VideoList
+      key="RFq7gfvhtCk"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Thanks to swift government action, the COVID-19 situation in Vietnam has reached a point where businesses are able to return to work and reopen offices.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-05-23T00:11:23Z",
+          "publishedAt": "2020-05-23T00:11:23Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/RFq7gfvhtCk/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/RFq7gfvhtCk/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/RFq7gfvhtCk/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Welcome Back to Wizeline Vietnam | Extended Version",
+        }
+      }
+    />
+    <VideoList
+      key="E1Vq_A3WKK8"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Wizeline builds teams with a mix of technical and non-technical talent to deliver better products, faster. Learn more about our consulting services: ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2017-12-09T18:46:07Z",
+          "publishedAt": "2017-12-09T18:46:07Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/E1Vq_A3WKK8/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/E1Vq_A3WKK8/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/E1Vq_A3WKK8/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "How does Wizeline work?",
+        }
+      }
+    />
+    <VideoList
+      key="ZmkslANDz0Q"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-12-18T19:22:44Z",
+          "publishedAt": "2019-12-18T19:22:44Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/ZmkslANDz0Q/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/ZmkslANDz0Q/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/ZmkslANDz0Q/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "12 Wishes from Wizeline | Happy Holidays 2019",
+        }
+      }
+    />
+    <VideoList
+      key="Nss3EmTDD3s"
+      video={
+        Object {
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "channelTitle": "Wizeline",
+          "description": "Hear from our employees directly about what excites them about their roles here at Wizeline. Wizeline wants to hire the best and the brightest to accelerate their ...",
+          "liveBroadcastContent": "none",
+          "publishTime": "2017-12-08T18:13:27Z",
+          "publishedAt": "2017-12-08T18:13:27Z",
+          "thumbnails": Object {
+            "default": Object {
+              "height": 90,
+              "url": "https://i.ytimg.com/vi/Nss3EmTDD3s/default.jpg",
+              "width": 120,
+            },
+            "high": Object {
+              "height": 360,
+              "url": "https://i.ytimg.com/vi/Nss3EmTDD3s/hqdefault.jpg",
+              "width": 480,
+            },
+            "medium": Object {
+              "height": 180,
+              "url": "https://i.ytimg.com/vi/Nss3EmTDD3s/mqdefault.jpg",
+              "width": 320,
+            },
+          },
+          "title": "Why Wizeline?",
+        }
+      }
+    />
+  </VideoListContainer>
+</SectionContainer>
+`;

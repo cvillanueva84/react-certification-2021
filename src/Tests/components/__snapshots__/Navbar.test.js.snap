@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the Navbar component should render the Navbar component correctly 1`] = `
+<Fragment>
+  <ContextProvider
+    value={
+      Object {
+        "color": "#fff",
+        "size": "3rem",
+      }
+    }
+  >
+    <nav
+      className="navbar"
+    >
+      <div
+        className="navbar__left-section"
+      >
+        <Link
+          className="menu-bars"
+          to="/"
+        >
+          <FaHamburger
+            onClick={[Function]}
+          />
+        </Link>
+        <styled.input
+          placeholder="search a video..."
+          type="text"
+        />
+      </div>
+      <div
+        className="navbar__right-section"
+      >
+        <div
+          className="toggle"
+        >
+          <label
+            className="switch"
+          >
+            <input
+              type="checkbox"
+            />
+            <span
+              className="slider round"
+            />
+          </label>
+        </div>
+        <Link
+          to="/"
+        >
+          <FaUserNinja />
+        </Link>
+      </div>
+    </nav>
+    <nav
+      className="nav-menu"
+    >
+      <ul
+        className="nav-menu-items"
+        onClick={[Function]}
+      >
+        <li
+          className="navbar-toggle"
+        >
+          <Link
+            className="menu-bars"
+            to="/"
+          >
+            <FaWindowClose />
+          </Link>
+        </li>
+        <li
+          className="nav-text"
+        >
+          <Link
+            to="/"
+          >
+            <FaHome />
+            <span>
+              Home
+            </span>
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  </ContextProvider>
+</Fragment>
+`;
