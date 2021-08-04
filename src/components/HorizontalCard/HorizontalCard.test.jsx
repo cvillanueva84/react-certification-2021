@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Content from './Content';
+
+import HorizontalCard from './HorizontalCard';
 
 beforeEach(cleanup);
 
-const data = [
+const card = [
   {
     id: '01',
     snippet: {
       title: 'Hello',
-      description: 'description',
       thumbnails: {
         medium: {
           url: 'http://www.youtube.com/watch?v',
@@ -22,7 +22,6 @@ const data = [
     id: '02',
     snippet: {
       title: 'wizeline',
-      description: 'description',
       thumbnails: {
         medium: {
           url: 'http://youtube.com/watch?v=kdkdj',
@@ -32,14 +31,18 @@ const data = [
   },
 ];
 
-describe('Content', () => {
-  it('should render a Object', () => {
+describe('VideoGrid', () => {
+  it('Should render the Video Grid Component', () => {
     const { getByText } = render(
       <BrowserRouter>
-        <Content data={data} />
+        <HorizontalCard
+          title={card[0].snippet.title}
+          image={card[0].snippet.thumbnails.medium.url}
+          videoId={card[0].id.videoId}
+          key={card[0].id.videoId}
+        />
       </BrowserRouter>
     );
     expect(getByText('Hello')).toBeInTheDocument();
-    expect(getByText('wizeline')).toBeInTheDocument();
   });
 });
