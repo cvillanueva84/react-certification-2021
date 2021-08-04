@@ -5,14 +5,13 @@ const useYoutubeAPI = () => {
   const [videos, setVideos] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const KEY = "AIzaSyAMlFpNbtxorv_yR0nZfAttKNUatPJq7t8";
   const fetchVideos = async (query) => {
     setLoading(true);
     try {
       const queryParams = buildQueryParams({
         q: query
       });
-      const resp = await youtubeClient(`/search?${queryParams}&key=${KEY}`);
+      const resp = await youtubeClient(`/search?${queryParams}&key=${process.env.REACT_APP_YOUTUBE_KEY}`);
       setVideos(resp.data);
       console.log("JSON",videos);
     } catch (err) {
