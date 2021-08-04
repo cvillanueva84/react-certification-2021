@@ -11,7 +11,8 @@ function LoginPage() {
   function authenticate(event) {
     event.preventDefault();
     login();
-    history.push('/secret');
+    {/*history.push('/secret');*/}
+    history.push('/display');
   }
 
   return (

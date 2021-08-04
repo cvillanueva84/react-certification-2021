@@ -10,13 +10,13 @@ function useFortune() {
   useEffect(() => {
     async function findMyFortune() {
       try {
-        const response = await fetch(API_URL);
+        /*const response = await fetch(API_URL);
         const fortuneCookies = await response.json();
 
         const randomIndex = random(fortuneCookies.length);
         const currentFortune = fortuneCookies[randomIndex];
 
-        setFortune(currentFortune.message);
+        setFortune(currentFortune.message);*/
       } catch (error) {
         console.error('Bad fortune: ', error);
       }
