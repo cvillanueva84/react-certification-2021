@@ -1,57 +1,55 @@
-import React, { useLayoutEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-import AuthProvider from '../../providers/Auth';
-import HomePage from '../../pages/Home';
-import LoginPage from '../../pages/Login';
-import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
-import Fortune from '../Fortune';
-import Layout from '../Layout';
-import { random } from '../../utils/fns';
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Header from '../Header';
+import Content from '../Content';
+import youtube from '../../api/youtube';
+import VideoDetail from '../VideoDetail';
 
 function App() {
-  useLayoutEffect(() => {
-    const { body } = document;
+  const [videos, setVideos] = React.useState([]);
+  const [relatedVideos, setRelatedVideos] = React.useState([]);
+  const [selectedVideo, setSelectedVideo] = React.useState(null);
+  const handleSubmit = async (termFromHeaderSearch) => {
+    const response = await youtube.get('search', {
+      params: {
+        q: termFromHeaderSearch,
+      },
+    });
+    setVideos(response.data.items);
+  };
+  const handleVideoSelect = (video) => {
+    setSelectedVideo(video);
+  };
 
-    function rotateBackground() {
-      const xPercent = random(100);
-      const yPercent = random(100);
-      body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
+  React.useEffect(() => {
+    async function getRelatedVideos() {
+      const response = await youtube.get('search', {
+        params: {
+          relatedToVideoId: selectedVideo.id.videoId,
+          type: 'video',
+        },
+      });
+      setRelatedVideos(response.data.items);
     }
-
-    const intervalId = setInterval(rotateBackground, 3000);
-    body.addEventListener('click', rotateBackground);
-
-    return () => {
-      clearInterval(intervalId);
-      body.removeEventListener('click', rotateBackground);
-    };
-  }, []);
+    if (selectedVideo) {
+      getRelatedVideos();
+    }
+  }, [selectedVideo, setRelatedVideos]);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
-      </AuthProvider>
-    </BrowserRouter>
+    <>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Header handleFormSubmit={handleSubmit} />
+        </Grid>
+        <Grid item xs={12} sm={9}>
+          <VideoDetail video={selectedVideo} relatedVideos={relatedVideos} />
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <Content videos={videos} handleVideoSelect={handleVideoSelect} />
+        </Grid>
+      </Grid>
+    </>
   );
 }
 
