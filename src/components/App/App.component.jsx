@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import NavbarApp from '../Navbar/Navbar.component';
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
@@ -31,6 +31,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Layout>
+          <NavbarApp />
           <Switch>
             <Route exact path="/">
               <HomePage />

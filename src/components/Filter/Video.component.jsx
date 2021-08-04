@@ -1,7 +1,11 @@
 import React from 'react';
 import { Input } from './Video.style';
-
+import {useAppContext} from "../Layout/Layout.component"
 function FilterVideo() {
-  return <Input placeholder="Search..." />;
+  const {setInput} = useAppContext();
+  const updateSearch = (event)=>{
+    setInput(event.target.value);
+  };
+  return <Input onChange={updateSearch} placeholder="Search..." />;
 }
 export default FilterVideo;

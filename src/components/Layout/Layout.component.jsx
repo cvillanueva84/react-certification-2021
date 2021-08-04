@@ -1,13 +1,23 @@
-import React from 'react';
-import NavbarApp from '../Navbar/Navbar.component';
+import React, { useContext} from 'react';
+import { useState } from "react";
+const AppContext = React.createContext();
+
+function useAppContext() {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error(`Can't use appContext without an AppContext!`);
+  }
+  return context;
+}
 
 function Layout({ children }) {
+  const [input, setInput] = useState("");;
   return (
-    <>
-      <NavbarApp />
+    <AppContext.Provider value={{input,setInput}}>
       <div className="container">{children}</div>
-    </>
+    </AppContext.Provider>
   );
 }
 
-export default Layout;
+export {useAppContext}
+export default Layout
