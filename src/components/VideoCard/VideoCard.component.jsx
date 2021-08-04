@@ -5,6 +5,9 @@ const CardContainer = styled.div`
   display: flex;
   width: 25%;
   padding: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const CardDiv = styled.div`
@@ -27,9 +30,13 @@ const Description = styled.p`
   text-align: left;
 `;
 
-const VideoCard = ({ description, title, image }) => {
+const VideoCard = ({ description, title, image, handleOpenDetails, item }) => {
   return (
-    <CardContainer>
+    <CardContainer
+      onClick={() => {
+        handleOpenDetails(item);
+      }}
+    >
       <CardDiv>
         <img src={image} alt="Thumbnail" />
         <Card>

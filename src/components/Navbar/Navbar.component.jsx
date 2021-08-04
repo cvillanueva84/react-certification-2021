@@ -34,7 +34,7 @@ const SearchInput = styled.input`
     font-family: Arial, Helvetica, sans-serif; // <Thing> when hovered
   }
 `;
-const Navbar = ({ open, setOpen }) => {
+const Navbar = ({ open, setOpen, onSearch }) => {
   return (
     <Container>
       <MenuBurger open={open} onClick={() => setOpen(!open)}>
@@ -48,7 +48,7 @@ const Navbar = ({ open, setOpen }) => {
         </svg>
       </MenuBurger>
       <Search>
-        <SearchInput type="search" placeholder="search..." />
+        <SearchInput type="search" placeholder="search..." onChange={onSearch} />
       </Search>
       <Toggle />
       <Avatar />

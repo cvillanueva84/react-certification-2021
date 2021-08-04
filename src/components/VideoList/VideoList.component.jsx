@@ -1,7 +1,10 @@
+/* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import VideoCard from '../VideoCard';
+import VideoDetailsView from '../VideoDetailsView';
+import { useFetchVideos } from '../../utils/hooks/useFetchVideos';
 
 const CardListContainer = styled.div`
   width: 100%;
@@ -12,35 +15,44 @@ const CardListContainer = styled.div`
   padding: 70px;
 `;
 
-const VideoList = () => {
-  const [data, setData] = useState(null);
+const VideoList = ({ search }) => {
+  const [openedDetails, setOpenedDetails] = useState(false);
+  const [selectedVideoDetails, setSelectedVideoDetails] = useState(false);
+  const { data } = useFetchVideos(search);
+  const handleOpenDetails = (item) => {
+    setOpenedDetails(!openedDetails);
+    setSelectedVideoDetails(item);
+  };
 
   useEffect(() => {
-    async function fetchApi() {
-      const response = await fetch(
-        'https://gist.githubusercontent.com/jparciga/1d4dd34fb06ba74237f8966e2e777ff5/raw/f3af25f1505deb67e2cc9ee625a633f24d8983ff/youtube-videos-mock.json'
-      );
-      const responseData = await response.json();
-      setData(responseData);
-    }
+    console.log('DATA');
+  }, [search]);
 
-    fetchApi();
-  }, []);
-
-  return (
-    <CardListContainer>
-      {!data ? (
-        <div>Loading...</div>
-      ) : (
-        data.items.map((item) => (
-          <VideoCard
-            description={item.snippet.description}
-            title={item.snippet.title}
-            image={item.snippet.thumbnails.medium.url}
-          />
-        ))
-      )}
-    </CardListContainer>
+  return openedDetails ? (
+    <VideoDetailsView dataItem={selectedVideoDetails} search={search} />
+  ) : (
+    <>
+      <h1>Welcome to the Challenge!</h1>
+      <CardListContainer>
+        {data ? (
+          data.error ? (
+            <div>Error Fetching data...</div>
+          ) : (
+            data.items.map((item) => (
+              <VideoCard
+                description={item.snippet.description}
+                title={item.snippet.title}
+                image={item.snippet.thumbnails.medium.url}
+                handleOpenDetails={handleOpenDetails}
+                item={item}
+              />
+            ))
+          )
+        ) : (
+          <div>Loading...</div>
+        )}
+      </CardListContainer>
+    </>
   );
 };
 

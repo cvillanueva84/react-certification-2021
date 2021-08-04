@@ -6,14 +6,14 @@ import { useOnClickOutside } from '../../utils/hooks/useOnClickOutside';
 
 import './Layout.styles.css';
 
-function Layout({ children }) {
+function Layout({ children, onSearch }) {
   const [open, setOpen] = useState(false);
 
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
   return (
     <main className="container">
-      <Navbar open={open} setOpen={setOpen} />
+      <Navbar open={open} setOpen={setOpen} onSearch={onSearch} />
       <div ref={node}>
         <Menu open={open} setOpen={setOpen} />
       </div>
