@@ -1,0 +1,90 @@
+.box-one{
+    display: flex; 
+    align-items: center;
+}
+.switch{
+    width: 50px;
+    height: 20px;
+    border: black solid 1px;
+    border-radius: 0.8rem;
+    padding: 0.2rem;
+    position: relative; 
+}
+.user{        
+    font-size: 1.5rem;
+    background-color: grey;
+    padding: 0.5rem;
+    border-radius: 50%;
+
+}
+.circle-switch{
+    border: grey solid 1px;
+    height: 24px;
+    width: 24px;
+    background-color: grey;
+    border-radius: 50%;
+    position: absolute; 
+    top: calc(50% - 12px);
+    left: 0;
+}
+
+.other-options{    
+     display: none; 
+    align-items: center;
+
+} 
+.nav{
+    -webkit-box-shadow: -1px -2px 15px 5px rgba(0,0,0,0.53); 
+    box-shadow: -1px -2px 15px 5px rgba(0,0,0,0.53);
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        background-color: skyblue; 
+        display: flex; 
+        justify-content: space-between;                
+        width:100%; 
+}
+
+    .bars{
+        border: none; 
+        background: transparent;
+        font-size: 1.8rem;        
+        cursor: pointer;
+        margin-right: 1.2rem;
+    }
+    .search{
+        font-size: 1.4rem;
+    }
+    .formulario{        
+        display: flex;
+        align-items: center;
+    }
+    .search-b{
+        border: none; 
+        background-color: transparent;    
+        margin-left: 0.5rem;
+        cursor: pointer;
+    }
+    .search-box{
+        font-size: 1.1rem;
+        padding: 0.25rem;
+        width: 90%;
+        border: none;
+        outline: none;
+        border-radius: 0.25rem;                
+    }
+    
+    @media screen and (min-width: 600px){
+        .search-box{
+            width: 300px;
+        }
+    }
+    @media screen and (min-width: 970px){
+        .other-options{
+            display: flex;
+            width: 240px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+    }
