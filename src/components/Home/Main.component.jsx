@@ -3,32 +3,30 @@ import { Container } from '../../Global.styles';
 import CardVideo from '../Card/Card.component';
 import { Cards, Title } from './Main.style';
 import useYoutubeAPI from '../API/useYoutubeAPI';
-import {useAppContext} from "../Layout/Layout.component"
+import { useAppContext } from '../Layout/Layout.component';
 
 export default function MainView() {
-  const {input} = useAppContext();
-  const { videos, loading, error, fetchVideos } = useYoutubeAPI();
-  useEffect(() =>{
+  const { input } = useAppContext();
+  const { videos, loading, fetchVideos } = useYoutubeAPI();
+  useEffect(() => {
     fetchVideos(input);
-    console.log(error);
-  });
+  }, [input]);
   return (
     <Container>
-      <Title>{input}</Title>
-      <Cards>
-      {!loading && (
+      <Title>Welcome to the challenge</Title>
+      {!loading && videos !== undefined && (
         <Cards>
           {videos.items.map((video) => (
-             <CardVideo
-             key={video.etag}
-             name={video.snippet.title}
-             description={video.snippet.description}
-             image={video.snippet.thumbnails.high.url}
-           />
+            <CardVideo
+              id={video.id.videoId}
+              key={video.etag}
+              name={video.snippet.title}
+              description={video.snippet.description}
+              image={video.snippet.thumbnails.high.url}
+            />
           ))}
         </Cards>
       )}
-      </Cards>
     </Container>
   );
 }

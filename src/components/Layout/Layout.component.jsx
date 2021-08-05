@@ -1,5 +1,5 @@
-import React, { useContext} from 'react';
-import { useState } from "react";
+import React, { useContext, useState } from 'react';
+
 const AppContext = React.createContext();
 
 function useAppContext() {
@@ -11,13 +11,13 @@ function useAppContext() {
 }
 
 function Layout({ children }) {
-  const [input, setInput] = useState("");;
+  const [input, setInput] = useState('');
   return (
-    <AppContext.Provider value={{input,setInput}}>
+    <AppContext.Provider value={{ input, setInput }}>
       <div className="container">{children}</div>
     </AppContext.Provider>
   );
 }
 
-export {useAppContext}
-export default Layout
+export { useAppContext };
+export default Layout;

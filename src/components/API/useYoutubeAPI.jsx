@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { youtubeClient, buildQueryParams } from "../../helpers";
+import { useState } from 'react';
+import { youtubeClient, buildQueryParams } from '../../helpers';
 
 const useYoutubeAPI = () => {
   const [videos, setVideos] = useState();
@@ -9,23 +9,43 @@ const useYoutubeAPI = () => {
     setLoading(true);
     try {
       const queryParams = buildQueryParams({
-        q: query
+        q: query,
+        part: 'snippet',
+        key: process.env.REACT_APP_YOUTUBE_KEY,
+        maxResults: 20,
       });
-      const resp = await youtubeClient(`/search?${queryParams}&key=${process.env.REACT_APP_YOUTUBE_KEY}`);
+      const resp = await youtubeClient(`/search?${queryParams}`);
       setVideos(resp.data);
-      console.log("JSON",videos);
     } catch (err) {
       setError(err);
     } finally {
       setLoading(false);
     }
   };
-
+  const fetchRelatedVideos = async (id) => {
+    setLoading(true);
+    try {
+      const queryParams = buildQueryParams({
+        relatedToVideoId: id,
+        part: 'snippet',
+        key: process.env.REACT_APP_YOUTUBE_KEY,
+        maxResults: 20,
+        type: 'video',
+      });
+      const resp = await youtubeClient(`/search?${queryParams}`);
+      setVideos(resp.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
   return {
     videos,
     loading,
     error,
-    fetchVideos
+    fetchVideos,
+    fetchRelatedVideos,
   };
 };
 

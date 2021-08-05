@@ -7,6 +7,7 @@ import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import VideoPage from '../../pages/Video';
 
 function App() {
   useLayoutEffect(() => {
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <LoginPage />
+            </Route>
+            <Route path="/video/:id?/:title?/:description?">
+              <VideoPage />
             </Route>
             <Route path="*">
               <NotFound />

@@ -9,11 +9,13 @@ import {
   CardImage,
 } from './Card.style';
 
-export default function CardVideo({ name, description, image }) {
+export default function CardVideo({ name, description, image, id }) {
   return (
     <CardWrapper>
       <CardHeader>
-        <CardImage src={image} alt="NO IMAGE" />
+        <a href={`/video/${id}/${name}/${description}`}>
+          <CardImage src={image} alt="NO IMAGE" />
+        </a>
       </CardHeader>
       <CardBody>
         <CardFieldset>
