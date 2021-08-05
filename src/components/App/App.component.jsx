@@ -1,15 +1,13 @@
 import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import NavbarApp from '../Navbar/Navbar.component';
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
-import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import VideoPage from '../../pages/Video';
 
 function App() {
   useLayoutEffect(() => {
@@ -34,6 +32,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Layout>
+          <NavbarApp />
           <Switch>
             <Route exact path="/">
               <HomePage />
@@ -41,18 +40,16 @@ function App() {
             <Route exact path="/login">
               <LoginPage />
             </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
+            <Route path="/video/:id?/:title?/:description?">
+              <VideoPage />
+            </Route>
             <Route path="*">
               <NotFound />
             </Route>
           </Switch>
-          <Fortune />
         </Layout>
       </AuthProvider>
     </BrowserRouter>
   );
 }
-
 export default App;
