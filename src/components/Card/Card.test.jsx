@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 import Card from '.';
@@ -23,7 +23,7 @@ const video = {
 
 describe('VideoGrid', () => {
   it('Should render Text wizeline', () => {
-    const { getByText } = render(
+    render(
       <BrowserRouter>
         <Card
           title={video.snippet.title}
@@ -34,6 +34,6 @@ describe('VideoGrid', () => {
         />
       </BrowserRouter>
     );
-    expect(getByText('wizeline')).toBeInTheDocument();
+    expect(screen.getByText('wizeline')).toBeInTheDocument();
   });
 });

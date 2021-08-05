@@ -20,24 +20,14 @@ function ViewPage() {
   const { video, loading, listVideoRelated, error, fetchVideo, fetchRelation } =
     useYoutubeApi();
 
-  const enterPressed = async (event) => {
-    event.preventDefault();
-  };
-
   useEffect(() => {
     fetchRelation(videoId);
     fetchVideo(videoId);
-    console.log('here');
     if (error !== null) {
       console.log(error);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId]);
-
-  useEffect(() => {
-    console.log(video);
-    console.log(listVideoRelated);
-  });
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -50,7 +40,7 @@ function ViewPage() {
 
   return (
     <Viewpage>
-      <Header enterPressed={enterPressed}>
+      <Header>
         <InputSearch
           placeholder="Search..."
           type="text"

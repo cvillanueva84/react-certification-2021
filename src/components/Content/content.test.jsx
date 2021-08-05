@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Content from './Content';
 
@@ -34,12 +34,12 @@ const data = [
 
 describe('Content', () => {
   it('should render a Object', () => {
-    const { getByText } = render(
+    render(
       <BrowserRouter>
         <Content data={data} />
       </BrowserRouter>
     );
-    expect(getByText('Hello')).toBeInTheDocument();
-    expect(getByText('wizeline')).toBeInTheDocument();
+    expect(screen.getByText('Hello')).toBeInTheDocument();
+    expect(screen.getByText('wizeline')).toBeInTheDocument();
   });
 });
