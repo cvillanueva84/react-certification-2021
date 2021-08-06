@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import { useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ListOfRelatedVideos from '../../components/ListOfRelatedVideos';
-import mockVideos from '../../mock/youtube-videos-mock.json';
 import { useYouTube } from '../../utils/hooks/useYouTube';
-import { SEARCH_TERM_KEY } from '../../utils/constants';
-import { storage } from '../../utils/storage';
 const Title = styled.div`
   font-weight: 600;
   font-size: 1.5rem;
@@ -47,19 +44,12 @@ const Grid = styled.section`
   }
 `;
 
-function VideoDetailsView() {
+function VideoDetailsView(searchTerm) {
   const { id } = useParams();
   const location = useLocation();
   const { videoTitle, videoDescription } = location.state;
   const url = 'https://www.youtube.com/embed/' + id;
-  let dataVideos;
-  let youTubeVideos = useYouTube();
-  if (storage.get(SEARCH_TERM_KEY) === null) {
-    dataVideos = mockVideos;
-  } else {
-    dataVideos = youTubeVideos;
-    console.log('no lo es');
-  }
+
   return (
     <Grid data-testid="location-videoDetailsView" className="grid">
       <VideoDetails>
@@ -70,9 +60,7 @@ function VideoDetailsView() {
         <Title>{videoTitle}</Title>
         <Description>{videoDescription}</Description>
       </VideoDetails>
-      {/* <ListOfRelatedVideos videos={mockVideos}></ListOfRelatedVideos> */}
-      {/* <ListOfRelatedVideos videos={useYouTube('Lennon')}></ListOfRelatedVideos> */}
-      <ListOfRelatedVideos videos={dataVideos}></ListOfRelatedVideos>
+      <ListOfRelatedVideos videos={useYouTube(searchTerm)}></ListOfRelatedVideos>
     </Grid>
   );
 }

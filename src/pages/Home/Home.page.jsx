@@ -2,9 +2,6 @@ import React from 'react';
 import Cards from '../../components/Cards';
 import styled from 'styled-components';
 import { useYouTube } from '../../utils/hooks/useYouTube';
-import mockVideos from '../../mock/youtube-videos-mock.json';
-import { storage } from '../../utils/storage';
-import { SEARCH_TERM_KEY } from '../../utils/constants';
 const Grid = styled.section`
   display: grid;
   gap: 2.5rem;
@@ -13,19 +10,10 @@ const Grid = styled.section`
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
 `;
 
-function HomePage() {
-  let dataVideos;
-  let youTubeVideos = useYouTube();
-  if (storage.get(SEARCH_TERM_KEY) === null) {
-    dataVideos = mockVideos;
-  } else {
-    dataVideos = youTubeVideos;
-  }
+function HomePage(searchTerm) {
   return (
     <Grid data-testid="location-home" className="grid">
-      {/* <Cards videos={useYouTube('Lennon')}></Cards> */}
-      {/* <Cards videos={mockVideos}></Cards> */}
-      <Cards videos={dataVideos}></Cards>
+      <Cards videos={useYouTube(searchTerm)}></Cards>
     </Grid>
   );
 }

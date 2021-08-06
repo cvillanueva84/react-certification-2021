@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SEARCH_TERM_KEY } from '../../utils/constants';
-import { storage } from '../../utils/storage';
-//import { Link, useHistory } from 'react-router-dom';
-//import { useAuth } from '../../providers/Auth';
 
 const HeaderBody = styled.div`
   background-color: white;
@@ -109,28 +105,15 @@ const CheckBox = styled.input`
   }
 `;
 
-function Header() {
-  // const history = useHistory();
-  // const { authenticated, logout } = useAuth();
-
-  // function deAuthenticate(event) {
-  //   event.preventDefault();
-  //   logout();
-  //   history.push('/');
-  // }
-  const [searchTerm, setSerchTerm] = useState('Hombres G');
-
+function Header({ setSearchTerm }) {
+  const [searchTermAux, setSearchTermAux] = useState('');
   function handleChange(event) {
-    setSerchTerm(event.target.value);
+    setSearchTermAux(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    alert(
-      "I can't show the info in the cards because I did not how update the new info to the component CARDS xD but if You change of page, You will see the new videos with the searchTerm : " +
-        searchTerm
-    );
-    storage.set(SEARCH_TERM_KEY, searchTerm);
+    setSearchTerm(searchTermAux);
   }
   return (
     <HeaderBody>
@@ -144,16 +127,7 @@ function Header() {
           <CheckBox id="checkbox" type="checkbox" />
           <CheckBoxLabel htmlFor="checkbox" />
         </CheckBoxWrapper>
-        <Button>
-          Login
-          {/* {authenticated ? (
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-          ) : (
-            <Link to="/login">Login</Link>
-          )} */}
-        </Button>
+        <Button>Login</Button>
       </HeaderItems>
     </HeaderBody>
   );

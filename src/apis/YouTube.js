@@ -1,7 +1,7 @@
 import axios from 'axios';
-const KEY = 'AIzaSyACcAkV07ihRRybdSU6WNdOJF__uOQFEEY';
-//AIzaSyACcAkV07ihRRybdSU6WNdOJF__uOQFEEY
-//AIzaSyAhZb6d7g8UiBbriOBoIQRyQVoGjES_KIw
+require('dotenv').config();
+const KEY = process.env.KEY_YT;
+console.log(KEY);
 export default axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3/',
   params: {

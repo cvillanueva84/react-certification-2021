@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import YouTube from '../../apis/YouTube';
-import { SEARCH_TERM_KEY } from '../constants';
-import { storage } from '../storage';
-function useYouTube() {
+function useYouTube(searchTerm) {
   const [dataVideos, setDataVideos] = useState({ items: [] });
   useEffect(() => {
     async function findVideos() {
       try {
         const response = await YouTube.get('/search', {
           params: {
-            q: storage.get(SEARCH_TERM_KEY),
+            q: searchTerm,
           },
         });
         setDataVideos(response.data);
@@ -19,7 +17,7 @@ function useYouTube() {
     }
 
     findVideos();
-  }, []);
+  }, [searchTerm]);
 
   return dataVideos;
 }

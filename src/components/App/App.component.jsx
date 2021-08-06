@@ -1,37 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-//import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import VideoDetailsView from '../../pages/VideoDetailsView';
-//import Private from '../Private';
 import Layout from '../Layout';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('Love of lesbian');
+
   return (
     <BrowserRouter>
-      {/* <AuthProvider> */}
-      <Layout>
+      <Layout sST={setSearchTerm}>
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <HomePage sT={searchTerm} />
           </Route>
           <Route exact path="/login">
             <LoginPage />
           </Route>
-          {/* <Private exact path="/secret"> */}
           <Route path="/:id">
-            <VideoDetailsView />
+            <VideoDetailsView sT={searchTerm} />
           </Route>
-          {/* </Private> */}
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
       </Layout>
-      {/* </AuthProvider> */}
     </BrowserRouter>
   );
 }
