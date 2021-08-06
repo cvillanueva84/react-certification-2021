@@ -4,6 +4,7 @@ const CardBody = styled.div`
   width: 100%;
   height: 20rem;
   cursor: pointer;
+  overflow: hidden;
   box-shadow: #000 1px 1px 0, #000 2px 2px 0, #000 3px 3px 0, #000 4px 4px 0,
     #000 5px 5px 0, #000 6px 6px 0, #000 7px 7px 0, #000 8px 8px 0;
   :hover {
@@ -28,7 +29,6 @@ const Title = styled.div`
 `;
 const Description = styled.div`
   font-size: 0.7rem;
-  overflow: hidden;
 `;
 
 function Card({ image, title, description }) {
