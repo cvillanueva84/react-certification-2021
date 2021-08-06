@@ -1,0 +1,95 @@
+html {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  margin: auto;
+  padding-top: 80px;
+  width: 90%;
+}
+
+.contenedor iframe {
+  width: 640px;
+  height: 360px;
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .contenedor {
+    margin: auto;
+    padding-top: 80px;
+    width: 90%;
+  }
+
+  .contenedor iframe {
+    width: 320px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor {
+    padding-top: 200px;
+  }
+
+  .contenedor iframe {
+    width: 320px;
+    height: 240px;
+  }
+}
+
+.video-details {
+  height: auto;
+  padding: 10px 5px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h2 {
+  text-align: center;
+  font-family: monospace;
+  margin: 15px 0;
+  font-size: 40px;
+}
+
+p {
+  text-align: justify;
+  margin: 0 30px 10px 30px;
+}
+
+.contenedor-sugeridos {
+  margin-top: 5px;
+}
+
+h3 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.sugeridos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  height: 300px;
+}
+
+.sugeridos p {
+  display: none;
+}

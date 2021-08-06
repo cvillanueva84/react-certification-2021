@@ -6,7 +6,7 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 export const MainApp = () => {
 
-
+    const [user, setUser] = useState({});
     const [search, setSearch] = useState({});
     const [mode, setMode] = useState('light');
 
@@ -41,6 +41,8 @@ export const MainApp = () => {
 
     return (
         <GlobalContext.Provider value={{
+            user,
+            setUser,
             search,
             setSearch,
             mode,

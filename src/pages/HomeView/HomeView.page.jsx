@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from '../Header/Header';
 import { Fill } from '../Fill/Fill'
+
 import '../HomeView/HomeView.style.css';
 
 
