@@ -1,9 +1,12 @@
 import React from 'react';
-
-import './Layout.styles.css';
-
-function Layout({ children }) {
-  return <main className="container">{children}</main>;
+import Header from '../Header';
+function Layout(props) {
+  return (
+    <div>
+      <Header setSearchTerm={props.sST}></Header>
+      <main className="container">{props.children}</main>
+    </div>
+  );
 }
 
 export default Layout;
