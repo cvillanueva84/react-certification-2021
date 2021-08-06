@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import { useContext } from 'react'
 import { GlobalContext } from './Context'
 import { Link } from "react-router-dom";
-import '../style/HeaderNav.css'
+import '../style/HeaderNav.css';
+import { functionReducer } from './functionReducer';
 
-export const HeaderNav = ({setCategorias}) => {
 
-    const { setMode, setSearch } = useContext(GlobalContext);
+
+const init = () => {
+    return [{
+        search: '',
+        mode: 'light'
+    }]
+}
+
+
+
+export const HeaderNav = ({ setCategorias }) => {
+
+    const [state , dispatch] = useReducer(functionReducer, [], init);
+    console.log(state);
     const [inputValue, setValue] = useState('');
 
+    const { mode, setMode, setSearch } = useContext(GlobalContext);
 
     const handleInputText = (e) => {
         setValue(e.target.value);
@@ -16,6 +30,21 @@ export const HeaderNav = ({setCategorias}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const newSearch = {
+            search: inputValue,
+            mode: mode
+        }
+
+
+        const addSearch = {
+            type: 'addSearch',
+            payload: newSearch
+        }
+
+        dispatch(addSearch);
+
+
         //console.log('Submit!', inputValue);
         if (inputValue.trim().length > 2) {
             setSearch(inputValue);
@@ -23,8 +52,6 @@ export const HeaderNav = ({setCategorias}) => {
             setValue('');
         }
     }
-
-
 
     return (
         <div className="header">

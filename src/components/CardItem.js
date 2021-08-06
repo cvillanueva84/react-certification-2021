@@ -13,7 +13,7 @@ export const CardItem = ({ title, description, url, videoId, categoria }) => {
       <p>{description}</p>
       <button
       ><Link
-        to={`/videoDetails/${videoId}&${categoria}`}
+        to={`/videoDetails/${videoId}`}
       ><i className="far fa-play-circle"></i></Link></button>
 
     </div>

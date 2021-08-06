@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router'
 import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
 import { VideoDat } from './VideoDat';
 import '../style/VideoDetailsScreen.css'
+import { GlobalContext } from './Context';
+import { HeaderNav } from './HeaderNav';
 
-export const VideoDetailsScreen = ({ history }) => {
+export const VideoDetailsScreen = () => {
 
-    const { videoId, categoria } = useParams();
 
-    const { items: videos } = useFetchVideos(categoria);
+    const { videoId } = useParams();
+    const { search } = useContext(GlobalContext);
+
+    const { items: videos } = useFetchVideos(search);
 
     return (
         <div>
+            <HeaderNav className="header-videodetails"/>
             <div className="contenedor">
                 <div className="video-details">
                     <div className="video-details-vid">
@@ -26,7 +31,7 @@ export const VideoDetailsScreen = ({ history }) => {
 
                     </div>
                     <div className="video-details-text">
-                        {
+                        {   
                             videos.filter((vid) => vid.videoId === videoId).map((dato) => (
                                 <VideoDat
                                     key={dato.id}

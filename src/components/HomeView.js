@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { HeaderNav } from './HeaderNav';
 import { HomeScreen } from './HomeScreen';
 
+
+
 export const HomeView = ({ defaultCategorias = [] }) => {
+
 
     const [categorias, setCategorias] = useState(defaultCategorias);
     useEffect(() => {
