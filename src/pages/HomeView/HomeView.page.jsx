@@ -25,17 +25,17 @@ const Heading = styled.p`
   margin: 1rem 0 0 1rem;
 `;
 
-function HomeView(props) {
+function HomeView({changeUrl, videos}) {
 
   useEffect(() => {
-    props.changeUrl(`&`);
-  }, [])
+    changeUrl(`&`);
+  }, [changeUrl])
 
   return (
     <Wrapper>
       <Heading>{'For You'}</Heading>
       <VideoContainer data-testid="videos">
-        {props.videos?.items?.map((video, index) => {
+        {videos?.items?.map((video, index) => {
           const title = video.snippet.title;
           const channelTitle = video.snippet.channelTitle;
           const thumbnail = video.snippet.thumbnails.medium.url;

@@ -13,9 +13,9 @@ const Input = styled.input`
   outline: none;
 `;
 
-function SearchInput(props) {
+function SearchInput({ handleChange }) {
   return (
-    <Input onChange={props.handleChange} placeholder="Search" type="text" />
+    <Input onChange={handleChange} placeholder="Search" type="text" />
   );
 }
 

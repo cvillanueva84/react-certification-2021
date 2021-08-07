@@ -23,26 +23,26 @@ const Container = styled.div`
   }
 `;
 
-function VideoHome(props) {
+function VideoHome({match, changeUrl, videos}) {
 
-  const [{ isLoading, isError, data }, changeUrl] = useVideos();
+  const [{ isLoading, isError, data }, changeRelatedUrl] = useVideos();
 
   useEffect(() => {
-    props.changeUrl(`&id=${props.match.params.id}`);
-  }, [props.match.params.id])
+    changeUrl(`&id=${match.params.id}`);
+  }, [changeUrl, match.params.id])
   useEffect(() => {
-    changeUrl(`&relatedToVideoId=${props.match.params.id}`)
-  }, [changeUrl, props.match.params.id])
+    changeRelatedUrl(`&relatedToVideoId=${match.params.id}`)
+  }, [changeRelatedUrl, match.params.id])
 
   return (
     <Container>
       {
-        props.videos?.items &&
-        <VideoMain id={props.match.params.id} video={props.videos?.items[0]} isLoading={isLoading} isError={isError} />
+        videos?.items &&
+        <VideoMain id={match.params.id} video={videos?.items[0]} isLoading={isLoading} isError={isError} />
       }
       {
         data?.items &&
-        <RelatedVideos id={props.match.params.id} videos={data} />
+        <RelatedVideos id={match.params.id} videos={data} />
       }
     </Container>
   );

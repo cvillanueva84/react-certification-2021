@@ -40,24 +40,29 @@ const TagTitle = styled.p`
   text-align: center;
 `;
 
-function VideoMain(props) {
+function VideoMain({video}) {
 
-  const title = props.video.snippet.title;
-  const id = props.video.id;
-  const description = props.video.snippet.description;
-  const tags = props.video.snippet.tags;
+  const title = video.snippet.title;
+  const id = video.id;
+  const description = video.snippet.description;
+  const tags = video.snippet.tags;
 
   return (
     <Container>
       <VideoPlayer id={id} />
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <TagTitle>Tags</TagTitle>
-      <TagContainer>
-        {tags?.map((tag) => (
-          <Tag role="tag" key={tag}>{tag}</Tag>
-        ))}
-      </TagContainer>
+      {
+        tags &&
+        <>
+          <TagTitle>Tags</TagTitle>
+          <TagContainer>
+            {tags?.map((tag) => (
+              <Tag role="tag" key={tag}>{tag}</Tag>
+            ))}
+          </TagContainer>
+        </>
+      }
     </Container>
   );
 }

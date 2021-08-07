@@ -84,8 +84,12 @@ function Header(props) {
       </Link>
       <Wrapper isSearch={isSearch}>
         <SearchContainer onSubmit={search}>
-          {isSearch && <SearchInput handleChange={handleChange}/>}
-          {isSearch && <ToggleButton onClick={search} icon={IoSearchCircleSharp}/>}
+          {isSearch &&
+            <>
+              <SearchInput handleChange={handleChange}/>
+              <ToggleButton onClick={search} icon={IoSearchCircleSharp}/>
+            </>
+          }
         </SearchContainer>
         <ToggleButton onClick={toggleSearch} icon={isSearch ? IoClose : BiSearchAlt} />
       </Wrapper>

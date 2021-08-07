@@ -27,33 +27,33 @@ function RelatedVideos(props) {
       <Title>Up next</Title>
       {
         props.videos?.items[0]?.snippet &&
-      <Videos>
-        {props.videos?.items?.map((video, index) => {
-          let id = '';
-          let title = '';
-          let channelTitle = '';
-          let thumbnail = '';
-          try {
-            id = video.id.videoId;
-            title = video.snippet.title;
-            channelTitle = video.snippet.channelTitle;
-            thumbnail = video.snippet.thumbnails.medium.url;
-          } catch {
-            return null;
-          }
+        <Videos>
+          {props.videos?.items?.map((video, index) => {
+            let id = '';
+            let title = '';
+            let channelTitle = '';
+            let thumbnail = '';
+            try {
+              id = video.id.videoId;
+              title = video.snippet.title;
+              channelTitle = video.snippet.channelTitle;
+              thumbnail = video.snippet.thumbnails.medium.url;
+            } catch {
+              return null;
+            }
 
-          return (
-            <VideList
-              isRelated={true}
-              key={id}
-              id={id}
-              title={title}
-              thumbnail={thumbnail}
-              channelTitle={channelTitle}
-            />
-          );
-        })}
-      </Videos>
+            return (
+              <VideList
+                isRelated={true}
+                key={id}
+                id={id}
+                title={title}
+                thumbnail={thumbnail}
+                channelTitle={channelTitle}
+              />
+            );
+          })}
+        </Videos>
       }
     </Container>
   );
