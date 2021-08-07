@@ -2,17 +2,29 @@
 File                          |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 ------------------------------|----------|----------|----------|----------|-------------------|
 All files                     |      100 |      100 |      100 |      100 |                   |
- Header                       |      100 |      100 |      100 |      100 |                   |
-  Header.component.tsx        |      100 |      100 |      100 |      100 |                   |
- HomeView                     |      100 |      100 |      100 |      100 |                   |
-  HomeView.component.jsx      |      100 |      100 |      100 |      100 |                   |
- SideBar                      |      100 |      100 |      100 |      100 |                   |
+ components/Header            |      100 |      100 |      100 |      100 |                   |
+  Header.component.jsx        |      100 |      100 |      100 |      100 |                   |
+ components/SearchInput       |      100 |      100 |      100 |      100 |                   |
+  SearchInput.component.jsx   |      100 |      100 |      100 |      100 |                   |
+ components/SideBar           |      100 |      100 |      100 |      100 |                   |
   SideBar.component.jsx       |      100 |      100 |      100 |      100 |                   |
- SideBarOption                |      100 |      100 |      100 |      100 |                   |
+ components/SideBarOption     |      100 |      100 |      100 |      100 |                   |
   SideBarOption.component.jsx |      100 |      100 |      100 |      100 |                   |
- UserDetails                  |      100 |      100 |      100 |      100 |                   |
-  UserDetails.component.jsx   |      100 |      100 |      100 |      100 |                   |
- VideoHome                    |      100 |      100 |      100 |      100 |                   |
-  VideoHome.component.jsx     |      100 |      100 |      100 |      100 |                   |
+ components/Tag               |      100 |      100 |      100 |      100 |                   |
+  Tag.component.jsx           |      100 |      100 |      100 |      100 |                   |
   index.js                    |        0 |        0 |        0 |        0 |                   |
+ components/ToggleButton      |      100 |      100 |      100 |      100 |                   |
+  ToggleButton.component.jsx  |      100 |      100 |      100 |      100 |                   |
+ components/UserDetails       |      100 |      100 |      100 |      100 |                   |
+  UserDetails.component.jsx   |      100 |      100 |      100 |      100 |                   |
+ components/VideoList         |      100 |      100 |      100 |      100 |                   |
+  VideoList.component.jsx     |      100 |      100 |      100 |      100 |                   |
+  index.js                    |        0 |        0 |        0 |        0 |                   |
+ components/VideoMain         |      100 |      100 |      100 |      100 |                   |
+  VideoMain.component.jsx     |      100 |      100 |      100 |      100 |                   |
+ components/VideoPlayer       |      100 |      100 |      100 |      100 |                   |
+  VideoPlayer.component.jsx   |      100 |      100 |      100 |      100 |                   |
+  index.js                    |        0 |        0 |        0 |        0 |                   |
+ pages/HomeView               |      100 |      100 |      100 |      100 |                   |
+  HomeView.page.jsx           |      100 |      100 |      100 |      100 |                   |
 ------------------------------|----------|----------|----------|----------|-------------------|

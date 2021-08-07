@@ -1,17 +1,19 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom"; 
 
-import VideoHome from './VideoHome.component';
+import VideoList from './VideoList.component';
 
-describe('<VideoHome />', () => {
+describe('<VideoList />', () => {
   it('Video should render correctly', () => {
     const mockVideo = {
       id: 'video-id',
       title: 'video-title',
       thumbnail: 'video-thumbnail',
       channelTitle: 'video-channel-name',
+      isRelated: true,
     };
-    const { getByText, getByAltText } = render(<VideoHome title={mockVideo.title} thumbnail={mockVideo.thumbnail} channelTitle={mockVideo.channelTitle} />);
+    const { getByText, getByAltText } = render(<BrowserRouter><VideoList {...mockVideo} /></BrowserRouter>);
 
     const title = getByText(mockVideo.title);
     const channelTitle = getByText(mockVideo.channelTitle);

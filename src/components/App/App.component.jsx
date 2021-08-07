@@ -1,43 +1,53 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
-import Container from '../../pages/Container';
 import NotFound from '../../pages/NotFound';
-import Layout from '../Layout';
-import { random } from '../../utils/fns';
+import styled from 'styled-components';
+import { useVideos } from '../../utils/hooks/useVideos';
+
+import Header from '../../components/Header';
+import SideBar from '../../components/SideBar';
+import HomeView from '../../pages/HomeView';
+import Video from '../../pages/Video';
+
+const Layout = styled.div`
+  display: flex;
+  background: hsl(0, 0%, 95%);
+`;
+const Main = styled.div`
+  width: 100%;
+  border-radius: 0 0 1rem 1rem;
+  background-color: white;
+  /* min-height: 85.5vh; */
+  
+  @media (min-width: 1068px) {
+    border-radius: 1rem;
+    margin: 4rem 4rem 4rem 0;
+  }
+`;
 
 function App() {
-  useLayoutEffect(() => {
-    const { body } = document;
 
-    function rotateBackground() {
-      const xPercent = random(100);
-      const yPercent = random(100);
-      body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
-    }
-
-    const intervalId = setInterval(rotateBackground, 3000);
-    body.addEventListener('click', rotateBackground);
-
-    return () => {
-      clearInterval(intervalId);
-      body.removeEventListener('click', rotateBackground);
-    };
-  }, []);
+  const [{ isLoading, isError, data }, changeUrl] = useVideos();
 
   return (
     <BrowserRouter>
       <AuthProvider>
         <Layout>
-          <Switch>
-            <Route exact path="/">
-              <Container />
-            </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
+          <SideBar />
+          <Main>
+            <Header changeUrl={changeUrl} />
+            <Switch>
+              <Route exact path="/">
+                <HomeView videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl}/>
+              </Route>
+              <Route exact path="/watch/:id" render={(props) => <Video videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl} {...props}/>} />
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </Main>
         </Layout>
       </AuthProvider>
     </BrowserRouter>

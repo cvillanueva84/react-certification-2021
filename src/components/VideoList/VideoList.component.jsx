@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom"; 
 
 import { FaCheckCircle } from 'react-icons/fa';
 
@@ -8,11 +9,15 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 15rem;
-  padding: 1rem;
+  padding: ${props => props.isRelated ? '0.4rem 0;' : '1rem;'};
   @media(max-width: 629px) {
     width: 100%;
   }
-  `;
+`;
+const RouterLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+`;
 const Image = styled.img`
   width: 100%;
   height: 8.1rem;
@@ -82,11 +87,13 @@ const CheckIcon = styled(FaCheckCircle)`
   margin-right: 0.2rem;
 `;
 
-function VideoHome(props) {
+function VideoList(props) {
 
   return (
-    <Container>
-      <Image src={props.thumbnail} alt='Video Thumbnail' />
+    <Container isRelated={props.isRelated} role="video">
+      <RouterLink to={`/watch/${props.id}`}>
+        <Image src={props.thumbnail} alt='Video Thumbnail' />
+      </RouterLink>
       <VideoInfo>
         <ChannelImage
           src={require('../../img/default-user.png')}
@@ -101,4 +108,4 @@ function VideoHome(props) {
   );
 }
 
-export default VideoHome;
+export default VideoList;

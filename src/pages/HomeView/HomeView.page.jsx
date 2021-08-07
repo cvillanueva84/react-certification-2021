@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import VideoHome from '../VideoHome'
-import Data from '../../utils/youtube-videos-mocks.json';
+import VideoList from '../../components/VideoList';
 
 const Wrapper = styled.div`
   height: 78vh;
   /* height: 85.5vh; */
   overflow-y: auto;
   @media (max-width: 1068px) {
-    height: 91vh;
+    height: 92.6vh;
+  }
+  @media (max-width: 600px) {
+    height: 94.5vh;
   }
 `;
 const VideoContainer = styled.div`
@@ -23,21 +25,26 @@ const Heading = styled.p`
   margin: 1rem 0 0 1rem;
 `;
 
-function HomeView() {
+function HomeView({changeUrl, videos}) {
+
+  useEffect(() => {
+    changeUrl(`&`);
+  }, [changeUrl])
 
   return (
     <Wrapper>
-      <Heading>For You</Heading>
+      <Heading>{'For You'}</Heading>
       <VideoContainer data-testid="videos">
-        {/* {Data.regionCode} */}
-        {Data.items.map((video, index) => {
+        {videos?.items?.map((video, index) => {
           const title = video.snippet.title;
           const channelTitle = video.snippet.channelTitle;
           const thumbnail = video.snippet.thumbnails.medium.url;
+          const id = video.id.videoId;
 
           return (
-            <VideoHome
-              key={video.etag}
+            <VideoList
+              key={id}
+              id={id}
               title={title}
               thumbnail={thumbnail}
               channelTitle={channelTitle}
