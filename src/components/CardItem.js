@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { GlobalContext } from './Context';
 
-export const CardItem = ({ title, description, url, videoId, categoria }) => {
+export const CardItem = ({ title, description, url, videoId }) => {
 
+  const { setVideoId, setVideoData } = useContext(GlobalContext);
 
   return (
 
@@ -12,8 +15,12 @@ export const CardItem = ({ title, description, url, videoId, categoria }) => {
       <h2>{title}</h2>
       <p>{description}</p>
       <button
+        onClick={() => {
+          setVideoId({videoId});
+          setVideoData({title, description, url, videoId })
+        }}
       ><Link
-        to={`/videoDetails/${videoId}`}
+        to={`/videodetails`}
       ><i className="far fa-play-circle"></i></Link></button>
 
     </div>

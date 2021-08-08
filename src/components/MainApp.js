@@ -29,21 +29,22 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 
-
-
 export const MainApp = () => {
 
 
     //const [user, setUser] = useState({});
-    const [search, setSearch] = useState({});
     const [mode, setMode] = useState('light');      
+    const [search, setSearch] = useState('wizeline');
+    const [videoId, setVideoId] = useState('');
+    const [videoData, setVideoData] = useState({});
+
 
     return (
         <GlobalContext.Provider value={{
-            search,
-            setSearch,
-            mode,
-            setMode
+            mode, setMode,
+            search, setSearch,
+            videoId, setVideoId,
+            videoData, setVideoData,
         }}>
             <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles/>

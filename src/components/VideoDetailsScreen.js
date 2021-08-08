@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { useParams } from 'react-router'
+//import { useParams } from 'react-router'
 import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
-import { VideoDat } from './VideoDat';
+//import { VideoDat } from './VideoDat';
 import '../style/VideoDetailsScreen.css'
 import { GlobalContext } from './Context';
 import { HeaderNav } from './HeaderNav';
@@ -10,14 +10,14 @@ import { HeaderNav } from './HeaderNav';
 export const VideoDetailsScreen = () => {
 
 
-    const { videoId } = useParams();
-    const { search } = useContext(GlobalContext);
+    //const { videoId } = useParams();
+    const { search, videoId, videoData } = useContext(GlobalContext);
 
     const { items: videos } = useFetchVideos(search);
 
     return (
         <div>
-            <HeaderNav className="header-videodetails"/>
+            <HeaderNav/>
             <div className="contenedor">
                 <div className="video-details">
                     <div className="video-details-vid">
@@ -25,22 +25,17 @@ export const VideoDetailsScreen = () => {
                             allowFullScreen
                             frameBorder="0"
                             title="rick roll"
-                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                            src={`https://www.youtube.com/embed/${videoId.videoId}?autoplay=1`}
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         />
 
                     </div>
+
                     <div className="video-details-text">
-                        {   
-                            videos.filter((vid) => vid.videoId === videoId).map((dato) => (
-                                <VideoDat
-                                    key={dato.id}
-                                    title={dato.title}
-                                    description={dato.description}
-                                />
-                            ))
-                        }
+                        <h2>{videoData.title}</h2>
+                        <p>{videoData.description}</p>
                     </div>
+
                 </div>
                 <hr />
             </div>

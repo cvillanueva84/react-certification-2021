@@ -72,22 +72,46 @@ p {
   margin: 0 30px 10px 30px;
 }
 
-.contenedor-sugeridos {
-  margin-top: 5px;
+.contenedor-sugeridos{
+  margin: 0px 30px;
 }
 
-h3 {
+.contenedor-sugeridos h3 {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 15px;
-  font-size: 30px;
+  font-family: monospace;
+  margin-top: 5px;
+  font-size: 35px;
 }
 
 .sugeridos {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  flex-flow: row;
+  justify-content: left;
+  overflow-x: scroll;
+}
+
+.contenedor-sugeridos .sugeridos .card-item {
+  display: flex;
+  flex-flow: column;
+  width: 300px;
   height: 300px;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.contenedor-sugeridos .sugeridos .card-item img{
+  width: auto;
+  height: auto
+}
+
+.contenedor-sugeridos .sugeridos .card-item h2{
+  font-size: 18px;
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+.contenedor-sugeridos .sugeridos .card-item button{
+  margin: auto;
 }
 
 .sugeridos p {

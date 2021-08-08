@@ -1,29 +1,32 @@
-import React, { useReducer, useState } from 'react'
-import { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { GlobalContext } from './Context'
 import { Link } from "react-router-dom";
 import '../style/HeaderNav.css';
-import { functionReducer } from './functionReducer';
+//import { functionReducer } from './functionReducer';
 
 
 
-const init = () => {
-    return [{
-        search: '',
-        mode: 'light'
-    }]
-}
+// const initialState = () => {
+//     return [{
+//         search: '',
+//         mode: 'light',
+//         videoId: '',
+//         video: {},
+//         videos: []
+//     }]
+// }
 
 
+export const HeaderNav = () => {
 
-export const HeaderNav = ({ setCategorias }) => {
-
-    const [state , dispatch] = useReducer(functionReducer, [], init);
-    console.log(state);
+    //const [state , dispatch] = useReducer(functionReducer, initialState);
     const [inputValue, setValue] = useState('');
 
-    const { mode, setMode, setSearch } = useContext(GlobalContext);
+    const { setMode, setSearch } = useContext(GlobalContext);
 
+
+
+    
     const handleInputText = (e) => {
         setValue(e.target.value);
     }
@@ -31,26 +34,19 @@ export const HeaderNav = ({ setCategorias }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newSearch = {
-            search: inputValue,
-            mode: mode
-        }
-
-
-        const addSearch = {
-            type: 'addSearch',
-            payload: newSearch
-        }
-
-        dispatch(addSearch);
-
-
         //console.log('Submit!', inputValue);
         if (inputValue.trim().length > 2) {
             setSearch(inputValue);
-            setCategorias(categoria => [inputValue, ...categoria]);
             setValue('');
         }
+    }
+
+    const lightMode = () => {
+        setMode("light");
+    }
+
+    const darkMode = () => {
+        setMode("dark")
     }
 
     return (
@@ -76,7 +72,7 @@ export const HeaderNav = ({ setCategorias }) => {
 
                             <span
                                 className="square_input"
-                            ><i onSubmit={handleSubmit} className="fas fa-search"></i></span>
+                            ><i className="fas fa-search"></i></span>
                         </div>
                     </div>
                 </div>
@@ -86,11 +82,11 @@ export const HeaderNav = ({ setCategorias }) => {
                     <div className="box_input_toggle">
                         <div className="align_box_input_toggle">
                             <button
-                                onClick={() => setMode("light")}
+                                onClick={lightMode}
                                 className="toggle_left"
                             ><span role="img" aria-label="sun">🌞</span></button>
                             <button
-                                onClick={() => setMode("dark")}
+                                onClick={darkMode}
                                 className="toggle_right"
                             ><span role="img" aria-label="moon">🌜</span></button>
                         </div>

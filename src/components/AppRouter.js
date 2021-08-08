@@ -14,7 +14,7 @@ export const AppRouter = () => {
                 <Switch>
                     <Route exact path="/" component={HomeView} />
 
-                    <Route exact path="/videodetails/:videoId" component={VideoDetailsScreen} />
+                    <Route exact path="/videodetails" component={VideoDetailsScreen} />
                     <Route exact path="/login" component={LoginScreen} />
 
                     <Redirect to="/" />

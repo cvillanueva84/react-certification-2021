@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
 import '../style/HomeScreen.css';
+import { GlobalContext } from './Context'
 
-export const HomeScreen = ({ categoria }) => {
+export const HomeScreen = () => {
 
-
-    const { items: videos, loading } = useFetchVideos(categoria);
+    //Context
+    const { search } = useContext(GlobalContext);
+    const { items: videos, loading } = useFetchVideos(search);
+    
 
     return (
         <>
             <div className="contenedor">
-                {loading ? <h1>Loading...</h1> : <h1>{categoria}</h1>}
+                {loading ? <h1>Loading...</h1> : <h1>{search}</h1>}
                 <div className="cards">
                     {videos.map(vid => (
                         <CardItem
