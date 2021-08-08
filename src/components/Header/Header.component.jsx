@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import SearchInput from '../SearchInput/SearchInput.component';
 import styled, {css} from 'styled-components';
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+import GlobalContext from "../../utils/state/GlobalContext";
 
 // ICONS
 import { HiMenuAlt1 } from 'react-icons/hi';
@@ -27,10 +28,8 @@ const Container = styled.div`
   }
 `;
 
-const logo_img = require('../../img/youtube-logo.png');
-
 const Logo = styled.div`
-  background-image: url(${logo_img});
+  background-image: url(${props => props.theme.logo});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -64,6 +63,7 @@ const SearchContainer = styled.form`
 
 function Header(props) {
 
+  const {dispatch} = useContext(GlobalContext);
   const [isSearch, setIsSearch] = useState(false);
   const [searchText, setSearchText] = useState(null);
 
@@ -76,9 +76,13 @@ function Header(props) {
     props.changeUrl(`&q=${searchText}`);
   };
 
+  const toggleSideBar = () => {
+    dispatch({type: 'TOGGLE_SIDEBAR'});
+  };
+
   return (
     <Container>
-      <ToggleButton icon={HiMenuAlt1} />
+      <ToggleButton onClick={toggleSideBar} icon={HiMenuAlt1} />
       <Link to="/">
         <Logo isSearch={isSearch} data-testid="logo" />
       </Link>

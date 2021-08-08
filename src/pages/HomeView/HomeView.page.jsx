@@ -23,6 +23,7 @@ const Heading = styled.p`
   font-weight: bold;
   font-size: 1.5rem;
   margin: 1rem 0 0 1rem;
+  color: ${props => props.theme.primaryTextColor};
 `;
 
 function HomeView({changeUrl, videos}) {

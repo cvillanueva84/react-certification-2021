@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import UserDetails from '../UserDetails/UserDetails.component';
 import SideBarOption from '../SideBarOption/SideBarOption.component';
+import GlobalContext from "../../utils/state/GlobalContext";
 
 // ICONS
 import { RiUser3Fill, RiUserSharedFill, RiUserAddFill } from 'react-icons/ri';
@@ -12,7 +13,7 @@ const Container = styled.div`
   width: 20rem;
   padding: 2rem;
   @media (max-width: 1068px) {
-    display: none;
+    /* display: none; */
   }
 `;
 const Options = styled.div`
@@ -50,43 +51,58 @@ const LoggedOptions = [
     icon: RiUserSharedFill,
   },
 ];
-const Settings = [
+
+
+function SideBar() {
+  const {state, dispatch} = useContext(GlobalContext);
+
+  const toggleDarkTheme = () => {
+    dispatch({type: 'TOGGLE_THEME'});
+  };
+
+  const Settings = [
   {
     id: 1,
     name: 'Dark Theme',
     icon: IoMoon,
+    onClick: toggleDarkTheme,
   },
   {
     id: 2,
     name: 'Settings',
     icon: IoSettingsSharp,
+    onClick: () => {},
   },
 ];
 
-function SideBar() {
   return (
-    <Container>
-      <UserDetails />
-      <Options data-testid="options">
-        {
-          NoLoggedOptions.map(option => (
-            <SideBarOption key={option.id} icon={option.icon}>{option.name}</SideBarOption>
-          ))
-        }
-        <Separator>•</Separator>
-        {
-          LoggedOptions.map(option => (
-            <SideBarOption key={option.id} icon={option.icon}>{option.name}</SideBarOption>
-          ))
-        }
-        <Separator>•</Separator>
-        {
-          Settings.map(option => (
-            <SideBarOption key={option.id} icon={option.icon}>{option.name}</SideBarOption>
-          ))
-        }
-      </Options>
-    </Container>
+    <>
+      {
+        state?.sideBar &&
+        <Container>
+          <UserDetails />
+          <Options data-testid="options">
+            {
+              NoLoggedOptions.map(option => (
+                <SideBarOption key={option.id} icon={option.icon}>{option.name}</SideBarOption>
+              ))
+            }
+            <Separator>•</Separator>
+            {
+              LoggedOptions.map(option => (
+                <SideBarOption key={option.id} icon={option.icon}>{option.name}</SideBarOption>
+              ))
+            }
+            <Separator>•</Separator>
+            {
+              Settings.map(option => (
+                <SideBarOption key={option.id} icon={option.icon} onClick={option.onClick}>{option.name}</SideBarOption>
+              ))
+            }
+          </Options>
+        </Container>
+      }
+    </>
   );
 }
 
