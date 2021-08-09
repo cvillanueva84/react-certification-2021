@@ -35,7 +35,7 @@ describe('Test HeaderNav', () => {
 
     afterEach(() => {
         jest.clearAllMocks();
-    })
+    });
     
     it('should render success', () => {
         expect(wrapper).toMatchSnapshot();
