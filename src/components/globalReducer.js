@@ -1,4 +1,8 @@
-
+// const initialState = {
+//     mode: 'light',
+//     search: 'wizeline',
+//     videoData: {}
+// };
 
 export const globalReducer = (state = {}, action) => {
     switch (action.type) {
