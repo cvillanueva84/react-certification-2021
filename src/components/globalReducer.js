@@ -1,11 +1,29 @@
 
 
-export const globalReducer = ( state = {}, action ) => {
+export const globalReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'add':
-            
-        break;
-    
+        case 'actionLightMode':
+            return {
+                ...action.payload,
+                mode: 'light'
+            }
+
+        case 'actionDarkMode':
+            return {
+                ...action.payload,
+                mode: 'dark'
+            }
+        
+        case 'actionAddSearch':
+            return {
+                ...action.payload,
+            }
+        
+        case 'actionAddVideoData':
+            return {
+                ...action.payload,
+            }
+
         default:
             return state;
     }

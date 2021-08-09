@@ -6,7 +6,22 @@ import { GlobalContext } from './Context';
 
 export const CardItem = ({ title, description, url, videoId }) => {
 
-  const { setVideoId, setVideoData } = useContext(GlobalContext);
+  const { myStateReducer, dispatch } = useContext(GlobalContext);
+
+  const handleClick = () => {
+      dispatch({
+        type: 'actionAddVideoData',
+        payload: {
+          ...myStateReducer,
+          videoData: {
+            title: title,
+            description: description,
+            url: url,
+            videoId: videoId
+          }
+        }
+      });
+  }
 
   return (
 
@@ -15,10 +30,7 @@ export const CardItem = ({ title, description, url, videoId }) => {
       <h2>{title}</h2>
       <p>{description}</p>
       <button
-        onClick={() => {
-          setVideoId({videoId});
-          setVideoData({title, description, url, videoId });
-        }}
+        onClick={handleClick}
       ><Link
         to={`/videodetails`}
       ><i className="far fa-play-circle"></i></Link></button>

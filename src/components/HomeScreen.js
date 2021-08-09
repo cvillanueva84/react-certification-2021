@@ -6,14 +6,14 @@ import { GlobalContext } from './Context'
 
 export const HomeScreen = () => {
 
-    const { search } = useContext(GlobalContext);
-    const { items: videos, loading } = useFetchVideos(search);
+    const { myStateReducer } = useContext(GlobalContext);
+    const { items: videos, loading } = useFetchVideos(myStateReducer.search);
     
 
     return (
         <>
             <div className="contenedor">
-                {loading ? <h1>Loading...</h1> : <h1>{search}</h1>}
+                {loading ? <h1>Loading...</h1> : <h1>{myStateReducer.search}</h1>}
                 <div className="cards">
                     {videos.map(vid => (
                         <CardItem

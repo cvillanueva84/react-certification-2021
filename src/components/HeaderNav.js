@@ -4,32 +4,46 @@ import { Link } from "react-router-dom";
 import '../style/HeaderNav.css';
 
 export const HeaderNav = () => {
+    
+    const { myStateReducer, dispatch } = useContext(GlobalContext);
 
     const [inputValue, setValue] = useState('');
-    const { setMode, setSearch } = useContext(GlobalContext);
 
-
+    
     const handleInputText = (e) => {
         setValue(e.target.value);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        //console.log('Submit!', inputValue);
-        if (inputValue.trim().length > 2) {
-            setSearch(inputValue);
-            setValue('');
-        }
-        
+        dispatch({
+            type: 'actionAddSearch',
+            payload: {
+                ...myStateReducer,
+                search: inputValue
+            } 
+        });
+        setValue('');
     }
 
     const lightMode = () => {
-        setMode("light");
+        dispatch({
+            type: 'actionLightMode',
+            payload: {
+                ...myStateReducer,
+                mode: 'ligth',
+            }
+        });
     }
 
     const darkMode = () => {
-        setMode("dark");
+        dispatch({
+            type: 'actionDarkMode',
+            payload: {
+                ...myStateReducer,
+                mode: 'dark',
+            }
+        });
     }
 
     return (

@@ -1,16 +1,15 @@
 import React, { useContext } from 'react'
 import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
-import '../style/VideoDetailsScreen.css'
 import { GlobalContext } from './Context';
 import { HeaderNav } from './HeaderNav';
+import '../style/VideoDetailsScreen.css'
 
 export const VideoDetailsScreen = () => {
 
+    const { myStateReducer } = useContext(GlobalContext);
 
-    const { search, videoId, videoData } = useContext(GlobalContext);
-
-    const { items: videos } = useFetchVideos(search);
+    const { items: videos } = useFetchVideos(myStateReducer.search);
 
     return (
         <div>
@@ -22,15 +21,15 @@ export const VideoDetailsScreen = () => {
                             allowFullScreen
                             frameBorder="0"
                             title="rick roll"
-                            src={`https://www.youtube.com/embed/${videoId.videoId}?autoplay=1`}
+                            src={`https://www.youtube.com/embed/${myStateReducer.videoData.videoId}?autoplay=1`}
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         />
 
                     </div>
 
                     <div className="video-details-text">
-                        <h2>{videoData.title}</h2>
-                        <p>{videoData.description}</p>
+                        <h2>{myStateReducer.videoData.title}</h2>
+                        <p>{myStateReducer.videoData.description}</p>
                     </div>
 
                 </div>

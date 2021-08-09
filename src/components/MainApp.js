@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import { AppRouter } from './AppRouter'
 import { GlobalContext } from './Context'
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { globalReducer } from './globalReducer';
 
 const commontheme = { fontFam: 'Arial'};
 const lightTheme = {
@@ -23,32 +24,23 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-//================
 
-// const initialState = [{
-//     mode: 'light',
-//     search: 'wizeline',
-//     videoId: '',
-//     videoData: {}
-// }];
+const initialState = {
+    mode: 'light',
+    search: 'wizeline',
+    videoData: {}
+};
 
 
 export const MainApp = () => {
 
-    const [mode, setMode] = useState('light');      
-    const [search, setSearch] = useState('wizeline');
-    const [videoId, setVideoId] = useState('');
-    const [videoData, setVideoData] = useState({});
-
+    const [myStateReducer, dispatch] = useReducer(globalReducer, initialState)
 
     return (
         <GlobalContext.Provider value={{
-            mode, setMode,
-            search, setSearch,
-            videoId, setVideoId,
-            videoData, setVideoData,
+            myStateReducer, dispatch,
         }}>
-            <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
+            <ThemeProvider theme={myStateReducer.mode === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles/>
                 <AppRouter/>
             </ThemeProvider>
