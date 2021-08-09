@@ -2,31 +2,13 @@ import React, { useState, useContext } from 'react'
 import { GlobalContext } from './Context'
 import { Link } from "react-router-dom";
 import '../style/HeaderNav.css';
-//import { functionReducer } from './functionReducer';
-
-
-
-// const initialState = () => {
-//     return [{
-//         search: '',
-//         mode: 'light',
-//         videoId: '',
-//         video: {},
-//         videos: []
-//     }]
-// }
-
 
 export const HeaderNav = () => {
 
-    //const [state , dispatch] = useReducer(functionReducer, initialState);
     const [inputValue, setValue] = useState('');
-
     const { setMode, setSearch } = useContext(GlobalContext);
 
 
-
-    
     const handleInputText = (e) => {
         setValue(e.target.value);
     }
@@ -39,6 +21,7 @@ export const HeaderNav = () => {
             setSearch(inputValue);
             setValue('');
         }
+        
     }
 
     const lightMode = () => {
@@ -46,7 +29,7 @@ export const HeaderNav = () => {
     }
 
     const darkMode = () => {
-        setMode("dark")
+        setMode("dark");
     }
 
     return (

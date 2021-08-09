@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
-//import { useParams } from 'react-router'
 import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
-//import { VideoDat } from './VideoDat';
 import '../style/VideoDetailsScreen.css'
 import { GlobalContext } from './Context';
 import { HeaderNav } from './HeaderNav';
@@ -10,7 +8,6 @@ import { HeaderNav } from './HeaderNav';
 export const VideoDetailsScreen = () => {
 
 
-    //const { videoId } = useParams();
     const { search, videoId, videoData } = useContext(GlobalContext);
 
     const { items: videos } = useFetchVideos(search);

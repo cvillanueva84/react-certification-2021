@@ -17,7 +17,7 @@ export const CardItem = ({ title, description, url, videoId }) => {
       <button
         onClick={() => {
           setVideoId({videoId});
-          setVideoData({title, description, url, videoId })
+          setVideoData({title, description, url, videoId });
         }}
       ><Link
         to={`/videodetails`}

@@ -6,7 +6,6 @@ import { GlobalContext } from './Context'
 
 export const HomeScreen = () => {
 
-    //Context
     const { search } = useContext(GlobalContext);
     const { items: videos, loading } = useFetchVideos(search);
     

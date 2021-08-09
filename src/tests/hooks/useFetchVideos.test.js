@@ -1,4 +1,4 @@
-import { useFetchVideos } from './useFetchVideos';
+import { useFetchVideos } from "../../hooks/useFetchVideos";
 import { renderHook } from '@testing-library/react-hooks';
 
 describe('Test useFetchVideos', () => {

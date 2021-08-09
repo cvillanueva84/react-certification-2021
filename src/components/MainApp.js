@@ -3,22 +3,17 @@ import { AppRouter } from './AppRouter'
 import { GlobalContext } from './Context'
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
-const commontheme = {
-  fontFam: 'Arial',
-};
-
+const commontheme = { fontFam: 'Arial'};
 const lightTheme = {
   ...commontheme,
   bg: '#fff',
   text: '#121212',
 };
-
 const darkTheme = {
   ...commontheme,
   bg: '#242526',
   text: '#fff',
 };
-
 const GlobalStyles = createGlobalStyle`
   body {
     font-family: ${(props) => props.theme.fontFam};
@@ -28,11 +23,18 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+//================
+
+// const initialState = [{
+//     mode: 'light',
+//     search: 'wizeline',
+//     videoId: '',
+//     videoData: {}
+// }];
+
 
 export const MainApp = () => {
 
-
-    //const [user, setUser] = useState({});
     const [mode, setMode] = useState('light');      
     const [search, setSearch] = useState('wizeline');
     const [videoId, setVideoId] = useState('');

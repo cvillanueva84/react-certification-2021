@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import { CardItem } from './CardItem';
+import { CardItem } from '../../components/CardItem';
 
 
 describe('Test CardItem', () => {
