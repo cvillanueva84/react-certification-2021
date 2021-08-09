@@ -1,9 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { GlobalContext } from './Context';
 
-export const CardItem = ({ title, description, url, videoId, categoria }) => {
+export const CardItem = ({ title, description, url, videoId }) => {
 
+  const { myStateReducer, dispatch } = useContext(GlobalContext);
+
+  const handleClick = () => {
+      dispatch({
+        type: 'actionAddVideoData',
+        payload: {
+          ...myStateReducer,
+          videoData: {
+            title: title,
+            description: description,
+            url: url,
+            videoId: videoId
+          }
+        }
+      });
+  }
 
   return (
 
@@ -12,8 +30,9 @@ export const CardItem = ({ title, description, url, videoId, categoria }) => {
       <h2>{title}</h2>
       <p>{description}</p>
       <button
+        onClick={handleClick}
       ><Link
-        to={`/videoDetails/${videoId}&${categoria}`}
+        to={`/videodetails`}
       ><i className="far fa-play-circle"></i></Link></button>
 
     </div>

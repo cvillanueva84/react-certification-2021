@@ -2983,5 +2983,442 @@ test('calls onClick prop when clicked', () => {
 
 
 
+******************************************************************************
+
+					Local state 
+
+Class component 
+-Declare state in the constructor
+-Uses this.setState(...args) to update state 
+
+Functional component
+-Declare and update state using the useSate hook 
+
+
+
+			Prop Drilling 
+
+Prop Drilling is the process to get data to parts of the React Components Tree 
+passing teh data ad props to child components 
+
+
+
+			Context 
+
+El contexto proporciona una forma de pasar datos a través del árbol de componentes sin tener que 
+pasar los accesorios manualmente en todos los niveles.
+
+
+En una aplicación típica de React, los datos se transmiten de arriba hacia abajo (de padre a hijo) a 
+través de accesorios, pero dicho uso puede ser engorroso para ciertos tipos de accesorios (por ejemplo, 
+preferencia de configuración regional, tema de interfaz de usuario) que son necesarios para muchos 
+componentes dentro de una aplicación. El contexto proporciona una forma de compartir valores como estos 
+entre componentes sin tener que pasar explícitamente un accesorio a través de cada nivel del árbol.
+
+
+Ejemplo Theme : https://reactjs.org/docs/context.html
+
+El contexto está diseñado para compartir datos que pueden considerarse "globales" para un árbol de 
+componentes de React, como el usuario autenticado actual, el tema o el idioma preferido. Por ejemplo, 
+en el código a continuación, pasamos manualmente a través de un accesorio de "tema" para diseñar el 
+componente Botón:
+
+class App extends React.Component {
+  render() {
+    return <Toolbar theme="dark" />;
+  }
+}
+
+function Toolbar(props) {
+  // The Toolbar component must take an extra "theme" prop
+  // and pass it to the ThemedButton. This can become painful
+  // if every single button in the app needs to know the theme
+  // because it would have to be passed through all components.
+  return (
+    <div>
+      <ThemedButton theme={props.theme} />
+    </div>
+  );
+}
+
+class ThemedButton extends React.Component {
+  render() {
+    return <Button theme={this.props.theme} />;
+  }
+}
+
+Usando el contexto, podemos evitar pasar accesorios a través de elementos intermedios:
+
+// Context lets us pass a value deep into the component tree
+// without explicitly threading it through every component.
+// Create a context for the current theme (with "light" as the default).
+const ThemeContext = React.createContext('light');
+
+class App extends React.Component {
+  render() {
+    // Use a Provider to pass the current theme to the tree below.
+    // Any component can read it, no matter how deep it is.
+    // In this example, we're passing "dark" as the current value.
+    return (
+      <ThemeContext.Provider value="dark">
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+}
+
+// A component in the middle doesn't have to
+// pass the theme down explicitly anymore.
+function Toolbar() {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+class ThemedButton extends React.Component {
+  // Assign a contextType to read the current theme context.
+  // React will find the closest theme Provider above and use its value.
+  // In this example, the current theme is "dark".
+  static contextType = ThemeContext;
+  render() {
+    return <Button theme={this.context} />;
+  }
+}
+
+
+
+
+Si solo desea evitar pasar algunos accesorios a través de muchos niveles, la composición de 
+componentes es a menudo una solución más simple que el contexto.
+
+Por ejemplo, considere un Pagecomponente que pasa una usery avatarSizeprop varios niveles hacia abajo 
+para que profundamente anidados Linky Avatarcomponentes pueden leerla:
+
+<Page user={user} avatarSize={avatarSize} />
+// ... which renders ...
+<PageLayout user={user} avatarSize={avatarSize} />
+// ... which renders ...
+<NavigationBar user={user} avatarSize={avatarSize} />
+// ... which renders ...
+<Link href={user.permalink}>
+  <Avatar user={user} size={avatarSize} />
+</Link>
+
+
+Puede parecer redundante pasar los accesorios usery a avatarSizetravés de muchos niveles si al final solo 
+el Avatarcomponente realmente lo necesita. También es molesto que cada vez que el Avatar componente necesite 
+más accesorios de la parte superior, también tenga que agregarlos en todos los niveles intermedios.
+
+Una forma de resolver este problema sin contexto es transmitir el Avatarcomponente en sí para que los componentes 
+intermedios no necesiten saber sobre los accesorios usero avatarSize:
+
+function Page(props) {
+  const user = props.user;
+  const userLink = (
+    <Link href={user.permalink}>
+      <Avatar user={user} size={props.avatarSize} />
+    </Link>
+  );
+  return <PageLayout userLink={userLink} />;
+}
+
+// Now, we have:
+<Page user={user} avatarSize={avatarSize} />
+// ... which renders ...
+<PageLayout userLink={...} />
+// ... which renders ...
+<NavigationBar userLink={...} />
+// ... which renders ...
+{props.userLink}
+
+Con este cambio, sólo los más altos en las necesidades de componentes Página saber sobre el Linky 
+Avata uso de componentes usery avatarSize.
+
+
+
+
+
+			API 
+		React.createContext 
+
+const MyContext = React.createContext(defaultValue);
+
+Crea un objeto de contexto. Cuando React renderiza un componente que se suscribe a este objeto Context, 
+leerá el valor de contexto actual de la coincidencia más cercana Providersobre él en el árbol.
+
+El defaultValueargumento solo se usa cuando un componente no tiene un Proveedor coincidente encima en el árbol. 
+Este valor predeterminado puede ser útil para probar componentes de forma aislada sin envolverlos. Nota: pasar 
+undefinedcomo un valor de proveedor no hace que se utilicen componentes consumidores defaultValue.
+
+
+Context.Provider 
+
+<MyContext.Provider value={/* some value */}>
+
+Cada objeto Context viene con un componente Provider React que permite que los componentes consumidores se 
+suscriban a los cambios de contexto.
+
+El componente Proveedor acepta una valuepropiedad para pasar a los componentes consumidores que son descendientes 
+de este Proveedor. Un proveedor puede conectarse con muchos consumidores. Los proveedores se pueden anidar para 
+anular valores más profundos dentro del árbol.
+
+Todos los consumidores que son descendientes de un proveedor volverán a renderizarse cada vez que valuecambie la 
+propiedad del proveedor . La propagación del proveedor a sus consumidores descendientes (incluidos .contextTypey 
+useContext) no está sujeta al shouldComponentUpdatemétodo, por lo que el consumidor se actualiza incluso cuando 
+un componente antecesor omite una actualización.
+
+Los cambios se determinan comparando los valores nuevos y antiguos utilizando el mismo algoritmo que Object.is.
+
+
+
+	Context API 
+
+Provider: The provider wraps our presentational component and stores data in its state  
+Consumer: The consumer is a descendant of the presentational component and allowa us to grab values from the provider
+
+function App() {
+  const [currentEmployee, setCurrentEmployee] = useState(employees[0]);
+  const [filter, setFilter] = useState("");
+
+  return (
+    <div className="App">
+      <EmployeeContext.Provider
+        value={{
+          currentEmployee,
+          employees,
+          setCurrentEmployee,
+          filter,
+          setFilter
+        }}
+      >
+        <HomePage />
+        <EmployeePage />
+      </EmployeeContext.Provider>
+    </div>
+  );
+}
+
+Buena explicación de Context con functional components con useReducer y useContext:
+https://hswolff.com/blog/how-to-usecontext-with-usereducer/
+
+
+			Window.localStorage 
+
+La localStoragepropiedad de sólo lectura de la windowinterfaz le permite acceder a un Storageobjeto 
+para el Document's de origen ; los datos almacenados se guardan en todas las sesiones del navegador.
+
+
+	Sintaxis 
+
+myStorage = window.localStorage;
+
+Valor -> Un Storageobjeto que se puede utilizar para acceder al espacio de almacenamiento local del origen actual.
+
+
+	Descripcion:
+
+Las claves y los valores almacenados con siemprelocalStorage están en formato UTF-16 , que utiliza 
+dos bytes por carácter. Al igual que con los objetos, las claves de números enteros se convierten 
+automáticamente en cadenas.DOMString
+
+localStorageLos datos son específicos del protocolo del documento . En particular, para un sitio cargado a 
+través de HTTP (p. Ej., http://example.com), localStorageDevuelve un objeto diferente al localStoragedel 
+sitio correspondiente cargado a través de HTTPS (p https://example.com. Ej., ).
+
+Para documentos cargados desde file:URL (es decir, archivos abiertos en el navegador directamente desde el 
+sistema de archivos local del usuario, en lugar de ser servidos desde un servidor web), los requisitos de 
+localStoragecomportamiento no están definidos y pueden variar entre diferentes navegadores.
+
+En todos los navegadores actuales, localStorageparece devolver un objeto diferente para cada file:URL. En 
+otras palabras, cada file:URL parece tener su propia área de almacenamiento local única. Pero no hay garantías 
+sobre ese comportamiento, por lo que no debe confiar en él porque, como se mencionó anteriormente, los 
+requisitos para las file:URL siguen sin estar definidos. Por lo tanto, es posible que los navegadores 
+cambien su file:manejo de URL localStorageen cualquier momento. De hecho, algunos navegadores han cambiado 
+su manejo con el tiempo.
+
+Ejemplo:
+
+El siguiente fragmento accede al Storage objeto local del dominio actual y le agrega un elemento de 
+datos usando Storage.setItem().
+
+	localStorage.setItem('myCat', 'Tom');
+
+La sintaxis para leer el localStorageartículo es la siguiente:
+
+	const cat = localStorage.getItem('myCat');
+
+La sintaxis para eliminar el localStorageelemento es la siguiente:
+
+	localStorage.removeItem('myCat');
+
+La sintaxis para eliminar todos los localStorageelementos es la siguiente:
+
+	localStorage.clear();
+
+
+
+
+
+
+
+			Window.sessionStorage 
+
+La sessionStorage propiedad de solo lectura accede a un Storageobjeto de sesión para el origen actual 
+.sessionStoragees similar a localStorage; la diferencia es que, si bien los datos localStorage ingresados ​​
+no caducan, los datos sessionStorageingresados ​​se borran cuando finaliza la sesión de la página .
+
+Siempre que se carga un documento en una pestaña en particular del navegador, se crea una sesión de página 
+única y se asigna a esa pestaña en particular. Esa sesión de página es válida solo para esa pestaña en particular.
+Una sesión de página dura mientras la pestaña o el navegador estén abiertos y sobrevive después de que la 
+página se recargue y se restaure.
+Abrir una página en una nueva pestaña o ventana crea una nueva sesión con el valor del contexto de navegación 
+de nivel superior, que difiere de cómo funcionan las cookies de sesión.
+La apertura de varias pestañas / ventanas con la misma URL crea sessionStorage para cada pestaña / ventana.
+Duplicar una pestaña copia las pestañas sessionStorageen la nueva pestaña.
+Cerrar una pestaña / ventana finaliza la sesión y borra los objetos sessionStorage.
+
+Los datos almacenados sessionStorage son específicos del protocolo de la página . En particular, los 
+datos almacenados por un script en un sitio al que se accede con HTTP se coloca en un sessionStorage 
+objeto diferente del mismo sitio al que se accede con HTTPS 
+
+Las claves y los valores siempre están en DOMString formato UTF-16 , que utiliza dos bytes por carácter. 
+Al igual que con los objetos, las claves de números enteros se convierten automáticamente en cadenas.
+
+
+Sintaxis 
+
+	myStorage = window.sessionStorage;
+
+Valor:
+
+Un Storageobjeto que se puede utilizar para acceder al espacio de almacenamiento de la sesión del origen actual.
+
+
+Ejemplo de uso basico 
+
+// Save data to sessionStorage
+sessionStorage.setItem('key', 'value');
+
+// Get saved data from sessionStorage
+let data = sessionStorage.getItem('key');
+
+// Remove saved data from sessionStorage
+sessionStorage.removeItem('key');
+
+// Remove all saved data from sessionStorage
+sessionStorage.clear();
+
+
+
+Guardar texto entre actualizaciones 
+
+El siguiente ejemplo guarda automáticamente el contenido de un campo de texto y, si se actualiza el 
+navegador, restaura el contenido del campo de texto para que no se pierda la escritura.
+
+// Get the text field that we're going to track
+let field = document.getElementById("field");
+
+// See if we have an autosave value
+// (this will only happen if the page is accidentally refreshed)
+if (sessionStorage.getItem("autosave")) {
+  // Restore the contents of the text field
+  field.value = sessionStorage.getItem("autosave");
+}
+
+// Listen for changes in the text field
+field.addEventListener("change", function() {
+  // And save the results into the session storage object
+  sessionStorage.setItem("autosave", field.value);
+});
+
+
+
+
+
+
+
+
+					Pruebas de useReducer:
+https://testing-library.com/docs/example-react-hooks-usereducer/
+
+Ejemplo básico que muestra cómo probar el useReducergancho. Lo más importante es que no estamos probando 
+el reductor directamente, ¡es un detalle de implementación del componente! En su lugar, estamos probando 
+la interfaz del componente.
+
+El componente que estamos probando cambia algo de texto dependiendo de un isConfirmed estado.
+
+// example.js
+
+import React, {useReducer} from 'react'
+
+const initialState = {
+  isConfirmed: false,
+}
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'SUCCESS':
+      return {
+        ...state,
+        isConfirmed: true,
+      }
+    default:
+      throw Error('unknown action')
+  }
+}
+
+const Example = () => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  return (
+    <div>
+      <div>
+        {state.isConfirmed ? (
+          <p>Confirmed!</p>
+        ) : (
+          <p>Waiting for confirmation...</p>
+        )}
+      </div>
+      <button onClick={() => dispatch({type: 'SUCCESS'})}>Confirm</button>
+    </div>
+  )
+}
+
+export default Example
+
+Estamos probando para ver si obtenemos la salida correcta en nuestro JSX según el estado del reductor.
+
+// example.test.js
+
+import React from 'react'
+import {render, fireEvent} from '@testing-library/react'
+import Example from './example.js'
+
+it('shows success message after confirm button is clicked', () => {
+  const {getByText} = render(<Example />)
+
+  expect(getByText(/waiting/i)).toBeInTheDocument()
+
+  fireEvent.click(getByText('Confirm'))
+
+  expect(getByText('Confirmed!')).toBeInTheDocument()
+})
+
+
+
+
+******************************************************************************
+
+
+		useReducer
+
+const [state, dispatch] = useReducer(reducer, initialArg, init);
+
+Reducer flow: State -> Page -> Action -> Reducer -> State 
+
+
+
 
 
