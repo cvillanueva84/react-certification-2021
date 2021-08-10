@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 1vmin;
+  justify-content:right;
+  position: fixed;
+  right:10px;
+
+}
+
+.App-header {
+  color:rgb(245, 240, 240);
+  min-height: 10vh;
+ 
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.fab {
+  margin: 20px;
+  top: 4px;
+  right: 700px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+  color: white;
+};
+
+
+
