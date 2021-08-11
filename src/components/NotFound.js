@@ -13,7 +13,7 @@ export const NotFound = () => {
                     <img src="404.gif" alt="page not found" />
                 </div>
             </div>
-            <Link to="/" className="home"> ← Home </Link>
+            <Link to="/login" className="home"> ← Home </Link>
         </section>
 
     )

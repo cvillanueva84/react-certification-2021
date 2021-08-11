@@ -3,7 +3,7 @@ import { useForm } from '../hooks/useForm';
 import '../style/LoginView.css'
 import { GlobalContext } from './Context';
 
-export const LoginView = ({history}) => {
+export const LoginView = ({ history }) => {
 
     const { myStateReducer, dispatch } = useContext(GlobalContext);
 
@@ -11,24 +11,31 @@ export const LoginView = ({history}) => {
         textUser: '',
         textPass: ''
     }
-    const[formValues, handleInputChange] = useForm(initialForm);
+    const [formValues, handleInputChange, reset] = useForm(initialForm);
     const { textUser, textPass } = formValues;
 
 
 
     const handlelogin = (e) => {
-        const lastPath = localStorage.getItem('lastPath') || '/';
         e.preventDefault();
-        dispatch({
-            type: 'actionLogin',
-            payload: {
-                ...myStateReducer,
-                user: textUser
-            }
-        });
-        history.replace(lastPath);
+
+        if (textUser === 'Wizeline' && textPass === 'Rocks!') {
+            const lastPath = localStorage.getItem('lastPath') || '/';
+            dispatch({
+                type: 'actionLogin',
+                payload: {
+                    ...myStateReducer,
+                    user: textUser
+                }
+            });
+            history.replace(lastPath);
+        } else {
+            alert('Usuario no valido');
+            reset();
+        }
+
     }
-    
+
 
 
     return (
@@ -41,13 +48,14 @@ export const LoginView = ({history}) => {
                     <div className="form-group">
                         <label>
                             <strong>Username:</strong>
-                            <input 
-                                required 
+                            <input
+                                required
                                 type="text"
                                 placeholder="Your username"
                                 name="textUser"
                                 value={textUser}
                                 onChange={handleInputChange}
+                                autoComplete="off"
                             />
                         </label>
                     </div>
@@ -56,21 +64,22 @@ export const LoginView = ({history}) => {
                     <div className="form-group">
                         <label>
                             <strong>Password:</strong>
-                            <input 
-                                required 
+                            <input
+                                required
                                 type="password"
                                 placeholder="Your password"
                                 name="textPass"
                                 value={textPass}
                                 onChange={handleInputChange}
+                                autoComplete="off"
                             />
                         </label>
                     </div>
 
-                    <button 
+                    <button
                         type="submit"
                         onClick={handlelogin}
-                >Login</button>
+                    >Login</button>
 
                 </form>
 
