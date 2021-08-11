@@ -27,11 +27,18 @@ export const globalReducer = (state = {}, action) => {
             return {
                 ...action.payload,
             }
+
+        case 'actionLogin':
+            return {
+                ...action.payload,
+                logged: true
+            }
         
         case 'actionLogout':
             return {
                 ...action.payload,
-                logged: 'false'
+                logged: false,
+                user: ''
             }
 
         default:

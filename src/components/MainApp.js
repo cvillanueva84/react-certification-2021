@@ -1,5 +1,5 @@
-import React, { useReducer } from 'react'
-import { AppRouter } from './AppRouter'
+import React, { useEffect, useReducer } from 'react'
+import { AppRouter } from '../routers/AppRouter'
 import { GlobalContext } from './Context'
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { globalReducer } from './globalReducer';
@@ -29,14 +29,28 @@ const initialState = {
     mode: 'light',
     search: 'wizeline',
     videoData: {},
-    user: {},
-    logged: true
+    user: '',
+    logged: false,
 };
+
+// const init = () => {
+//   return JSON.parse(localStorage.getItem('user')) || {
+//     mode: 'light',
+//     search: 'wizeline',
+//     videoData: {},
+//     user: '',
+//     logged: false,
+//   }
+// }
 
 
 export const MainApp = () => {
 
-    const [myStateReducer, dispatch] = useReducer(globalReducer, initialState)
+    const [myStateReducer, dispatch] = useReducer(globalReducer, initialState);
+
+    useEffect(() => {
+      localStorage.setItem('user', JSON.stringify(myStateReducer.user));
+    }, [myStateReducer.user]);
 
     return (
         <GlobalContext.Provider value={{

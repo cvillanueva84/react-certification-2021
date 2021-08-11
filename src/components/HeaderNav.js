@@ -11,7 +11,6 @@ export const HeaderNav = () => {
 
     const history = useHistory();
 
-    
     const handleInputText = (e) => {
         setValue(e.target.value);
     }
@@ -47,10 +46,14 @@ export const HeaderNav = () => {
     }
 
     const handleLogout = () => {
-        history.replace('/login');
         dispatch({
             type: 'actionLogout',
+            payload:{
+                ...myStateReducer
+            }
         });
+        
+        history.replace('/login');
     }
 
     return (
@@ -101,7 +104,7 @@ export const HeaderNav = () => {
 
                 <div className="right-header">
                     <small>
-                        Christian
+                        {myStateReducer.user}
                     </small>
                     <button
                         onClick={handleLogout}
