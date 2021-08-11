@@ -1,39 +1,28 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-
-import { useAuth } from '../../providers/Auth';
+import React, { useContext, Suspense, lazy } from 'react';
 import './Home.styles.css';
+import { SectionContainer, VideoListContainer, override } from './styledComponents';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import GridLoader from 'react-spinners/ClipLoader';
+const VideoList = lazy(() => import('../../components/VideoList/VideoList.component'));
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+const HomePage = () => {
+  const { state } = useContext(VideoListContext);
+  const { posts = [] } = state;
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <SectionContainer>
+      <div>
+        <h2 style={{ marginLeft: '4rem', marginTop: '2rem' }}>Our videos:</h2>
+      </div>
+      <Suspense fallback={<GridLoader size={150} css={override} />}>
+        <VideoListContainer>
+          {posts.map((video) => (
+            <VideoList key={video.id.videoId} video={video} />
+          ))}
+        </VideoListContainer>
+      </Suspense>
+    </SectionContainer>
   );
-}
+};
 
 export default HomePage;

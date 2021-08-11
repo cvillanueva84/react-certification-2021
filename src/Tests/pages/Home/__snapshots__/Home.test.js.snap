@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the < HomePage/> component should show the < HomePage/> component correctly 1`] = `
+<section
+  className="sc-bdnxRM gmHjgD"
+>
+  <div>
+    <h2
+      style={
+        Object {
+          "marginLeft": "4rem",
+          "marginTop": "2rem",
+        }
+      }
+    >
+      Our videos:
+    </h2>
+  </div>
+  <Suspense
+    fallback={
+      <Loader
+        color="#000000"
+        css={
+          Object {
+            "map": undefined,
+            "name": "1x3mwo8",
+            "next": undefined,
+            "styles": "
+  display: block;
+  margin: 20rem auto;
+  border-color: #060b26;
+",
+            "toString": [Function],
+          }
+        }
+        loading={true}
+        size={150}
+        speedMultiplier={1}
+      />
+    }
+  >
+    <div
+      className="sc-gtsrHT evurdI"
+    />
+    <span
+      className="css-17hjzrw"
+    />
+  </Suspense>
+</section>
+`;
