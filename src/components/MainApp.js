@@ -28,7 +28,9 @@ const GlobalStyles = createGlobalStyle`
 const initialState = {
     mode: 'light',
     search: 'wizeline',
-    videoData: {}
+    videoData: {},
+    user: {},
+    logged: true
 };
 
 

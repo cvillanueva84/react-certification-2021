@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from './Context'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import '../style/HeaderNav.css';
 
 export const HeaderNav = () => {
@@ -8,6 +8,8 @@ export const HeaderNav = () => {
     const { myStateReducer, dispatch } = useContext(GlobalContext);
 
     const [inputValue, setValue] = useState('');
+
+    const history = useHistory();
 
     
     const handleInputText = (e) => {
@@ -31,7 +33,6 @@ export const HeaderNav = () => {
             type: 'actionLightMode',
             payload: {
                 ...myStateReducer,
-                mode: 'ligth',
             }
         });
     }
@@ -41,8 +42,14 @@ export const HeaderNav = () => {
             type: 'actionDarkMode',
             payload: {
                 ...myStateReducer,
-                mode: 'dark',
             }
+        });
+    }
+
+    const handleLogout = () => {
+        history.replace('/login');
+        dispatch({
+            type: 'actionLogout',
         });
     }
 
@@ -93,9 +100,12 @@ export const HeaderNav = () => {
 
 
                 <div className="right-header">
+                    <small>
+                        Christian
+                    </small>
                     <button
-                        onClick={() => { alert('Coming soon...') }}
-                    ><i className="fas fa-user-graduate"></i></button>
+                        onClick={handleLogout}
+                    ><span>Logout</span></button>
                 </div>
 
             </div>

@@ -7,14 +7,14 @@ export const NotFound = () => {
         <section className="contenedor">
             <div className="not-found ">
                 <div className="left">
-                    <img src="404.gif"  alt="page not found"/>
+                    <img src="404.jpeg" alt="page not found" />
                 </div>
                 <div className="left">
-                    <img src="404.jpeg"  alt="page not found"/>
+                    <img src="404.gif" alt="page not found" />
                 </div>
             </div>
             <Link to="/" className="home"> ← Home </Link>
         </section>
-        
+
     )
 }
