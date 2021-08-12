@@ -13,7 +13,6 @@ import './Navbar.styles.scss';
 import { InputText } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.provider';
-import { useHistory } from 'react-router-dom';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
@@ -23,13 +22,12 @@ const Navbar = () => {
   const toogleSideBar = () => setSidebar(!sidebar);
   const { setSearch } = useContext(VideoListContext);
   const { dispatch } = useContext(Context);
-  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (inputValue.trim() === '') return;
     setSearch(inputValue);
     setInputValue('');
-    history.push('/');
   };
 
   const handleClick = () => {

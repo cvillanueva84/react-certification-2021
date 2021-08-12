@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState, useReducer } from 'react';
+import { useHistory } from "react-router-dom";
 import { reducer } from './VideoList.reducer';
 export const VideoListContext = createContext();
 
@@ -9,9 +10,9 @@ const VideoListProvider = (props) => {
     posts: [],
     error: '',
   };
-
   const [videosState, dispatch] = useReducer(reducer, initialState);
-
+  
+  const history = useHistory()
   useEffect(() => {
     const getVideos = async () => {
       try {
@@ -19,13 +20,14 @@ const VideoListProvider = (props) => {
         const response = await fetch(url);
         const data = await response.json();
         dispatch({ type: 'FETCH_SUCCESS', payload: data.items });
+        history.push('/')
       } catch (error) {
         dispatch({ type: 'FETCH_ERROR' });
         throw new Error(error);
       }
     };
     getVideos();
-  }, [search]);
+  }, [search, history]);
 
   return (
     <VideoListContext.Provider
