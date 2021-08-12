@@ -45,8 +45,10 @@ describe('Tests of the Navbar component', () => {
         expect(styledInput.length).toBe(1)
     })
     test('should post info on submit', () => {
-        wrapper.find('form').simulate('submit', {preventDefault(){}});
-        expect(setSearch).toHaveBeenCalled()
+        const formEventMocked = { preventDefault: setSearch };
+        wrapper.find('form').simulate('submit', formEventMocked);       
+        expect(wrapper.find('form')).toHaveLength(1);
+        expect(formEventMocked.preventDefault).toHaveBeenCalledTimes(1)
     })
     
     test('should call setSearch and clean the input text ', () => {
