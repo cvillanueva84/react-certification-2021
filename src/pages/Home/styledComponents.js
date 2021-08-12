@@ -10,17 +10,7 @@ SectionContainer.displayName = 'SectionContainer';
 export const VideoListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 2rem;
-
-  @media only screen and (max-width: 870px) {
-    display: flex;
-    justify-content: center;
-  }
-
-  @media only screen and (max-width: 670px) {
-    display: flex;
-    justify-content: center;
-  }
+  justify-content: center;
 `;
 VideoListContainer.displayName = 'VideoListContainer';
 

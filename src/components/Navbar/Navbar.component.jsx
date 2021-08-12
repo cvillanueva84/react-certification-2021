@@ -9,7 +9,7 @@ import {
   FaRegMoon,
 } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import './Navbar.styles.scss';
+import './Navbar.styles.css';
 import { InputText } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.provider';
@@ -57,15 +57,15 @@ const Navbar = () => {
 
           <div className="navbar__right-section">
             <div className="toggle">
-              <FaRegMoon size={20} />
+              <FaRegMoon className="moon-icon" size={20} />
               <label className="switch">
                 <input type="checkbox" onClick={handleClick} />
                 <span className="slider round"></span>
               </label>
-              <FaSun size={20} />
+              <FaSun className="sun-icon" size={20} />
             </div>
             <Link to="/">
-              <FaUserNinja />
+              <FaUserNinja className="user-icon" />
             </Link>
           </div>
         </nav>

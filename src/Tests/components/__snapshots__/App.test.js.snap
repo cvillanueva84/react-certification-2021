@@ -57,6 +57,7 @@ Array [
             className="toggle"
           >
             <svg
+              className="moon-icon"
               fill="currentColor"
               height={20}
               stroke="currentColor"
@@ -87,6 +88,7 @@ Array [
               />
             </label>
             <svg
+              className="sun-icon"
               fill="currentColor"
               height={20}
               stroke="currentColor"
@@ -111,6 +113,7 @@ Array [
             onClick={[Function]}
           >
             <svg
+              className="user-icon"
               fill="currentColor"
               height="3rem"
               stroke="currentColor"
@@ -247,7 +250,7 @@ Array [
         }
       >
         <div
-          className="sc-dlnjwi iMFFqc"
+          className="sc-dlnjwi khqPoZ"
         />
       </Suspense>
     </section>
