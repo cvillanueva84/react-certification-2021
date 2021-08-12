@@ -15,6 +15,7 @@ import { light, dark } from '../../providers/Theme/themes';
 import Context from '../../providers/Theme/Theme.provider';
 import { ThemeReducer } from '../../providers/Theme/Theme.reducer';
 const VideoDetails = lazy(() => import('../VideoDetails/VideoDetails.component'));
+
 const override = css`
   display: block;
   margin: 20rem auto;

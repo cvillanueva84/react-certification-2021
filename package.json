@@ -24,7 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "npm run test -- --coverage",
+    "test:coverage": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix"
@@ -72,8 +72,13 @@
     }
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/Tests/*.js"
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/data",
+      "<rootDir>/src/components/Private",
+      "<rootDir>/src/pages/Login",
+      "<rootDir>/src/pages/NotFound",
+      "<rootDir>/src/pages/Secret",
+      "<rootDir>/src/providers/Auth"
     ]
   }
 }
