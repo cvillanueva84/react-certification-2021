@@ -129,9 +129,6 @@ Array [
               key="0"
             />
           </svg>
-          <div
-            className="login"
-          />
         </div>
       </nav>,
       <nav
@@ -211,7 +208,7 @@ Array [
       </nav>,
     ]
     <section
-      className="sc-gtsrHT grJAJO"
+      className="sc-hKFxyN ctiACq"
     >
       <div>
         <h2
@@ -249,7 +246,7 @@ Array [
         }
       >
         <div
-          className="sc-dlnjwi khqPoZ"
+          className="sc-eCApnc gsweoB"
         />
       </Suspense>
     </section>

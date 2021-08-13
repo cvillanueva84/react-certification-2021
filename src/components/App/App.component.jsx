@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar/Navbar.component';
 import AuthProvider from '../../providers/Auth';
 import VideoListProvider from '../../providers/VideoList/VideoList.provider';
 import HomePage from '../../pages/Home';
-import LoginModal from '../../pages/Login';
+// import LoginModal from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import Layout from '../Layout';
 import GridLoader from 'react-spinners/ClipLoader';
@@ -59,9 +59,9 @@ function App() {
                       <VideoDetails />
                     </Suspense>
                   </Route>
-                  <Route exact path="/login">
+                  {/* <Route exact path="/login">
                     <LoginModal />
-                  </Route>
+                  </Route> */}
                   <Route exact path="/">
                     <HomePage />
                   </Route>

@@ -66,14 +66,12 @@ const Navbar = () => {
               </label>
               <FaSun className="sun-icon" size={20} />
             </div>
-            {/* <Link to="/login"> */}
             <FaUserAstronaut className="user-icon" onClick={() => setIsOpen(true)} />
             {isOpen && (
               <div className="login">
-                <LoginModal open={isOpen} onClose={() => setIsOpen(false)}></LoginModal>
+                <LoginModal open={isOpen} onClose={() => setIsOpen(false)} />
               </div>
             )}
-            {/* </Link> */}
           </div>
         </nav>
 
