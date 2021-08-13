@@ -4,7 +4,7 @@ import {
   FaHamburger,
   FaWindowClose,
   FaHome,
-  FaUserNinja,
+  FaUserAstronaut,
   FaSun,
   FaRegMoon,
 } from 'react-icons/fa';
@@ -65,7 +65,7 @@ const Navbar = () => {
               <FaSun className="sun-icon" size={20} />
             </div>
             <Link to="/">
-              <FaUserNinja className="user-icon" />
+              <FaUserAstronaut className="user-icon" />
             </Link>
           </div>
         </nav>
