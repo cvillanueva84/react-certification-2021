@@ -9,6 +9,7 @@ describe('Tests of the Navbar component', () => {
     
     const setSearch = jest.fn()
     const dispatch = jest.fn()
+    const handleClick = jest.fn()
     let wrapper;
     beforeEach(() =>  {
         jest.clearAllMocks();

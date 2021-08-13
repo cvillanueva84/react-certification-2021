@@ -11,7 +11,6 @@ const VideoListProvider = (props) => {
     error: '',
   };
   const [videosState, dispatch] = useReducer(reducer, initialState);
-  
   const history = useHistory()
   useEffect(() => {
     const getVideos = async () => {
