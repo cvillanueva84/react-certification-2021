@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar/Navbar.component';
 import AuthProvider from '../../providers/Auth';
 import VideoListProvider from '../../providers/VideoList/VideoList.provider';
 import HomePage from '../../pages/Home';
-import LoginPage from '../../pages/Login';
+import LoginModal from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import Layout from '../Layout';
 import GridLoader from 'react-spinners/ClipLoader';
@@ -52,19 +52,20 @@ function App() {
               <Layout>
                 <Navbar />
                 <ScrollToTop />
+
                 <Switch>
-                  <Route exact path="/">
-                    <HomePage />
-                  </Route>
                   <Route exact path="/video/:id">
                     <Suspense fallback={<GridLoader size={150} css={override} />}>
                       <VideoDetails />
                     </Suspense>
                   </Route>
                   <Route exact path="/login">
-                    <LoginPage />
+                    <LoginModal />
                   </Route>
-                  <Route path="*">
+                  <Route exact path="/">
+                    <HomePage />
+                  </Route>
+                  <Route>
                     <NotFound />
                   </Route>
                 </Switch>

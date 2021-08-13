@@ -13,12 +13,14 @@ import './Navbar.styles.css';
 import { InputText } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.provider';
+import LoginModal from '../../pages/Login';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const toogleSideBar = () => setSidebar(!sidebar);
   const { setSearch } = useContext(VideoListContext);
   const { dispatch } = useContext(Context);
@@ -64,9 +66,14 @@ const Navbar = () => {
               </label>
               <FaSun className="sun-icon" size={20} />
             </div>
-            <Link to="/">
-              <FaUserAstronaut className="user-icon" />
-            </Link>
+            {/* <Link to="/login"> */}
+            <FaUserAstronaut className="user-icon" onClick={() => setIsOpen(true)} />
+            {isOpen && (
+              <div className="login">
+                <LoginModal open={isOpen} onClose={() => setIsOpen(false)}></LoginModal>
+              </div>
+            )}
+            {/* </Link> */}
           </div>
         </nav>
 
