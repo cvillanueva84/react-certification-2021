@@ -4,7 +4,7 @@ import { GlobalContext } from './Context'
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { globalReducer } from './globalReducer';
 
-const commontheme = { fontFam: 'Arial'};
+const commontheme = { fontFam: 'Arial' };
 const lightTheme = {
   ...commontheme,
   bg: '#fff',
@@ -25,41 +25,36 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 
-const initialState = {
+const init = () => {
+  return JSON.parse(localStorage.getItem('user')) || {
     mode: 'light',
-    search: 'alonsocode',
+    search: 'wizeline',
     videoData: {},
     user: '',
     logged: false,
-};
-
-// const init = () => {
-//   return JSON.parse(localStorage.getItem('user')) || {
-//     mode: 'light',
-//     search: 'wizeline',
-//     videoData: {},
-//     user: '',
-//     logged: false,
-//   }
-// }
-
+  }
+}
 
 export const MainApp = () => {
 
-    const [myStateReducer, dispatch] = useReducer(globalReducer, initialState);
+  const [myStateReducer, dispatch] = useReducer(globalReducer, {
+    mode: 'light',
+    search: 'alonsocode',
+    videoData: {},
+  }, init);
 
-    useEffect(() => {
-      localStorage.setItem('user', JSON.stringify(myStateReducer.user));
-    }, [myStateReducer.user]);
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(myStateReducer));
+  }, [myStateReducer]);
 
-    return (
-        <GlobalContext.Provider value={{
-            myStateReducer, dispatch,
-        }}>
-            <ThemeProvider theme={myStateReducer.mode === 'light' ? lightTheme : darkTheme}>
-            <GlobalStyles/>
-                <AppRouter/>
-            </ThemeProvider>
-        </GlobalContext.Provider>
-    )
+  return (
+    <GlobalContext.Provider value={{
+      myStateReducer, dispatch,
+    }}>
+      <ThemeProvider theme={myStateReducer.mode === 'light' ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <AppRouter />
+      </ThemeProvider>
+    </GlobalContext.Provider>
+  )
 }

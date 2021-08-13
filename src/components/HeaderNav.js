@@ -49,7 +49,8 @@ export const HeaderNav = () => {
         dispatch({
             type: 'actionLogout',
             payload:{
-                ...myStateReducer
+                ...myStateReducer,
+                mode: 'light'
             }
         });
         
