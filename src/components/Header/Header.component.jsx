@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useSearchTerm } from '../../providers/SearchTerm';
+import { useTheme } from '../../providers/Theme';
+import { useHistory } from 'react-router';
 
 const HeaderBody = styled.div`
-  background-color: white;
   border-bottom: solid 1px #f1f1f1;
   display: flex;
   justify-content: space-between;
@@ -33,7 +35,6 @@ const Search = styled.input`
   padding: 16px 16px 16px 60px;
   border: 1px solid;
   border-radius: 3px;
-  background: rgba(0, 0, 0, 0.003);
   box-shadow: inset 0 -8px 1px rgba(248, 10, 10, 0.03);
   font-weight: 300;
   font-size: 15px;
@@ -105,8 +106,11 @@ const CheckBox = styled.input`
   }
 `;
 
-function Header({ setSearchTerm }) {
+function Header() {
+  const { setSearchTerm } = useSearchTerm();
+  const { themeState, setThemeState } = useTheme();
   const [searchTermAux, setSearchTermAux] = useState('');
+  const history = useHistory();
   function handleChange(event) {
     setSearchTermAux(event.target.value);
   }
@@ -114,6 +118,10 @@ function Header({ setSearchTerm }) {
   function handleSubmit(event) {
     event.preventDefault();
     setSearchTerm(searchTermAux);
+    history.push('/');
+  }
+  function handleToggle() {
+    setThemeState(themeState === 'light' ? 'dark' : 'light');
   }
   return (
     <HeaderBody>
@@ -124,7 +132,7 @@ function Header({ setSearchTerm }) {
       <HeaderItems>
         Dark mode
         <CheckBoxWrapper>
-          <CheckBox id="checkbox" type="checkbox" />
+          <CheckBox id="checkbox" type="checkbox" onChange={handleToggle} />
           <CheckBoxLabel htmlFor="checkbox" />
         </CheckBoxWrapper>
         <Button>Login</Button>

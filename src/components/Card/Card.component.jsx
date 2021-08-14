@@ -5,13 +5,6 @@ const CardBody = styled.div`
   height: 20rem;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: #000 1px 1px 0, #000 2px 2px 0, #000 3px 3px 0, #000 4px 4px 0,
-    #000 5px 5px 0, #000 6px 6px 0, #000 7px 7px 0, #000 8px 8px 0;
-  :hover {
-    background-color: #f8f7f7;
-    box-shadow: red 1px 1px 0, red 2px 2px 0, red 3px 3px 0, red 4px 4px 0, red 5px 5px 0,
-      red 6px 6px 0, red 7px 7px 0, red 8px 8px 0;
-  }
 `;
 const ImageCard = styled.div`
   width: 100%;
@@ -33,7 +26,7 @@ const Description = styled.div`
 
 function Card({ image, title, description }) {
   return (
-    <CardBody>
+    <CardBody id="cardBody">
       <ImageCard imageUrl={image}></ImageCard>
       <WraperText>
         <Title>{title}</Title>

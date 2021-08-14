@@ -4,9 +4,6 @@ const CardBody = styled.div`
   display: flex;
   width: 29rem;
   height: 8rem;
-  :hover {
-    background-color: #f8f7f7;
-  }
   @media (max-width: 1200px) {
     width: 19rem;
     height: 6rem;
@@ -47,7 +44,7 @@ const Title = styled.div`
 
 function RelatedVideo({ image, title }) {
   return (
-    <CardBody>
+    <CardBody id="relatedVideo">
       <ImageCard imageUrl={image}></ImageCard>
       <Title>{title}</Title>
     </CardBody>

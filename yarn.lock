@@ -4253,6 +4253,11 @@
   "resolved" "https://registry.npmjs.org/emojis-list/-/emojis-list-3.0.0.tgz"
   "version" "3.0.0"
 
+"emotion-theming@^11.0.0":
+  "integrity" "sha512-OhYpCGBjaLcD9c4ptwCr9SxHjfRTDqeqdzMobusJ+a/drlfnJ3AT9gmGKIhNHiXtr6626h6fsvLY22Or9CxUqw=="
+  "resolved" "https://registry.npmjs.org/emotion-theming/-/emotion-theming-11.0.0.tgz"
+  "version" "11.0.0"
+
 "encodeurl@~1.0.2":
   "integrity" "sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k="
   "resolved" "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"

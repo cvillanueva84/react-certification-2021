@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Box = styled.div`
   width: 30rem;
-  height: 48rem;
+  height: 38rem;
   overflow-y: scroll;
   @media (max-width: 1200px) {
     width: 20rem;

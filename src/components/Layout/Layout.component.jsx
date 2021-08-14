@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../Header';
-function Layout(props) {
+function Layout({ children }) {
   return (
     <div>
-      <Header setSearchTerm={props.sST}></Header>
-      <main className="container">{props.children}</main>
+      <Header></Header>
+      <main>{children}</main>
     </div>
   );
 }
