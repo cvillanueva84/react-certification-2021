@@ -30,6 +30,11 @@ export const VideoDetailsScreen = () => {
                     <div className="video-details-text">
                         <h2>{myStateReducer.videoData.title}</h2>
                         <p>{myStateReducer.videoData.description}</p>
+                        <button
+                            onClick={() => {
+                                console.log('Agregar favoritos')
+                            }}
+                        ><i className="fas fa-folder-plus"></i>Add to favorites</button>
                     </div>
 
                 </div>

@@ -32,16 +32,13 @@ const init = () => {
     videoData: {},
     user: '',
     logged: false,
+    favorites: [{}],
   }
 }
 
 export const MainApp = () => {
 
-  const [myStateReducer, dispatch] = useReducer(globalReducer, {
-    mode: 'light',
-    search: 'alonsocode',
-    videoData: {},
-  }, init);
+  const [myStateReducer, dispatch] = useReducer(globalReducer, {}, init);
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(myStateReducer));
