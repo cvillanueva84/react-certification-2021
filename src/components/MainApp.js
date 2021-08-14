@@ -32,7 +32,7 @@ const init = () => {
     videoData: {},
     user: '',
     logged: false,
-    favorites: [{}],
+    favorites: [],
   }
 }
 

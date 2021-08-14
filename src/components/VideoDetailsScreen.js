@@ -7,9 +7,19 @@ import '../style/VideoDetailsScreen.css'
 
 export const VideoDetailsScreen = () => {
 
-    const { myStateReducer } = useContext(GlobalContext);
+    const { myStateReducer, dispatch } = useContext(GlobalContext);
 
     const { items: videos } = useFetchVideos(myStateReducer.search);
+
+    const addFavorite = () => {
+        dispatch({
+            type: 'actionAddFavorites',
+            payload: {
+                ...myStateReducer,
+                favorites: [myStateReducer.videoData, ...myStateReducer.favorites]
+            }
+        });
+    }
 
     return (
         <div>
@@ -21,7 +31,7 @@ export const VideoDetailsScreen = () => {
                             allowFullScreen
                             frameBorder="0"
                             title="rick roll"
-                            src={`https://www.youtube.com/embed/${myStateReducer.videoData.videoId}?autoplay=1`}
+                            src={`https://www.youtube.com/embed/${myStateReducer.videoData.videoId}?autoplay=0`}
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         />
 
@@ -31,9 +41,7 @@ export const VideoDetailsScreen = () => {
                         <h2>{myStateReducer.videoData.title}</h2>
                         <p>{myStateReducer.videoData.description}</p>
                         <button
-                            onClick={() => {
-                                console.log('Agregar favoritos')
-                            }}
+                            onClick={addFavorite}
                         ><i className="fas fa-folder-plus"></i>Add to favorites</button>
                     </div>
 

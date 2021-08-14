@@ -18,6 +18,5 @@ export const getVids = async (categoria) => {
     };
   });
 
-  //console.log(videos);
   return videos;
 };

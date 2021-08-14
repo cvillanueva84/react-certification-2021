@@ -27,6 +27,11 @@ export const globalReducer = (state = {}, action) => {
             return {
                 ...action.payload,
             }
+        
+        case 'actionAddFavorites':
+            return {
+                ...action.payload,
+            }
 
         case 'actionLogin':
             return {
