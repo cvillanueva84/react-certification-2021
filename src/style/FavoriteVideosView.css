@@ -1,0 +1,29 @@
+.center-header-left{
+  display: none;
+}
+
+.card-item .botones-favoritos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card-item .botones-favoritos button {
+  color: #008cba;
+  border: 2px solid #008cba;
+  margin: 0px 32px;
+  padding: 3px auto;
+  border-radius: 8px;
+}
+
+.card-item .botones-favoritos button i {
+    color: #008cba;
+    font-size: 30px;
+}
+
+.card-item .botones-favoritos button:hover,
+.card-item .botones-favoritos button i:hover{
+    color: white;
+    background-color: #008cba;
+    transition-duration: 0.4s;
+}
