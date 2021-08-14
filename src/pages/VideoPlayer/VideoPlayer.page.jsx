@@ -5,7 +5,7 @@ import SideMenu from '../../components/SideMenu/SideMenu.component';
 import VideoVisualizer from '../../components/VideoVisualizer/VideoVisualizer.component';
 import useVideo from '../../utils/hooks/useVideo';
 
-function VideoPlayer({ theme, setTheme }) {
+function VideoPlayer() {
   const relatedId = new URLSearchParams(useLocation().search).get('v');
 
   const { videos } = useVideo({ relatedId });
@@ -13,7 +13,7 @@ function VideoPlayer({ theme, setTheme }) {
   return (
     <>
       <Navbar />
-      <SideMenu theme={theme} setTheme={setTheme} />
+      <SideMenu />
       <VideoVisualizer videoId={relatedId} videos={videos} />
     </>
   );

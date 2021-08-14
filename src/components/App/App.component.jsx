@@ -12,10 +12,10 @@ import Layout from '../Layout';
 
 import { GlobalStyle, themes } from '../../globalStyles';
 import VideoPlayer from '../../pages/VideoPlayer';
+import ThemeContext from '../Context/ThemeContext';
 
 function App() {
   const [theme, setTheme] = useState('light');
-
   return (
     <>
       <ThemeProvider theme={themes[theme]}>
@@ -23,12 +23,13 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <Layout>
+            <ThemeContext.Provider value={{theme, setTheme}}>
               <Switch>
                 <Route exact path="/">
-                  <HomePage theme={theme} setTheme={setTheme} />
+                  <HomePage />
                 </Route>
                 <Route path="/watch">
-                  <VideoPlayer theme={theme} setTheme={setTheme} />
+                  <VideoPlayer />
                 </Route>
                 <Route exact path="/login">
                   <LoginPage />
@@ -40,6 +41,7 @@ function App() {
                   <NotFound />
                 </Route>
               </Switch>
+              </ThemeContext.Provider>
             </Layout>
           </AuthProvider>
         </BrowserRouter>

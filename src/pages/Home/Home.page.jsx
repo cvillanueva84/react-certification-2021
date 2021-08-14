@@ -6,7 +6,7 @@ import SideMenu from '../../components/SideMenu/SideMenu.component';
 import CardVideoDisplayer from '../../components/CardVideo/CardVideo.component';
 import useVideo from '../../utils/hooks/useVideo';
 
-function HomePage({ theme, setTheme }) {
+function HomePage() {
   const searchQuery = new URLSearchParams(useLocation().search).get('q');
 
   const { videos } = useVideo({ searchQuery });
@@ -14,7 +14,7 @@ function HomePage({ theme, setTheme }) {
   return (
     <>
       <Navbar />
-      <SideMenu theme={theme} setTheme={setTheme} />
+      <SideMenu />
       <CardVideoDisplayer videos={videos} />
     </>
   );
