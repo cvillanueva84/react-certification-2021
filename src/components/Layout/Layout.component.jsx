@@ -37,7 +37,7 @@ function Layout({ children }) {
           onChange={handleChange}
         />
       </Header>
-      <Container>{children}</Container>
+      <Container theme={state.theme}>{children}</Container>
     </>
   );
 }

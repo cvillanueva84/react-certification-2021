@@ -1,9 +1,11 @@
 import React, { createContext, useReducer } from 'react';
 import { searchVideos } from '../../components/helpers/helper';
+import { primary } from '../../style/theme';
 
 const initialState = {
   query: 'wizeline',
   videos: [],
+  theme: primary,
 };
 
 const appReducer = (state, action) => {
@@ -16,6 +18,9 @@ const appReducer = (state, action) => {
       return result;
     case 'SET_VIDEOS':
       result = { ...state, videos: action.payload };
+      return result;
+    case 'SET_THEME':
+      result = { ...state, theme: action.payload.theme };
       return result;
     default:
       return state;
