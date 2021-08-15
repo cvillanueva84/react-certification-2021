@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import SearchInput from '../SearchInput/SearchInput.component';
 import styled, {css} from 'styled-components';
-import { Link } from "react-router-dom";
 import GlobalContext from "../../utils/state/GlobalContext";
+import { useHistory } from "react-router-dom";
 
 // ICONS
 import { HiMenuAlt1 } from 'react-icons/hi';
@@ -66,12 +66,17 @@ function Header(props) {
   const {dispatch} = useContext(GlobalContext);
   const [isSearch, setIsSearch] = useState(false);
   const [searchText, setSearchText] = useState(null);
+  const history = useHistory();
 
   const toggleSearch = () => {setIsSearch(!isSearch)};
   const handleChange = (event) => setSearchText(event.target.value);
   
   const search = (event) => {
     event.preventDefault();
+    history.push({
+      pathname: '/',
+      search: `?q=${encodeURIComponent(searchText)}`
+    })
     if (!searchText) return;
     props.changeUrl(`&q=${searchText}`);
   };
@@ -79,13 +84,17 @@ function Header(props) {
   const toggleSideBar = () => {
     dispatch({type: 'TOGGLE_SIDEBAR'});
   };
+  const goHome = () => {
+    history.push({
+      pathname: '/',
+      search: ``
+    })
+  };
 
   return (
     <Container>
       <ToggleButton onClick={toggleSideBar} icon={HiMenuAlt1} />
-      <Link to="/">
-        <Logo isSearch={isSearch} data-testid="logo" />
-      </Link>
+      <Logo onClick={goHome} isSearch={isSearch} data-testid="logo" />
       <Wrapper isSearch={isSearch}>
         <SearchContainer onSubmit={search}>
           {isSearch &&

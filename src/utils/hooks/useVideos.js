@@ -3,7 +3,7 @@ import Data from '../../utils/related-videos.json'
 
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20';
 const VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&type=video';
-const API_KEY = 'some key';
+const API_KEY = 'some api';
 
 function useVideos() {
   const searchUrl = `${SEARCH_URL}&key=${API_KEY}`;

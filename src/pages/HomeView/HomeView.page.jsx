@@ -26,11 +26,18 @@ const Heading = styled.p`
   color: ${props => props.theme.primaryTextColor};
 `;
 
-function HomeView({changeUrl, videos}) {
+function HomeView({changeUrl, videos, location}) {
 
   useEffect(() => {
-    changeUrl(`&`);
-  }, [changeUrl])
+    console.log(123)
+    const searchTerm = new URLSearchParams(location.search).get("q");
+    console.log(searchTerm)
+    if (searchTerm) {
+      changeUrl(`&q=${searchTerm}`);
+    } else {
+      changeUrl(`&`);
+    }
+  }, [changeUrl, location])
 
   return (
     <Wrapper>

@@ -52,9 +52,7 @@ function App() {
               <Main sideBar={state.sideBar}>
                 <Header changeUrl={changeUrl} />
                 <Switch>
-                  <Route exact path="/">
-                    <HomeView videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl}/>
-                  </Route>
+                  <Route exact path="/" render={(props) => <HomeView videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl} location={props.location}/>} />
                   <Route exact path="/watch/:id" render={(props) => <Video videos={data} isLoading={isLoading} isError={isError} changeUrl={changeUrl} {...props}/>} />
                   <Route path="*">
                     <NotFound />
