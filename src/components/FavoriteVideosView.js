@@ -9,7 +9,9 @@ export const FavoriteVideosView = () => {
 
     return (
         <>
-            <HeaderNav />
+            <div className="favorite-header">
+                <HeaderNav />
+            </div>
             <div className="contenedor">
                 <h1>Favorite Videos:</h1>
                 <div className="cards">

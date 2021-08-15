@@ -61,9 +61,9 @@ export const HeaderNav = () => {
         <div className="header">
             <div className="contenedor-header">
 
-                <div className="left-header">
+                <button className="left-header">
                     <Link to='/' ><i className="fab fa-youtube"></i></Link>
-                </div>
+                </button>
 
                 <div className="center-header-left">
                     <div className="box_input">

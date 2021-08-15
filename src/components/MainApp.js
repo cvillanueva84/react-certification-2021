@@ -30,6 +30,7 @@ const init = () => {
     mode: 'light',
     search: 'wizeline',
     videoData: {},
+    videoDataFav: {},
     user: '',
     logged: false,
     favorites: [],

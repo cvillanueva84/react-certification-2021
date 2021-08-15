@@ -28,9 +28,20 @@ export const globalReducer = (state = {}, action) => {
                 ...action.payload,
             }
         
+        case 'actionAddVideoDataFav':
+            return {
+                ...action.payload
+            }
+        
         case 'actionAddFavorites':
             return {
                 ...action.payload,
+            }
+        
+        case 'actionDelete':
+            return {
+                ...state,
+                favorites: state.favorites.filter(vid => vid.videoId !== action.payload)
             }
 
         case 'actionLogin':

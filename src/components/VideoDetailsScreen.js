@@ -4,12 +4,15 @@ import { CardItem } from './CardItem';
 import { GlobalContext } from './Context';
 import { HeaderNav } from './HeaderNav';
 import '../style/VideoDetailsScreen.css'
+import { useHistory } from 'react-router';
 
 export const VideoDetailsScreen = () => {
 
     const { myStateReducer, dispatch } = useContext(GlobalContext);
 
     const { items: videos } = useFetchVideos(myStateReducer.search);
+
+    const history = useHistory();
 
     const addFavorite = () => {
         dispatch({
@@ -19,6 +22,7 @@ export const VideoDetailsScreen = () => {
                 favorites: [myStateReducer.videoData, ...myStateReducer.favorites]
             }
         });
+        history.replace('/favorites');
     }
 
     return (

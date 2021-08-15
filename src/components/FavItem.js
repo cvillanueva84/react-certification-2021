@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../style/FavoriteVideosView.css'
+import { GlobalContext } from './Context';
 
 export const FavItem = ({ title, description, url, videoId }) => {
 
+    const { myStateReducer, dispatch } = useContext(GlobalContext);
+
     const handleClickPlay = () => {
-        console.log('play');
+        dispatch({
+            type: 'actionAddVideoDataFav',
+            payload: {
+                ...myStateReducer,
+                videoDataFav: {
+                    title: title,
+                    description: description,
+                    url: url,
+                    videoId: videoId
+                }
+            }
+        });
     }
 
     const handleClickDelete = () => {
-        console.log('delete');
+        dispatch({
+            type: 'actionDelete',
+            payload: videoId
+        });
     }
 
 
@@ -21,15 +38,15 @@ export const FavItem = ({ title, description, url, videoId }) => {
             <p>{description}</p>
             <div className="botones-favoritos">
                 <button
-                    onClick={handleClickPlay}
                     className="button-left"
+                    onClick={handleClickPlay}
                 ><Link
                     to={`/videodetailsfavs`}
                 ><i className="far fa-play-circle"></i></Link></button>
 
                 <button
-                    onClick={handleClickDelete}
                     className="button-right"
+                    onClick={handleClickDelete}
                 ><i className="far fa-trash-alt"></i></button>
 
 
