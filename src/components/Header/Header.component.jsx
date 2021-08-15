@@ -73,11 +73,11 @@ function Header(props) {
   
   const search = (event) => {
     event.preventDefault();
+    if (!searchText) return;
     history.push({
       pathname: '/',
       search: `?q=${encodeURIComponent(searchText)}`
     })
-    if (!searchText) return;
     props.changeUrl(`&q=${searchText}`);
   };
 

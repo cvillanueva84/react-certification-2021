@@ -29,9 +29,7 @@ const Heading = styled.p`
 function HomeView({changeUrl, videos, location}) {
 
   useEffect(() => {
-    console.log(123)
     const searchTerm = new URLSearchParams(location.search).get("q");
-    console.log(searchTerm)
     if (searchTerm) {
       changeUrl(`&q=${searchTerm}`);
     } else {
