@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 
 import { AUTH_STORAGE_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
+import loginApi from './login.mock';
 
 const AuthContext = React.createContext(null);
 
@@ -23,10 +24,18 @@ function AuthProvider({ children }) {
     setAuthenticated(isAuthenticated);
   }, []);
 
-  const login = useCallback(() => {
-    setAuthenticated(true);
-    storage.set(AUTH_STORAGE_KEY, true);
-  }, []);
+  const login = async (data) => {
+    try {
+      await loginApi(data.username, data.password);
+      setAuthenticated(true);
+      storage.set(AUTH_STORAGE_KEY, true);
+    } catch (err) {
+      // logout();
+      storage.set(AUTH_STORAGE_KEY, false);
+      setAuthenticated(false);
+      throw err;
+    }
+  };
 
   const logout = useCallback(() => {
     setAuthenticated(false);

@@ -62,7 +62,7 @@ function App() {
                   {/* <Route exact path="/login">
                     <LoginModal />
                   </Route> */}
-                  <Route exact path="/">
+                  <Route path="/">
                     <HomePage />
                   </Route>
                   <Route>

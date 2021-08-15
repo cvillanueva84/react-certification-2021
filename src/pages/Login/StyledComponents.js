@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CloseBtn = styled.button`
-    background-color: red;
+    background-color: #FF2300;
     color: #e2e2e2;
     padding: 1rem;
     border: none;
@@ -31,3 +31,19 @@ export const LoginBtn = styled.button`
 `;
 
 LoginBtn.displayName = 'LoginBtn'
+
+export const ErrorDiv = styled.div`
+    background-color: #FF2300;
+    padding: 2rem;
+    text-align: left ;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+`;
+
+ErrorDiv.displayName ='ErrorDiv'
+
+export const ErrorSpan = styled.span`
+    margin-left: 0px;
+    color: #ffff;
+    font-size: 1.6rem;
+`
