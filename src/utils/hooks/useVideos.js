@@ -54,15 +54,14 @@ function useVideos() {
     
     async function fetchData() {
       // For test purposes
-      if (true) {
-        dispatch({ type: 'FETCH_SUCCESS', payload: Data });
-        return;
-      }
+      // if (true) {
+      //   dispatch({ type: 'FETCH_SUCCESS', payload: Data });
+      //   return;
+      // }
       dispatch({ type: 'FETCH_INIT' });
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAILURE' });
