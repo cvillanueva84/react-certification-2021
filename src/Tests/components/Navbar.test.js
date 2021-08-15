@@ -4,21 +4,30 @@ import Navbar from '../../components/Navbar/Navbar.component'
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.provider'
 import { MemoryRouter } from 'react-router';
+import AuthProvider, { useAuth } from '../../providers/Auth';
+
 
 describe('Tests of the Navbar component', () => {
     
     const setSearch = jest.fn()
     const dispatch = jest.fn()
-    const handleClick = jest.fn()
+    const logout = jest.fn()
+    const authenticated = true
     let wrapper;
     beforeEach(() =>  {
         jest.clearAllMocks();
         wrapper = mount(
+            <AuthProvider
+                value={{
+                    authenticated,
+                    logout
+                }}
+            >
             <Context.Provider
                 value={{
                     dispatch
                 }}
-            >
+                >
                 <VideoListContext.Provider
                     value={{
                         setSearch
@@ -28,7 +37,8 @@ describe('Tests of the Navbar component', () => {
                         <Navbar/>
                     </MemoryRouter>
                 </VideoListContext.Provider>
-            </Context.Provider>)
+            </Context.Provider>
+            </AuthProvider>)
     })
 
     test('should render the Navbar component correctly', () => {

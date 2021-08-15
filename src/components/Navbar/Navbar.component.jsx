@@ -26,7 +26,6 @@ const Navbar = () => {
   const { setSearch } = useContext(VideoListContext);
   const { dispatch } = useContext(Context);
   const { authenticated, logout } = useAuth();
-  console.log(authenticated);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim() === '') return;
