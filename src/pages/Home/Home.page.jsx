@@ -1,38 +1,24 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import Cards from '../../components/Cards';
+import styled from 'styled-components';
+import { useYouTube } from '../../utils/hooks/useYouTube';
+import { useStoreContext } from '../../state/Store.provider';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+const Grid = styled.section`
+  display: grid;
+  gap: 2.5rem;
+  padding: 2rem;
+
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+`;
 
 function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
-
+  const [store] = useStoreContext();
+  const { searchTerm } = store;
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <Grid data-testid="location-home" className="grid">
+      <Cards videos={useYouTube(searchTerm)}></Cards>
+    </Grid>
   );
 }
 
