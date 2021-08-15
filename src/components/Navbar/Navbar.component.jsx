@@ -10,10 +10,11 @@ import {
 } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.css';
-import { InputText } from './styledComponents';
+import { InputText, LogoutBtn } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.provider';
 import LoginModal from '../../pages/Login';
+import { useAuth } from '../../providers/Auth';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
@@ -24,7 +25,8 @@ const Navbar = () => {
   const toogleSideBar = () => setSidebar(!sidebar);
   const { setSearch } = useContext(VideoListContext);
   const { dispatch } = useContext(Context);
-
+  const { authenticated, logout } = useAuth();
+  console.log(authenticated);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim() === '') return;
@@ -66,11 +68,19 @@ const Navbar = () => {
               </label>
               <FaSun className="sun-icon" size={20} />
             </div>
-            <FaUserAstronaut className="user-icon" onClick={() => setIsOpen(true)} />
-            {isOpen && (
-              <div className="login">
-                <LoginModal open={isOpen} onClose={() => setIsOpen(false)} />
-              </div>
+            {authenticated ? (
+              <LogoutBtn type="button" onClick={logout}>
+                Logout
+              </LogoutBtn>
+            ) : (
+              <>
+                <FaUserAstronaut className="user-icon" onClick={() => setIsOpen(true)} />
+                {isOpen && (
+                  <div className="login">
+                    <LoginModal open={isOpen} onClose={() => setIsOpen(false)} />
+                  </div>
+                )}
+              </>
             )}
           </div>
         </nav>
