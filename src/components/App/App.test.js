@@ -1,12 +1,12 @@
 import React from 'react';
-import HomePage from './Home.page';
+import App from './App.component';
 import StoreProvider from '../../state/Store.provider';
 import { render, screen } from '@testing-library/react';
-describe('Home', () => {
-  it('Rendiring the home page', () => {
+describe('App', () => {
+  it('Rendiring the home page ', () => {
     render(
       <StoreProvider>
-        <HomePage />
+        <App />
       </StoreProvider>
     );
     expect(screen.getByTestId('location-home')).toBeInTheDocument();

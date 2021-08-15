@@ -4,7 +4,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ListOfRelatedVideos from '../../components/ListOfRelatedVideos';
 import { useYouTube } from '../../utils/hooks/useYouTube';
-import { useSearchTerm } from '../../providers/SearchTerm';
+import { useStoreContext } from '../../state/Store.provider';
 const Title = styled.div`
   font-weight: 600;
   font-size: 1.5rem;
@@ -50,7 +50,8 @@ function VideoDetailsView() {
   const location = useLocation();
   const { videoTitle, videoDescription } = location.state;
   const url = 'https://www.youtube.com/embed/' + id;
-  const { searchTerm } = useSearchTerm();
+  const [store] = useStoreContext();
+  const { searchTerm } = store;
   return (
     <Grid data-testid="location-videoDetailsView" className="grid">
       <VideoDetails>

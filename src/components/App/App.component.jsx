@@ -5,9 +5,8 @@ import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import VideoDetailsView from '../../pages/VideoDetailsView';
 import Layout from '../Layout';
-import SearchTermProvider from '../../providers/SearchTerm';
 import { createGlobalStyle } from 'styled-components';
-import { useTheme } from '../../providers/Theme';
+import { useStoreContext } from '../../state/Store.provider';
 
 const lightTheme = {
   body: '#fff',
@@ -87,28 +86,27 @@ a:active {
 `;
 
 function App() {
-  const { themeState } = useTheme();
+  const [store] = useStoreContext();
+  const { theme } = store;
   return (
     <BrowserRouter>
-      <SearchTermProvider>
-        <GlobalStyle theme={themeState === 'light' ? lightTheme : darkTheme} />
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Route path="/:id">
-              <VideoDetailsView />
-            </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </Layout>
-      </SearchTermProvider>
+      <GlobalStyle theme={theme === 'light' ? lightTheme : darkTheme} />
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/:id">
+            <VideoDetailsView />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 }

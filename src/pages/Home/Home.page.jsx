@@ -2,7 +2,8 @@ import React from 'react';
 import Cards from '../../components/Cards';
 import styled from 'styled-components';
 import { useYouTube } from '../../utils/hooks/useYouTube';
-import { useSearchTerm } from '../../providers/SearchTerm';
+import { useStoreContext } from '../../state/Store.provider';
+
 const Grid = styled.section`
   display: grid;
   gap: 2.5rem;
@@ -12,7 +13,8 @@ const Grid = styled.section`
 `;
 
 function HomePage() {
-  const { searchTerm } = useSearchTerm();
+  const [store] = useStoreContext();
+  const { searchTerm } = store;
   return (
     <Grid data-testid="location-home" className="grid">
       <Cards videos={useYouTube(searchTerm)}></Cards>

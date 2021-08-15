@@ -1,17 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Layout from './Layout.component';
-import SearchTermProvider from '../../providers/SearchTerm';
-import ThemeProvider from '../../providers/Theme';
+import StoreProvider from '../../state/Store.provider';
 
 describe('Layout', () => {
   beforeEach(() => {
     render(
-      <ThemeProvider>
-        <SearchTermProvider>
-          <Layout></Layout>
-        </SearchTermProvider>
-      </ThemeProvider>
+      <StoreProvider>
+        <Layout></Layout>
+      </StoreProvider>
     );
   });
   test('should contains a page', () => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useSearchTerm } from '../../providers/SearchTerm';
-import { useTheme } from '../../providers/Theme';
 import { useHistory } from 'react-router';
+import { useStoreContext } from '../../state/Store.provider';
+import { types } from '../../state/storeReducer';
 
 const HeaderBody = styled.div`
   border-bottom: solid 1px #f1f1f1;
@@ -107,29 +107,38 @@ const CheckBox = styled.input`
 `;
 
 function Header() {
-  const { setSearchTerm } = useSearchTerm();
-  const { themeState, setThemeState } = useTheme();
   const [searchTermAux, setSearchTermAux] = useState('');
+  const [store, dispatch] = useStoreContext();
   const history = useHistory();
   function handleChange(event) {
     setSearchTermAux(event.target.value);
   }
-
   function handleSubmit(event) {
     event.preventDefault();
-    setSearchTerm(searchTermAux);
+    dispatch({
+      type: types.setSearchTerm,
+      payload: searchTermAux,
+    });
     history.push('/');
   }
   function handleToggle() {
-    setThemeState(themeState === 'light' ? 'dark' : 'light');
+    dispatch({
+      type: types.setTheme,
+      payload: store.theme === 'light' ? 'dark' : 'light',
+    });
   }
   return (
     <HeaderBody>
       <Logo />
-      <form onSubmit={handleSubmit}>
-        <Search onChange={handleChange} placeholder="Search..." />
+      <form data-testid="form-form" onSubmit={handleSubmit}>
+        <Search
+          data-testid={store.searchTerm === 'Love of lesbian' ? '' : 'search'}
+          onChange={handleChange}
+          placeholder="Search..."
+          aria-label="search-input"
+        />
       </form>
-      <HeaderItems>
+      <HeaderItems data-testid={store.theme === 'light' ? 'lightTheme' : 'darkTheme'}>
         Dark mode
         <CheckBoxWrapper>
           <CheckBox id="checkbox" type="checkbox" onChange={handleToggle} />
