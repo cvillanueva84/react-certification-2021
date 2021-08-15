@@ -27,7 +27,7 @@ const GlobalReducer = (state, action) => {
       return { ...state, currentTheme: theme[newThemeKey] };
     }
     case "LOAD_FROM_STORAGE": {
-      const newThemeKey = JSON.parse(localStorage.getItem("theme")) || [];
+      const newThemeKey = JSON.parse(localStorage.getItem("theme")) || "light";
       return {
         ...state,
         currentTheme: theme[newThemeKey]
