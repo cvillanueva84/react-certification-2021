@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AUTH_STORAGE_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 import loginApi from './login.mock';
+import Swal from 'sweetalert2';
 
 const AuthContext = React.createContext(null);
 
@@ -27,8 +28,14 @@ function AuthProvider({ children }) {
   const login = async (data) => {
     try {
       await loginApi(data.username, data.password);
-      setAuthenticated(true);
-      storage.set(AUTH_STORAGE_KEY, true);
+      await setAuthenticated(true);
+      await storage.set(AUTH_STORAGE_KEY, true);
+      Swal.fire({
+        position: 'top-end',
+        title: 'Welcome!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (err) {
       storage.set(AUTH_STORAGE_KEY, false);
       setAuthenticated(false);
@@ -39,6 +46,12 @@ function AuthProvider({ children }) {
   const logout = useCallback(() => {
     setAuthenticated(false);
     storage.set(AUTH_STORAGE_KEY, false);
+    Swal.fire({
+      position: 'top-end',
+      title: 'Bye!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }, []);
 
   return (
