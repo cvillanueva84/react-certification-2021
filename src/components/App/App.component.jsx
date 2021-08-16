@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
@@ -10,9 +10,9 @@ import Private from '../Private';
 import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import AppState from '../../context/State/state';
 
 function App() {
-  const [search, setSearch] = useState('wizeline');
   useLayoutEffect(() => {
     const { body } = document;
 
@@ -31,33 +31,30 @@ function App() {
     };
   }, []);
 
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
-    console.log(search);
-  };
-
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Layout onSearch={handleSearch}>
-          <Switch>
-            <Route exact path="/">
-              <HomePage search={search} />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
-      </AuthProvider>
-    </BrowserRouter>
+    <AppState>
+      <BrowserRouter>
+        <AuthProvider>
+          <Layout>
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+              <Private exact path="/secret">
+                <SecretPage />
+              </Private>
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+            <Fortune />
+          </Layout>
+        </AuthProvider>
+      </BrowserRouter>
+    </AppState>
   );
 }
 

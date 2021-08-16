@@ -1,0 +1,15 @@
+.menu-burger {
+  margin-right: 120px;
+  margin-left: 20px;
+  width: 30px;
+  height: 90px;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    margin-right: 5px;
+    margin-left: 20px;
+    width: 30px;
+    height: 90px;
+    cursor: pointer;
+  }
+}

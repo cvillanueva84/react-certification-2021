@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import './VideoCard.styles.css';
+
 const CardContainer = styled.div`
-  display: flex;
-  width: 25%;
-  padding: 1rem;
+  padding: 8px;
   &:hover {
     cursor: pointer;
   }
 `;
 
 const CardDiv = styled.div`
-  width: 400px;
-  height: 450px;
+  width: 345px;
+  height: 340px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  overflow: auto;
+  overflow: hidden;
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -25,6 +26,12 @@ const Card = styled.div`
   padding: 2px 16px;
   overflow: auto;
 `;
+
+const Title = styled.h4`
+  margin: 10px;
+  margin-top: 0;
+`;
+
 const Description = styled.p`
   font-size: 15px;
   text-align: left;
@@ -38,11 +45,11 @@ const VideoCard = ({ description, title, image, handleOpenDetails, item }) => {
       }}
     >
       <CardDiv>
-        <img src={image} alt="Thumbnail" />
+        <img className="image-card" src={image} alt="Thumbnail" />
         <Card>
-          <h4>
+          <Title>
             <b>{title}</b>
-          </h4>
+          </Title>
           <Description>{description}</Description>
         </Card>
       </CardDiv>

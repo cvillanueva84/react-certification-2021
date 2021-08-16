@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import Avatar from '../Avatar';
 import Toggle from '../Toggle';
+
+import { StateContext } from '../../context/State/state';
 
 import './Navbar.styles.css';
 
 const Container = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
-  background: #1976d2;
-  padding: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  background-color: ${(props) => (props.mode ? '#556cd6' : '#1c5476')};
+  color: ${(props) => (props.mode ? '#ccc' : '#303030')};
 `;
 
 const MenuBurger = styled.div`
-  margin-right: 120px;
-  margin-left: 20px;
-  width: 35px;
-  height: 35px;
+  margin-right: 100px;
+  margin-left: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    margin-right: 20px;
+    margin-left: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 `;
 
 const Search = styled.div`
@@ -30,14 +45,19 @@ const SearchInput = styled.input`
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  height: 32.5px;
+
   &::placeholder {
     font-family: Arial, Helvetica, sans-serif; // <Thing> when hovered
   }
 `;
-const Navbar = ({ open, setOpen, onSearch }) => {
+const Navbar = ({ open, setOpen }) => {
+  const stateContext = useContext(StateContext);
+  const { handleSearch, darkMode } = stateContext;
+
   return (
-    <Container>
-      <MenuBurger open={open} onClick={() => setOpen(!open)}>
+    <Container mode={darkMode}>
+      <MenuBurger onClick={() => setOpen(!open)}>
         <svg
           className="MuiSvgIcon-root"
           focusable="false"
@@ -48,7 +68,7 @@ const Navbar = ({ open, setOpen, onSearch }) => {
         </svg>
       </MenuBurger>
       <Search>
-        <SearchInput type="search" placeholder="search..." onChange={onSearch} />
+        <SearchInput type="search" placeholder="search..." onChange={handleSearch} />
       </Search>
       <Toggle />
       <Avatar />

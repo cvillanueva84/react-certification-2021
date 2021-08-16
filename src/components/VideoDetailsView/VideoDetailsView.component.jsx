@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import { useFetchVideos } from '../../utils/hooks/useFetchVideos';
+import { StateContext } from '../../context/State/state';
+// import { useFetchVideos } from '../../utils/hooks/useFetchVideos';
 
 const VideoDetailsViewContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 173px;
+  margin: 24px;
 `;
 
 const VideoDetailsContainer = styled.div`
@@ -22,12 +23,18 @@ const VideoListContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
+  height: 650px;
+  overflow: scroll;
+  background-color: ${(props) => (props.mode ? '#303030' : '#ffffff')};
+  color: ${(props) => (props.mode ? '#ccc' : '#303030')};
 `;
 
 const Card = styled.div`
   padding: 2px 16px;
   display: flex;
+  cursor: pointer;
 `;
+
 const Img = styled.img`
   width: 120px;
   height: 90px;
@@ -39,9 +46,11 @@ const Description = styled.p`
 
 const IframeContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 60vw;
   padding-top: 56.25%;
+  z-index: 1;
 `;
+
 const Iframe = styled.iframe`
   position: absolute;
   top: 0;
@@ -52,38 +61,48 @@ const Iframe = styled.iframe`
   height: 100%;
 `;
 
-const VideoDetailsView = ({ dataItem, search }) => {
-  const { data } = useFetchVideos(search);
+const DetailDescription = styled.p`
+  margin-top: 0;
+  padding-left: 10px;
+`;
+
+const VideoDetailsView = () => {
+  const stateContext = useContext(StateContext);
+  const {
+    darkMode,
+    video: { videos, selectedVideo },
+    handleSelectVideo,
+  } = stateContext;
 
   return (
     <>
       <VideoDetailsViewContainer>
-        <VideoDetailsContainer onClick={() => console.log('click')}>
+        <VideoDetailsContainer>
           <IframeContainer>
             <Iframe
-              src={`https://www.youtube.com/embed/${dataItem.id.videoId}`}
+              src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               title="Embedded youtube"
             />
           </IframeContainer>
-          <h4 style={{ padding: '10px' }}>
-            <b>{dataItem.snippet.title}</b>
-          </h4>
+          <h3>
+            <b>{selectedVideo.snippet.title}</b>
+          </h3>
           <Description style={{ padding: '10px' }}>
-            {dataItem.snippet.description}
+            {selectedVideo.snippet.description}
           </Description>
         </VideoDetailsContainer>
-        <VideoListContainer>
-          {!data ? (
+        <VideoListContainer mode={darkMode}>
+          {!videos ? (
             <div>Loading...</div>
           ) : (
-            data.items.map((item, idx) => (
+            videos.items.map((item, idx) => (
               // eslint-disable-next-line react/no-array-index-key
-              <Card key={idx}>
+              <Card key={idx} onClick={() => handleSelectVideo(item)}>
                 <Img src={item.snippet.thumbnails.default.url} alt="Thumbnail" />
-                <p>{item.snippet.title}</p>
+                <DetailDescription>{item.snippet.title}</DetailDescription>
               </Card>
             ))
           )}

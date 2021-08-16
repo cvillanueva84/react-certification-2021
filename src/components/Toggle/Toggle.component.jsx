@@ -1,21 +1,32 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { StateContext } from '../../context/State/state';
 
 import './Toggle.styles.css';
 
 const Container = styled.div`
   padding: 10px;
+  display: flex;
+  align-items: center;
+`;
+
+const SpanTag = styled.span`
+  margin-left: 1vw;
+  color: white;
 `;
 
 const Toggle = () => {
+  const stateContext = useContext(StateContext);
+  const { darkMode, handleDarkMode } = stateContext;
   return (
-    <Container>
+    <Container onChange={() => handleDarkMode(darkMode)}>
       <label className="switch">
         <input type="checkbox" />
         <span className="slider round" />
       </label>
-      <span> DARK MODE</span>
+      <SpanTag>Dark Mode</SpanTag>
     </Container>
   );
 };
