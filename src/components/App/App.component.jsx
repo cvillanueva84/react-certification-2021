@@ -23,24 +23,24 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <Layout>
-            <ThemeContext.Provider value={{theme, setTheme}}>
-              <Switch>
-                <Route exact path="/">
-                  <HomePage />
-                </Route>
-                <Route path="/watch">
-                  <VideoPlayer />
-                </Route>
-                <Route exact path="/login">
-                  <LoginPage />
-                </Route>
-                <Private exact path="/secret">
-                  <SecretPage />
-                </Private>
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </Switch>
+              <ThemeContext.Provider value={{ theme, setTheme }}>
+                <Switch>
+                  <Route exact path="/">
+                    <HomePage />
+                  </Route>
+                  <Route path="/watch">
+                    <VideoPlayer />
+                  </Route>
+                  <Route exact path="/login">
+                    <LoginPage />
+                  </Route>
+                  <Private exact path="/secret">
+                    <SecretPage />
+                  </Private>
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
               </ThemeContext.Provider>
             </Layout>
           </AuthProvider>

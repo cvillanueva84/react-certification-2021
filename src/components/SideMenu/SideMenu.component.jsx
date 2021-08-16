@@ -7,7 +7,7 @@ import LinkVideo from '../Link.element';
 import { SideMenuContainer, SideMenuItem } from './SideMenu.elements';
 
 function SideMenu() {
-  const {theme, setTheme} = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const icon = theme === 'light' ? FaMoon : FaSun;
   const text = theme === 'light' ? 'Dark Mode' : 'Light Mode';
