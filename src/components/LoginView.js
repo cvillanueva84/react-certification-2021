@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from '../hooks/useForm';
 import '../style/LoginView.css';
 import { GlobalContext } from './Context';
+import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 
 export const LoginView = ({ history }) => {
   const { myStateReducer, dispatch } = useContext(GlobalContext);
@@ -32,9 +33,22 @@ export const LoginView = ({ history }) => {
     }
   };
 
-  const handleGooglelogin = () => {
-    console.log('Google');
-  };
+  const handleGooglelogin = (e) => {
+    e.preventDefault();
+
+    firebase.auth().signInWithPopup(googleAuthProvider)
+    .then(({ user }) => {
+        dispatch({
+            type: 'actionLoginGoogle',
+            payload: {
+              ...myStateReducer,
+              user: user.displayName,
+            },
+          });
+    }).catch((e) => {
+        console.log(e);
+    });
+  }
 
   return (
     <section className="contenedor-login">
