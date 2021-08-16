@@ -13,9 +13,7 @@ const VideoListProvider = (props) => {
   const [videosState, dispatch] = useReducer(reducer, initialState);
   const history = useHistory()
   useEffect(() => {
-    let mounted = true;
     const getVideos = async () => {
-      if(mounted) {
         try {
           const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&&key=${process.env.REACT_APP_GOOGLE_APP_API_KEY}&type=video&maxResults=23&q=${search}`;
           const response = await fetch(url);
@@ -26,11 +24,10 @@ const VideoListProvider = (props) => {
           dispatch({ type: 'FETCH_ERROR' });
           throw new Error(error);
         }
-      }
+      
     };
     getVideos();
 
-    return () => { mounted = false };
   }, [search, history]);
 
   return (
