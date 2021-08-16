@@ -23,12 +23,12 @@ const VideoDetails = () => {
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               <div className="reaction-btns">
                 <button type="button" onClick={() => console.log('clicked!')}>
-                  <i className="fas fa-thumbs-up" style={{ fontSize: '2rem' }} />
+                  <i className="fas fa-thumbs-up" />
                   Like
                 </button>
 
                 <button type="button" onClick={() => console.log('clicked!')}>
-                  <i className="fas fa-thumbs-down" style={{ fontSize: '2rem' }}></i>
+                  <i className="fas fa-thumbs-down"></i>
                   Dislike
                 </button>
               </div>

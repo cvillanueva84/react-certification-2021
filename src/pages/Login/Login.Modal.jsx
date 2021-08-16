@@ -13,13 +13,13 @@ function LoginModal({ open, onClose }) {
   const [error, setError] = useState('');
   const { login } = useAuth();
   const history = useHistory();
-
   const { username, password } = userInfo;
+
   const authenticate = async (e) => {
     e.preventDefault();
     try {
-      await login(userInfo);
       setError(null);
+      await login(userInfo);
       onClose();
       history.push('/');
     } catch (error) {

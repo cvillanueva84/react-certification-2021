@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   FaHamburger,
   FaWindowClose,
@@ -26,6 +26,7 @@ const Navbar = () => {
   const { setSearch } = useContext(VideoListContext);
   const { dispatch } = useContext(Context);
   const { authenticated, logout } = useAuth();
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim() === '') return;
@@ -37,6 +38,11 @@ const Navbar = () => {
     dispatch({
       type: 'TOGGLE_DARK_MODE',
     });
+  };
+
+  const handleLogout = () => {
+    logout();
+    history.replace('/');
   };
 
   return (
@@ -68,7 +74,7 @@ const Navbar = () => {
               <FaSun className="sun-icon" size={20} />
             </div>
             {authenticated ? (
-              <LogoutBtn type="button" onClick={logout}>
+              <LogoutBtn type="button" onClick={handleLogout}>
                 Logout
               </LogoutBtn>
             ) : (
@@ -81,6 +87,17 @@ const Navbar = () => {
                 )}
               </>
             )}
+            {/* <LogoutBtn type="button" onClick={handleLogout}>
+              Logout
+            </LogoutBtn>
+            <>
+              <FaUserAstronaut className="user-icon" onClick={() => setIsOpen(true)} />
+              {isOpen && (
+                <div className="login">
+                  <LoginModal open={isOpen} onClose={() => setIsOpen(false)} />
+                </div>
+              )}
+            </> */}
           </div>
         </nav>
 

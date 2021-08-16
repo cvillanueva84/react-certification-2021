@@ -19,17 +19,20 @@ function AuthProvider({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
+    let mounted = true;
     const lastAuthState = storage.get(AUTH_STORAGE_KEY);
     const isAuthenticated = Boolean(lastAuthState);
-
-    setAuthenticated(isAuthenticated);
+    mounted && setAuthenticated(isAuthenticated);
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
 
   const login = async (data) => {
     try {
       await loginApi(data.username, data.password);
-      await setAuthenticated(true);
-      await storage.set(AUTH_STORAGE_KEY, true);
+      setAuthenticated(true);
+      storage.set(AUTH_STORAGE_KEY, true);
       Swal.fire({
         position: 'top-end',
         title: 'Welcome!',
@@ -38,7 +41,7 @@ function AuthProvider({ children }) {
       });
     } catch (err) {
       storage.set(AUTH_STORAGE_KEY, false);
-      setAuthenticated(false);
+      // setAuthenticated(false);
       throw err;
     }
   };
