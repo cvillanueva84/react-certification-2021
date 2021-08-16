@@ -30,7 +30,6 @@ function AuthProvider({ children }) {
       setAuthenticated(true);
       storage.set(AUTH_STORAGE_KEY, true);
     } catch (err) {
-      // logout();
       storage.set(AUTH_STORAGE_KEY, false);
       setAuthenticated(false);
       throw err;

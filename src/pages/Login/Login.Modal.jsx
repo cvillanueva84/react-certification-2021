@@ -56,6 +56,7 @@ function LoginModal({ open, onClose }) {
                     name="username"
                     value={username}
                     onChange={handleUserInfo}
+                    autoComplete="on"
                   />
                 </label>
               </div>
@@ -69,6 +70,7 @@ function LoginModal({ open, onClose }) {
                     name="password"
                     value={password}
                     onChange={handleUserInfo}
+                    autoComplete="off"
                   />
                 </label>
               </div>

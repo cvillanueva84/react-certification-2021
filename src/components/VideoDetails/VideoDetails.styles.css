@@ -22,6 +22,47 @@ iframe {
   width: 30%;
 }
 
+.title_like_btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reaction-btns {
+  width: 450px;
+  text-align: center;
+}
+
+.reaction-btns:hover {
+  cursor: pointer;
+}
+
+.reaction-btns i {
+  margin: 0 2rem;
+}
+
+.reaction-btns span {
+  border: 1px solid #fff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.reaction-btns span:hover {
+  box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media only screen and (max-width: 1100px) {
+  .reaction-btns {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+  }
+
+  .reaction-btns span {
+    padding: 0.5rem;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .video-details-container {
     display: flex;

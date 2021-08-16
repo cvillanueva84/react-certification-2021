@@ -19,7 +19,20 @@ const VideoDetails = () => {
         ></iframe>
         {singleVideo.length > 0 && (
           <div className="video-details-selected-video__text">
-            <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
+            <div className="title_like_btns">
+              <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
+              <div className="reaction-btns">
+                <span>
+                  <i className="fas fa-thumbs-up" style={{ fontSize: '2rem' }} />
+                  Like
+                </span>
+
+                <span>
+                  <i className="fas fa-thumbs-down" style={{ fontSize: '2rem' }}></i>
+                  Dislike
+                </span>
+              </div>
+            </div>
             <DescriptionSpan>{singleVideo[0].snippet.description}</DescriptionSpan>
           </div>
         )}

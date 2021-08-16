@@ -58,18 +58,15 @@
   background-color: rgba(0, 0, 0, 0.1);
   color: #060b26;
 }
-/* 
-.login-form button[type='submit'] {
-  width: 5rem;
-  margin-top: 1rem;
-  padding: 0.4rem 0.6rem;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 3px;
-} */
 
 .form-btns {
   width: 50%;
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 1000px) {
+  .login {
+    width: 60%;
+  }
 }
