@@ -1,39 +1,31 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-
-import { useAuth } from '../../providers/Auth';
+import React from 'react';
+// Styles
 import './Home.styles.css';
+// Styled components
+import { VideoContent, Title } from './Styles';
+// Componentes
+import VideoCard from '../../components/VideoCard';
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+export default function HomePage({ data }) {
+  console.log('data home page', data);
+  const { videos, loading, error } = data;
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  if (error) return <div>Network error</div>;
+  if (loading) return <div>loading...</div>;
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <>
+      <section>
+        <Title>
+          <h3>Welcome to Wizeline</h3>
+        </Title>
+        <VideoContent>
+          {videos?.items &&
+            videos.items.map((item) => (
+              <VideoCard key={item.etag} data={item} videoList={videos} />
+            ))}
+        </VideoContent>
+      </section>
+    </>
   );
 }
-
-export default HomePage;
