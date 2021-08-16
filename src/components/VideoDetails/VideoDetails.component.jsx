@@ -23,12 +23,12 @@ const VideoDetails = () => {
             <div className="title_like_btns">
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               <div className="reaction-btns">
-                <button type="button" onClick={() => console.log('clicked!')}>
+                <button type="button">
                   <i className="fas fa-thumbs-up" />
                   Like
                 </button>
 
-                <button type="button" onClick={() => console.log('clicked!')}>
+                <button type="button">
                   <i className="fas fa-thumbs-down"></i>
                   Dislike
                 </button>
