@@ -9,6 +9,7 @@ const VideoListProvider = (props) => {
     loading: true,
     posts: [],
     error: '',
+    favoriteVideos: []
   };
   const [videosState, dispatch] = useReducer(reducer, initialState);
   const history = useHistory()
@@ -30,10 +31,19 @@ const VideoListProvider = (props) => {
 
   }, [search, history]);
 
+  const addToFavorites = (video) => {
+    dispatch({
+      type: 'ADD_TO_FAVORITES',
+      payload: video
+    })
+  };
+
+
   return (
     <VideoListContext.Provider
       value={{
         setSearch,
+        addToFavorites,
         videosState,
       }}
     >
