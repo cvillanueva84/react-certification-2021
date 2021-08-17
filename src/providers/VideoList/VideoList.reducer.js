@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
 
         case 'ADD_TO_FAVORITES':
             const favoriteVideos = state.favoriteVideos.concat(action.payload)
-            localStorage.setItem('favorite-videos', JSON.stringify(favoriteVideos))
+            localStorage.setItem('favorite_videos', JSON.stringify(favoriteVideos))
             return {
                 ...state,
                 favoriteVideos
