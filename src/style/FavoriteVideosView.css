@@ -2,10 +2,6 @@
   display: none;
 }
 
-.card-item {
-  height: auto;
-}
-
 .card-item .botones-favoritos{
   display: flex;
   justify-content: center;

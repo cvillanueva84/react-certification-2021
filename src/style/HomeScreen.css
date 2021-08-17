@@ -89,6 +89,7 @@ h1 {
   transform: scale(1.4);
   cursor: pointer;
   color: #008cba;
+  transition: 0.4s;
 }
 
 .card-item button i{
