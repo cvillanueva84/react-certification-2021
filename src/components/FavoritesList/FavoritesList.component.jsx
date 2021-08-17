@@ -15,51 +15,60 @@ const FavoritesList = () => {
   const { state } = useContext(Context);
 
   return (
-    <div className="favoritVideos-container">
-      {videos.map((video) => (
-        <Link
-          to={`favorite-list/video/`}
-          style={{ textDecoration: 'none', color: '#000' }}
-        >
-          {state.isDark ? (
-            <VideoCardDivLight>
-              <VideoImageDiv
-                style={{
-                  backgroundImage: `url(${video.snippet.thumbnails.medium.url})`,
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  borderTopRightRadius: '0.4rem',
-                  borderTopLeftRadius: '0.4rem',
-                }}
-              ></VideoImageDiv>
-              <TitleSpan>{video.snippet.title}</TitleSpan>
-              <DescriptionSpan>
-                {video.snippet.description ? video.snippet.description : 'watch video...'}
-              </DescriptionSpan>
-            </VideoCardDivLight>
-          ) : (
-            <VideoCardDivDark>
-              <VideoImageDiv
-                style={{
-                  backgroundImage: `url(${video.snippet.thumbnails.medium.url})`,
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  borderTopRightRadius: '0.4rem',
-                  borderTopLeftRadius: '0.4rem',
-                }}
-              ></VideoImageDiv>
-              <TitleSpan>{video.snippet.title}</TitleSpan>
-              <DescriptionSpan>
-                {video.snippet.description
-                  ? video.snippet.description.slice(0, 100)
-                  : 'watch video...'}
-              </DescriptionSpan>
-            </VideoCardDivDark>
-          )}
-        </Link>
-      ))}
+    <div className="favoriteVideos-container">
+      {videos === null ? (
+        <h2>there are no favorite videos</h2>
+      ) : (
+        <div className="favoriteVideos-container">
+          {videos.map((video) => (
+            <Link
+              key={video.id}
+              to={`favorite-list/video/${video.id}`}
+              style={{ textDecoration: 'none', color: '#000' }}
+            >
+              {state.isDark ? (
+                <VideoCardDivLight>
+                  <VideoImageDiv
+                    style={{
+                      backgroundImage: `url(${video.snippet.thumbnails.medium.url})`,
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'center',
+                      borderTopRightRadius: '0.4rem',
+                      borderTopLeftRadius: '0.4rem',
+                    }}
+                  ></VideoImageDiv>
+                  <TitleSpan>{video.snippet.title}</TitleSpan>
+                  <DescriptionSpan>
+                    {video.snippet.description.slice(0, 100)
+                      ? video.snippet.description.slice(0, 100)
+                      : 'watch video...'}
+                  </DescriptionSpan>
+                </VideoCardDivLight>
+              ) : (
+                <VideoCardDivDark>
+                  <VideoImageDiv
+                    style={{
+                      backgroundImage: `url(${video.snippet.thumbnails.medium.url})`,
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'center',
+                      borderTopRightRadius: '0.4rem',
+                      borderTopLeftRadius: '0.4rem',
+                    }}
+                  ></VideoImageDiv>
+                  <TitleSpan>{video.snippet.title}</TitleSpan>
+                  <DescriptionSpan>
+                    {video.snippet.description
+                      ? video.snippet.description.slice(0, 100)
+                      : 'watch video...'}
+                  </DescriptionSpan>
+                </VideoCardDivDark>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

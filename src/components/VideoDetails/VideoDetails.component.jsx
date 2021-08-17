@@ -13,6 +13,16 @@ const VideoDetails = () => {
   const { singleVideo } = useFetch(id);
   const { addToFavorites } = useContext(VideoListContext);
   const { authenticated } = useAuth();
+  const favoriteVideos = JSON.parse(localStorage.getItem('favorite_videos'));
+
+  const checkIfExists = (id, singleVideo) => {
+    if (favoriteVideos.some((each) => each.id === id)) {
+      console.log('already added');
+    } else {
+      addToFavorites(singleVideo);
+      console.log('it doesnt');
+    }
+  };
 
   return (
     <div className="video-details-container">
@@ -31,7 +41,7 @@ const VideoDetails = () => {
                 <div className="reaction-btns">
                   <ReactionBtn
                     type="button"
-                    onClick={() => addToFavorites(singleVideo[0])}
+                    onClick={() => checkIfExists(id, singleVideo)}
                   >
                     <i className="fas fa-thumbs-up" />
                     Like
