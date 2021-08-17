@@ -82,6 +82,7 @@ h1 {
   width: 100%;
   background-color: transparent;
   margin: auto;
+  display: none;
 }
 
 .card-item button i:hover{
@@ -102,4 +103,8 @@ h1 {
     margin: 10px;
     width: 80%;
   }
+}
+
+.card-item:hover > button {
+  display: block;
 }
