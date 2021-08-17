@@ -14,6 +14,8 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { light, dark } from '../../providers/Theme/themes';
 import Context from '../../providers/Theme/Theme.provider';
 import { ThemeReducer } from '../../providers/Theme/Theme.reducer';
+import FavoritesList from '../FavoritesList/FavoritesList.component';
+import Private from '../Private/Private.component';
 const VideoDetails = lazy(() => import('../VideoDetails/VideoDetails.component'));
 
 const override = css`
@@ -59,9 +61,9 @@ function App() {
                       <VideoDetails />
                     </Suspense>
                   </Route>
-                  {/* <Route exact path="/login">
-                    <LoginModal />
-                  </Route> */}
+                  <Private exact path="/favorite-videos">
+                    <FavoritesList />
+                  </Private>
                   <Route path="/">
                     <HomePage />
                   </Route>

@@ -8,6 +8,7 @@ import {
   FaSun,
   FaRegMoon,
 } from 'react-icons/fa';
+import { FcLike } from 'react-icons/fc';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.css';
 import { InputText, LogoutBtn } from './styledComponents';
@@ -15,8 +16,6 @@ import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.provider';
 import LoginModal from '../../pages/Login';
 import { useAuth } from '../../providers/Auth';
-
-// ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -87,17 +86,6 @@ const Navbar = () => {
                 )}
               </>
             )}
-            {/* <LogoutBtn type="button" onClick={handleLogout}>
-              Logout
-            </LogoutBtn>
-            <>
-              <FaUserAstronaut className="user-icon" onClick={() => setIsOpen(true)} />
-              {isOpen && (
-                <div className="login">
-                  <LoginModal open={isOpen} onClose={() => setIsOpen(false)} />
-                </div>
-              )}
-            </> */}
           </div>
         </nav>
 
@@ -115,6 +103,14 @@ const Navbar = () => {
                 <span style={{ color: '#fff' }}>Home</span>
               </Link>
             </li>
+            {authenticated && (
+              <li className="nav-text">
+                <Link to="/favorite-videos">
+                  <FcLike />
+                  <span style={{ color: '#fff' }}>Fav Videos</span>
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
       </IconContext.Provider>
