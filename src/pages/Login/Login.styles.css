@@ -66,6 +66,12 @@
 }
 
 @media only screen and (max-width: 1000px) {
+  .form-btns {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+  }
+
   .login {
     width: 60%;
   }

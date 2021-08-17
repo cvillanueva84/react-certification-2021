@@ -33,14 +33,15 @@
 
 @media only screen and (max-width: 1000px) {
   .navbar__left-section {
-    width: 70%;
+    padding: 0 0.5rem;
+    margin-left: -2rem;
   }
   .navbar__right-section {
-    width: 30%;
+    width: 20%;
   }
 
   .user-icon {
-    display: none;
+    position: absolute;
   }
 
   .moon-icon {
