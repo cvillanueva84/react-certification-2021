@@ -1,0 +1,34 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { AppContext } from '../../../context/appContext';
+import VideoDetails from '../index';
+import data from '../../../mocks/youtube.json';
+
+describe('Testing VideoDetails', () => {
+  const contextValue = {
+    dispatch: jest.fn(),
+    state: {
+      search: 'wizeline',
+      showVideoDetails: false,
+    },
+  };
+
+  const videos = data.items.filter((item) => {
+    return item.id.kind === 'youtube#video';
+  });
+
+  const video = data.items[1];
+
+  const selectVideo = jest.fn();
+
+  beforeEach(() => {
+    render(
+      <AppContext.Provider value={contextValue}>
+        <VideoDetails video={video} videoList={videos} selectVideo={selectVideo} />
+      </AppContext.Provider>
+    );
+  });
+  it('should match snapshot', () => {
+    expect(screen).toMatchSnapshot();
+  });
+});
