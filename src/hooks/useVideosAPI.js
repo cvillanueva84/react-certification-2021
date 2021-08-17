@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+require('dotenv').config();
 
 const useVideoApi = () => {
     const [videos, setVideos] = useState(null);
@@ -8,7 +9,8 @@ const useVideoApi = () => {
     const fetchVideos = async (searchWord) => {
         setLoading(true);
         try{
-            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBPRIGYlC55KfMs3_Xy_Y5An0-g1cH5y1w&maxResults=20&type=video&part=snippet&q=${searchWord}`);
+            const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&maxResults=20&type=video&part=snippet&q=${searchWord}`);
             const searchResults = await response.json();
             //console.log("resultado", searchResults.items[0].snippet);
             setVideos(searchResults.items);

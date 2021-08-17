@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import HomePage from '../../pages/Home/Home.page';
+import HomePage from '../../pages/Home.page';
 import NavBar from '../NavBar';
-import useVideoApi from '../../pages/Home/useVideosAPI';
-import DetailsView from '../DetailsView';
+import useVideoApi from '../../hooks/useVideosAPI';
+import DetailsView from '../../pages/DetailsView.page';
+
 
 function App() {
   const { videos, loading, error, fetchVideos } = useVideoApi();
@@ -29,31 +30,27 @@ function App() {
 
   if (displayDetailView) {
     return (
-      <div>
+      <>
         {/** Header */}
-        <header>
           <NavBar.LightNavBar
             handleSearchField={handleSearchField}
             handleSearchButton={handleSearchButton}
           />
-        </header>
         {/** Page main content */}
         <main>
           <DetailsView video={videotoPlay} relatedVideos={videos} />
         </main>
-      </div>
+      </>
     );
   }
 
   return (
-    <div>
+    <>
       {/** Header */}
-      <header>
         <NavBar.LightNavBar
           handleSearchField={handleSearchField}
           handleSearchButton={handleSearchButton}
         />
-      </header>
       {/** Page main content */}
       <main>
         {!loading && videos ? (
@@ -64,7 +61,7 @@ function App() {
           <div>Loading...</div>
         )}
       </main>
-    </div>
+    </>
   );
 }
 

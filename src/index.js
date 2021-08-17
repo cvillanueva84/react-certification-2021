@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './components/App';
-//import './global.css';
+import './global.css';
+
+const Context = createContext('light');
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Context.Provider>
+      <App />
+    </Context.Provider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

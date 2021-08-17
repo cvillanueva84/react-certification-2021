@@ -1,6 +1,6 @@
 import React from 'react';
-import StyledCardVideo from '../../components/CardVideo';
-//import { youtubevideos } from '../../mocks/youtubevideos';
+import StyledCardVideo from '../components/CardVideo';
+//import { youtubevideos } from '../mocks/youtubevideos';
 
 const HomePage = ({videos, showDetailView}) => {
 
