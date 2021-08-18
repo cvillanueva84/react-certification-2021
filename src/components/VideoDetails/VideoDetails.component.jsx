@@ -4,25 +4,33 @@ import { useFetch } from '../../utils/hooks/useFetch';
 import './VideoDetails.styles.css';
 import { TitleSpan, DescriptionSpan, ReactionBtn } from './styledComponents';
 import RecommendedVideos from '../RecommendedVideos';
-import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 import Swal from 'sweetalert2';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const VideoDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
-  const { addToFavorites } = useContext(VideoListContext);
   const { authenticated } = useAuth();
   const favoriteVideos = JSON.parse(localStorage.getItem('favorite_videos'));
+  const { addToFavorites } = useContext(VideoListContext);
+  const [warning, setWarning] = useState('');
 
-  const checkIfExists = (id, singleVideo) => {
+  const checkIfExists = (id) => {
     if (favoriteVideos.some((each) => each.id === id)) {
-      console.log('already added');
+      setWarning('Video has been added to favorites');
     } else {
+      console.log('it doenst');
       addToFavorites(singleVideo);
-      console.log('it doesnt');
+      setWarning('Video has been added to favorites');
     }
   };
+
+  useEffect(() => {
+    setWarning('');
+  }, [id]);
 
   return (
     <div className="video-details-container">
@@ -39,17 +47,8 @@ const VideoDetails = () => {
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               {authenticated ? (
                 <div className="reaction-btns">
-                  <ReactionBtn
-                    type="button"
-                    onClick={() => checkIfExists(id, singleVideo)}
-                  >
-                    <i className="fas fa-thumbs-up" />
-                    Like
-                  </ReactionBtn>
-
-                  <ReactionBtn type="button">
-                    <i className="fas fa-thumbs-down" />
-                    Dislike
+                  <ReactionBtn type="button" onClick={() => checkIfExists(id)}>
+                    <i className={warning ? 'fas fa-thumbs-down' : 'fas fa-thumbs-up'} />
                   </ReactionBtn>
                 </div>
               ) : (

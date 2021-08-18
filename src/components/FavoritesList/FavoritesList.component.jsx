@@ -16,8 +16,10 @@ const FavoritesList = () => {
 
   return (
     <div className="favoriteVideos-container">
-      {videos === null ? (
-        <h2>there are no favorite videos</h2>
+      {videos.length === 0 ? (
+        <div className="no-favorites">
+          <h2>There are no favorite videos!</h2>
+        </div>
       ) : (
         <div className="favoriteVideos-container">
           {videos.map((video) => (

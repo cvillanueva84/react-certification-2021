@@ -32,7 +32,7 @@ iframe {
 .reaction-btns {
   width: 450px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 .reaction-btns i {
