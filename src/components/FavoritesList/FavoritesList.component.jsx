@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './FavoritesList.styles.css';
-import Context from '../../providers/Theme/Theme.provider';
+import Context from '../../providers/Theme/Theme.context';
 import { Link } from 'react-router-dom';
 import {
   VideoCardDivLight,
@@ -25,7 +25,7 @@ const FavoritesList = () => {
           {videos.map((video) => (
             <Link
               key={video.id}
-              to={`favorite-list/video/${video.id}`}
+              to={`/favorite-video/${video.id}`}
               style={{ textDecoration: 'none', color: '#000' }}
             >
               {state.isDark ? (

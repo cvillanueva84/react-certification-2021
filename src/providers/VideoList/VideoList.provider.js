@@ -52,7 +52,7 @@ const VideoListProvider = (props) => {
       value={{
         setSearch,
         addToFavorites,
-        videosState,
+        videosState, 
       }}
     >
       {props.children}

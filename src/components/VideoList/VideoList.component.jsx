@@ -7,7 +7,7 @@ import {
   TitleSpan,
   DescriptionSpan,
 } from './styledComponents';
-import Context from '../../providers/Theme/Theme.provider';
+import Context from '../../providers/Theme/Theme.context';
 
 const VideoList = ({ video }) => {
   const { snippet } = video;

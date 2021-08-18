@@ -1,20 +1,19 @@
 import React, { useContext } from 'react';
+import { ReactionBtn, TitleSpan, DescriptionSpan } from './styledComponents';
+import Swal from 'sweetalert2';
 import { useParams } from 'react-router';
 import { useFetch } from '../../utils/hooks/useFetch';
-import './VideoDetails.styles.css';
-import { TitleSpan, DescriptionSpan, ReactionBtn } from './styledComponents';
-import RecommendedVideos from '../RecommendedVideos';
 import { useAuth } from '../../providers/Auth/Auth.provider';
-import Swal from 'sweetalert2';
+import RecommendedVideos from '../RecommendedVideos';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 
-const VideoDetails = () => {
+const FavoriteDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
   const { authenticated } = useAuth();
-  const { addToFavorites, videosState } = useContext(VideoListContext);
-  const { posts } = videosState;
-
+  const { videosState } = useContext(VideoListContext);
+  const { favoriteVideos } = videosState;
+  console.log(favoriteVideos);
   return (
     <div className="video-details-container">
       <div className="video-details-selected-video">
@@ -38,7 +37,7 @@ const VideoDetails = () => {
                   </ReactionBtn> */}
                   <ReactionBtn
                     type="button"
-                    onClick={() => addToFavorites(singleVideo[0])}
+                    onClick={() => console.log('remove from favs')}
                   >
                     <i className="fas fa-thumbs-up" />
                   </ReactionBtn>
@@ -63,10 +62,10 @@ const VideoDetails = () => {
         )}
       </div>
       <div className="video-details-similar-videos">
-        <RecommendedVideos videos={posts} />
+        <RecommendedVideos videos={favoriteVideos} />
       </div>
     </div>
   );
 };
 
-export default VideoDetails;
+export default FavoriteDetails;

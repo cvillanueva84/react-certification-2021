@@ -13,7 +13,7 @@ import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.css';
 import { InputText, LogoutBtn } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
-import Context from '../../providers/Theme/Theme.provider';
+import Context from '../../providers/Theme/Theme.context';
 import LoginModal from '../../pages/Login';
 import { useAuth } from '../../providers/Auth';
 
