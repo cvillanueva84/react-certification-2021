@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import HomePage from '../../pages/Home.page';
 import NavBar from '../NavBar';
 import useVideoApi from '../../hooks/useVideosAPI';
 import DetailsView from '../../pages/DetailsView.page';
+import GlobalContext from '../../state/GlobalContext';
+import GlobalReducer from '../../reducers/GlobalReducer';
 
+const initialState = {
+  theme: 'light',
+  searchText: 'wizeline',
+};
 
 function App() {
+  const [state, dispatch] = useReducer(GlobalReducer, initialState);
   const { videos, loading, error, fetchVideos } = useVideoApi();
-  const [searchField, setSearchField] = useState('');
   const [displayDetailView, setDisplayDetailView] = useState(false);
   const [videotoPlay, setVideotoPlay] = useState({
     url: '',
@@ -15,12 +21,8 @@ function App() {
     description: '',
   });
 
-  const handleSearchField = (event) => {
-    setSearchField(event.target.value);
-  };
-
   const handleSearchButton = () => {
-    fetchVideos(searchField);
+    fetchVideos(state.searchText);
   };
 
   const showDetailView = (url, title, description) => {
@@ -31,36 +33,38 @@ function App() {
   if (displayDetailView) {
     return (
       <>
-        {/** Header */}
-          <NavBar.LightNavBar
-            handleSearchField={handleSearchField}
-            handleSearchButton={handleSearchButton}
-          />
-        {/** Page main content */}
-        <main>
-          <DetailsView video={videotoPlay} relatedVideos={videos} />
-        </main>
+        <GlobalContext.Provider value={{ state, dispatch }}>
+          {/** Header */}
+            <NavBar.LightNavBar
+              handleSearchButton={handleSearchButton}
+            />
+          {/** Page main content */}
+          <main>
+            <DetailsView video={videotoPlay} relatedVideos={videos} />
+          </main>
+        </GlobalContext.Provider>
       </>
     );
   }
 
   return (
     <>
-      {/** Header */}
-        <NavBar.LightNavBar
-          handleSearchField={handleSearchField}
-          handleSearchButton={handleSearchButton}
-        />
-      {/** Page main content */}
-      <main>
-        {!loading && videos ? (
-          <HomePage videos={videos} showDetailView={showDetailView} />
-        ) : !loading && error ? (
-          <div>An error has ocurred</div>
-        ) : (
-          <div>Loading...</div>
-        )}
-      </main>
+      <GlobalContext.Provider value={{ state, dispatch }}>
+        {/** Header */}
+          <NavBar.LightNavBar
+            handleSearchButton={handleSearchButton}
+          />
+        {/** Page main content */}
+        <main>
+          {!loading && videos ? (
+            <HomePage videos={videos} showDetailView={showDetailView} />
+          ) : !loading && error ? (
+            <div>An error has ocurred</div>
+          ) : (
+            <div>Loading...</div>
+          )}
+        </main>
+      </GlobalContext.Provider>
     </>
   );
 }

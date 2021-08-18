@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import GlobalContext from '../state/GlobalContext';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,7 +20,21 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
-const NavBar = ({ className, handleSearchField, handleSearchButton }) => {
+const NavBar = ({ className, handleSearchButton }) => {
+  const { dispatch, state } = useContext(GlobalContext);
+  const handleSearchField = (event) => {
+    dispatch({
+      type: 'CHANGE_SEARCH_TEXT',
+      payload: {
+        searchText: event.target.value,
+      }
+    });
+  }
+
+  useEffect(() => {
+    console.log("valor state", state);
+  });
+
   return (
     <>
       <AppBar position="static">
@@ -31,7 +46,7 @@ const NavBar = ({ className, handleSearchField, handleSearchButton }) => {
               <IconButton edge="start" color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
-              <StyledInputBase placeholder="Search" onChange={handleSearchField} />
+              <StyledInputBase name="searchInput" placeholder="Search" onChange={handleSearchField} defaultValue={state.searchText} />
               <Button color="secondary" variant="contained" onClick={handleSearchButton}>
                 Search
               </Button>
