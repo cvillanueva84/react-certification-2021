@@ -13,7 +13,6 @@ const FavoriteDetails = () => {
   const { authenticated } = useAuth();
   const { videosState } = useContext(VideoListContext);
   const { favoriteVideos } = videosState;
-  console.log(favoriteVideos);
   return (
     <div className="video-details-container">
       <div className="video-details-selected-video">
@@ -29,17 +28,11 @@ const FavoriteDetails = () => {
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               {authenticated ? (
                 <div className="reaction-btns">
-                  {/* <ReactionBtn
-                    type="button"
-                    onClick={() => console.log('should be removed')}
-                  >
-                    <i className="fas fa-thumbs-down" />
-                  </ReactionBtn> */}
                   <ReactionBtn
                     type="button"
                     onClick={() => console.log('remove from favs')}
                   >
-                    <i className="fas fa-thumbs-up" />
+                    <i className="fas fa-thumbs-down" />
                   </ReactionBtn>
                 </div>
               ) : (
