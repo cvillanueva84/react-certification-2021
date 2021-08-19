@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #060b26;
+  background-color: var(--main-blue);
   height: 80px;
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@
 }
 
 .nav-menu {
-  background-color: #060b26;
+  background-color: var(--main-blue);
   width: 250px;
   height: 100vh;
   display: flex;
@@ -91,7 +91,7 @@
 
 .nav-text a {
   text-decoration: none;
-  color: #fafafa;
+  color: var(--main-white);
   font-size: 1.8rem;
   width: 95%;
   height: 100%;
@@ -102,7 +102,7 @@
 }
 
 .nav-text a:hover {
-  background-color: #1a83ff;
+  background-color: var(--light-blue);
 }
 
 .nav-menu-items {
@@ -112,7 +112,7 @@
 }
 
 .navbar-toogle {
-  background-color: #060b26;
+  background-color: var(--main-blue);
   width: 100%;
   height: 80px;
   display: flex;
@@ -150,7 +150,7 @@ span {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--light-gray);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -162,17 +162,17 @@ span {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--main-white);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--light-blue);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--light-blue);
 }
 
 input:checked + .slider:before {
