@@ -7,10 +7,10 @@ export const VideoCardDivLight = styled.div`
   height: 35rem;
   border-radius: 0.4rem;
   margin: 2rem;
-  border: 1px #dad4d4 solid;
+  border: 1px var(--light-gray) solid;
   transition: all 0.3s ease;
   &:hover {
-      box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 10px 10px 24px 0px var(--black);
     }
     
     @media only screen and (max-width: 670px) {
@@ -26,11 +26,11 @@ export const VideoCardDivDark= styled.div`
   height: 35rem;
   border-radius: 0.4rem;
   margin: 2rem;
-  border: 1px #dad4d4 solid;
+  border: 1px var(--light-gray) solid;
   transition: all 0.3s ease;
   &:hover {
-      -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-      box-shadow: 5px 5px 15px 5px #dad4d4 ;
+      -webkit-box-shadow: 5px 5px 15px 5px var(--black); 
+      box-shadow: 5px 5px 15px 5px var(--light-gray) ;
     }
     
     @media only screen and (max-width: 670px) {

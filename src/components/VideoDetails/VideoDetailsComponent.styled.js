@@ -25,13 +25,13 @@ export const ReactionBtn = styled.button`
   border: none;
   padding: 1rem;
   border-radius: 4px;
-  background-color: #060b26;
-  color: #fff;
+  background-color: var(--main-blue);
+  color: var(--main-white);
   display: flex;
   align-items: center;
   cursor: pointer;
   &:hover{
-    box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 24px 0px var(--black);
   }
 `;
 

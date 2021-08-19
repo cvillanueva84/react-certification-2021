@@ -6,3 +6,5 @@ export const TitleSpan = styled.span`
     width: 100%;
     display: inline-block;
 `
+
+TitleSpan.displayName = 'TitleSpan'
