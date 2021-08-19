@@ -11,7 +11,7 @@ const FavoriteDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
   const { authenticated } = useAuth();
-  const { videosState } = useContext(VideoListContext);
+  const { videosState, removeFromFavorites } = useContext(VideoListContext);
   const { favoriteVideos } = videosState;
   return (
     <div className="video-details-container">
@@ -28,10 +28,7 @@ const FavoriteDetails = () => {
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               {authenticated ? (
                 <div className="reaction-btns">
-                  <ReactionBtn
-                    type="button"
-                    onClick={() => console.log('remove from favs')}
-                  >
+                  <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
                     <i className="fas fa-thumbs-down" />
                   </ReactionBtn>
                 </div>

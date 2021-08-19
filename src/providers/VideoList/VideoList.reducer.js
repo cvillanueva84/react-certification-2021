@@ -24,6 +24,16 @@ export const reducer = (state, action) => {
                 ...state,
                 favoriteVideos
             }
+
+        case 'REMOVE_FROM_FAVORITES':   
+            const favoriteVideosFromLocalStorage = localStorage.getItem('favorite_videos');
+            const arrayOfVideos = JSON.parse(favoriteVideosFromLocalStorage)
+            const filteredVideos = arrayOfVideos.filter(video => video.id !== action.payload)
+            localStorage.setItem('favorite_videos', JSON.stringify(filteredVideos))
+            return {
+                ...state,
+                filteredVideos
+            }
             
     
         default:

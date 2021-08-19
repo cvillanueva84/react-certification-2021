@@ -46,6 +46,15 @@ const VideoListProvider = (props) => {
     )
   };
 
+  const removeFromFavorites = id => {
+    dispatch({
+      type: 'REMOVE_FROM_FAVORITES',
+      payload: id
+    })
+    Swal.fire(
+      'Video has been removed from favorites'
+    )
+  }
 
   return (
     <VideoListContext.Provider
@@ -53,6 +62,7 @@ const VideoListProvider = (props) => {
         setSearch,
         addToFavorites,
         videosState, 
+        removeFromFavorites
       }}
     >
       {props.children}

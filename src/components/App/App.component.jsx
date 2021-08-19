@@ -34,6 +34,9 @@ function App() {
                 <Navbar />
                 <ScrollToTop />
                 <Switch>
+                  <Route exact path="/">
+                    <HomePage />
+                  </Route>
                   <Route exact path="/video/:id">
                     <Suspense fallback={<GridLoader size={150} css={override} />}>
                       <VideoDetails />
@@ -45,10 +48,7 @@ function App() {
                   <Private exact path="/favorite-video/:id">
                     <FavoriteDetails />
                   </Private>
-                  <Route path="/">
-                    <HomePage />
-                  </Route>
-                  <Route>
+                  <Route path="*">
                     <NotFound />
                   </Route>
                 </Switch>

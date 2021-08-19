@@ -12,7 +12,8 @@ const VideoDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
   const { authenticated } = useAuth();
-  const { addToFavorites, videosState } = useContext(VideoListContext);
+  const { addToFavorites, videosState, removeFromFavorites } =
+    useContext(VideoListContext);
   const { posts } = videosState;
   const { favoriteVideos } = videosState;
 
@@ -39,18 +40,18 @@ const VideoDetails = () => {
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               {authenticated ? (
                 <div className="reaction-btns">
-                  <ReactionBtn
-                    type="button"
-                    onClick={() => checkIfVideoIsFavorite(id, singleVideo[0])}
-                  >
-                    <i
-                      className={
-                        favoriteVideos.some((eachVid) => eachVid.id === id)
-                          ? 'fas fa-thumbs-down'
-                          : 'fas fa-thumbs-up'
-                      }
-                    />
-                  </ReactionBtn>
+                  {favoriteVideos.some((eachVid) => eachVid.id === id) ? (
+                    <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
+                      <i className="fas fa-thumbs-down" />
+                    </ReactionBtn>
+                  ) : (
+                    <ReactionBtn
+                      type="button"
+                      onClick={() => checkIfVideoIsFavorite(id, singleVideo[0])}
+                    >
+                      <i className="fas fa-thumbs-up" />
+                    </ReactionBtn>
+                  )}
                 </div>
               ) : (
                 <ReactionBtn
