@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 
-import { AUTH_STORAGE_KEY } from '../../utils/constants';
+import { AUTH_STORAGE_KEY, FAVORITE_VIDEOS } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 import loginApi from './login.mock';
 import Swal from 'sweetalert2';
@@ -41,7 +41,7 @@ function AuthProvider({ children }) {
       });
     } catch (err) {
       storage.set(AUTH_STORAGE_KEY, false);
-      // setAuthenticated(false);
+      setAuthenticated(false);
       throw err;
     }
   };
@@ -49,6 +49,7 @@ function AuthProvider({ children }) {
   const logout = useCallback(() => {
     setAuthenticated(false);
     storage.set(AUTH_STORAGE_KEY, false);
+    storage.set(FAVORITE_VIDEOS, []);
     Swal.fire({
       position: 'top-end',
       title: 'Bye!',

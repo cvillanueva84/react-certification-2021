@@ -1,30 +1,18 @@
 import React, { useContext } from 'react';
+import { ReactionBtn, TitleSpan, DescriptionSpan } from './styledComponents';
+import Swal from 'sweetalert2';
 import { useParams } from 'react-router';
 import { useFetch } from '../../utils/hooks/useFetch';
-import './VideoDetails.styles.css';
-import { TitleSpan, DescriptionSpan, ReactionBtn } from './styledComponents';
-import RecommendedVideos from '../RecommendedVideos';
 import { useAuth } from '../../providers/Auth/Auth.provider';
-import Swal from 'sweetalert2';
+import RecommendedVideos from '../RecommendedVideos';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 
-const VideoDetails = () => {
+const FavoriteDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
   const { authenticated } = useAuth();
-  const { addToFavorites, videosState, removeFromFavorites } =
-    useContext(VideoListContext);
-  const { posts } = videosState;
+  const { videosState, removeFromFavorites } = useContext(VideoListContext);
   const { favoriteVideos } = videosState;
-
-  const checkIfVideoIsFavorite = (id, video) => {
-    if (favoriteVideos.some((eachVideo) => eachVideo.id === id)) {
-      return;
-    } else {
-      addToFavorites(video);
-    }
-  };
-
   return (
     <div className="video-details-container">
       <div className="video-details-selected-video">
@@ -40,18 +28,9 @@ const VideoDetails = () => {
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               {authenticated ? (
                 <div className="reaction-btns">
-                  {favoriteVideos.some((eachVid) => eachVid.id === id) ? (
-                    <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
-                      <i className="fas fa-thumbs-down" />
-                    </ReactionBtn>
-                  ) : (
-                    <ReactionBtn
-                      type="button"
-                      onClick={() => checkIfVideoIsFavorite(id, singleVideo[0])}
-                    >
-                      <i className="fas fa-thumbs-up" />
-                    </ReactionBtn>
-                  )}
+                  <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
+                    <i className="fas fa-thumbs-down" />
+                  </ReactionBtn>
                 </div>
               ) : (
                 <ReactionBtn
@@ -73,10 +52,10 @@ const VideoDetails = () => {
         )}
       </div>
       <div className="video-details-similar-videos">
-        <RecommendedVideos videos={posts} />
+        <RecommendedVideos videos={favoriteVideos} />
       </div>
     </div>
   );
 };
 
-export default VideoDetails;
+export default FavoriteDetails;

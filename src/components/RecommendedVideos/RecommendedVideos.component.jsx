@@ -1,20 +1,24 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './RecommendedVideos.styles.css';
 import { TitleSpan } from './styledComponents';
-const RecommendedVideos = () => {
-  const { videosState } = useContext(VideoListContext);
-  const { posts } = videosState;
-  const recommendedVideos = posts.slice(0, 8);
+
+const RecommendedVideos = ({ videos }) => {
+  const recommendedVideos = videos.slice(0, 15);
+  const { pathname } = useLocation();
+  const currentPath = pathname.split('/');
   return (
     <>
       <div className="recommended-video__container">
         {recommendedVideos.map((video) => (
           <Link
-            to={`/video/${video.id.videoId}`}
+            to={
+              currentPath[1] === 'video'
+                ? `/video/${video.id.videoId}`
+                : `/favorite-video/${video.id}`
+            }
             style={{ textDecoration: 'none', color: '#000' }}
-            key={video.id.videoId}
+            key={currentPath[1] === 'video' ? video.id.videoId : video.id}
           >
             <div className="recommended-video__card">
               <div className="recommended-video__card-img">
