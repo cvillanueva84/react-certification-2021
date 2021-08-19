@@ -1,12 +1,11 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
-import { CardItem } from '../../components/CardItem';
 import { GlobalContext } from '../../components/Context';
 import { MemoryRouter, Router } from 'react-router';
+import { FavItem } from '../../components/FavItem';
 
-
-describe('Test CardItem', () => {
+describe('Test FavItem', () => {
     const contextValue = {
         dispatch: jest.fn(),
         myStateReducer: {
@@ -31,7 +30,7 @@ describe('Test CardItem', () => {
         <GlobalContext.Provider value={contextValue}>
             <MemoryRouter>
                 <Router history={historyMock}>
-                    <CardItem/>
+                    <FavItem />
                 </Router>
             </MemoryRouter>
         </GlobalContext.Provider>
@@ -50,41 +49,12 @@ describe('Test CardItem', () => {
         expect(wrapper.find('img').length).toBe(1);
         expect(wrapper.find('h2').length).toBe(1);
         expect(wrapper.find('p').length).toBe(1);
-        expect(wrapper.find('button').length).toBe(1);
+        expect(wrapper.find('button').length).toBe(2);
     });
 
-    it('should dispatch actionAddVideoData', () => {
-        wrapper.find('button').prop('onClick')();
+    it('should dispatch actionDelete', () => {
+        wrapper.find('a').simulate('click')
         expect(contextValue.dispatch).toHaveBeenCalled();
     });
 
-
-    
-
-    // it('should render provided properties', () => {
-    //     expect(wrapper).toMatchSnapshot();
-    // });
-
-    // it('should render img', () => {
-    //     const img = wrapper.find('img');
-    //     expect(img.prop('src')).toBe(url);
-    //     expect(img.prop('alt')).toBe(title);
-    // });
-
-    // it('should render h2', () => {
-    //     const h2 = wrapper.find('h2');
-    //     expect(h2.text().trim()).toBe(title);
-    // });
-
-    // it('should render p', () => {
-    //     const p = wrapper.find('p');
-    //     expect(p.text().trim()).toBe(description);
-    // });
-
-    // it('should have className Css', () => {
-    //     const div = wrapper.find('div');
-    //     const className = div.prop('className');
-    //     expect(className.includes('card-item')).toBe(true);
-    // });
-    
 });

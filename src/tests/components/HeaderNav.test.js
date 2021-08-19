@@ -43,7 +43,7 @@ describe('Test HeaderNav', () => {
     });
 
     it('should have 3 bottons', () => {
-        expect(wrapper.find('button').length).toBe(3);
+        expect(wrapper.find('button').length).toBe(4);
     });
 
     it('should have left-header', () => {

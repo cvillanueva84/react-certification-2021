@@ -41,7 +41,7 @@ export const FavItem = ({ title, description, url, videoId }) => {
             <i className="far fa-play-circle"></i>
           </Link>
         </button>
-
+        
         <button onClick={handleClickDelete}>
           <i className="far fa-trash-alt"></i>
         </button>
