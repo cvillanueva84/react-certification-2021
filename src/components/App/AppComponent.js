@@ -1,21 +1,21 @@
 import React, { lazy, Suspense, useReducer } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from '../Navbar/NavbarComponent';
-import AuthProvider from '../../providers/Auth';
-import VideoListProvider from '../../providers/VideoList/VideoList.provider';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import GridLoader from 'react-spinners/ClipLoader';
+import { ThemeProvider } from 'styled-components';
 import HomePage from '../../pages/Home';
 import NotFound from '../../pages/NotFound';
-import Layout from '../Layout';
-import GridLoader from 'react-spinners/ClipLoader';
-import ScrollToTop from '../../utils/scrollToTop';
-import { ThemeProvider } from 'styled-components';
-import { light, dark } from '../../providers/Theme/themes';
+import AuthProvider from '../../providers/Auth';
 import Context from '../../providers/Theme/Theme.context';
 import { ThemeReducer } from '../../providers/Theme/Theme.reducer';
-import Private from '../Private/PrivateComponent';
-import { override, GlobalStyles } from './AppComponent.styled';
-import FavoritesList from '../FavoritesList/FavoritesListComponent';
+import { dark, light } from '../../providers/Theme/themes';
+import VideoListProvider from '../../providers/VideoList/VideoList.provider';
+import ScrollToTop from '../../utils/scrollToTop';
 import FavoriteDetails from '../FavoriteDetails/FavoriteDetailsComponent';
+import FavoritesList from '../FavoritesList/FavoritesListComponent';
+import Layout from '../Layout';
+import Navbar from '../Navbar/NavbarComponent';
+import Private from '../Private/PrivateComponent';
+import { GlobalStyles, override } from './AppComponent.styled';
 const VideoDetails = lazy(() => import('../VideoDetails/VideoDetailsComponent'));
 
 function App() {

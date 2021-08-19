@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { ReactionBtn, TitleSpan, DescriptionSpan } from './styledComponents';
-import Swal from 'sweetalert2';
 import { useParams } from 'react-router';
-import { useFetch } from '../../utils/hooks/useFetch';
+import Swal from 'sweetalert2';
 import { useAuth } from '../../providers/Auth/Auth.provider';
-import RecommendedVideos from '../RecommendedVideos';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { useFetch } from '../../utils/hooks/useFetch';
+import RecommendedVideos from '../RecommendedVideos';
+import { DescriptionSpan, ReactionBtn, TitleSpan } from './FavoriteDetailsComponent.styled';
 
 const FavoriteDetails = () => {
   const { id } = useParams();

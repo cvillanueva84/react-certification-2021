@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
-import './FavoritesList.styles.css';
-import Context from '../../providers/Theme/Theme.context';
 import { Link } from 'react-router-dom';
+import Context from '../../providers/Theme/Theme.context';
 import {
-  VideoCardDivLight,
-  VideoCardDivDark,
-  VideoImageDiv,
-  TitleSpan,
-  DescriptionSpan,
+  DescriptionSpan, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
 } from './FavoriteListComponent.styled';
+import './FavoritesListComponent.styles.css';
 
 const FavoritesList = () => {
   const videos = JSON.parse(localStorage.getItem('favorite_videos'));

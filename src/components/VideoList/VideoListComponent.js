@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  VideoCardDivLight,
-  VideoCardDivDark,
-  VideoImageDiv,
-  TitleSpan,
-  DescriptionSpan,
-} from './VideoListComponent.styled';
 import Context from '../../providers/Theme/Theme.context';
+import {
+  DescriptionSpan, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
+} from './VideoListComponent.styled';
 
 const VideoList = ({ video }) => {
   const { snippet } = video;

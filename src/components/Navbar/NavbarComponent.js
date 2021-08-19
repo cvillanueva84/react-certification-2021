@@ -1,21 +1,16 @@
-import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import {
-  FaHamburger,
-  FaWindowClose,
-  FaHome,
-  FaUserAstronaut,
-  FaSun,
-  FaRegMoon,
+  FaHamburger, FaHome, FaRegMoon, FaSun, FaUserAstronaut, FaWindowClose
 } from 'react-icons/fa';
 import { FcLike } from 'react-icons/fc';
 import { IconContext } from 'react-icons/lib';
-import './Navbar.styles.css';
-import { InputText, LogoutBtn } from './NavbarComponent.styled';
-import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
-import Context from '../../providers/Theme/Theme.context';
+import { Link, useHistory } from 'react-router-dom';
 import LoginModal from '../../pages/Login';
 import { useAuth } from '../../providers/Auth';
+import Context from '../../providers/Theme/Theme.context';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { InputText, LogoutBtn } from './NavbarComponent.styled';
+import './NavbarComponent.styles.css';
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);

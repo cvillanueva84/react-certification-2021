@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './RecommendedVideos.styles.css';
 import { TitleSpan } from './RecommendedVideosComponent.styled';
+import './RecommendedVideosComponent.styles.css';
 
 const RecommendedVideos = ({ videos }) => {
   const recommendedVideos = videos.slice(0, 15);

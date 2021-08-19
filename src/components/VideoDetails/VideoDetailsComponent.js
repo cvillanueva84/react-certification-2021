@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router';
-import { useFetch } from '../../utils/hooks/useFetch';
-import './VideoDetails.styles.css';
-import { TitleSpan, DescriptionSpan, ReactionBtn } from './VideoDetailsComponent.styled';
-import RecommendedVideos from '../RecommendedVideos';
-import { useAuth } from '../../providers/Auth/Auth.provider';
 import Swal from 'sweetalert2';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { useFetch } from '../../utils/hooks/useFetch';
+import RecommendedVideos from '../RecommendedVideos';
+import { DescriptionSpan, ReactionBtn, TitleSpan } from './VideoDetailsComponent.styled';
+import './VideoDetailsComponent.styles.css';
 
 const VideoDetails = () => {
   const { id } = useParams();
