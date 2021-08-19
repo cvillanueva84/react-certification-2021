@@ -3,7 +3,7 @@ import './Home.styles.css';
 import { SectionContainer, VideoListContainer, override } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import GridLoader from 'react-spinners/ClipLoader';
-const VideoList = lazy(() => import('../../components/VideoList/VideoList.component'));
+const VideoList = lazy(() => import('../../components/VideoList/VideoListComponent'));
 
 const HomePage = () => {
   const { videosState } = useContext(VideoListContext);

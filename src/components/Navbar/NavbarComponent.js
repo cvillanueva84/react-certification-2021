@@ -11,7 +11,7 @@ import {
 import { FcLike } from 'react-icons/fc';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.css';
-import { InputText, LogoutBtn } from './styledComponents';
+import { InputText, LogoutBtn } from './NavbarComponent.styled';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import Context from '../../providers/Theme/Theme.context';
 import LoginModal from '../../pages/Login';

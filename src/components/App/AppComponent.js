@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useReducer } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar.component';
+import Navbar from '../Navbar/NavbarComponent';
 import AuthProvider from '../../providers/Auth';
 import VideoListProvider from '../../providers/VideoList/VideoList.provider';
 import HomePage from '../../pages/Home';
@@ -12,11 +12,11 @@ import { ThemeProvider } from 'styled-components';
 import { light, dark } from '../../providers/Theme/themes';
 import Context from '../../providers/Theme/Theme.context';
 import { ThemeReducer } from '../../providers/Theme/Theme.reducer';
-import Private from '../Private/Private.component';
-import { override, GlobalStyles } from './App.styles';
-import FavoritesList from '../FavoritesList/FavoritesList.component';
-import FavoriteDetails from '../FavoriteDetails/FavoriteDetails.component';
-const VideoDetails = lazy(() => import('../VideoDetails/VideoDetails.component'));
+import Private from '../Private/PrivateComponent';
+import { override, GlobalStyles } from './AppComponent.styled';
+import FavoritesList from '../FavoritesList/FavoritesListComponent';
+import FavoriteDetails from '../FavoriteDetails/FavoriteDetailsComponent';
+const VideoDetails = lazy(() => import('../VideoDetails/VideoDetailsComponent'));
 
 function App() {
   const [state, dispatch] = useReducer(ThemeReducer, {

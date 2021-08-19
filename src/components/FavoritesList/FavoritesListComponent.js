@@ -8,7 +8,7 @@ import {
   VideoImageDiv,
   TitleSpan,
   DescriptionSpan,
-} from './styledComponents';
+} from './FavoriteListComponent.styled';
 
 const FavoritesList = () => {
   const videos = JSON.parse(localStorage.getItem('favorite_videos'));

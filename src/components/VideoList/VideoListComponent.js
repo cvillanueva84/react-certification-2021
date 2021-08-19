@@ -6,7 +6,7 @@ import {
   VideoImageDiv,
   TitleSpan,
   DescriptionSpan,
-} from './styledComponents';
+} from './VideoListComponent.styled';
 import Context from '../../providers/Theme/Theme.context';
 
 const VideoList = ({ video }) => {

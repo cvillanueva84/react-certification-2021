@@ -1,1 +1,1 @@
-export { default } from './RecommendedVideos.component';
+export { default } from './RecommendedVideosComponent';

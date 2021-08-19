@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router';
 import { useFetch } from '../../utils/hooks/useFetch';
 import './VideoDetails.styles.css';
-import { TitleSpan, DescriptionSpan, ReactionBtn } from './styledComponents';
+import { TitleSpan, DescriptionSpan, ReactionBtn } from './VideoDetailsComponent.styled';
 import RecommendedVideos from '../RecommendedVideos';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 import Swal from 'sweetalert2';
