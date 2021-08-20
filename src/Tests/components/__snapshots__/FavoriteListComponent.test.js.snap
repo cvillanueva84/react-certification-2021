@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the FavoriteListComponent should render the component correctly 1`] = `
+<div
+  className="favoriteVideos-container"
+>
+  <div
+    className="favoriteVideos-container"
+  >
+    <a
+      href="/favorite-video/HYyRZiwBWc8"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "#000",
+          "textDecoration": "none",
+        }
+      }
+    >
+      <div
+        className="sc-bdnxRM ibTyae"
+      >
+        <div
+          className="sc-dlnjwi jhVepJ"
+          style={
+            Object {
+              "backgroundImage": "url(https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg)",
+              "backgroundPosition": "center",
+              "backgroundRepeat": "no-repeat",
+              "backgroundSize": "cover",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+            }
+          }
+        />
+        <span
+          className="sc-hKFxyN kGJpsy"
+        >
+          Wizeline Guadalajara | Bringing Silicon Valley to Mexico
+        </span>
+        <span
+          className="sc-eCApnc iTWCwi"
+        >
+          Wizeline continues to offer a Silicon Valley culture in burgeoning innovation hubs like Mexico and V
+        </span>
+      </div>
+    </a>
+    <a
+      href="/favorite-video/nmXMgqjQzls"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "#000",
+          "textDecoration": "none",
+        }
+      }
+    >
+      <div
+        className="sc-bdnxRM ibTyae"
+      >
+        <div
+          className="sc-dlnjwi jhVepJ"
+          style={
+            Object {
+              "backgroundImage": "url(https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg)",
+              "backgroundPosition": "center",
+              "backgroundRepeat": "no-repeat",
+              "backgroundSize": "cover",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
+            }
+          }
+        />
+        <span
+          className="sc-hKFxyN kGJpsy"
+        >
+          Video Tour | Welcome to Wizeline Guadalajara
+        </span>
+        <span
+          className="sc-eCApnc iTWCwi"
+        >
+          Follow Hector Padilla, Wizeline Director of Engineering, for a lively tour of our office.
+
+In 2018, 
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+`;

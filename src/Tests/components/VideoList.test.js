@@ -1,10 +1,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import VideoList from '../../components/VideoList/VideoList.component';
-import Context from '../../providers/Theme/Theme.provider'
+import VideoList from '../../components/VideoList/VideoListComponent';
+import Context from '../../providers/Theme/Theme.context'
 import { MemoryRouter } from 'react-router';
-describe('Tests of the VideoList component', () => {
 
+describe('Tests of the VideoList component', () => {
     const state = {
       isDark: true
     }

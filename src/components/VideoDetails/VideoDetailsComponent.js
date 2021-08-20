@@ -11,8 +11,7 @@ const VideoDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
   const { authenticated } = useAuth();
-  const { addToFavorites, videosState, removeFromFavorites } =
-    useContext(VideoListContext);
+  const { addToFavorites, videosState, removeFromFavorites } = useContext(VideoListContext);
   const { posts } = videosState;
   const { favoriteVideos } = videosState;
 

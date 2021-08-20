@@ -5,20 +5,22 @@ import {
   DescriptionSpan, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
 } from './FavoriteListComponent.styled';
 import './FavoritesListComponent.styles.css';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider'
 
 const FavoritesList = () => {
-  const videos = JSON.parse(localStorage.getItem('favorite_videos'));
+  const { videosState } = useContext(VideoListContext)
+  const { favoriteVideos } = videosState
   const { state } = useContext(Context);
 
   return (
     <div className="favoriteVideos-container">
-      {videos.length === 0 || videos === null ? (
+      {favoriteVideos.length === 0 || favoriteVideos === null ? (
         <div className="no-favorites">
           <h2>There are no favorite videos!</h2>
         </div>
       ) : (
         <div className="favoriteVideos-container">
-          {videos.map((video) => (
+          {favoriteVideos.map((video) => (
             <Link
               key={video.id}
               to={`/favorite-video/${video.id}`}

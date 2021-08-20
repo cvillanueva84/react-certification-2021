@@ -1,10 +1,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Navbar from '../../components/Navbar/Navbar.component'
+import Navbar from '../../components/Navbar/NavbarComponent'
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
-import Context from '../../providers/Theme/Theme.provider'
+import Context from '../../providers/Theme/Theme.context'
 import { MemoryRouter } from 'react-router';
-import AuthProvider, { useAuth } from '../../providers/Auth';
+import AuthProvider from '../../providers/Auth';
 
 
 describe('Tests of the Navbar component', () => {

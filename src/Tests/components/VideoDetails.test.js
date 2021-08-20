@@ -1,15 +1,23 @@
-import React from 'react';
 import { mount } from 'enzyme/build';
-import VideoDetails from '../../components/VideoDetails/VideoDetails.component';
+import React from 'react';
 import { MemoryRouter, Route } from 'react-router';
-import { videosState  } from '../mockData/videosList'
+import VideoDetails from '../../components/VideoDetails/VideoDetailsComponent';
+import AuthProvider from '../../providers/Auth';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { videosState } from '../mockData/videosList';
 
 describe('Tests of the VideoDetials component', () => {
+    const authenticated = true
+
     const wrapper = mount( 
+        <AuthProvider
+            value={{
+                authenticated
+            }}
+        >
         <VideoListContext.Provider
             value={{videosState}}
-        >
+            >
             <MemoryRouter
                 initialEntries={['/video/Po3VwR_NNGk']}
                 >
@@ -17,7 +25,8 @@ describe('Tests of the VideoDetials component', () => {
                     <VideoDetails />
                 </Route> 
             </MemoryRouter>
-        </VideoListContext.Provider>)
+        </VideoListContext.Provider>
+        </AuthProvider>)
 
        test('should display the component correctly', () => {
          expect(wrapper).toMatchSnapshot()  

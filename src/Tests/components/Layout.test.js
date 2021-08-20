@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Layout from '../../components/Layout/Layout.component';
-import Navbar from '../../components/Navbar/Navbar.component';
+import Layout from '../../components/Layout/LayoutComponent';
+import Navbar from '../../components/Navbar/NavbarComponent';
 
-jest.mock('../../components/Navbar/Navbar.component', () => 'Navbar')
+jest.mock('../../components/Navbar/NavbarComponent', () => 'Navbar')
 
 describe('Test of the Layout component', () => {
     let children =  Navbar

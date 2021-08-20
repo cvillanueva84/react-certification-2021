@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests of the VideoDetials component should display the component correctly 1`] = `
+exports[`Tests of the FavoriteDetailsComponent should display the component correctly 1`] = `
 <section
   className="sc-gtsrHT cUVhqq"
 >
@@ -11,7 +11,7 @@ exports[`Tests of the VideoDetials component should display the component correc
       allowFullScreen={true}
       className="sc-hKFxyN bwtLFs"
       frameBorder="0"
-      src="https://www.youtube.com/embed/Po3VwR_NNGk"
+      src="https://www.youtube.com/embed/HYyRZiwBWc8"
       title="test"
     />
   </div>
@@ -22,53 +22,7 @@ exports[`Tests of the VideoDetials component should display the component correc
       className="recommended-video__container"
     >
       <a
-        href="/video/nmXMgqjQzls"
-        onClick={[Function]}
-        style={
-          Object {
-            "color": "#000",
-            "textDecoration": "none",
-          }
-        }
-      >
-        <div
-          className="recommended-video__card"
-        >
-          <div
-            className="recommended-video__card-img"
-          >
-            <img
-              alt="Video Tour | Welcome to Wizeline Guadalajara"
-              src="https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg"
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
-            />
-          </div>
-          <div
-            className="recommended-video__card-text"
-          >
-            <span
-              className="sc-bdnxRM eNjdHH"
-            >
-              Video Tour | Welcome to Wizeline Guadalajara
-            </span>
-          </div>
-        </div>
-        <hr
-          style={
-            Object {
-              "color": "#060B26",
-              "margin": "0 auto",
-              "width": "80%",
-            }
-          }
-        />
-      </a>
-      <a
-        href="/video/HYyRZiwBWc8"
+        href="/favorite-video/HYyRZiwBWc8"
         onClick={[Function]}
         style={
           Object {
@@ -100,6 +54,52 @@ exports[`Tests of the VideoDetials component should display the component correc
               className="sc-bdnxRM eNjdHH"
             >
               Wizeline Guadalajara | Bringing Silicon Valley to Mexico
+            </span>
+          </div>
+        </div>
+        <hr
+          style={
+            Object {
+              "color": "#060B26",
+              "margin": "0 auto",
+              "width": "80%",
+            }
+          }
+        />
+      </a>
+      <a
+        href="/favorite-video/nmXMgqjQzls"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#000",
+            "textDecoration": "none",
+          }
+        }
+      >
+        <div
+          className="recommended-video__card"
+        >
+          <div
+            className="recommended-video__card-img"
+          >
+            <img
+              alt="Video Tour | Welcome to Wizeline Guadalajara"
+              src="https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg"
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            />
+          </div>
+          <div
+            className="recommended-video__card-text"
+          >
+            <span
+              className="sc-bdnxRM eNjdHH"
+            >
+              Video Tour | Welcome to Wizeline Guadalajara
             </span>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount} from 'enzyme'
-import HomePage from '../../../pages/Home/Home.page';
+import HomePage from '../../../pages/Home/HomePage';
 import { VideoListContext } from '../../../providers/VideoList/VideoList.provider';
 import { videosState } from '../../mockData/videosList'
 

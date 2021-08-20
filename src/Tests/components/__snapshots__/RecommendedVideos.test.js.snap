@@ -5,53 +5,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
   className="recommended-video__container"
 >
   <a
-    href="/video/UCPGzT4wecuWM0BH9mPiulXg"
-    onClick={[Function]}
-    style={
-      Object {
-        "color": "#000",
-        "textDecoration": "none",
-      }
-    }
-  >
-    <div
-      className="recommended-video__card"
-    >
-      <div
-        className="recommended-video__card-img"
-      >
-        <img
-          alt="Wizeline"
-          src="https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s240-c-k-c0xffffffff-no-rj-mo"
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
-        />
-      </div>
-      <div
-        className="recommended-video__card-text"
-      >
-        <span
-          className="sc-bdnxRM eNjdHH"
-        >
-          Wizeline
-        </span>
-      </div>
-    </div>
-    <hr
-      style={
-        Object {
-          "color": "#060B26",
-          "margin": "0 auto",
-          "width": "80%",
-        }
-      }
-    />
-  </a>
-  <a
-    href="/video/nmXMgqjQzls"
+    href="/favorite-video/[object Object]"
     onClick={[Function]}
     style={
       Object {
@@ -83,6 +37,52 @@ exports[`Tests of the RecommendedVideos component should render the component co
           className="sc-bdnxRM eNjdHH"
         >
           Video Tour | Welcome to Wizeline Guadalajara
+        </span>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "color": "#060B26",
+          "margin": "0 auto",
+          "width": "80%",
+        }
+      }
+    />
+  </a>
+  <a
+    href="/favorite-video/[object Object]"
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "#000",
+        "textDecoration": "none",
+      }
+    }
+  >
+    <div
+      className="recommended-video__card"
+    >
+      <div
+        className="recommended-video__card-img"
+      >
+        <img
+          alt="Wizeline Guadalajara | Bringing Silicon Valley to Mexico"
+          src="https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="recommended-video__card-text"
+      >
+        <span
+          className="sc-bdnxRM eNjdHH"
+        >
+          Wizeline Guadalajara | Bringing Silicon Valley to Mexico
         </span>
       </div>
     </div>

@@ -41,7 +41,7 @@ Array [
             onSubmit={[Function]}
           >
             <input
-              className="sc-bdnxRM gEZKDY"
+              className="sc-dIvrsQ WXkML"
               name="search"
               onChange={[Function]}
               placeholder="search a video..."
@@ -208,7 +208,7 @@ Array [
       </nav>,
     ]
     <section
-      className="sc-gKAaRy cTJwyn"
+      className="sc-bdnxRM gmHjgD"
     >
       <div>
         <h2
@@ -246,7 +246,7 @@ Array [
         }
       >
         <div
-          className="sc-iCoGMd gnddSI"
+          className="sc-gtsrHT imzgBl"
         />
       </Suspense>
     </section>

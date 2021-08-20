@@ -1,25 +1,29 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RecommendedVideos from '../../components/RecommendedVideos';
-import  {VideoListContext}  from '../../providers/VideoList/VideoList.provider';
-import { videosState } from '../mockData/videosList'
 import { MemoryRouter } from 'react-router';
+import RecommendedVideos from '../../components/RecommendedVideos';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { videosState } from '../mockData/videosList';
 
+
+const { posts } = videosState
 
 describe('Tests of the RecommendedVideos component', () => {
 
+
     const wrapper = mount(
-    <VideoListContext.Provider
-        value={{
-          videosState
-        }}
-    >
-        <MemoryRouter>
-            < RecommendedVideos/>
-        </MemoryRouter>
-    </VideoListContext.Provider>
-    
+        <VideoListContext.Provider
+            value={{
+                posts
+            }}
+            >
+            <MemoryRouter>
+                < RecommendedVideos videos={posts}/>
+            </MemoryRouter>
+        </VideoListContext.Provider>
     )
+
+    
 
     test('should render the component correctly', () => {
         expect(wrapper).toMatchSnapshot()

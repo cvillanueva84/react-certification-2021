@@ -1,0 +1,45 @@
+import { mount } from 'enzyme';
+import React from 'react';
+import { MemoryRouter } from 'react-router';
+import FavoritesList from '../../components/FavoritesList/FavoritesListComponent';
+import Context from '../../providers/Theme/Theme.context';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { videosState } from '../mockData/videosList';
+
+
+describe('Tests of the FavoriteListComponent', () => {
+    const state = {
+        isDark: true
+    }
+
+    const wrapper = mount(
+        <Context.Provider
+            value={{state}}
+        >
+            <VideoListContext.Provider
+                value={{
+                    videosState
+                }}
+            >
+            <MemoryRouter>
+                < FavoritesList/>
+            </MemoryRouter>
+            </VideoListContext.Provider>
+        </Context.Provider>
+    )
+    test('should render the component correctly', () => {
+        expect(wrapper).toMatchSnapshot()
+    })
+    
+
+    test('should render a message if no videos are added to favorites', () => {
+        if (videosState.length === 0) {
+            const warningMsg = wrapper.find('h2')
+            expect(warningMsg.length).toBe(1)
+        }
+    })
+    
+    
+})
+
+

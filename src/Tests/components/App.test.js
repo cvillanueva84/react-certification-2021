@@ -1,14 +1,9 @@
 import React from 'react';
 import { mount } from "enzyme";
-import App from "../../components/App/App.component";
-import Navbar from '../../components/Navbar/Navbar.component';
-
-
-
+import App from "../../components/App/AppComponent";
 
 describe('tests of the App component', () => {
     let wrapper = mount(< App/>)
-
     test('should render the component correctly', () => {
         expect(wrapper).toMatchSnapshot()
     })
