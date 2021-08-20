@@ -17,7 +17,6 @@ export const VideoItem = (props) => {
   const { setSelectedVideo } = props;
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
-    // console.log(video);
   };
   return (
     <VideoContainer onClick={() => handleVideoClick(props)}>
