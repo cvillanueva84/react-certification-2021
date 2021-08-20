@@ -9,6 +9,7 @@ export const VideoCardDivLight = styled.div`
   margin: 2rem;
   border: 1px var(--light-gray) solid;
   transition: all 0.3s ease;
+  overflow-wrap: break-word;
   &:hover {
       box-shadow: 10px 10px 24px 0px var(--black);
     }
@@ -27,6 +28,7 @@ export const VideoCardDivDark= styled.div`
   border-radius: 0.4rem;
   margin: 2rem;
   border: 1px var(--light-gray) solid;
+  overflow-wrap: break-word;
   transition: all 0.3s ease;
   &:hover {
       -webkit-box-shadow: 5px 5px 15px 5px var(--black); 

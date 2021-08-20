@@ -32,7 +32,7 @@ export const reducer = (state, action) => {
             localStorage.setItem('favorite_videos', JSON.stringify(filteredVideos))
             return {
                 ...state,
-                filteredVideos
+                favoriteVideos: filteredVideos
             }
             
     
