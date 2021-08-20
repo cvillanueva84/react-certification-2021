@@ -5,8 +5,7 @@ import { useAuth } from '../../providers/Auth/Auth.provider';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { useFetch } from '../../utils/hooks/useFetch';
 import RecommendedVideos from '../RecommendedVideos';
-import { DescriptionSpan, ReactionBtn, TitleSpan } from './VideoDetailsComponent.styled';
-import './VideoDetailsComponent.styles.css';
+import { VideoDetailsContainer, DescriptionSpan, ReactionBtn, TitleSpan, VideoDetailsSelectedVideo, SelectedVideoTextContainer, ReactionBtnsContainer, ReactionBtnPosition, SimilarVideosContainer, Iframe } from './VideoDetailsComponent.styled';
 
 const VideoDetails = () => {
   const { id } = useParams();
@@ -26,20 +25,20 @@ const VideoDetails = () => {
   };
 
   return (
-    <div className="video-details-container">
-      <div className="video-details-selected-video">
-        <iframe
+    <VideoDetailsContainer >
+      <VideoDetailsSelectedVideo >
+        <Iframe
           src={`https://www.youtube.com/embed/${id}`}
           frameBorder="0"
           allowFullScreen
           title="test"
-        ></iframe>
+        ></Iframe>
         {singleVideo.length > 0 && (
-          <div className="video-details-selected-video__text">
-            <div className="title_like_btns">
+          <SelectedVideoTextContainer>
+            <ReactionBtnsContainer >
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
               {authenticated ? (
-                <div className="reaction-btns">
+                <ReactionBtnPosition>
                   {favoriteVideos.some((eachVid) => eachVid.id === id) ? (
                     <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
                       <i className="fas fa-thumbs-down" />
@@ -52,7 +51,7 @@ const VideoDetails = () => {
                       <i className="fas fa-thumbs-up" />
                     </ReactionBtn>
                   )}
-                </div>
+                </ReactionBtnPosition>
               ) : (
                 <ReactionBtn
                   type="button"
@@ -67,15 +66,15 @@ const VideoDetails = () => {
                   Like
                 </ReactionBtn>
               )}
-            </div>
+            </ReactionBtnsContainer>
             <DescriptionSpan>{singleVideo[0].snippet.description}</DescriptionSpan>
-          </div>
+          </SelectedVideoTextContainer>
         )}
-      </div>
-      <div className="video-details-similar-videos">
+      </VideoDetailsSelectedVideo>
+      <SimilarVideosContainer>
         <RecommendedVideos videos={posts} />
-      </div>
-    </div>
+      </SimilarVideosContainer>
+    </VideoDetailsContainer>
   );
 };
 

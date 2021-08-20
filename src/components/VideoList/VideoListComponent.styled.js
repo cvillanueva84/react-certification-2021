@@ -43,6 +43,11 @@ VideoCardDivDark.displayName = 'VideoCardDivDark';
 
 export const VideoImageDiv = styled.div`
   height: 140px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-right-radius: 0.4rem;
+  border-top-left-radius: 0.4rem;
 `;
 VideoImageDiv.displayName = 'VideoImageDiv';
 

@@ -1,6 +1,5 @@
 import React, { useContext, Suspense, lazy } from 'react';
-import './Home.styles.css';
-import { SectionContainer, VideoListContainer, override } from './styledComponents';
+import { SectionContainer, VideoListContainer, override } from './HomePage.styled';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import GridLoader from 'react-spinners/ClipLoader';
 const VideoList = lazy(() => import('../../components/VideoList/VideoListComponent'));

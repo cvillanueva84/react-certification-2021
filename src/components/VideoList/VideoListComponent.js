@@ -17,12 +17,7 @@ const VideoList = ({ video }) => {
         <VideoCardDivLight>
           <VideoImageDiv
             style={{
-              backgroundImage: `url(${thumbnails.medium.url})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              borderTopRightRadius: '0.4rem',
-              borderTopLeftRadius: '0.4rem',
+              backgroundImage: `url(${thumbnails.medium.url})`
             }}
           ></VideoImageDiv>
           <TitleSpan>{title}</TitleSpan>
@@ -34,12 +29,7 @@ const VideoList = ({ video }) => {
         <VideoCardDivDark>
           <VideoImageDiv
             style={{
-              backgroundImage: `url(${thumbnails.medium.url})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              borderTopRightRadius: '0.4rem',
-              borderTopLeftRadius: '0.4rem',
+              backgroundImage: `url(${thumbnails.medium.url})`
             }}
           ></VideoImageDiv>
           <TitleSpan>{title}</TitleSpan>

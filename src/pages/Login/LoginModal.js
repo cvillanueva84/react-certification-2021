@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useHistory } from 'react-router';
-import { CloseBtn, ErrorDiv, ErrorSpan, LoginBtn } from './StyledComponents';
+import { CloseBtn, ErrorDiv, ErrorSpan, LoginBtn } from './LoginModal.styled';
 import { useAuth } from '../../providers/Auth';
 import './Login.styles.css';
 
