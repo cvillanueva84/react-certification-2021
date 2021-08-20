@@ -89,7 +89,7 @@ export const LoginView = ({ history }) => {
             Login
           </button>
 
-          <div className="auth__social-networks">
+          <div className="google_login">
             <p>Login with Google:</p>
             <div className="google-btn" onClick={handleGooglelogin}>
               <div className="google-icon-wrapper">

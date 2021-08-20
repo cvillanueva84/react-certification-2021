@@ -7,37 +7,69 @@ import { MainApp } from "../../components/MainApp";
 
 
 describe('Test MainApp', () => {
-    const contextValue = {
-        dispatch: jest.fn(),
-        myStateReducer: {
-            mode: 'light',
-            search: 'wizeline',
-            videoData: {}
-        }
-    }
-    const historyMock = {
-        push: jest.fn(),
-        replace: jest.fn(),
-        location: {},
-        listen: jest.fn(),
-        createHref: jest.fn()
-    }
-
-    const wrapper = mount(
-        <GlobalContext.Provider value={contextValue}>
-            <MemoryRouter>
-                <Router history={historyMock}>
-                    <MainApp/>
-                </Router>
-            </MemoryRouter>
-        </GlobalContext.Provider>
-    );
-
+    
     afterEach(() => {
         jest.clearAllMocks();
     })
 
-    it('should render success', () => {
+    it('should render success lightTheme', () => {
+        const contextValue = {
+            dispatch: jest.fn(),
+            myStateReducer: {
+                mode: 'light',
+                search: 'wizeline',
+                videoData: {}
+            }
+        }
+        const historyMock = {
+            push: jest.fn(),
+            replace: jest.fn(),
+            location: {},
+            listen: jest.fn(),
+            createHref: jest.fn()
+        }
+    
+        const wrapper = mount(
+            <GlobalContext.Provider value={contextValue}>
+                <MemoryRouter>
+                    <Router history={historyMock}>
+                        <MainApp/>
+                    </Router>
+                </MemoryRouter>
+            </GlobalContext.Provider>
+        );
+        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.exists());
+    });
+
+    it('should render success darkTheme', () => {
+        const contextValue = {
+            dispatch: {
+                mode: 'dark',
+            },
+            myStateReducer: {
+                mode: 'dark',
+                search: 'wizeline',
+                videoData: {}
+            }
+        }
+        const historyMock = {
+            push: jest.fn(),
+            replace: jest.fn(),
+            location: {},
+            listen: jest.fn(),
+            createHref: jest.fn()
+        }
+    
+        const wrapper = mount(
+            <GlobalContext.Provider value={contextValue}>
+                <MemoryRouter>
+                    <Router history={historyMock}>
+                        <MainApp/>
+                    </Router>
+                </MemoryRouter>
+            </GlobalContext.Provider>
+        );
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.exists());
     });

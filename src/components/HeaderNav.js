@@ -108,6 +108,7 @@ export const HeaderNav = () => {
                         {myStateReducer.user}
                     </small>
                     <button
+                        id="logout"
                         onClick={handleLogout}
                     ><span>Logout</span></button>
                 </div>

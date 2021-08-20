@@ -42,7 +42,7 @@ export const FavItem = ({ title, description, url, videoId }) => {
           </Link>
         </button>
         
-        <button onClick={handleClickDelete}>
+        <button id="delete" onClick={handleClickDelete}>
           <i className="far fa-trash-alt"></i>
         </button>
       </div>

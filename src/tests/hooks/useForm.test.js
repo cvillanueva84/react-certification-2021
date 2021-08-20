@@ -16,6 +16,12 @@ describe('Test useForm', () => {
         expect(typeof reset).toBe('function');
     });
 
+    test('should has values initialState', () => {
+        const { result } =  renderHook(() => useForm({}));
+        const [formValues ] = result.current;
+        expect(formValues).toEqual({});
+    });
+
     test('should change textUser', () => {
         const { result } =  renderHook(() => useForm(initialForm));
         const [ , handleInputChange ] = result.current;

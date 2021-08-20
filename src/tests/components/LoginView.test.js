@@ -6,7 +6,7 @@ import { MemoryRouter, Router } from 'react-router';
 import { LoginView } from '../../components/LoginView';
 
 
-describe('Test Favorite Videos View', () => {
+describe('Test Login View', () => {
     const contextValue = {
         dispatch: jest.fn(),
         myStateReducer: {

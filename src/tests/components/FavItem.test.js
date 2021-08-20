@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { mount } from 'enzyme';
+import { mount, render } from 'enzyme';
 import { GlobalContext } from '../../components/Context';
 import { MemoryRouter, Router } from 'react-router';
 import { FavItem } from '../../components/FavItem';
@@ -52,8 +52,13 @@ describe('Test FavItem', () => {
         expect(wrapper.find('button').length).toBe(2);
     });
 
-    it('should dispatch actionDelete', () => {
+    it('should dispatch videodetailsfavs', () => {
         wrapper.find('a').simulate('click')
+        expect(contextValue.dispatch).toHaveBeenCalled();
+    });
+
+    it('should dispatch actionDelete', () => {
+        wrapper.find('#delete').simulate('click')
         expect(contextValue.dispatch).toHaveBeenCalled();
     });
 

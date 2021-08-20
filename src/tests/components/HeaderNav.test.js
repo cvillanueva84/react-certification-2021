@@ -73,6 +73,11 @@ describe('Test HeaderNav', () => {
         expect(contextValue.dispatch).toHaveBeenCalled();
     });
 
+    it('should Logout', () => {
+        wrapper.find('#logout').prop('onClick')();
+        expect(contextValue.dispatch).toHaveBeenCalled();
+    });
+
 
     /*
     it('should has 4 buttons', () => {

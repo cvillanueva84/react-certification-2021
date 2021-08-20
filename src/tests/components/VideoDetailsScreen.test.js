@@ -12,7 +12,11 @@ describe('Test VideoDetailsScreen', () => {
         myStateReducer: {
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }
     }
     const historyMock = {
@@ -51,6 +55,12 @@ describe('Test VideoDetailsScreen', () => {
         expect(wrapper.getElements("h2").length).toBe(1);
         expect(wrapper.getElements("p").length).toBe(1);
         expect(wrapper.getElements(".contenedor-sugeridos").length).toBe(1);
+    });
+
+
+    it('should dispatch addFavorite', () => {
+        wrapper.find('#addFavorite').simulate('click');
+        expect(contextValue.dispatch).toHaveBeenCalled();
     });
 
 
