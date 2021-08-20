@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import VideoCard from '../VideoCard';
 import VideoDetailsView from '../VideoDetailsView';
+
 import { useFetchVideos } from '../../utils/hooks/useFetchVideos';
 import { StateContext } from '../../context/State/state';
 
@@ -17,13 +18,13 @@ const CardListContainer = styled.div`
 `;
 
 const VideoList = () => {
-  const [openedDetails, setOpenedDetails] = useState(false);
   const stateContext = useContext(StateContext);
   const {
     video: { search },
     handleVideosList,
     handleSelectVideo,
   } = stateContext;
+  const [openedDetails, setOpenedDetails] = useState(false);
   const { data } = useFetchVideos(search);
 
   const handleOpenDetails = (item) => {
@@ -31,13 +32,11 @@ const VideoList = () => {
     handleSelectVideo(item);
   };
 
-  // This UseEffect is for test search input
   useEffect(() => {
     handleVideosList(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  // This UseEffect is for test search input
   useEffect(() => {
     handleVideosList(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps

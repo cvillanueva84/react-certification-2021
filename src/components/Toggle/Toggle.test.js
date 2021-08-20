@@ -1,10 +1,21 @@
+/* eslint-disable no-multi-assign */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
+import { ConfigProvider } from '../../context/State/state';
+
 import Toggle from './index';
 
+const valueContextMock = {
+  darkMode: false,
+};
+
 beforeEach(() => {
-  render(<Toggle />);
+  render(
+    <ConfigProvider value={valueContextMock}>
+      <Toggle />
+    </ConfigProvider>
+  );
 });
 
 describe('Toggle', () => {

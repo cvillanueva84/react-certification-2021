@@ -1,13 +1,24 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
+import AppState from '../../context/State/state';
+
 import VideoList from './index';
 
 beforeEach(() => {
-  render(<VideoList />);
+  const mockState = {
+    darkMode: false,
+    handleDarkMode: jest.fn(),
+  };
+
+  render(
+    <AppState value={mockState}>
+      <VideoList />
+    </AppState>
+  );
 });
 
-describe('VideoCard', () => {
+describe('VideoList', () => {
   test('should contains a Loading text', () => {
     const loadingText = screen.queryByText('Loading...');
     expect(loadingText).toBeInTheDocument();

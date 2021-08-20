@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { StateContext } from '../../context/State/state';
-// import { useFetchVideos } from '../../utils/hooks/useFetchVideos';
 
 const VideoDetailsViewContainer = styled.div`
   display: flex;
@@ -94,7 +93,7 @@ const VideoDetailsView = () => {
             {selectedVideo.snippet.description}
           </Description>
         </VideoDetailsContainer>
-        <VideoListContainer mode={darkMode}>
+        <VideoListContainer mode={darkMode ? 1 : 0}>
           {!videos ? (
             <div>Loading...</div>
           ) : (

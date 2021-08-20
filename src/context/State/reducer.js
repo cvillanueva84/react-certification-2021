@@ -1,6 +1,6 @@
 import {
-  HOVER_AVATAR,
-  BLUR_AVATAR,
+  HOVER_PROFILE,
+  BLUR_PROFILE,
   TYPE_INPUT,
   LOAD_VIDEOS,
   SELECT_VIDEO,
@@ -11,18 +11,18 @@ const reducer = (state, action) => {
   const { payload, type } = action;
 
   switch (type) {
-    case HOVER_AVATAR:
+    case HOVER_PROFILE:
       return {
         ...state,
-        avatar: {
+        profile: {
           showDropdown: payload,
         },
       };
 
-    case BLUR_AVATAR:
+    case BLUR_PROFILE:
       return {
         ...state,
-        avatar: {
+        profile: {
           showDropdown: payload,
         },
       };

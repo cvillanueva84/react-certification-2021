@@ -8,8 +8,7 @@ import './Toggle.styles.css';
 
 const Container = styled.div`
   padding: 10px;
-  display: flex;
-  align-items: center;
+  margin-left: auto;
 `;
 
 const SpanTag = styled.span`
@@ -20,6 +19,7 @@ const SpanTag = styled.span`
 const Toggle = () => {
   const stateContext = useContext(StateContext);
   const { darkMode, handleDarkMode } = stateContext;
+
   return (
     <Container onChange={() => handleDarkMode(darkMode)}>
       <label className="switch">

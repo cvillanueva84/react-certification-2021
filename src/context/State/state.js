@@ -3,8 +3,8 @@ import React, { createContext, useReducer } from 'react';
 import reducer from './reducer';
 
 import {
-  HOVER_AVATAR,
-  BLUR_AVATAR,
+  HOVER_PROFILE,
+  BLUR_PROFILE,
   TYPE_INPUT,
   LOAD_VIDEOS,
   SELECT_VIDEO,
@@ -15,7 +15,7 @@ export const StateContext = createContext();
 
 const AppState = (props) => {
   const initialState = {
-    avatar: {
+    profile: {
       showDropdown: false,
     },
     video: {
@@ -28,13 +28,13 @@ const AppState = (props) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Avatar handlers
-  const showAvatarDropdown = () => {
-    dispatch({ type: HOVER_AVATAR, payload: true });
+  // Profile handlers
+  const showProfileDropdown = () => {
+    dispatch({ type: HOVER_PROFILE, payload: true });
   };
 
-  const hideAvatarDropdown = () => {
-    dispatch({ type: BLUR_AVATAR, payload: false });
+  const hideProfileDropdown = () => {
+    dispatch({ type: BLUR_PROFILE, payload: false });
   };
 
   // NavBar handlers
@@ -58,11 +58,11 @@ const AppState = (props) => {
   return (
     <StateContext.Provider
       value={{
-        avatar: state.avatar,
+        profile: state.profile,
         video: state.video,
         darkMode: state.darkMode,
-        hideAvatarDropdown,
-        showAvatarDropdown,
+        hideProfileDropdown,
+        showProfileDropdown,
         handleSearch,
         handleVideosList,
         handleSelectVideo,
@@ -86,4 +86,5 @@ const AppState = (props) => {
   );
 };
 
+export const { Consumer: ConfigConsumer, Provider: ConfigProvider } = StateContext;
 export default AppState;

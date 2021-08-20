@@ -1,6 +1,6 @@
-// Avatar types
-export const HOVER_AVATAR = 'HOVER_AVATAR';
-export const BLUR_AVATAR = 'BLUR_AVATAR';
+// Profile types
+export const HOVER_PROFILE = 'HOVER_PROFILE';
+export const BLUR_PROFILE = 'BLUR_PROFILE';
 // NavBar types
 export const TYPE_INPUT = 'TYPE_INPUT';
 export const TOGGLE_DARK_MODE = 'TOGGLE_DARK_MODE';

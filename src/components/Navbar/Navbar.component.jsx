@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import Avatar from '../Avatar';
+import Profile from '../Profile';
 import Toggle from '../Toggle';
 
 import { StateContext } from '../../context/State/state';
-
-import './Navbar.styles.css';
+import { useAuth } from '../../providers/Auth';
 
 const Container = styled.div`
   display: flex;
@@ -40,6 +39,7 @@ const MenuBurger = styled.div`
 const Search = styled.div`
   margin-right: auto;
 `;
+
 const SearchInput = styled.input`
   width: 100%;
   padding: 12px 20px;
@@ -51,27 +51,33 @@ const SearchInput = styled.input`
     font-family: Arial, Helvetica, sans-serif; // <Thing> when hovered
   }
 `;
+
 const Navbar = ({ open, setOpen }) => {
   const stateContext = useContext(StateContext);
+  const { authenticated } = useAuth();
   const { handleSearch, darkMode } = stateContext;
 
   return (
-    <Container mode={darkMode}>
-      <MenuBurger onClick={() => setOpen(!open)}>
-        <svg
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path fill="#ffffff" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
-      </MenuBurger>
-      <Search>
-        <SearchInput type="search" placeholder="search..." onChange={handleSearch} />
-      </Search>
-      <Toggle />
-      <Avatar />
+    <Container mode={darkMode ? 1 : 0}>
+      {authenticated ? (
+        <>
+          <MenuBurger onClick={() => setOpen(!open)}>
+            <svg
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path fill="#ffffff" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+          </MenuBurger>
+          <Search>
+            <SearchInput type="search" placeholder="search..." onChange={handleSearch} />
+          </Search>
+          <Toggle />
+        </>
+      ) : undefined}
+      <Profile />
     </Container>
   );
 };

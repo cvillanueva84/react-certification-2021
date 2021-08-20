@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { StateContext } from '../../context/State/state';
-
-import './Menu.styles.css';
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -30,12 +29,13 @@ const Span = styled.span`
 
 const Menu = ({ open }) => {
   const stateContext = useContext(StateContext);
+  const history = useHistory();
   const { darkMode } = stateContext;
 
   return (
-    <StyledMenu mode={darkMode} open={open}>
-      <Span onClick={() => window.location.reload()}>HOME</Span>
-      <Span>FAVORITES</Span>
+    <StyledMenu mode={darkMode ? 1 : 0} open={open}>
+      <Span onClick={() => history.push('/')}>HOME</Span>
+      <Span onClick={() => history.push('/favorites')}>FAVORITES</Span>
     </StyledMenu>
   );
 };
