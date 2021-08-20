@@ -45,4 +45,5 @@ describe('Test Favorite Videos View', () => {
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.exists());
     });
+    
 });
