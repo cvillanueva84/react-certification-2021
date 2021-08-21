@@ -1,23 +1,23 @@
 import { types } from '../types/types';
 
-// eslint-disable-next-line no-unused-vars
 export const appReducer = (state = {}, action) => {
   switch (action.type) {
-    case types.login:
-      return {
-        ...action.payload,
-        logged: true,
-      };
-
-    case types.logout:
-      return {
-        logged: false,
-      };
-
     case types.changeSearchQuery:
       return {
         ...state,
         search: action.payload,
+      };
+
+    case types.setSelectedVideo:
+      return {
+        ...state,
+        selectedVideo: action.payload,
+      };
+
+    case types.toggleTheme:
+      return {
+        ...state,
+        darkTheme: !state.darkTheme,
       };
 
     default:

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../../state/AppContext';
-import { types } from './../../types/types';
+import { types } from '../../types/types';
 
 const Bar = styled.div`
   width: 30vw;
@@ -42,13 +42,9 @@ const SearchButton = styled.button`
   font-size: 16px;
 `;
 
-export const SearchBar = ({ setSearch, setSelectedVideo }) => {
+export const SearchBar = () => {
   const [input, setInput] = useState('');
-  const {
-    state: { search },
-    dispatch,
-  } = useContext(AppContext);
-  console.log(search, dispatch);
+  const { dispatch } = useContext(AppContext);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -56,8 +52,10 @@ export const SearchBar = ({ setSearch, setSelectedVideo }) => {
   };
 
   const handleClick = () => {
-    setSelectedVideo(null);
-    setSearch(input);
+    dispatch({
+      type: types.setSelectedVideo,
+      payload: null,
+    });
     dispatch({
       type: types.changeSearchQuery,
       payload: input,

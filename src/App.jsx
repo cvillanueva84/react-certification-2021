@@ -2,31 +2,21 @@ import React, { useReducer } from 'react';
 import Router from './components/App/Router.component';
 import { appReducer } from './state/appReducer';
 import { AppContext } from './state/AppContext';
-
-// const init = () => {
-//   return (
-//     JSON.parse(localStorage.getItem('darkTheme')) || {
-//       darkTheme: true,
-//     }
-//   );
-// };
+import Theme from './components/Layout/Theme';
 
 export const App = () => {
   const [state, dispatch] = useReducer(appReducer, {
     darkTheme: true,
     search: '',
-    selectedVideo: {},
+    selectedVideo: null,
   });
-  console.log(state);
-
-  // useEffect(() => {
-  //   localStorage.setItem('darkTheme', JSON.stringify(state.darkTheme));
-  // }, [state.darkTheme]);
 
   return (
     <div>
       <AppContext.Provider value={{ state, dispatch }}>
-        <Router />
+        <Theme>
+          <Router />
+        </Theme>
       </AppContext.Provider>
     </div>
   );
