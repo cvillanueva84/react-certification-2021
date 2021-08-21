@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Context from '../../providers/Theme/Theme.context';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import {
-  DescriptionSpan, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
+  DescriptionSpan, FavoriteListContainer, FavoriteListEach,NoFavoritesDiv, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
 } from './FavoriteListComponent.styled';
-import './FavoritesListComponent.styles.css';
-import { VideoListContext } from '../../providers/VideoList/VideoList.provider'
 
 const FavoritesList = () => {
   const { videosState } = useContext(VideoListContext)
@@ -13,13 +12,13 @@ const FavoritesList = () => {
   const { state } = useContext(Context);
 
   return (
-    <div className="favoriteVideos-container">
+    <FavoriteListContainer >
       {favoriteVideos.length === 0 || favoriteVideos === null ? (
-        <div className="no-favorites">
+        <NoFavoritesDiv>
           <h2>There are no favorite videos!</h2>
-        </div>
+        </NoFavoritesDiv>
       ) : (
-        <div className="favoriteVideos-container">
+        <FavoriteListEach>
           {favoriteVideos.map((video) => (
             <Link
               key={video.id}
@@ -67,9 +66,9 @@ const FavoritesList = () => {
               )}
             </Link>
           ))}
-        </div>
+        </FavoriteListEach>
       )}
-    </div>
+    </FavoriteListContainer>
   );
 };
 

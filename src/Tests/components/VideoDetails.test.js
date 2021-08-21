@@ -8,7 +8,6 @@ import { videosState } from '../mockData/videosList';
 
 describe('Tests of the VideoDetials component', () => {
     const authenticated = true
-
     const wrapper = mount( 
         <AuthProvider
             value={{
@@ -31,6 +30,5 @@ describe('Tests of the VideoDetials component', () => {
        test('should display the component correctly', () => {
          expect(wrapper).toMatchSnapshot()  
        })
-        
-
+       
 })

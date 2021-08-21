@@ -5,27 +5,32 @@ import FavoritesList from '../../components/FavoritesList/FavoritesListComponent
 import Context from '../../providers/Theme/Theme.context';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { videosState } from '../mockData/videosList';
+import AuthProvider from '../../providers/Auth';
 
 
 describe('Tests of the FavoriteListComponent', () => {
     const state = {
         isDark: true
     }
-
+    const authenticated = true
     const wrapper = mount(
-        <Context.Provider
-            value={{state}}
+        <AuthProvider
+            value={{authenticated}}
         >
-            <VideoListContext.Provider
-                value={{
-                    videosState
-                }}
-            >
-            <MemoryRouter>
-                < FavoritesList/>
-            </MemoryRouter>
-            </VideoListContext.Provider>
-        </Context.Provider>
+            <Context.Provider
+                value={{state}}
+                >
+                <VideoListContext.Provider
+                    value={{
+                        videosState
+                    }}
+                    >
+                <MemoryRouter>
+                    < FavoritesList/>
+                </MemoryRouter>
+                </VideoListContext.Provider>
+            </Context.Provider>
+        </AuthProvider>
     )
     test('should render the component correctly', () => {
         expect(wrapper).toMatchSnapshot()
@@ -37,6 +42,34 @@ describe('Tests of the FavoriteListComponent', () => {
             const warningMsg = wrapper.find('h2')
             expect(warningMsg.length).toBe(1)
         }
+    })
+    
+    test('should not show this component if the user is not authenticated', () => {
+        const state = {
+            isDark: true
+        }
+        const authenticated = false
+        const wrapper = mount(
+            <AuthProvider
+                value={{authenticated}}
+            >
+                <Context.Provider
+                    value={{state}}
+                    >
+                    <VideoListContext.Provider
+                        value={{
+                            videosState
+                        }}
+                        >
+                    <MemoryRouter>
+                        < FavoritesList/>
+                    </MemoryRouter>
+                    </VideoListContext.Provider>
+                </Context.Provider>
+            </AuthProvider>
+        )
+        const favoriteListComponent = wrapper.find('favoriteVideos-container')
+        expect(favoriteListComponent.length).toBe(0)
     })
     
     

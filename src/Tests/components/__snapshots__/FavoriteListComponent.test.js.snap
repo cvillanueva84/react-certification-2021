@@ -2,10 +2,10 @@
 
 exports[`Tests of the FavoriteListComponent should render the component correctly 1`] = `
 <div
-  className="favoriteVideos-container"
+  className="sc-bdnxRM eWDhhJ"
 >
   <div
-    className="favoriteVideos-container"
+    className="sc-dlnjwi khqPoZ"
   >
     <a
       href="/favorite-video/HYyRZiwBWc8"
@@ -18,10 +18,10 @@ exports[`Tests of the FavoriteListComponent should render the component correctl
       }
     >
       <div
-        className="sc-bdnxRM ibTyae"
+        className="sc-hKFxyN lmYhKb"
       >
         <div
-          className="sc-dlnjwi jhVepJ"
+          className="sc-jSFjdj bqukUU"
           style={
             Object {
               "backgroundImage": "url(https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg)",
@@ -34,12 +34,12 @@ exports[`Tests of the FavoriteListComponent should render the component correctl
           }
         />
         <span
-          className="sc-hKFxyN kGJpsy"
+          className="sc-gKAaRy gWKPHz"
         >
           Wizeline Guadalajara | Bringing Silicon Valley to Mexico
         </span>
         <span
-          className="sc-eCApnc iTWCwi"
+          className="sc-iCoGMd gIgibD"
         >
           Wizeline continues to offer a Silicon Valley culture in burgeoning innovation hubs like Mexico and V
         </span>
@@ -56,10 +56,10 @@ exports[`Tests of the FavoriteListComponent should render the component correctl
       }
     >
       <div
-        className="sc-bdnxRM ibTyae"
+        className="sc-hKFxyN lmYhKb"
       >
         <div
-          className="sc-dlnjwi jhVepJ"
+          className="sc-jSFjdj bqukUU"
           style={
             Object {
               "backgroundImage": "url(https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg)",
@@ -72,12 +72,12 @@ exports[`Tests of the FavoriteListComponent should render the component correctl
           }
         />
         <span
-          className="sc-hKFxyN kGJpsy"
+          className="sc-gKAaRy gWKPHz"
         >
           Video Tour | Welcome to Wizeline Guadalajara
         </span>
         <span
-          className="sc-eCApnc iTWCwi"
+          className="sc-iCoGMd gIgibD"
         >
           Follow Hector Padilla, Wizeline Director of Engineering, for a lively tour of our office.
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const VideoDetailsContainer = styled.section`
+export const VideoDetailsContainer = styled.div`
   padding: 2rem;
   display: flex;
   @media only screen and (max-width: 700px) {

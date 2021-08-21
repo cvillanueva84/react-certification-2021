@@ -1,5 +1,29 @@
 import styled from 'styled-components';
 
+export const FavoriteListContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+`;
+
+FavoriteListContainer.displayName = 'FavoriteListContainer'
+
+export const NoFavoritesDiv = styled.div`
+  width: 70%;
+  text-align: center;
+  margin-top: 10vh;
+`;
+
+export const FavoriteListEach = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+FavoriteListEach.displayName = 'FavoriteListEach'
+
+NoFavoritesDiv.displayName = 'NoFavoritesDiv'
+
 export const VideoCardDivLight = styled.div`
   display: flex;
   flex-direction: column;

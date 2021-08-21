@@ -6,12 +6,12 @@ import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { videosState } from '../mockData/videosList';
 
 
-const { posts } = videosState
 
 describe('Tests of the RecommendedVideos component', () => {
-
+    const { posts } = videosState
 
     const wrapper = mount(
+
         <VideoListContext.Provider
             value={{
                 posts
@@ -33,5 +33,7 @@ describe('Tests of the RecommendedVideos component', () => {
         let videos = wrapper.find('recommended-video__card')
         expect(videos.length).toBe(videos.length)
     })
+
+
     
 })

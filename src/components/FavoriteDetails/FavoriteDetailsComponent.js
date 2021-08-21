@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router';
-import Swal from 'sweetalert2';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { useFetch } from '../../utils/hooks/useFetch';
@@ -26,26 +25,13 @@ const FavoriteDetails = () => {
           <SelectedVideoTextContainer>
             <ReactionBtnsContainer>
               <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
-              {authenticated ? (
+              {authenticated && (
                 <ReactionBtnPosition>
                   <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
                     <i className="fas fa-thumbs-down" />
                   </ReactionBtn>
                 </ReactionBtnPosition>
-              ) : (
-                <ReactionBtn
-                  type="button"
-                  onClick={() =>
-                    Swal.fire({
-                      title: 'Oops...',
-                      text: 'Log In if you want to add this video to your favorites',
-                    })
-                  }
-                >
-                  <i className="fas fa-thumbs-up" style={{ marginRight: '1rem' }} />
-                  Like
-                </ReactionBtn>
-              )}
+              ) }
             </ReactionBtnsContainer>
             <DescriptionSpan>{singleVideo[0].snippet.description}</DescriptionSpan>
           </SelectedVideoTextContainer>

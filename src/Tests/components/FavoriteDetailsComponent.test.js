@@ -36,4 +36,5 @@ describe('Tests of the FavoriteDetailsComponent', () => {
         expect(wrapper).toMatchSnapshot()
     })
     
+    
 })

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests of the VideoDetials component should display the component correctly 1`] = `
-<section
+<div
   className="sc-gtsrHT cUVhqq"
 >
   <div
@@ -115,5 +115,5 @@ exports[`Tests of the VideoDetials component should display the component correc
       </a>
     </div>
   </aside>
-</section>
+</div>
 `;
