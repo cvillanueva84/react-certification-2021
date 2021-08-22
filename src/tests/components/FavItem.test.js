@@ -1,12 +1,11 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { mount } from 'enzyme';
-import { MemoryRouter, Router } from 'react-router';
-import { VideoDetailsScreen } from '../../components/VideoDetailsScreen';
+import { mount, render } from 'enzyme';
 import { GlobalContext } from '../../components/Context';
-import { CardItem } from '../../components/CardItem';
+import { MemoryRouter, Router } from 'react-router';
+import { FavItem } from '../../components/FavItem';
 
-describe('Test VideoDetailsScreen', () => {
+describe('Test FavItem', () => {
     const contextValue = {
         dispatch: jest.fn(),
         myStateReducer: {
@@ -31,9 +30,7 @@ describe('Test VideoDetailsScreen', () => {
         <GlobalContext.Provider value={contextValue}>
             <MemoryRouter>
                 <Router history={historyMock}>
-                    <VideoDetailsScreen>
-                        <CardItem/>
-                    </VideoDetailsScreen>
+                    <FavItem />
                 </Router>
             </MemoryRouter>
         </GlobalContext.Provider>
@@ -41,7 +38,7 @@ describe('Test VideoDetailsScreen', () => {
 
     afterEach(() => {
         jest.clearAllMocks();
-    });  
+    });
 
     it('should render success', () => {
         expect(wrapper).toMatchSnapshot();
@@ -49,20 +46,20 @@ describe('Test VideoDetailsScreen', () => {
     });
 
     it('should have elements', () => {
-        expect(wrapper.getElements(".video-details").length).toBe(1);
-        expect(wrapper.getElements("frame").length).toBe(1);
-        expect(wrapper.getElements(".video-details-text").length).toBe(1);
-        expect(wrapper.getElements("h2").length).toBe(1);
-        expect(wrapper.getElements("p").length).toBe(1);
-        expect(wrapper.getElements(".contenedor-sugeridos").length).toBe(1);
+        expect(wrapper.find('img').length).toBe(1);
+        expect(wrapper.find('h2').length).toBe(1);
+        expect(wrapper.find('p').length).toBe(1);
+        expect(wrapper.find('button').length).toBe(2);
     });
 
-
-    it('should dispatch addFavorite', () => {
-        wrapper.find('#addFavorite').simulate('click');
+    it('should dispatch videodetailsfavs', () => {
+        wrapper.find('a').simulate('click')
         expect(contextValue.dispatch).toHaveBeenCalled();
     });
 
-
+    it('should dispatch actionDelete', () => {
+        wrapper.find('#delete').simulate('click')
+        expect(contextValue.dispatch).toHaveBeenCalled();
+    });
 
 });

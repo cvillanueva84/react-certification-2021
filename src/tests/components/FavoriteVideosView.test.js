@@ -1,18 +1,22 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
-import { MemoryRouter, Router } from "react-router";
-import { AppRouter } from "../../components/AppRouter";
-import { GlobalContext } from "../../components/Context";
+import { GlobalContext } from '../../components/Context';
+import { MemoryRouter, Router } from 'react-router';
+import { FavoriteVideosView } from "../../components/FavoriteVideosView";
 
 
-describe('Test AppRouter', () => {
+describe('Test Favorite Videos View', () => {
     const contextValue = {
         dispatch: jest.fn(),
         myStateReducer: {
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }
     }
     const historyMock = {
@@ -27,7 +31,7 @@ describe('Test AppRouter', () => {
         <GlobalContext.Provider value={contextValue}>
             <MemoryRouter>
                 <Router history={historyMock}>
-                    <AppRouter/>
+                    <FavoriteVideosView />
                 </Router>
             </MemoryRouter>
         </GlobalContext.Provider>
@@ -35,7 +39,7 @@ describe('Test AppRouter', () => {
 
     afterEach(() => {
         jest.clearAllMocks();
-    })
+    });
 
     it('should render success', () => {
         expect(wrapper).toMatchSnapshot();

@@ -1,29 +1,27 @@
 import React, { useContext} from 'react';
 import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
-import '../style/HomeScreen.css';
 import { GlobalContext } from './Context'
+import { ContenedorStyled, Title, CardStyled} from '../style/HomeScreenStyled'
 
 export const HomeScreen = () => {
 
     const { myStateReducer } = useContext(GlobalContext);
     const { items: videos, loading } = useFetchVideos(myStateReducer.search);
     
-
     return (
         <>
-            <div className="contenedor">
-                {loading ? <h1>Loading...</h1> : <h1>{myStateReducer.search}</h1>}
-                <div className="cards">
+            <ContenedorStyled>
+                {loading ? <Title>Loading...</Title> : <Title>{myStateReducer.search}</Title>}
+                <CardStyled>
                     {videos.map(vid => (
                         <CardItem
                             key={vid.id}
                             {...vid}
                         />
                     ))}
-                </div>
-
-            </div>
+                </CardStyled>
+            </ContenedorStyled>
 
         </>
     )

@@ -3422,3 +3422,790 @@ Reducer flow: State -> Page -> Action -> Reducer -> State
 
 
 
+******************************************************************************
+
+		Presentational and Container Componets 
+
+
+Descubrirá que sus componentes son mucho más fáciles de reutilizar y razonar si los divide en dos 
+categorías. Los llamo Contenedores y Componentes de presentación * pero también escuché Fat and Skinny , 
+Smart and Dumb, Stateful and Pure , Screens and Components , etc. No todos son exactamente iguales, pero la 
+idea central es similar.
+
+Mis presentational componets::
+
+Les preocupa cómo se ven las cosas .
+Puede contener componentes de presentación y contenedor ** en su interior y, por lo general, tienen algunos estilos y marcas DOM propios.
+A menudo permite la contención a través de this.props.children .
+No dependa del resto de la aplicación, como acciones o tiendas de Flux.
+No especifique cómo se cargan o se modifican los datos.
+Reciba datos y devoluciones de llamada exclusivamente a través de accesorios.
+Rara vez tienen su propio estado (cuando lo tienen, es el estado de la interfaz de usuario en lugar de los datos).
+Están escritos como componentes funcionales a menos que necesiten estados, enlaces de ciclo de vida u optimizaciones de rendimiento.
+
+--> Ejemplos: página, barra lateral, historia, información de usuario, lista.
+
+Mis container componets:
+
+Están preocupados por cómo funcionan las cosas .
+Puede contener componentes de presentación y contenedor ** en su interior, pero por lo general no tienen ningún marcado DOM propio, excepto algunos divs de envoltura, y nunca tienen estilos.
+Proporcione los datos y el comportamiento a los componentes de presentación u otros componentes del contenedor.
+Llame a las acciones de Flux y proporciónelas como devoluciones de llamada a los componentes de presentación.
+A menudo tienen estado, ya que tienden a servir como fuentes de datos.
+Por lo general, se generan utilizando componentes de orden superior , como connect () de React Redux, createContainer () de Relay o Container.create () de Flux Utils, en lugar de escribirlos a mano.
+
+--> Ejemplos: UserPage, FollowersSidebar, StoryContainer, FollowedUserList.
+
+Beneficios de este enfoque:
+
+Mejor separación de preocupaciones. Comprende mejor su aplicación y su interfaz de usuario escribiendo componentes de esta manera.
+Mejor reutilización. Puede usar el mismo componente de presentación con fuentes de estado completamente diferentes y convertirlas en componentes de contenedor separados que se pueden reutilizar.
+Los componentes de presentación son esencialmente la "paleta" de su aplicación. Puede ponerlos en una sola página y dejar que el diseñador modifique todas sus variaciones sin tocar la lógica de la aplicación. Puede ejecutar pruebas de regresión de captura de pantalla en esa página.
+Esto le obliga a extraer "componentes de diseño" como Sidebar, Page, ContextMenu y utilizar this.props.children en lugar de duplicar el mismo marcado y diseño en varios componentes del contenedor.
+
+
+NOTA: 
+
+Recordar, los componentes no tienen que emitir DOM. Solo necesitan proporcionar límites de composición entre 
+las preocupaciones de la interfaz de usuario.
+
+
+
+¿Cuándo introducir contenedores?
+Le sugiero que comience a construir su aplicación con solo componentes de presentación primero. Con el tiempo,
+ se dará cuenta de que está pasando demasiados accesorios por los componentes intermedios. Cuando observe que 
+ algunos componentes no usan los accesorios que reciben, sino que simplemente los reenvían y tiene que volver 
+ a cablear todos esos componentes intermedios cada vez que los niños necesitan más datos, es un buen momento para 
+ introducir algunos componentes del contenedor. De esta manera, puede obtener los datos y los accesorios de 
+ comportamiento para los componentes de la hoja sin sobrecargar los componentes no relacionados 
+ en el medio del árbol.
+
+Este es un proceso continuo de refactorización, así que no intente hacerlo bien la primera vez. 
+A medida que experimente con este patrón, desarrollará un sentido intuitivo de cuándo es el momento de 
+extraer algunos contenedores, al igual que sabe cuándo es el momento de extraer una función.
+
+
+
+
+
+
+Los componentes inteligentes son componentes de nivel de aplicación que realizan funciones y administran datos, 
+mientras que los componentes tontos se enfocan únicamente en la interfaz de usuario.
+
+Las características comunes de los componentes inteligentes incluyen:
+
+Manipula datos Los componentes inteligentes pueden buscar, capturar cambios y transmitir datos de aplicaciones.
+Llame a Redux, métodos de ciclo de vida, API, bibliotecas, etc.¡Estos componentes se llaman inteligentes por una razón! Son responsables de llamar a las bibliotecas y la funcionalidad.
+Administrar estado Los componentes inteligentes son responsables de administrar el estado y saber cuándo volver a renderizar un componente.
+Rara vez incluye estilo Dado que los componentes tontos se centran en el estilo, permite que el componente inteligente se centre en la funcionalidad sin el desorden de estilos también.
+
+
+Características comunes de los componentes tontos:
+
+Centrarse en la interfaz de usuarioCasi todos los componentes básicos de la interfaz de usuario deben considerarse componentes tontos. Los ejemplos incluyen cargadores, modales, botones, entradas, etc.
+Aceptar accesoriosLos componentes tontos aceptan accesorios para permitirles ser dinámicos y reutilizables. Por ejemplo, puede enviar el título de un botón en accesorios del componente principal para permitirle tener un nombre único.
+No requiere dependencias de aplicacionesAparte de los paquetes de IU, como los Reactstrapcomponentes tontos, no requieren dependencias.
+Rara vez incluyen el estadoLa única instancia en la que un componente tonto tiene estado es para manipular la propia interfaz de usuario, no los datos de la aplicación. Algunos ejemplos de dónde podría tener estado un componente tonto serían los grupos de botones, pestañas, interruptores y otros elementos de la interfaz de usuario que no afectan los datos, solo la interfaz de usuario.
+
+Beneficios:
+-reutilización
+-Flexibilidad para realizar cambios facilmente
+-Legibilidad de código 
+-Proporciona coherencia y evita la duplicación
+-Simplifica las decisiones de la interfaz de usuario 
+-Facil de probar 
+
+
+
+******************************************************************************
+
+		Composition vs inheritance
+
+React tiene un modelo de composición poderoso, y recomendamos usar la composición en lugar de la 
+herencia para reutilizar el código entre componentes.
+
+
+Containment:
+
+Algunos componentes no conocen a sus hijos de antemano. Esto es especialmente común para componentes como 
+Sidebaro Dialogque representan "cajas" genéricas.
+
+Recomendamos que dichos componentes utilicen el childrenaccesorio especial para pasar elementos secundarios 
+directamente a su salida:
+
+function FancyBorder(props) {
+  return (
+    <div className={'FancyBorder FancyBorder-' + props.color}>
+      {props.children}
+    </div>
+  );
+}
+
+
+Esto permite que otros componentes les pasen hijos arbitrarios anidando el JSX:
+
+function WelcomeDialog() {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        Welcome
+      </h1>
+      <p className="Dialog-message">
+        Thank you for visiting our spacecraft!
+      </p>
+    </FancyBorder>
+  );
+}
+
+Todo lo que <FancyBorder>esté dentro de la etiqueta JSX se pasa al FancyBordercomponente 
+como un childrenaccesorio. Dado que se FancyBorderrenderiza {props.children}dentro de a <div>, 
+los elementos pasados ​​aparecen en la salida final.
+
+Si bien esto es menos común, a veces es posible que necesite varios "agujeros" en un componente. En tales casos, 
+puede crear su propia convención en lugar de usar children:
+
+function SplitPane(props) {
+  return (
+    <div className="SplitPane">
+      <div className="SplitPane-left">
+        {props.left}
+      </div>
+      <div className="SplitPane-right">
+        {props.right}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <SplitPane
+      left={
+        <Contacts />
+      }
+      right={
+        <Chat />
+      } />
+  );
+}
+
+Los elementos reaccionan como <Contacts />y <Chat />son solo objetos, por lo que puede pasarlos como 
+ccesorios como cualquier otro dato. Este enfoque puede recordarle las "ranuras" en otras bibliotecas, 
+pero no hay limitaciones sobre lo que puede pasar como accesorios en React.
+
+
+
+
+Especializacion:
+
+A veces pensamos en los componentes como "casos especiales" de otros componentes. Por ejemplo, podríamos 
+decir que a WelcomeDialoges un caso especial de Dialog.
+
+En React, esto también se logra mediante la composición, donde un componente más "específico" representa uno 
+más "genérico" y lo configura con accesorios:
+
+function Dialog(props) {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        {props.title}
+      </h1>
+      <p className="Dialog-message">
+        {props.message}
+      </p>
+    </FancyBorder>
+  );
+}
+
+function WelcomeDialog() {
+  return (
+    <Dialog
+      title="Welcome"
+      message="Thank you for visiting our spacecraft!" />
+  );
+}
+
+La composición funciona igualmente bien para componentes definidos como clases:
+
+function Dialog(props) {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        {props.title}
+      </h1>
+      <p className="Dialog-message">
+        {props.message}
+      </p>
+      {props.children}
+    </FancyBorder>
+  );
+}
+
+class SignUpDialog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.state = {login: ''};
+  }
+
+  render() {
+    return (
+      <Dialog title="Mars Exploration Program"
+              message="How should we refer to you?">
+        <input value={this.state.login}
+               onChange={this.handleChange} />
+        <button onClick={this.handleSignUp}>
+          Sign Me Up!
+        </button>
+      </Dialog>
+    );
+  }
+
+  handleChange(e) {
+    this.setState({login: e.target.value});
+  }
+
+  handleSignUp() {
+    alert(`Welcome aboard, ${this.state.login}!`);
+  }
+}
+
+
+¿Que pasá con le herencia?
+
+En Facebook, usamos React en miles de componentes y no hemos encontrado ningún caso de uso en el que 
+recomendaríamos crear jerarquías de herencia de componentes.
+
+Los accesorios y la composición le brindan toda la flexibilidad que necesita para personalizar el aspecto y el 
+comportamiento de un componente de una manera explícita y segura. Recuerde que los componentes pueden aceptar 
+accesorios arbitrarios, incluidos valores primitivos, elementos React o funciones.
+
+Si desea reutilizar la funcionalidad que no es de la interfaz de usuario entre componentes, le sugerimos que la 
+extraiga en un módulo de JavaScript separado. Los componentes pueden importarlo y usar esa función, objeto o clase,
+sin extenderlo.
+
+
+
+
+function swimmer({name}){
+	return {
+		swim: () => clg(`${name} swam`)
+	}
+}
+function swimmer({name}){
+	return {
+		swim: () => clg(`${name} flew`)
+	}
+}
+
+
+
+
+
+function swimmingMosterCreator(name){
+	const monster = {name:name}
+
+	return {
+		...monster,
+		...swimmer(monster)
+	}
+}
+
+function flyingswimmingMosterCreator(name){
+	const monster = {name:name}
+
+	return {
+		...monster,
+		...swimmer(monster)
+		...flyer(monster)
+	}
+}
+
+
+const obj = flyingswimmingMosterCreator('Monster')
+obj.swim();
+obj.fly();
+
+Explicación: https://www.youtube.com/watch?v=nnwD5Lwwqdo
+
+
+******************************************************************************
+
+		Lifting State up
+
+A menudo, varios componentes deben reflejar los mismos datos cambiantes. Recomendamos elevar el estado 
+compartido a su antepasado común más cercano. Veamos cómo funciona esto en acción.
+
+Debe haber una única "fuente de verdad" para cualquier dato que cambie en una aplicación React. Por lo general, 
+el estado se agrega primero al componente que lo necesita para renderizar. Luego, si otros componentes también 
+lo necesitan, puede elevarlo a su ancestro común más cercano. En lugar de intentar sincronizar el estado entre 
+diferentes componentes, debe confiar en el flujo de datos de arriba hacia abajo .
+
+El estado de elevación implica escribir más código "repetitivo" que los enfoques de enlace bidireccional, pero 
+como beneficio, se necesita menos trabajo para encontrar y aislar errores. Dado que cualquier estado "vive" en 
+algún componente y ese componente solo puede cambiarlo, el área de superficie para los errores se reduce 
+considerablemente. Además, puede implementar cualquier lógica personalizada para rechazar o transformar la entrada del usuario.
+
+Si algo se puede derivar de los accesorios o del estado, probablemente no debería estar en el estado. 
+Por ejemplo, en lugar de almacenar ambos celsiusValuey fahrenheitValue, almacenamos solo la última edición 
+temperaturey su scale. El valor de la otra entrada siempre se puede calcular a partir de ellos en el 
+render()método. Esto nos permite borrar o aplicar redondeo al otro campo sin perder precisión en la entrada 
+del usuario.
+
+Cuando vea algo mal en la interfaz de usuario, puede usar React Developer Tools para inspeccionar los 
+accesorios y moverse hacia arriba en el árbol hasta que encuentre el componente responsable de actualizar el estado.
+
+Explicacion con functional componets: https://www.youtube.com/watch?v=HF4o9KAZNxw
+
+
+******************************************************************************
+
+		Atomic Design
+
+Excelente explicación: https://www.youtube.com/watch?v=Yi-A20x2dcA
+
+En la búsqueda de inspiración y paralelismos, seguí volviendo a la química. La idea es que toda la 
+materia (ya sea sólida, líquida, gaseosa, simple, compleja, etc.) está compuesta de átomos. Esas unidades 
+atómicas se unen para formar moléculas, que a su vez se combinan en organismos más complejos para finalmente 
+crear toda la materia en nuestro universo.
+
+Del mismo modo, las interfaces están formadas por componentes más pequeños. Esto significa que podemos dividir 
+interfaces enteras en bloques de construcción fundamentales y trabajar desde allí. Esa es la esencia básica 
+del diseño atómico.
+
+¿qué es el diseño atómico?
+El diseño atómico es una metodología para crear sistemas de diseño. 
+Hay cinco niveles distintos en el diseño atómico:
+
+	1.-Átomos
+
+Los átomos son los componentes básicos de la materia. Aplicados a las interfaces web, los átomos son 
+nuestras etiquetas HTML, como una etiqueta de formulario, una entrada o un botón.
+
+Los átomos también pueden incluir elementos más abstractos como paletas de colores, fuentes e incluso aspectos 
+más invisibles de una interfaz como animaciones.
+
+Al igual que los átomos en la naturaleza, son bastante abstractos y, a menudo, no son muy útiles por sí mismos. 
+Sin embargo, son buenos como referencia en el contexto de una biblioteca de patrones, ya que puede ver todos 
+sus estilos globales presentados de un vistazo.
+
+
+	2.-Moléculas
+
+Las cosas comienzan a ponerse más interesantes y tangibles cuando comenzamos a combinar átomos. Las moléculas 
+son grupos de átomos unidos entre sí y son las unidades fundamentales más pequeñas de un compuesto. Estas 
+moléculas adquieren sus propias propiedades y sirven como columna vertebral de nuestros sistemas de diseño.
+
+Por ejemplo, una etiqueta de formulario, una entrada o un botón no son demasiado útiles por sí mismos, pero 
+combínelos como un formulario y ahora pueden hacer algo juntos.
+
+La acumulación de moléculas a partir de átomos fomenta una mentalidad de "hacer una cosa y hacerlo bien".
+
+
+	3.-Organismos
+
+Las moléculas nos dan algunos bloques de construcción con los que trabajar, y ahora podemos combinarlos para 
+formar organismos. Los organismos son grupos de moléculas que se unen para formar una sección 
+distinta y relativamente compleja de una interfaz.
+
+Los organismos pueden consistir en tipos de moléculas similares y / o diferentes. Por ejemplo, un organismo 
+de cabecera puede constar de diversos componentes como un logotipo, navegación principal, formulario de 
+búsqueda y lista de canales de redes sociales. Pero un organismo de “rejilla de productos” podría consistir 
+en la misma molécula (posiblemente conteniendo una imagen de producto, título de producto y precio) repetida 
+una y otra vez.
+
+La acumulación de moléculas a organismos fomenta la creación de componentes autónomos, portátiles y reutilizables.
+
+
+	4.-Plantillas
+
+En la etapa de la plantilla, rompemos nuestra analogía química para entrar en un lenguaje que tenga 
+más sentido para nuestros clientes y nuestro resultado final. Las plantillas consisten principalmente 
+en grupos de organismos unidos para formar páginas. Es aquí donde comenzamos a ver cómo el diseño se une 
+y comenzamos a ver cosas como el diseño en acción.
+
+Las plantillas son muy concretas y proporcionan contexto a todas estas moléculas y organismos relativamente 
+abstractos. Las plantillas también son donde los clientes comienzan a ver el diseño final en su lugar. 
+En mi experiencia trabajando con esta metodología, las plantillas comienzan su vida como wireframes HTML, 
+pero con el tiempo aumentan la fidelidad para convertirse en el producto final.
+
+
+	5.-Paginas
+
+Las páginas son instancias específicas de plantillas. Aquí, el contenido de marcador de posición se 
+reemplaza con contenido representativo real para brindar una descripción precisa de lo que un usuario 
+verá en última instancia.
+
+Las páginas tienen el nivel más alto de fidelidad y, debido a que son las más tangibles, generalmente es 
+donde la mayoría de las personas en el proceso pasan la mayor parte de su tiempo y en lo que giran la 
+mayoría de las reseñas.
+
+La etapa de la página es esencial, ya que es donde probamos la efectividad del sistema de diseño. Ver 
+todo en contexto nos permite retroceder para modificar nuestras moléculas, organismos y plantillas para 
+abordar mejor el contexto real del diseño.
+
+
+¿Porque atomic design?
+
+El diseño atómico proporciona una metodología clara para la elaboración de sistemas de diseño. Los clientes 
+y los miembros del equipo pueden apreciar mejor el concepto de sistemas de diseño al ver realmente los 
+pasos que se presentan frente a ellos.
+
+El diseño atómico nos da la capacidad de pasar de lo abstracto a lo concreto. Debido a esto, podemos crear 
+sistemas que promuevan la coherencia y la escalabilidad al mismo tiempo que muestran las cosas en su 
+contexto final. Y al ensamblar en lugar de deconstruir, estamos creando un sistema desde el principio en 
+lugar de seleccionar patrones después del hecho.
+
+
+
+
+
+
+
+******************************************************************************
+
+		Portals
+
+Como crear un Popup con Portals: https://www.youtube.com/watch?v=LyLa7dU5tp8
+
+Los portales proporcionan una forma de primera clase para convertir a los niños en un nodo DOM que 
+existe fuera de la jerarquía DOM del componente principal.
+
+	ReactDOM.createPortal(child, container)
+
+El primer argumento ( child) es cualquier hijo React renderizable , como un elemento, cadena o fragmento. 
+El segundo argumento ( container) es un elemento DOM.
+
+USO 
+
+Normalmente, cuando devuelve un elemento del método de representación de un componente, se 
+monta en el DOM como un elemento secundario del nodo principal más cercano:
+
+render() {
+  // React mounts a new div and renders the children into it
+  return (
+    <div>
+      {this.props.children}
+    </div>
+  );
+}
+
+Sin embargo, a veces es útil insertar un niño en una ubicación diferente en el DOM:
+
+render() {
+  // React does *not* create a new div. It renders the children into `domNode`.
+  // `domNode` is any valid DOM node, regardless of its location in the DOM.
+  return ReactDOM.createPortal(
+    this.props.children,
+    domNode
+  );
+}
+
+Un caso de uso típico de los portales es cuando un componente padre tiene un 
+estilo overflow: hidden o z-index, pero necesita que el hijo "salga" visualmente de su contenedor. 
+Por ejemplo, cuadros de diálogo, tarjetas flotantes e información sobre herramientas.
+
+Nota:
+
+Cuando trabaje con portales, recuerde que administrar el enfoque del teclado se vuelve muy importante.
+
+Para los diálogos modales, asegúrese de que todos puedan interactuar con ellos siguiendo las 
+Prácticas de autoría modal WAI-ARIA .
+
+
+	Evento burbujeante a través de portales
+
+Aunque un portal puede estar en cualquier parte del árbol DOM, se comporta como un niño React normal en todos 
+los demás aspectos. Las características como el contexto funcionan exactamente igual independientemente de si 
+el niño es un portal, ya que el portal todavía existe en el árbol de React independientemente de la posición 
+en el árbol DOM .
+
+Esto incluye la propagación de eventos. Un evento disparado desde el interior de un portal se propagará a los 
+ancestros en el árbol de React que lo contiene , incluso si esos elementos no son ancestros en el árbol DOM . 
+Suponiendo la siguiente estructura HTML:
+
+<html>
+  <body>
+    <div id="app-root"></div>
+    <div id="modal-root"></div>
+  </body>
+</html>
+
+Un Parentcomponente de #app-rootpodría capturar un evento burbujeante no detectado del nodo hermano #modal-root.
+
+// These two containers are siblings in the DOM
+const appRoot = document.getElementById('app-root');
+const modalRoot = document.getElementById('modal-root');
+
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.el = document.createElement('div');
+  }
+
+  componentDidMount() {
+    // The portal element is inserted in the DOM tree after
+    // the Modal's children are mounted, meaning that children
+    // will be mounted on a detached DOM node. If a child
+    // component requires to be attached to the DOM tree
+    // immediately when mounted, for example to measure a
+    // DOM node, or uses 'autoFocus' in a descendant, add
+    // state to Modal and only render the children when Modal
+    // is inserted in the DOM tree.
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    modalRoot.removeChild(this.el);
+  }
+
+  render() {
+    return ReactDOM.createPortal(
+      this.props.children,
+      this.el
+    );
+  }
+}
+
+class Parent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {clicks: 0};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    // This will fire when the button in Child is clicked,
+    // updating Parent's state, even though button
+    // is not direct descendant in the DOM.
+    this.setState(state => ({
+      clicks: state.clicks + 1
+    }));
+  }
+
+  render() {
+    return (
+      <div onClick={this.handleClick}>
+        <p>Number of clicks: {this.state.clicks}</p>
+        <p>
+          Open up the browser DevTools
+          to observe that the button
+          is not a child of the div
+          with the onClick handler.
+        </p>
+        <Modal>
+          <Child />
+        </Modal>
+      </div>
+    );
+  }
+}
+
+function Child() {
+  // The click event on this button will bubble up to parent,
+  // because there is no 'onClick' attribute defined
+  return (
+    <div className="modal">
+      <button>Click</button>
+    </div>
+  );
+}
+
+ReactDOM.render(<Parent />, appRoot);
+
+La captura de un evento que surge de un portal en un componente principal permite el desarrollo de 
+abstracciones más flexibles que no dependen inherentemente de los portales. Por ejemplo, si 
+renderiza un <Modal />componente, el padre puede capturar sus eventos independientemente de si se 
+implementa mediante portales.
+
+
+Revisar: https://www.youtube.com/watch?v=cpBrvltVRNY
+
+
+******************************************************************************
+Routing
+
+
+
+¿Qué proyecto debo elegir hoy?
+
+React Router ofrecerá una ruta de migración incremental, pero @ reach / router se parece un poco más a la 
+nueva API. Entonces:
+
+Si solo tiene algunas rutas, es posible que desee elegir @ reach / router. La API @ reach / enrutador se parece 
+un poco más a la nueva API, por lo que será más fácil migrar en una confirmación. No debería tomar más de una tarde.
+
+Si tiene muchas rutas, especialmente con muchos componentes Routey anidados Switch, es posible que desee elegir 
+React Router. Será 100% compatible con versiones anteriores, ofreciendo una ruta de migración incremental a 
+las nuevas API basadas en enlaces.
+
+Las API actuales de React Router y @ reach / router serán compatibles en el futuro previsible con correcciones 
+de errores (al igual que hemos mantenido en silencio React Router v3 durante los últimos años). Entonces, 
+si las cosas nuevas no son atractivas, no necesitará actualizar nada.
+
+
+
+
+	BrowserRouter Component vs HashRouter Component 
+
+BrowserRouter -> example.com/users || example.com/book/0
+
+HashRouter -> example.com/index.html/#/users || example.com/index.html/#/book/0
+
+They solve the same frontend issue, but the difference is how they consider the server will serve the contents
+
+
+
+
+
+
+
+
+	División de código - Code-Splitting
+
+Bundling - Agrupación
+
+La mayoría de las aplicaciones de React tendrán sus archivos "empaquetados" usando herramientas como 
+Webpack , Rollup o Browserify . La agrupación es el proceso de seguir archivos importados y fusionarlos 
+en un solo archivo: un "paquete". Luego, este paquete se puede incluir en una página web para cargar una aplicación completa a la vez.
+
+import()
+La mejor manera de introducir la división de código en su aplicación es a través de la import()sintaxis dinámica .
+
+Antes: 
+
+	import { add } from './math';
+	console.log(add(16, 26));
+
+Despues:
+
+	import("./math").then(math => {
+	console.log(math.add(16, 26));
+	});
+
+
+
+
+	React lazy 
+
+
+La React.lazyfunción le permite renderizar una importación dinámica como un componente regular.
+
+Antes:
+
+	import OtherComponent from './OtherComponent';
+
+Después:
+
+	const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+Esto cargará automáticamente el paquete que contiene el OtherComponentcuando este componente se procese 
+por primera vez.
+
+React.lazytoma una función que debe llamar a una dinámica import(). Esto debe devolver un Promiseque se 
+resuelve en un módulo con una defaultexportación que contiene un componente React.
+
+El componente diferido debe representarse dentro de un Suspensecomponente, lo que nos permite mostrar algún 
+contenido de respaldo (como un indicador de carga) mientras esperamos que se cargue el componente diferido.
+
+import React, { Suspense } from 'react';
+
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherComponent />
+      </Suspense>
+    </div>
+  );
+}
+
+
+
+El fallback accesorio acepta cualquier elemento de React que desee renderizar mientras espera que se 
+cargue el componente. Puede colocar el Suspensecomponente en cualquier lugar por encima del componente 
+diferido. Incluso puede envolver varios componentes perezosos con un solo Suspensecomponente.
+
+import React, { Suspense } from 'react';
+
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <section>
+          <OtherComponent />
+          <AnotherComponent />
+        </section>
+      </Suspense>
+    </div>
+  );
+}
+
+
+
+	Division de codsigo basada en ruta 
+
+Aquí hay un ejemplo de cómo configurar la división de código basado en rutas en su aplicación 
+utilizando bibliotecas como React Router con React.lazy.
+
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const Home = lazy(() => import('./routes/Home'));
+const About = lazy(() => import('./routes/About'));
+
+const App = () => (
+  <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+      </Switch>
+    </Suspense>
+  </Router>
+);
+
+Ejemplo:
+
+import React, {lazy, Suspense} from 'react;
+
+//En lugar del hacer un import lo hacemos con lazy =>
+const AvatarComponent = lazy(() => import('./ladireccion'));
+
+export const renderLoader = () => (
+	<Suspense fallback={<p>...Loading...</p>}>
+		<AvatarComponent/>
+	</Suspense>
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

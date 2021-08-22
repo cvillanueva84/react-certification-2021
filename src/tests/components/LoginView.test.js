@@ -1,12 +1,14 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
-import { MemoryRouter, Router } from 'react-router';
-import { VideoDetailsScreen } from '../../components/VideoDetailsScreen';
 import { GlobalContext } from '../../components/Context';
-import { CardItem } from '../../components/CardItem';
+import { MemoryRouter, Router } from 'react-router';
+import { LoginView } from '../../components/LoginView';
+import { renderHook } from '@testing-library/react-hooks';
+import { useForm } from '../../hooks/useForm';
 
-describe('Test VideoDetailsScreen', () => {
+
+describe('Test Login View', () => {
     const contextValue = {
         dispatch: jest.fn(),
         myStateReducer: {
@@ -31,9 +33,7 @@ describe('Test VideoDetailsScreen', () => {
         <GlobalContext.Provider value={contextValue}>
             <MemoryRouter>
                 <Router history={historyMock}>
-                    <VideoDetailsScreen>
-                        <CardItem/>
-                    </VideoDetailsScreen>
+                    <LoginView />
                 </Router>
             </MemoryRouter>
         </GlobalContext.Provider>
@@ -41,28 +41,30 @@ describe('Test VideoDetailsScreen', () => {
 
     afterEach(() => {
         jest.clearAllMocks();
-    });  
+    });
+
+    const initialForm = {
+        textUser: 'Wizeline',
+        textPass: 'Rocks!',
+      };
 
     it('should render success', () => {
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.exists());
     });
 
-    it('should have elements', () => {
-        expect(wrapper.getElements(".video-details").length).toBe(1);
-        expect(wrapper.getElements("frame").length).toBe(1);
-        expect(wrapper.getElements(".video-details-text").length).toBe(1);
-        expect(wrapper.getElements("h2").length).toBe(1);
-        expect(wrapper.getElements("p").length).toBe(1);
-        expect(wrapper.getElements(".contenedor-sugeridos").length).toBe(1);
+    it('should Login', () => {
+        const e = {preventDefault: jest.fn()};
+        window.alert = () => {};
+        const { result } =  renderHook(() => useForm(initialForm));
+        const [formValues ] = result.current;
+        console.log(formValues);
+        wrapper.find('button').prop('onClick')(e);
     });
 
-
-    it('should dispatch addFavorite', () => {
-        wrapper.find('#addFavorite').simulate('click');
-        expect(contextValue.dispatch).toHaveBeenCalled();
+    it('should Login Google', () => {
+        window.alert = () => {};
+        wrapper.find('img').simulate('click');
     });
-
-
-
+    
 });

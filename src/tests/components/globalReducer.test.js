@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
 import { MemoryRouter, Router } from 'react-router';
 import { GlobalContext } from '../../components/Context';
-import { AppRouter } from "../../components/AppRouter";
+import { AppRouter } from "../../routers/AppRouter";
 import { globalReducer } from '../../components/globalReducer';
 
 describe('Test globalReducer', () => {
@@ -12,7 +12,11 @@ describe('Test globalReducer', () => {
         myStateReducer: {
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }
     }
 
@@ -28,7 +32,7 @@ describe('Test globalReducer', () => {
         <GlobalContext.Provider value={contextValue}>
             <MemoryRouter>
                 <Router history={historyMock}>
-                    <AppRouter/>
+                    <AppRouter />
                 </Router>
             </MemoryRouter>
         </GlobalContext.Provider>
@@ -43,21 +47,25 @@ describe('Test globalReducer', () => {
         expect(wrapper.exists());
     });
 
-    it('should mode light', () => {
-        wrapper.find('.toggle_left').prop('onClick')();
-        expect(contextValue.dispatch).toHaveBeenCalled();
-    });
 
     it('should initialState', () => {
         const state = globalReducer({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }, {})
         expect(state).toEqual({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         })
     });
 
@@ -65,12 +73,20 @@ describe('Test globalReducer', () => {
         const state = globalReducer({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }, {})
         expect(state).toEqual({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         })
     });
 
@@ -85,7 +101,11 @@ describe('Test globalReducer', () => {
         const state = globalReducer({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }, action);
 
         expect(state).toEqual({
@@ -104,7 +124,11 @@ describe('Test globalReducer', () => {
         const state = globalReducer({
             mode: 'dark',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }, action);
 
         expect(state).toEqual({
@@ -118,20 +142,32 @@ describe('Test globalReducer', () => {
             payload: {
                 mode: 'light',
                 search: 'wizeline',
-                videoData: {}
+                videoData: {},
+                videoDataFav: {},
+                user: '',
+                logged: false,
+                favorites: [],
             }
         };
 
         const state = globalReducer({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }, action);
 
         expect(state).toEqual({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         })
     });
 
@@ -141,20 +177,210 @@ describe('Test globalReducer', () => {
             payload: {
                 mode: 'light',
                 search: 'wizeline',
-                videoData: {}
+                videoData: {},
+                videoDataFav: {},
+                user: '',
+                logged: false,
+                favorites: [],
             }
         };
 
         const state = globalReducer({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }, action);
 
         expect(state).toEqual({
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        })
+    });
+
+    it('should actionAddVideoDataFav', () => {
+        const action = {
+            type: 'actionAddVideoDataFav',
+            payload: {
+                mode: 'light',
+                search: 'wizeline',
+                videoData: {},
+                videoDataFav: {},
+                user: '',
+                logged: false,
+                favorites: [],
+            }
+        };
+
+        const state = globalReducer({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        }, action);
+
+        expect(state).toEqual({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        })
+    });
+
+    it('should actionAddFavorites', () => {
+        const action = {
+            type: 'actionAddFavorites',
+            payload: {
+                mode: 'light',
+                search: 'wizeline',
+                videoData: {},
+                videoDataFav: {},
+                user: '',
+                logged: false,
+                favorites: [],
+            }
+        };
+
+        const state = globalReducer({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        }, action);
+
+        expect(state).toEqual({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        })
+    });
+
+    it('should actionDelete', () => {
+        const action = {
+            type: 'actionDelete',
+            payload: {
+                mode: 'light',
+                search: 'wizeline',
+                videoData: {},
+                videoDataFav: {},
+                user: '',
+                logged: false,
+                favorites: [],
+            }
+        };
+
+        const state = globalReducer({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        }, action);
+
+        expect(state).toEqual({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        })
+    });
+
+    it('should actionLogin', () => {
+        const action = {
+            type: 'actionLogin',
+            payload: {
+                logged: true
+            }
+        };
+
+        const state = globalReducer({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        }, action);
+
+        expect(state).toEqual({
+            logged: true,
+        })
+    });
+
+    it('should actionLoginGoogle', () => {
+        const action = {
+            type: 'actionLoginGoogle',
+            payload: {
+                logged: true
+            }
+        };
+
+        const state = globalReducer({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        }, action);
+
+        expect(state).toEqual({
+            logged: true,
+        })
+    });
+
+    it('should actionLogout', () => {
+        const action = {
+            type: 'actionLogout',
+            payload: {
+                logged: false,
+                user: '',
+                videoDataFav: {},
+            }
+        };
+
+        const state = globalReducer({
+            mode: 'light',
+            search: 'wizeline',
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
+        }, action);
+
+        expect(state).toEqual({
+            logged: false,
+            user: '',
+            videoDataFav: {},
         })
     });
 

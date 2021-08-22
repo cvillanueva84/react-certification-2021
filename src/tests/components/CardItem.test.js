@@ -1,7 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
-//import {shallow} from 'enzyme';
 import { CardItem } from '../../components/CardItem';
 import { GlobalContext } from '../../components/Context';
 import { MemoryRouter, Router } from 'react-router';
@@ -13,7 +12,11 @@ describe('Test CardItem', () => {
         myStateReducer: {
             mode: 'light',
             search: 'wizeline',
-            videoData: {}
+            videoData: {},
+            videoDataFav: {},
+            user: '',
+            logged: false,
+            favorites: [],
         }
     }
     const historyMock = {

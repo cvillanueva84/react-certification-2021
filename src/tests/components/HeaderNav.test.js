@@ -43,7 +43,7 @@ describe('Test HeaderNav', () => {
     });
 
     it('should have 3 bottons', () => {
-        expect(wrapper.find('button').length).toBe(3);
+        expect(wrapper.find('button').length).toBe(4);
     });
 
     it('should have left-header', () => {
@@ -70,6 +70,11 @@ describe('Test HeaderNav', () => {
 
     it('should Submit', () => {
         wrapper.find('input').simulate('submit');
+        expect(contextValue.dispatch).toHaveBeenCalled();
+    });
+
+    it('should Logout', () => {
+        wrapper.find('#logout').prop('onClick')();
         expect(contextValue.dispatch).toHaveBeenCalled();
     });
 

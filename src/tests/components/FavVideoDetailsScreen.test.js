@@ -2,11 +2,12 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
 import { MemoryRouter, Router } from 'react-router';
-import { VideoDetailsScreen } from '../../components/VideoDetailsScreen';
 import { GlobalContext } from '../../components/Context';
-import { CardItem } from '../../components/CardItem';
+import { FavItem } from "../../components/FavItem";
+import { FavVideoDetailsScreen } from '../../components/FavVideoDetailsScreen';
 
-describe('Test VideoDetailsScreen', () => {
+
+describe('Test Fav Video Details Screen', () => {
     const contextValue = {
         dispatch: jest.fn(),
         myStateReducer: {
@@ -31,9 +32,9 @@ describe('Test VideoDetailsScreen', () => {
         <GlobalContext.Provider value={contextValue}>
             <MemoryRouter>
                 <Router history={historyMock}>
-                    <VideoDetailsScreen>
-                        <CardItem/>
-                    </VideoDetailsScreen>
+                    <FavVideoDetailsScreen>
+                        <FavItem />
+                    </FavVideoDetailsScreen>
                 </Router>
             </MemoryRouter>
         </GlobalContext.Provider>
@@ -41,9 +42,9 @@ describe('Test VideoDetailsScreen', () => {
 
     afterEach(() => {
         jest.clearAllMocks();
-    });  
+    });
 
-    it('should render success', () => {
+    it('should render success ', () => {
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.exists());
     });
@@ -56,13 +57,4 @@ describe('Test VideoDetailsScreen', () => {
         expect(wrapper.getElements("p").length).toBe(1);
         expect(wrapper.getElements(".contenedor-sugeridos").length).toBe(1);
     });
-
-
-    it('should dispatch addFavorite', () => {
-        wrapper.find('#addFavorite').simulate('click');
-        expect(contextValue.dispatch).toHaveBeenCalled();
-    });
-
-
-
 });
