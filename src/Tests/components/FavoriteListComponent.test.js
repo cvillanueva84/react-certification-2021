@@ -6,6 +6,7 @@ import Context from '../../providers/Theme/Theme.context';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { videosState } from '../mockData/videosList';
 import AuthProvider from '../../providers/Auth';
+import Private from '../../components/Private/PrivateComponent';
 
 
 describe('Tests of the FavoriteListComponent', () => {
@@ -62,14 +63,16 @@ describe('Tests of the FavoriteListComponent', () => {
                         }}
                         >
                     <MemoryRouter>
-                        < FavoritesList/>
+                        <Private>
+                            < FavoritesList/>
+                        </Private>
                     </MemoryRouter>
                     </VideoListContext.Provider>
                 </Context.Provider>
             </AuthProvider>
         )
-        const favoriteListComponent = wrapper.find('favoriteVideos-container')
-        expect(favoriteListComponent.length).toBe(0)
+        const favoriteListComponent = wrapper.find('FavoriteListContainer')
+        expect(favoriteListComponent.exists()).toBe(false)
     })
     
     

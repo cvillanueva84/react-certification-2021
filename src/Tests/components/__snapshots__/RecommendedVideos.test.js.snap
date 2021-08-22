@@ -5,7 +5,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
   className="recommended-video__container"
 >
   <a
-    href="/favorite-video/[object Object]"
+    href="/favorite-video/nmXMgqjQzls"
     onClick={[Function]}
     style={
       Object {
@@ -51,7 +51,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
     />
   </a>
   <a
-    href="/favorite-video/[object Object]"
+    href="/favorite-video/HYyRZiwBWc8"
     onClick={[Function]}
     style={
       Object {

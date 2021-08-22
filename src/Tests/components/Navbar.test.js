@@ -69,8 +69,7 @@ describe('Tests of the Navbar component', () => {
         expect(setSearch).toHaveBeenCalled()
         expect(wrapper.find('InputText').prop('value')).toBe('')
 
-    })
-    
+    }) 
     
 })
 
