@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useHistory } from 'react-router';
-import { CloseBtn, ErrorDiv, ErrorSpan, LoginBtn } from './LoginModal.styled';
 import { useAuth } from '../../providers/Auth';
-import './Login.styles.css';
+import { CloseBtn, ErrorDiv, ErrorSpan, FormBtns, FormInput, FormStrong, LoginBtn, LoginForm, LoginFormGroup, LoginH1, LoginSection, OverlayDiv } from './LoginModal.styled';
 
 function LoginModal({ open, onClose }) {
   const [userInfo, setUserInfo] = useState({
@@ -42,14 +41,14 @@ function LoginModal({ open, onClose }) {
     <>
       {open && (
         <>
-          <div className="overlay_styles" />
-          <section className="login">
-            <h1>Welcome back you little astronaut!</h1>
-            <form onSubmit={authenticate} className="login-form">
-              <div className="form-group">
+          <OverlayDiv/>
+          <LoginSection>
+            <LoginH1>Welcome back you little astronaut!</LoginH1>
+            <LoginForm onSubmit={authenticate}>
+              <LoginFormGroup >
                 <label htmlFor="username">
-                  <strong>username </strong>
-                  <input
+                  <FormStrong>username </FormStrong>
+                  <FormInput
                     required
                     type="text"
                     id="username"
@@ -59,11 +58,11 @@ function LoginModal({ open, onClose }) {
                     autoComplete="on"
                   />
                 </label>
-              </div>
-              <div className="form-group">
+              </LoginFormGroup>
+              <LoginFormGroup >
                 <label htmlFor="password">
-                  <strong>password </strong>
-                  <input
+                  <FormStrong>password </FormStrong>
+                  <FormInput
                     required
                     type="password"
                     id="password"
@@ -73,13 +72,13 @@ function LoginModal({ open, onClose }) {
                     autoComplete="off"
                   />
                 </label>
-              </div>
+              </LoginFormGroup>
               {error && (
                 <ErrorDiv>
                   <ErrorSpan>Incorrect credentials you dummy!</ErrorSpan>
                 </ErrorDiv>
               )}
-              <div className="form-btns">
+              <FormBtns >
                 <LoginBtn type="submit">
                   Login
                   <i className="fas fa-thumbs-up" style={{ marginLeft: '1rem' }} />
@@ -88,9 +87,9 @@ function LoginModal({ open, onClose }) {
                   Close
                   <i className="fas fa-window-close" style={{ marginLeft: '1rem' }} />
                 </CloseBtn>
-              </div>
-            </form>
-          </section>
+              </FormBtns>
+            </LoginForm>
+          </LoginSection>
         </>
       )}
     </>,
