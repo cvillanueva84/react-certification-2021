@@ -69,13 +69,14 @@ export const HeaderNav = () => {
   return (
     <HeaderStyled>
       <HeaderContenedorStyled>
+
         <ButtonHome>
           <Link to="/">
             <i className="fab fa-youtube"></i>
           </Link>
         </ButtonHome>
 
-        <PartHeaderStyled>
+        <PartHeaderStyled className="search">
           <BoxInput>
             <AlignBoxInput>
               <form onSubmit={handleSubmit}>
@@ -115,6 +116,7 @@ export const HeaderNav = () => {
             <span>Logout</span>
           </button>
         </RightHeader>
+
       </HeaderContenedorStyled>
     </HeaderStyled>
   );

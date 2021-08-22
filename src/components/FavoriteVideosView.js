@@ -1,7 +1,10 @@
 import React, { useContext } from 'react'
+import { ContenedorStyled, Title } from '../style/HomeScreenStyled';
 import { GlobalContext } from './Context'
 import { FavItem } from './FavItem';
 import { HeaderNav } from './HeaderNav';
+import { HeaderFav, CardFavs } from '../style/FavoriteVideosViewStyled';
+
 
 export const FavoriteVideosView = () => {
 
@@ -9,12 +12,13 @@ export const FavoriteVideosView = () => {
 
     return (
         <>
-            <div className="favorite-header">
+            <HeaderFav>
                 <HeaderNav />
-            </div>
-            <div className="contenedor">
-                <h1>Favorite Videos:</h1>
-                <div className="cards">
+            </HeaderFav>
+
+            <ContenedorStyled>
+                <Title>Favorite Videos:</Title>
+                <CardFavs>
                     {
                         myStateReducer.favorites.map(vid => (
                             <FavItem
@@ -23,8 +27,8 @@ export const FavoriteVideosView = () => {
                             />
                         ))
                     }
-                </div>
-            </div>
+                </CardFavs>
+            </ContenedorStyled>
         </>
     )
 }

@@ -1,7 +1,16 @@
-import React, { useContext } from 'react'
-import { GlobalContext } from './Context'
-import { FavItem } from './FavItem'
-import { HeaderNav } from './HeaderNav'
+import React, { useContext } from 'react';
+import { GlobalContext } from './Context';
+import { FavItem } from './FavItem';
+import { HeaderNav } from './HeaderNav';
+import {
+    Contenedor,
+    VideoDetails,
+    VideoDetailsText,
+    ContenedorFavoritos,
+    Favoritos
+} from '../style/VideoDetailsScreenStyled';
+import { HeaderFav } from '../style/FavoriteVideosViewStyled';
+
 
 export const FavVideoDetailsScreen = () => {
 
@@ -9,12 +18,11 @@ export const FavVideoDetailsScreen = () => {
 
     return (
         <>
-            <div className="favorite-header">
+            <HeaderFav>
                 <HeaderNav />
-            </div>
-            <div className="contenedor">
-                <div className="video-details">
-                    <div className="video-details-vid">
+            </HeaderFav>
+            <Contenedor>
+                <VideoDetails>
                         <iframe
                             allowFullScreen
                             frameBorder="0"
@@ -23,28 +31,26 @@ export const FavVideoDetailsScreen = () => {
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         />
 
-                    </div>
-
-                    <div className="video-details-text">
+                    <VideoDetailsText>
                         <h2>{myStateReducer.videoDataFav.title}</h2>
                         <p>{myStateReducer.videoDataFav.description}</p>
-                    </div>
-                </div>
+                    </VideoDetailsText>
+                </VideoDetails>
                 <hr />
-            </div>
+            </Contenedor>
 
 
-            <div className="contenedor-sugeridos">
+            <ContenedorFavoritos>
                 <h3>Favorites: </h3>
-                <div className="sugeridos">
+                <Favoritos>
                     {myStateReducer.favorites.map(vid => (
                         <FavItem
                             key={vid.videoId}
                             {...vid}
                         />
                     ))}
-                </div>
-            </div>
+                </Favoritos>
+            </ContenedorFavoritos>
 
 
         </>

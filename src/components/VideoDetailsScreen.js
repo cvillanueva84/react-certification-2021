@@ -3,15 +3,21 @@ import { useFetchVideos } from '../hooks/useFetchVideos';
 import { CardItem } from './CardItem';
 import { GlobalContext } from './Context';
 import { HeaderNav } from './HeaderNav';
-import '../style/VideoDetailsScreen.css'
 import { useHistory } from 'react-router';
+import {
+    Contenedor,
+    VideoDetails,
+    VideoDetailsText,
+    ContenedorSugeridos,
+    Sugeridos
+} from '../style/VideoDetailsScreenStyled';
+
+
 
 export const VideoDetailsScreen = () => {
 
     const { myStateReducer, dispatch } = useContext(GlobalContext);
-
     const { items: videos } = useFetchVideos(myStateReducer.search);
-
     const history = useHistory();
 
     const addFavorite = () => {
@@ -26,11 +32,11 @@ export const VideoDetailsScreen = () => {
     }
 
     return (
-        <div>
+        <>
             <HeaderNav/>
-            <div className="contenedor">
-                <div className="video-details">
-                    <div className="video-details-vid">
+
+            <Contenedor>
+                <VideoDetails>
                         <iframe
                             allowFullScreen
                             frameBorder="0"
@@ -39,32 +45,30 @@ export const VideoDetailsScreen = () => {
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         />
 
-                    </div>
-
-                    <div className="video-details-text">
+                    <VideoDetailsText>
                         <h2>{myStateReducer.videoData.title}</h2>
                         <p>{myStateReducer.videoData.description}</p>
                         <button
                             id="addFavorite"
                             onClick={addFavorite}
                         ><i className="fas fa-folder-plus"></i>Add to favorites</button>
-                    </div>
+                    </VideoDetailsText>
 
-                </div>
+                </VideoDetails>
                 <hr />
-            </div>
+            </Contenedor>
 
-            <div className="contenedor-sugeridos">
-                <h3>Sugeridos: </h3>
-                <div className="sugeridos">
+            <ContenedorSugeridos>
+                <h3>Related videos: </h3>
+                <Sugeridos>
                     {videos.map(vid => (
                         <CardItem
                             key={vid.id}
                             {...vid}
                         />
                     ))}
-                </div>
-            </div>
-        </div>
+                </Sugeridos>
+            </ContenedorSugeridos>
+        </>
     )
 }

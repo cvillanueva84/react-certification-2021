@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import '../style/FavoriteVideosView.css';
+import '../style/FavoriteVideosViewStyled.js';
 import { GlobalContext } from './Context';
+
 
 export const FavItem = ({ title, description, url, videoId }) => {
   const { myStateReducer, dispatch } = useContext(GlobalContext);

@@ -27,7 +27,7 @@ export const HeaderContenedorStyled = styled.div`
     
 `;
 
-export const PartHeaderStyled = styled.div`
+export let PartHeaderStyled = styled.div`
     input{
         height: 100%;
         line-height: inherit;
