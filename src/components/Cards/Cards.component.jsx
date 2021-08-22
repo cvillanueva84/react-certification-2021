@@ -12,7 +12,7 @@ function Cards(props) {
           <Link
             key={video.id.videoId}
             to={{
-              pathname: `/${video.id.videoId}`,
+              pathname: `/video/${video.id.videoId}`,
               state: {
                 videoTitle: video.snippet.title,
                 videoDescription: video.snippet.description,

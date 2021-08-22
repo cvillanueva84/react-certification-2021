@@ -1,20 +1,8 @@
 import React from 'react';
 import RelatedVideo from '../../components/RelatedVideo';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Box } from './ListOfRelatedVideos.styles';
 
-const Box = styled.div`
-  width: 30rem;
-  height: 48rem;
-  overflow-y: scroll;
-  @media (max-width: 1200px) {
-    width: 20rem;
-  }
-  @media (max-width: 935px) {
-    width: 40rem;
-    height: 50rem;
-  }
-`;
 function ListOfRelatedVideos(props) {
   const filteredVideos = props.videos.items.filter(
     (video) => video.id.kind === 'youtube#video'
@@ -26,7 +14,7 @@ function ListOfRelatedVideos(props) {
           <Link
             key={video.id.videoId}
             to={{
-              pathname: `/${video.id.videoId}`,
+              pathname: `/video/${video.id.videoId}`,
               state: {
                 videoTitle: video.snippet.title,
                 videoDescription: video.snippet.description,

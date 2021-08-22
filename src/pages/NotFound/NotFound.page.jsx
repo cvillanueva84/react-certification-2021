@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './NotFound.styles.css';
-
 function NotFoundPage() {
   return (
     <section className="not-found">
