@@ -4,6 +4,8 @@ import { mount } from 'enzyme';
 import { GlobalContext } from '../../components/Context';
 import { MemoryRouter, Router } from 'react-router';
 import { LoginView } from '../../components/LoginView';
+import { renderHook } from '@testing-library/react-hooks';
+import { useForm } from '../../hooks/useForm';
 
 
 describe('Test Login View', () => {
@@ -41,9 +43,28 @@ describe('Test Login View', () => {
         jest.clearAllMocks();
     });
 
+    const initialForm = {
+        textUser: 'Wizeline',
+        textPass: 'Rocks!',
+      };
+
     it('should render success', () => {
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.exists());
+    });
+
+    it('should Login', () => {
+        const e = {preventDefault: jest.fn()};
+        window.alert = () => {};
+        const { result } =  renderHook(() => useForm(initialForm));
+        const [formValues ] = result.current;
+        console.log(formValues);
+        wrapper.find('button').prop('onClick')(e);
+    });
+
+    it('should Login Google', () => {
+        window.alert = () => {};
+        wrapper.find('img').simulate('click');
     });
     
 });

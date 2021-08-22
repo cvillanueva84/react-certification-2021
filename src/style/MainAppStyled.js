@@ -21,6 +21,24 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${(props) => props.theme.bg};
     transition: 0.8s;
   }
+
+    html {
+    font-size: 1.125rem;
+    line-height: 1.2;
+    font-weight: 400;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export {

@@ -55,7 +55,7 @@ export const LoginView = ({ history }) => {
             },
           });
     }).catch((e) => {
-        console.log(e);
+        alert(`Algo anda mal: ${e}`);
     });
   }
 
