@@ -27,6 +27,8 @@ function Header(props) {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={props.onHandleInput}
+                value={props.query}
               />
             </form>
           </ul>
