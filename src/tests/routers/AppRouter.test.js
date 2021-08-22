@@ -69,7 +69,7 @@ describe('Test AppRouter', () => {
                 </MemoryRouter>
             </GlobalContext.Provider>
         );
-        expect(wrapper.find('.header').exists()).toBe(true);
-        expect(wrapper.find('.cards').exists()).toBe(true);
+        expect(wrapper.find('h1').exists()).toBe(true);
+        expect(wrapper.find('span').exists()).toBe(true);
     });
 });
