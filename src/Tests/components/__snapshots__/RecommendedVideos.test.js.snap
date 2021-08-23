@@ -7,7 +7,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
     onClick={[Function]}
     style={
       Object {
-        "color": "#000",
+        "color": "var(--black)",
         "textDecoration": "none",
       }
     }
@@ -41,7 +41,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
     <hr
       style={
         Object {
-          "color": "#060B26",
+          "color": "var(--main-blue)",
           "margin": "0 auto",
           "width": "80%",
         }
@@ -53,7 +53,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
     onClick={[Function]}
     style={
       Object {
-        "color": "#000",
+        "color": "var(--black)",
         "textDecoration": "none",
       }
     }
@@ -87,7 +87,7 @@ exports[`Tests of the RecommendedVideos component should render the component co
     <hr
       style={
         Object {
-          "color": "#060B26",
+          "color": "var(--main-blue)",
           "margin": "0 auto",
           "width": "80%",
         }

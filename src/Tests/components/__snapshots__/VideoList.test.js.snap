@@ -6,7 +6,7 @@ exports[`Tests of the VideoList component should render the VideoList component 
   onClick={[Function]}
   style={
     Object {
-      "color": "#000",
+      "color": "var(--black)",
       "textDecoration": "none",
     }
   }

@@ -1,48 +1,8 @@
-.navbar {
-  background-color: var(--main-blue);
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-
-.navbar__left-section {
-  display: flex;
-  width: 30%;
-  align-items: center;
-  padding: 1rem;
-}
-
-.navbar__right-section {
-  width: 70%;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 5rem;
-}
-
-.toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .user-icon {
   cursor: pointer;
 }
 
 @media only screen and (max-width: 1000px) {
-  .navbar__left-section {
-    width: 80%;
-    padding: 0 0.5rem;
-    margin-left: -2rem;
-  }
-  .navbar__right-section {
-    width: 20%;
-    margin-right: -10px;
-    margin-left: -10px;
-  }
-
   .user-icon {
     position: absolute;
   }
@@ -54,12 +14,6 @@
   .sun-icon {
     display: none;
   }
-}
-
-.menu-bars {
-  margin-left: 5rem;
-  background: none;
-  cursor: pointer;
 }
 
 .nav-menu {

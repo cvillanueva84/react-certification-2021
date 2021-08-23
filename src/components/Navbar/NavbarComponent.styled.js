@@ -1,5 +1,58 @@
 import styled from 'styled-components';
 
+export const NavBar = styled.nav`
+  background-color: var(--main-blue);
+  height: 80px;
+  display: flex;
+  align-items: center;
+`;
+
+NavBar.displayName = 'NavBar'
+
+export const NavbarLeftSection = styled.div`
+  display: flex;
+  width: 30%;
+  align-items: center;
+  padding: 1rem;
+
+  @media only screen and (max-width: 1000px) {
+    width: 80%;
+    padding: 0 0.5rem;
+    margin-left: -2rem;
+  }
+`;
+
+NavbarLeftSection.displayName = 'NavbarLeftSection'
+
+export const NavbarRightSection = styled.div`
+  width: 70%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 5rem;
+  @media only screen and (max-width: 1000px) {
+    width: 20%;
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+`
+NavbarRightSection.displayName = 'NavbarRightSection'
+
+export const MenuBars = styled.div`
+  margin-left: 5rem;
+  background: none;
+  cursor: pointer;
+`
+MenuBars.displayName = 'MenuBars'
+
+export const ToggleDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+`;
+ToggleDiv.displayName = 'ToggleDiv'
 
 export const InputText = styled.input`
 background-color: var(--main-blue);

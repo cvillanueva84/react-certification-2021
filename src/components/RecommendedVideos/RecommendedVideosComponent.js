@@ -16,7 +16,7 @@ const RecommendedVideos = ({ videos }) => {
                 ? `/video/${video.id.videoId}`
                 : `/favorite-video/${video.id}`
             }
-            style={{ textDecoration: 'none', color: '#000' }}
+            style={{ textDecoration: 'none', color: 'var(--black)' }}
             key={currentPath[1] === 'video' ? video.id.videoId : video.id}
           >
             <RecommendedVideoCard>
@@ -31,7 +31,7 @@ const RecommendedVideos = ({ videos }) => {
                 <TitleSpan>{video.snippet.title}</TitleSpan>
               </RecommendedVideoText>
             </RecommendedVideoCard>
-            <hr style={{ width: '80%', margin: '0 auto', color: '#060B26' }} />
+            <hr style={{ width: '80%', margin: '0 auto', color: 'var(--main-blue)' }} />
           </Link>
         ))}
       </div>

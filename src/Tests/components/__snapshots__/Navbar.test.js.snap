@@ -3,10 +3,10 @@
 exports[`Tests of the Navbar component should render the Navbar component correctly 1`] = `
 Array [
   <nav
-    className="navbar"
+    className="sc-iqAclL beWAmd navbar"
   >
     <div
-      className="navbar__left-section"
+      className="sc-crzoAE fXIYbr navbar__left-section"
     >
       <div
         className="menu-bars"
@@ -36,7 +36,7 @@ Array [
         onSubmit={[Function]}
       >
         <input
-          className="sc-iqAclL emsuha"
+          className="sc-bqGGPW fVxXVM"
           name="search"
           onChange={[Function]}
           placeholder="search a video..."
@@ -46,7 +46,7 @@ Array [
       </form>
     </div>
     <div
-      className="navbar__right-section"
+      className="sc-dIsUp jjfBRM navbar__right-section"
     >
       <div
         className="toggle"

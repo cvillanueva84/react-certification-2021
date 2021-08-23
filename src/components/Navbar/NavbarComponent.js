@@ -9,7 +9,7 @@ import LoginModal from '../../pages/Login';
 import { useAuth } from '../../providers/Auth';
 import Context from '../../providers/Theme/Theme.context';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
-import { InputText, LogoutBtn } from './NavbarComponent.styled';
+import { InputText, LogoutBtn, MenuBars, NavBar, NavbarLeftSection, NavbarRightSection, ToggleDiv } from './NavbarComponent.styled';
 import './NavbarComponent.styles.css';
 
 const Navbar = () => {
@@ -42,11 +42,11 @@ const Navbar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
-        <nav className="navbar">
-          <div className="navbar__left-section">
-            <div className="menu-bars">
+        <NavBar>
+          <NavbarLeftSection>
+            <MenuBars>
               <FaHamburger onClick={toogleSideBar} />
-            </div>
+            </MenuBars>
             <form onSubmit={handleSubmit}>
               <InputText
                 type="text"
@@ -56,17 +56,17 @@ const Navbar = () => {
                 onChange={(e) => setInputValue(e.target.value)}
               />
             </form>
-          </div>
+          </NavbarLeftSection>
 
-          <div className="navbar__right-section">
-            <div className="toggle">
+          <NavbarRightSection>
+            <ToggleDiv >
               <FaRegMoon className="moon-icon" size={20} />
               <label className="switch">
                 <input type="checkbox" onClick={handleClick} />
                 <span className="slider round"></span>
               </label>
               <FaSun className="sun-icon" size={20} />
-            </div>
+            </ToggleDiv>
             {authenticated ? (
               <LogoutBtn type="button" onClick={handleLogout}>
                 Logout
@@ -81,8 +81,8 @@ const Navbar = () => {
                 )}
               </>
             )}
-          </div>
-        </nav>
+          </NavbarRightSection>
+        </NavBar>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className="nav-menu-items" onClick={toogleSideBar}>

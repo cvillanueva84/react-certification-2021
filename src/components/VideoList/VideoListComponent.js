@@ -12,7 +12,7 @@ const VideoList = ({ video }) => {
   const { videoId } = id;
   const { state } = useContext(Context);
   return (
-    <Link to={`/video/${videoId}`} style={{ textDecoration: 'none', color: '#000' }}>
+    <Link to={`/video/${videoId}`} style={{ textDecoration: 'none', color: 'var(--black)' }}>
       {state.isDark ? (
         <VideoCardDivLight>
           <VideoImageDiv
