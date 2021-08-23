@@ -47,6 +47,7 @@ const VideoListProvider = (props) => {
   };
 
   const removeFromFavorites = id => {
+    console.log(id);
     dispatch({
       type: 'REMOVE_FROM_FAVORITES',
       payload: id
