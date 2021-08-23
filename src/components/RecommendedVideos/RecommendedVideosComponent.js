@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { TitleSpan } from './RecommendedVideosComponent.styled';
-import './RecommendedVideosComponent.styles.css';
+import { TitleSpan, RecommendedVideoCard, RecommendedVideoImg, RecommendedVideoText } from './RecommendedVideosComponent.styled';
 
 const RecommendedVideos = ({ videos }) => {
   const recommendedVideos = videos.slice(0, 15);
@@ -9,7 +8,7 @@ const RecommendedVideos = ({ videos }) => {
   const currentPath = pathname.split('/');
   return (
     <>
-      <div className="recommended-video__container">
+      <div>
         {recommendedVideos.map((video) => (
           <Link
             to={
@@ -20,18 +19,18 @@ const RecommendedVideos = ({ videos }) => {
             style={{ textDecoration: 'none', color: '#000' }}
             key={currentPath[1] === 'video' ? video.id.videoId : video.id}
           >
-            <div className="recommended-video__card">
-              <div className="recommended-video__card-img">
+            <RecommendedVideoCard>
+              <RecommendedVideoImg>
                 <img
                   src={video.snippet.thumbnails.medium.url}
                   style={{ width: '100%' }}
                   alt={video.snippet.title}
                 />
-              </div>
-              <div className="recommended-video__card-text">
+              </RecommendedVideoImg>
+              <RecommendedVideoText >
                 <TitleSpan>{video.snippet.title}</TitleSpan>
-              </div>
-            </div>
+              </RecommendedVideoText>
+            </RecommendedVideoCard>
             <hr style={{ width: '80%', margin: '0 auto', color: '#060B26' }} />
           </Link>
         ))}

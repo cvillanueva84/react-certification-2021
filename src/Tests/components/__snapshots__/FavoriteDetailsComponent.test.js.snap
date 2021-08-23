@@ -2,25 +2,23 @@
 
 exports[`Tests of the FavoriteDetailsComponent should display the component correctly 1`] = `
 <section
-  className="sc-gtsrHT cUVhqq"
+  className="sc-eCApnc bWQtgS"
 >
   <div
-    className="sc-dlnjwi modcc"
+    className="sc-jSFjdj UhjyJ"
   >
     <iframe
       allowFullScreen={true}
-      className="sc-hKFxyN bwtLFs"
+      className="sc-gKAaRy dNRlKd"
       frameBorder="0"
       src="https://www.youtube.com/embed/HYyRZiwBWc8"
       title="test"
     />
   </div>
   <aside
-    className="sc-jrsJWt iAFQJY"
+    className="sc-crzoAE fkwsqm"
   >
-    <div
-      className="recommended-video__container"
-    >
+    <div>
       <a
         href="/favorite-video/HYyRZiwBWc8"
         onClick={[Function]}
@@ -32,10 +30,10 @@ exports[`Tests of the FavoriteDetailsComponent should display the component corr
         }
       >
         <div
-          className="recommended-video__card"
+          className="sc-gtsrHT iRpwMP"
         >
           <div
-            className="recommended-video__card-img"
+            className="sc-dlnjwi dIBHvn"
           >
             <img
               alt="Wizeline Guadalajara | Bringing Silicon Valley to Mexico"
@@ -48,7 +46,7 @@ exports[`Tests of the FavoriteDetailsComponent should display the component corr
             />
           </div>
           <div
-            className="recommended-video__card-text"
+            className="sc-hKFxyN uEZHe"
           >
             <span
               className="sc-bdnxRM eNjdHH"
@@ -78,10 +76,10 @@ exports[`Tests of the FavoriteDetailsComponent should display the component corr
         }
       >
         <div
-          className="recommended-video__card"
+          className="sc-gtsrHT iRpwMP"
         >
           <div
-            className="recommended-video__card-img"
+            className="sc-dlnjwi dIBHvn"
           >
             <img
               alt="Video Tour | Welcome to Wizeline Guadalajara"
@@ -94,7 +92,7 @@ exports[`Tests of the FavoriteDetailsComponent should display the component corr
             />
           </div>
           <div
-            className="recommended-video__card-text"
+            className="sc-hKFxyN uEZHe"
           >
             <span
               className="sc-bdnxRM eNjdHH"

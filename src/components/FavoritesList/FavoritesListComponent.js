@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Context from '../../providers/Theme/Theme.context';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import {
-  DescriptionSpan, FavoriteListContainer, FavoriteListEach,NoFavoritesDiv, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
+  DescriptionSpan, FavoriteListContainer, FavoriteListEach, NoFavoritesDiv, TitleSpan, VideoCardDivDark, VideoCardDivLight, VideoImageDiv
 } from './FavoriteListComponent.styled';
 
 const FavoritesList = () => {
