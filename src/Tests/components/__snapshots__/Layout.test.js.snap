@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test of the Layout component main container should be rendered correctly 1`] = `
-<main
-  className="container"
->
+<LayoutContainer>
   Navbar
-</main>
+</LayoutContainer>
 `;

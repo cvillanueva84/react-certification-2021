@@ -47,7 +47,6 @@ const VideoListProvider = (props) => {
   };
 
   const removeFromFavorites = id => {
-    console.log(id);
     dispatch({
       type: 'REMOVE_FROM_FAVORITES',
       payload: id
@@ -62,8 +61,8 @@ const VideoListProvider = (props) => {
       value={{
         setSearch,
         addToFavorites,
+        removeFromFavorites,
         videosState, 
-        removeFromFavorites
       }}
     >
       {props.children}

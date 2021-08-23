@@ -23,12 +23,12 @@ exports[`Tests of the < HomePage/> component should show the < HomePage/> compon
         css={
           Object {
             "map": undefined,
-            "name": "1x3mwo8",
+            "name": "182jfxa",
             "next": undefined,
             "styles": "
   display: block;
   margin: 20rem auto;
-  border-color: #060b26;
+  border-color: var(--main-blue);
 ",
             "toString": [Function],
           }
@@ -43,7 +43,7 @@ exports[`Tests of the < HomePage/> component should show the < HomePage/> compon
       className="sc-gtsrHT imzgBl"
     />
     <span
-      className="css-17hjzrw"
+      className="css-1nlndpu"
     />
   </Suspense>
 </section>

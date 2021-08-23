@@ -4,7 +4,7 @@ exports[`tests of the App component should render the component correctly 1`] = 
 Array [
   "",
   <main
-    className="container"
+    className="sc-kfYoZR kwNlPW"
   >
     Array [
       <nav
@@ -41,7 +41,7 @@ Array [
             onSubmit={[Function]}
           >
             <input
-              className="sc-jJMGnK VPFSz"
+              className="sc-hiKfDv ZBIoq"
               name="search"
               onChange={[Function]}
               placeholder="search a video..."
@@ -229,12 +229,12 @@ Array [
             css={
               Object {
                 "map": undefined,
-                "name": "1x3mwo8",
+                "name": "182jfxa",
                 "next": undefined,
                 "styles": "
   display: block;
   margin: 20rem auto;
-  border-color: #060b26;
+  border-color: var(--main-blue);
 ",
                 "toString": [Function],
               }

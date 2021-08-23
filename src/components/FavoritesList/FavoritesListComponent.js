@@ -39,7 +39,7 @@ const FavoritesList = () => {
                   ></VideoImageDiv>
                   <TitleSpan>{video.snippet.title}</TitleSpan>
                   <DescriptionSpan>
-                    {video.snippet.description.slice(0, 100)
+                    {video.snippet.description
                       ? video.snippet.description.slice(0, 100)
                       : 'watch video...'}
                   </DescriptionSpan>

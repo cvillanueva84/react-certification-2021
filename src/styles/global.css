@@ -4,9 +4,9 @@
   --light-gray: #ccc;
   --light-blue: #2196f3;
   --black: #000000bf;
-  --overlay-black: rgba(0, 0, 0, 0.7);
+  --overlay-black: #000000b3;
   --red-btn: #ff2300;
-  --lighter-gray: rgba(0, 0, 0, 0.1);
+  --lighter-gray: #0000001a;
 }
 
 * {

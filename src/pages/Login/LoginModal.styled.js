@@ -33,7 +33,7 @@ export const LoginBtn = styled.button`
 LoginBtn.displayName = 'LoginBtn'
 
 export const ErrorDiv = styled.div`
-    background-color: var(--red);
+    background-color: var(--red-btn);
     padding: 2rem;
     text-align: left ;
     border-radius: 4px;

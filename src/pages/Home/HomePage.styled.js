@@ -17,6 +17,6 @@ VideoListContainer.displayName = 'VideoListContainer';
 export const override = css`
   display: block;
   margin: 20rem auto;
-  border-color: #060b26;
+  border-color: var(--main-blue);
 `;
 
