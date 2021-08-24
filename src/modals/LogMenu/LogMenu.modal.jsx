@@ -1,34 +1,42 @@
-import React from 'react';
-import ReactDom from 'react-dom';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { useStoreContext } from '../../state/Store.provider';
-import { types } from '../../state/storeReducer';
 import { Tittle, MenuBody, MenuOverlay } from './LogMenu.styles';
 
+const modalRoot = document.createElement('div');
+modalRoot.setAttribute('id', 'modal-root');
+document.body.appendChild(modalRoot);
+
 function LogMenuModal({ children, open, login, closeMenu }) {
-  const [store, dispatch] = useStoreContext();
+  const el = document.createElement('div');
+
+  useEffect(() => {
+    modalRoot.appendChild(el);
+
+    return () => modalRoot.removeChild(el);
+  });
+  const { removeSessionData } = useStoreContext();
   function handleOnClick() {
     if (children === 'Login') {
       login();
     } else {
       //logout
-      dispatch({
-        type: types.removeSessionData,
-      });
+      removeSessionData();
       closeMenu();
     }
   }
   if (!open) return null;
 
-  return ReactDom.createPortal(
+  return ReactDOM.createPortal(
     <>
-      <MenuOverlay onClick={closeMenu} />
+      <MenuOverlay data-testid="Logmenu-close" onClick={closeMenu} />
       <MenuBody className="form-group">
-        <Tittle id="relatedVideo" onClick={handleOnClick}>
+        <Tittle data-testid="Logmenu" id="relatedVideo" onClick={handleOnClick}>
           {children}
         </Tittle>
       </MenuBody>
     </>,
-    document.getElementById('portal')
+    el
   );
 }
 

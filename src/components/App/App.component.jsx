@@ -2,6 +2,8 @@ import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import HomePage from '../../pages/Home';
 import FavoriteVideosViewPage from '../../pages/FavoriteVideosView';
+import FavoriteVideoDetailsView from '../../pages/FavoriteVideoDetailsView';
+import Private from '../Private';
 import NotFound from '../../pages/NotFound';
 import VideoDetailsView from '../../pages/VideoDetailsView';
 import Layout from '../Layout';
@@ -20,7 +22,7 @@ const darkTheme = {
 };
 
 function App() {
-  const [store] = useStoreContext();
+  const { store } = useStoreContext();
   const { theme } = store;
   return (
     <HashRouter>
@@ -33,9 +35,12 @@ function App() {
           <Route path="/video/:id">
             <VideoDetailsView />
           </Route>
-          <Route path="/favorites">
+          <Private exact path="/favorites">
             <FavoriteVideosViewPage />
-          </Route>
+          </Private>
+          <Private path="/favorites/:id">
+            <FavoriteVideoDetailsView />
+          </Private>
           <Route path="*">
             <NotFound />
           </Route>

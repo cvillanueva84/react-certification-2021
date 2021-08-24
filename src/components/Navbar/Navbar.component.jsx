@@ -4,14 +4,20 @@ import { NavText } from './Navbar.styles.jsx';
 import { useStoreContext } from '../../state/Store.provider';
 
 function Navbar() {
-  const [store] = useStoreContext();
+  const { store } = useStoreContext();
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
       <Link to="#">
-        <img id="menu" src="menu_icon.png" alt="page not found" onClick={showSidebar} />
+        <img
+          id="menu"
+          data-testid="menu"
+          src="menu_icon.png"
+          alt="page not found"
+          onClick={showSidebar}
+        />
       </Link>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul onClick={showSidebar}>

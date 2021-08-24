@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import ListOfRelatedVideos from '../../components/ListOfRelatedVideos';
-import { useYouTube } from '../../utils/hooks/useYouTube';
-import { useStoreContext } from '../../state/Store.provider';
 import { storage } from '../../utils/storage';
 import { FAVORITES_LIST_STORAGE_KEY } from '../../utils/constants';
 import {
@@ -12,16 +10,14 @@ import {
   Video,
   VideoDetails,
   Grid,
-} from './VideoDetailsView.styles';
+} from './FavoriteVideoDetailsView.styles';
 
-function VideoDetailsView() {
+function FavoriteVideoDetailsView() {
   const [buttonAction, setButtonAction] = useState('Add');
   const { id } = useParams();
   const location = useLocation();
   const { videoTitle, videoDescription, image } = location.state;
   const url = 'https://www.youtube.com/embed/' + id;
-  const { store } = useStoreContext();
-  const { searchTerm } = store;
   const FavoritesList = storage.get(FAVORITES_LIST_STORAGE_KEY);
   const favoriteVideo = {
     id: {
@@ -74,24 +70,20 @@ function VideoDetailsView() {
     }
   }
   return (
-    <Grid data-testid="location-videoDetailsView" className="grid">
+    <Grid data-testid="location-FavoriteVideoDetailsView" className="grid">
       <VideoDetails>
         <Video src={url} frameBorder="0" allowFullScreen></Video>
         <Title>{videoTitle}</Title>
-        {store.sessionData.id === '' ? (
-          <></>
-        ) : (
-          <>
-            <FavoritesBtn data-testid="favoritesBtn" onClick={handleClick}>
-              {buttonAction === 'Add' ? 'Add to favorites' : 'Remove from favorites'}
-            </FavoritesBtn>
-          </>
-        )}
+        <FavoritesBtn onClick={handleClick}>
+          {buttonAction === 'Add' ? 'Add to favorites' : 'Remove from favorites'}
+        </FavoritesBtn>
         <Description>{videoDescription}</Description>
       </VideoDetails>
-      <ListOfRelatedVideos videos={useYouTube(searchTerm)}></ListOfRelatedVideos>
+      <ListOfRelatedVideos
+        videos={FavoritesList === null ? 'error' : FavoritesList}
+      ></ListOfRelatedVideos>
     </Grid>
   );
 }
 
-export default VideoDetailsView;
+export default FavoriteVideoDetailsView;

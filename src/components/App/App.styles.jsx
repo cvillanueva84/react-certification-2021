@@ -56,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     color: ${(props) => props.theme.a};
   }
-  #login {
+  .login {
     color: ${(props) => props.theme.a};
   }
   a:active {

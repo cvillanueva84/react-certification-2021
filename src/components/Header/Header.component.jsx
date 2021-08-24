@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useStoreContext } from '../../state/Store.provider';
-import { types } from '../../state/storeReducer';
 import Navbar from '../../components/Navbar';
 import LogMenuModal from '../../modals/LogMenu';
 import LoginModal from '../../modals/Login';
@@ -18,7 +17,7 @@ import {
 
 function Header() {
   const [searchTermAux, setSearchTermAux] = useState('');
-  const [store, dispatch] = useStoreContext();
+  const { store, setSearchTerm, setTheme } = useStoreContext();
   const history = useHistory();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenForm, setIsOpenForm] = useState(false);
@@ -27,17 +26,11 @@ function Header() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch({
-      type: types.setSearchTerm,
-      payload: searchTermAux,
-    });
+    setSearchTerm(searchTermAux);
     history.push('/');
   }
   function handleToggle() {
-    dispatch({
-      type: types.setTheme,
-      payload: store.theme === 'light' ? 'dark' : 'light',
-    });
+    setTheme();
   }
   function handleLogin() {
     setIsOpenMenu(false);

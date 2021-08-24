@@ -1,10 +1,25 @@
 import React from 'react';
 import Card from '../../components/Card';
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 function Cards(props) {
+  const location = useLocation();
+  const route = location.pathname;
+  if (props.videos === 'error') {
+    return (
+      <>
+        <h1>You haven't added any video to your favorites yet</h1>
+      </>
+    );
+  }
   const filteredVideos = props.videos.items.filter(
     (video) => video.id.kind === 'youtube#video'
   );
+  var path = '';
+  if (route === '/') {
+    path = 'video';
+  } else {
+    path = 'favorites';
+  }
   return (
     <>
       {filteredVideos.map((video) => {
@@ -12,10 +27,11 @@ function Cards(props) {
           <Link
             key={video.id.videoId}
             to={{
-              pathname: `/video/${video.id.videoId}`,
+              pathname: `/${path}/${video.id.videoId}`,
               state: {
                 videoTitle: video.snippet.title,
                 videoDescription: video.snippet.description,
+                image: video.snippet.thumbnails.high.url,
               },
             }}
           >

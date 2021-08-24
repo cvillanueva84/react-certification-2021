@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDom from 'react-dom';
 import loginApi from '../../apis/login.api';
 import { useStoreContext } from '../../state/Store.provider';
-import { types } from '../../state/storeReducer';
 import { StrongModal, InputModal, ButtonModal, Tittle, Error } from './Login.styles';
 
 const MODAL_STYLES = {
@@ -25,10 +24,21 @@ const OVERLAY_STYLES = {
 };
 
 function LoginModal({ open, onClose }) {
+  const modalRoot = document.getElementById('modal-root'); // A div with id=modal-root create in LogMenu.modal
+  const [element] = useState(document.createElement('div')); // Create a div element which will be mounted within modal-root
   const [errorMessage, setErrorMessage] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [store, dispatch] = useStoreContext();
+  const { setSessionData } = useStoreContext();
+
+  useEffect(() => {
+    modalRoot.appendChild(element);
+    // cleanup method to remove the appended child
+    return function cleanup() {
+      modalRoot.removeChild(element);
+    };
+  }, [modalRoot, element]);
+
   if (!open) return null;
   function handleChangeUsername(event) {
     setUsername(event.target.value);
@@ -40,14 +50,7 @@ function LoginModal({ open, onClose }) {
     const promise = loginApi(username, password);
     promise
       .then((data) => {
-        dispatch({
-          type: types.setSessionData,
-          payload: {
-            id: data.id,
-            name: data.name,
-            avatarUrl: data.avatarUrl,
-          },
-        });
+        setSessionData(data.id, data.name, data.avatarUrl);
         onClose();
       })
       .catch((error) => {
@@ -60,26 +63,32 @@ function LoginModal({ open, onClose }) {
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES} className="form-group">
         <Tittle>Login</Tittle>
-        <Error>{errorMessage === '' ? '' : 'Username or password invalid'}</Error>
+        <Error data-testid="errormessage">
+          {errorMessage === '' ? '' : 'Username or password invalid'}
+        </Error>
         <StrongModal>username </StrongModal>
         <InputModal
-          id="login"
+          data-testid="username"
+          className="login"
           required
           type="text"
           onChange={handleChangeUsername}
         ></InputModal>
         <StrongModal>password </StrongModal>
         <InputModal
-          id="login"
+          data-testid="password"
+          className="login"
           required
           type="password"
           onChange={handleChangePassword}
         ></InputModal>
         <ButtonModal onClick={onClose}>Cancel</ButtonModal>
-        <ButtonModal onClick={handleOnClick}>Login</ButtonModal>
+        <ButtonModal data-testid="LoginButton" onClick={handleOnClick}>
+          Login
+        </ButtonModal>
       </div>
     </>,
-    document.getElementById('portal')
+    element
   );
 }
 

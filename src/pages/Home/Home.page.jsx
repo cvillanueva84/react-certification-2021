@@ -5,7 +5,7 @@ import { useStoreContext } from '../../state/Store.provider';
 import { Grid } from './Home.styles';
 
 function HomePage() {
-  const [store] = useStoreContext();
+  const { store } = useStoreContext();
   const { searchTerm } = store;
   return (
     <Grid data-testid="location-home" className="grid">

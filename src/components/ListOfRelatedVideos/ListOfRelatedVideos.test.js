@@ -2,7 +2,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ListOfRelatedVideos from './ListOfRelatedVideos.component';
 import { BrowserRouter } from 'react-router-dom';
-
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: () => ({
+    pathname: '/video/id',
+  }),
+  useParams: () => ({
+    id: 'id',
+  }),
+}));
 describe('ListOfRelatedVideos', () => {
   beforeEach(() => {
     const video = {
@@ -52,5 +60,8 @@ describe('ListOfRelatedVideos', () => {
   });
   test('should contains a title corresponding to the the releatedVideo render', () => {
     expect(screen.getByText(/title/i)).toBeInTheDocument();
+  });
+  test('should work when the pathname is /', () => {
+    expect(window.location.href).toEqual('http://localhost/');
   });
 });
