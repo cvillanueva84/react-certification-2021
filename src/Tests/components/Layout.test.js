@@ -14,12 +14,12 @@ describe('Test of the Layout component', () => {
     })
 
     test('main tag should contain the container className', () => {
-        const mainContainer = wrapper.find('main')
-        expect(mainContainer.hasClass('container')).toBe(true)
+        const mainContainer = wrapper.find('LayoutContainer')
+        expect(mainContainer.exists()).toBe(true)
     })
     
     test('Layout component should display the received props inside the main tag', () => {
-        const mainTag = wrapper.find('main').text()
+        const mainTag = wrapper.find('LayoutContainer').text()
         expect(mainTag).toBe(children)
     })
     

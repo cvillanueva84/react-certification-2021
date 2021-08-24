@@ -76,10 +76,12 @@
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/data",
       "<rootDir>/src/components/Private",
-      "<rootDir>/src/pages/Login",
       "<rootDir>/src/pages/NotFound",
       "<rootDir>/src/pages/Secret",
-      "<rootDir>/src/providers/Auth"
+      "<rootDir>/src/providers/Auth",
+      "<rootDir>/src/utils/scrollToTop",
+      "<rootDir>/src/utils/storage",
+      "<rootDir>/src/index"
     ]
   }
 }

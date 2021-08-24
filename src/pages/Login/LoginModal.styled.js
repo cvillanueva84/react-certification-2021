@@ -12,6 +12,11 @@ export const CloseBtn = styled.button`
         box-shadow: 5px 5px 15px 0px var(--black);
         transform: translate(2px);
     }
+    @media only screen and (max-width: 800px) {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
 `;
 
 CloseBtn.displayName = 'CloseBtn'
@@ -27,6 +32,11 @@ export const LoginBtn = styled.button`
     &:hover{
         box-shadow: 5px 5px 15px 0px var(--black);
         transform: translate(2px);
+    }
+    @media only screen and (max-width: 800px) {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
     }
 `;
 

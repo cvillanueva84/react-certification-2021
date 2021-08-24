@@ -8,13 +8,13 @@ Array [
   >
     Array [
       <nav
-        className="sc-hiKfDv jdGUrJ navbar"
+        className="sc-hiKfDv jdGUrJ"
       >
         <div
-          className="sc-gXfVKN cgiyVJ navbar__left-section"
+          className="sc-gXfVKN cgiyVJ"
         >
           <div
-            className="menu-bars"
+            className="sc-ciSkZP hbDGED"
           >
             <svg
               fill="currentColor"
@@ -41,7 +41,7 @@ Array [
             onSubmit={[Function]}
           >
             <input
-              className="sc-ciSkZP bMdohc"
+              className="sc-carFqZ ctXsjx"
               name="search"
               onChange={[Function]}
               placeholder="search a video..."
@@ -51,10 +51,10 @@ Array [
           </form>
         </div>
         <div
-          className="sc-cBoqAE bLvUrE navbar__right-section"
+          className="sc-cBoqAE bLvUrE"
         >
           <div
-            className="toggle"
+            className="sc-jcwpoC dWgJji"
           >
             <svg
               className="moon-icon"
