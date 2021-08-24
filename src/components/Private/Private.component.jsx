@@ -1,13 +1,15 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
-import { useAuth } from '../../providers/Auth';
+import { useStoreContext } from '../../state/Store.provider';
 
 function Private({ children, ...rest }) {
-  const { authenticated } = useAuth();
+  const { store } = useStoreContext();
 
   return (
-    <Route {...rest} render={() => (authenticated ? children : <Redirect to="/" />)} />
+    <Route
+      {...rest}
+      render={() => (store.sessionData.id === '' ? <Redirect to="/" /> : children)}
+    />
   );
 }
 

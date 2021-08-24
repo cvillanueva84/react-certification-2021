@@ -1,3 +1,3 @@
-const AUTH_STORAGE_KEY = 'wa_cert_authenticated';
+const FAVORITES_LIST_STORAGE_KEY = 'wa_cert_favorites_list';
 
-export { AUTH_STORAGE_KEY };
+export { FAVORITES_LIST_STORAGE_KEY };
