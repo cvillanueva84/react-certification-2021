@@ -95,6 +95,7 @@ export const ReactionBtn = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all .3s ease;
   &:hover{
     box-shadow: 10px 10px 24px 0px var(--black);
   }
