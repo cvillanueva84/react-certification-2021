@@ -75,6 +75,19 @@ describe('Tests of the FavoriteListComponent', () => {
         expect(favoriteListComponent.exists()).toBe(false)
     })
     
+    test('should display the title of the video', () => {
+        const title = wrapper.find('TitleSpan').at(0)
+        expect(title.text()).toEqual(videosState.posts[1].snippet.title)
+    })
+    
+    test('should show a custom message if the video does not have a description', () => {
+        const description = wrapper.find('DescriptionSpan').at(0)
+        if (description.text().length === '') {
+            expect(description.text()).toBe('watch video...')
+        } else {
+            expect(description.text()).toBe(videosState.posts[1].snippet.description.slice(0, 100))
+        }
+    })
     
 })
 

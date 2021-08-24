@@ -4,17 +4,17 @@ exports[`tests of the App component should render the component correctly 1`] = 
 Array [
   "",
   <main
-    className="sc-kfYoZR kwNlPW"
+    className="sc-bCwfaz fzlYOS"
   >
     Array [
       <nav
-        className="sc-hiKfDv jdGUrJ"
+        className="sc-cBoqAE fThvbo"
       >
         <div
-          className="sc-gXfVKN cgiyVJ"
+          className="sc-ciSkZP fIHnXz"
         >
           <div
-            className="sc-ciSkZP hbDGED"
+            className="sc-carFqZ fqzxlK"
           >
             <svg
               fill="currentColor"
@@ -41,7 +41,7 @@ Array [
             onSubmit={[Function]}
           >
             <input
-              className="sc-carFqZ ctXsjx"
+              className="sc-iBzEeX gxzSPR"
               name="search"
               onChange={[Function]}
               placeholder="search a video..."
@@ -51,10 +51,10 @@ Array [
           </form>
         </div>
         <div
-          className="sc-cBoqAE bLvUrE"
+          className="sc-jcwpoC ekWCYJ"
         >
           <div
-            className="sc-jcwpoC dWgJji"
+            className="sc-iTVJFM flfrly"
           >
             <svg
               className="moon-icon"
