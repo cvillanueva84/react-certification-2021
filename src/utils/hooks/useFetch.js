@@ -7,7 +7,7 @@ export const useFetch = (search) => {
 
 
     useEffect(() => {
-        const getYoutubeVideo = async () => {
+        const getYoutubeVideos = async () => {
             try {
                 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&&key=${process.env.REACT_APP_GOOGLE_APP_API_KEY}&type=video&maxResults=23&q=${search}`
                 const resp = await fetch(url)
@@ -19,7 +19,7 @@ export const useFetch = (search) => {
             }
 
         }
-        getYoutubeVideo()
+        getYoutubeVideos()
     }, [search, history])
 
     return {

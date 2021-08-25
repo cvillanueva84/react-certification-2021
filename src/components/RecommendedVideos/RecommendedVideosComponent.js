@@ -14,10 +14,10 @@ const RecommendedVideos = ({ videos }) => {
             to={
               currentPath[1] === 'video'
                 ? `/video/${video.id.videoId}`
-                : `/favorite-video/${video.id}`
+                : `/favorite-video/${video.id.videoId}`
             }
             style={{ textDecoration: 'none', color: 'var(--black)' }}
-            key={currentPath[1] === 'video' ? video.id.videoId : video.id}
+            key={video.id.videoId}
           >
             <RecommendedVideoCard>
               <RecommendedVideoImg>

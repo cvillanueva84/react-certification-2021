@@ -21,8 +21,8 @@ const FavoritesList = () => {
         <FavoriteListEach>
           {favoriteVideos.map((video) => (
             <Link
-              key={video.id}
-              to={`/favorite-video/${video.id}`}
+              key={video.id.videoId}
+              to={`/favorite-video/${video.id.videoId}`}
               style={{ textDecoration: 'none', color: '#000' }}
             >
               {state.isDark ? (
