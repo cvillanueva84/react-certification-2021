@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import RecommendedVideos from '../RecommendedVideos';
-import { VideoDetailsContainer, DescriptionSpan, ReactionBtn, TitleSpan, VideoDetailsSelectedVideo, SelectedVideoTextContainer, ReactionBtnsContainer, ReactionBtnPosition, SimilarVideosContainer, Iframe } from './VideoDetailsComponent.styled';
+import { DescriptionSpan, Iframe, ReactionBtn, ReactionBtnPosition, ReactionBtnsContainer, SelectedVideoTextContainer, SimilarVideosContainer, TitleSpan, VideoDetailsContainer, VideoDetailsSelectedVideo } from './VideoDetailsComponent.styled';
 
 const VideoDetails = () => {
   const { id } = useParams();
@@ -17,7 +15,7 @@ const VideoDetails = () => {
   const [singleVideo, setSingleVideo] = useState()
 
   const checkIfVideoIsFavorite = (id, video) => {
-    if (favoriteVideos.some((eachVideo) => eachVideo.id === id)) {
+    if (favoriteVideos.some((eachVideo) => eachVideo.id.videoId === id)) {
       return;
     } else {
       addToFavorites(video);
@@ -44,7 +42,7 @@ const VideoDetails = () => {
               <TitleSpan>{singleVideo.snippet.title}</TitleSpan>
               {authenticated ? (
                 <ReactionBtnPosition>
-                  {favoriteVideos.some((eachVid) => eachVid.id === id) ? (
+                  {favoriteVideos.some((eachVid) => eachVid.id.videoId === id) ? (
                     <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
                       <i className="fas fa-thumbs-down" />
                     </ReactionBtn>

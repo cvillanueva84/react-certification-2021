@@ -8,7 +8,7 @@ exports[`Tests of the FavoriteListComponent should render the component correctl
     className="sc-dlnjwi khqPoZ"
   >
     <a
-      href="/favorite-video/HYyRZiwBWc8"
+      href="/favorite-video/undefined"
       onClick={[Function]}
       style={
         Object {
@@ -46,7 +46,7 @@ exports[`Tests of the FavoriteListComponent should render the component correctl
       </div>
     </a>
     <a
-      href="/favorite-video/nmXMgqjQzls"
+      href="/favorite-video/undefined"
       onClick={[Function]}
       style={
         Object {
