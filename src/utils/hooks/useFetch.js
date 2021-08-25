@@ -1,23 +1,28 @@
 import { useEffect, useState } from 'react'
-export const useFetch = (id) => {
-    const [singleVideo, setSingleVideo] = useState([])
+import { useHistory } from "react-router-dom";
+
+export const useFetch = (search) => {
+    const [videos, setVideos] = useState([])
+    const history = useHistory()
+
 
     useEffect(() => {
-        const getSingleVideo = async () => {
+        const getYoutubeVideo = async () => {
             try {
-                const url = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.REACT_APP_GOOGLE_APP_API_KEY}&part=snippet`
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&&key=${process.env.REACT_APP_GOOGLE_APP_API_KEY}&type=video&maxResults=23&q=${search}`
                 const resp = await fetch(url)
                 const data = await resp.json()
-                setSingleVideo(data.items);
+                setVideos(data.items);
+                history.push('/')
             } catch (error) {
                 throw new Error(error)
             }
 
         }
-        getSingleVideo()
-    }, [id])
+        getYoutubeVideo()
+    }, [search, history])
 
     return {
-        singleVideo
+        videos
     }
 }

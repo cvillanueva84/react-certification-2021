@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
-import { useFetch } from '../../utils/hooks/useFetch';
 import RecommendedVideos from '../RecommendedVideos';
 import { VideoDetailsContainer, DescriptionSpan, ReactionBtn, TitleSpan, VideoDetailsSelectedVideo, SelectedVideoTextContainer, ReactionBtnsContainer, ReactionBtnPosition, SimilarVideosContainer, Iframe } from './VideoDetailsComponent.styled';
 
 const VideoDetails = () => {
   const { id } = useParams();
-  const { singleVideo } = useFetch(id);
   const { authenticated } = useAuth();
   const { addToFavorites, videosState, removeFromFavorites } = useContext(VideoListContext);
   const { posts } = videosState;
   const { favoriteVideos } = videosState;
+  const [singleVideo, setSingleVideo] = useState()
 
   const checkIfVideoIsFavorite = (id, video) => {
     if (favoriteVideos.some((eachVideo) => eachVideo.id === id)) {
@@ -22,7 +23,12 @@ const VideoDetails = () => {
       addToFavorites(video);
     }
   };
-
+  
+  useEffect(() => {
+  let obj = posts.find(eachVideo => eachVideo.id.videoId === id)
+    setSingleVideo(obj)
+  }, [id, posts])
+  
   return (
     <VideoDetailsContainer >
       <VideoDetailsSelectedVideo >
@@ -32,10 +38,10 @@ const VideoDetails = () => {
           allowFullScreen
           title="test"
         ></Iframe>
-        {singleVideo.length > 0 && (
+        {singleVideo && (
           <SelectedVideoTextContainer>
             <ReactionBtnsContainer >
-              <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
+              <TitleSpan>{singleVideo.snippet.title}</TitleSpan>
               {authenticated ? (
                 <ReactionBtnPosition>
                   {favoriteVideos.some((eachVid) => eachVid.id === id) ? (
@@ -45,7 +51,7 @@ const VideoDetails = () => {
                   ) : (
                     <ReactionBtn
                       type="button"
-                      onClick={() => checkIfVideoIsFavorite(id, singleVideo[0])}
+                      onClick={() => checkIfVideoIsFavorite(id, singleVideo)}
                     >
                       <i className="fas fa-thumbs-up" />
                     </ReactionBtn>
@@ -66,7 +72,7 @@ const VideoDetails = () => {
                 </ReactionBtn>
               )}
             </ReactionBtnsContainer>
-            <DescriptionSpan>{singleVideo[0].snippet.description}</DescriptionSpan>
+            <DescriptionSpan>{singleVideo.snippet.description}</DescriptionSpan>
           </SelectedVideoTextContainer>
         )}
       </VideoDetailsSelectedVideo>
