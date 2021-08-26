@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import VideoContext from '../Context/VideoContext';
 import LinkVideo from '../Link.element';
 import {
   CardVideoDisplayerContainer,
@@ -10,9 +11,15 @@ import {
 export function CardVideo({ video, id }) {
   const urlVideo = `/watch?v=${id}`;
 
+  const { setVideo } = useContext(VideoContext);
+
+  const handleClick = () => {
+    setVideo(video);
+  };
+
   return (
     <>
-      <LinkVideo to={urlVideo}>
+      <LinkVideo to={urlVideo} onClick={handleClick}>
         <CardVideoContainer>
           <CardVideoImage
             src={

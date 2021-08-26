@@ -6,6 +6,22 @@ import ThemeContext from '../Context/ThemeContext';
 import LinkVideo from '../Link.element';
 import { SideMenuContainer, SideMenuItem } from './SideMenu.elements';
 
+import { useAuth } from '../../providers/Auth';
+
+const PrivateLink = () => {
+  const { authenticated } = useAuth();
+
+  return authenticated ? (
+    <LinkVideo to="/favorites">
+      <SideMenuItem Icon={AiFillStar} text="Liked" />
+    </LinkVideo>
+  ) : (
+    <LinkVideo to="/login">
+      <SideMenuItem Icon={AiFillStar} text="Liked" />
+    </LinkVideo>
+  );
+};
+
 function SideMenu() {
   const { theme, setTheme } = useContext(ThemeContext);
 
@@ -20,7 +36,7 @@ function SideMenu() {
         <LinkVideo to="/">
           <SideMenuItem Icon={AiFillHome} text="Home" />
         </LinkVideo>
-        <SideMenuItem Icon={AiFillStar} text="Liked" />
+        <PrivateLink />
         <SideMenuItem Icon={icon} text={text} fun={handleTheme} />
       </SideMenuContainer>
     </>
