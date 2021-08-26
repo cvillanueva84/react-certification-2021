@@ -5,8 +5,7 @@ export const reducer = (state, action) => {
                 ...state,
                 loading: false,
                 posts: action.payload,
-                error: '',
-                favoriteVideos: []
+                error: ''
             }
 
         case 'FETCH_ERROR':
@@ -18,7 +17,7 @@ export const reducer = (state, action) => {
             }
 
         case 'ADD_TO_FAVORITES':
-            const favoriteVideos = state.favoriteVideos.concat(action.payload)
+            const favoriteVideos = [...state.favoriteVideos, action.payload]
             localStorage.setItem('favorite_videos', JSON.stringify(favoriteVideos))
             return {
                 ...state,

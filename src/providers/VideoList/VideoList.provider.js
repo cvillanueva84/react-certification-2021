@@ -18,8 +18,13 @@ const VideoListProvider = (props) => {
   const history = useHistory()
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_SUCCESS', payload: videos });
-  }, [search, videos, history])
+    dispatch({
+      type: 'FETCH_SUCCESS',
+      payload: videos
+    })
+    history.push('/')
+  }, [ videos, history])
+
 
 
   const addToFavorites = (video) => {

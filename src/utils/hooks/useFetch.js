@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
 
 export const useFetch = (search) => {
     const [videos, setVideos] = useState([])
-    const  history  = useHistory()
     useEffect(() => {
         let mounted = true
         const getYoutubeVideos = async () => {
@@ -15,7 +13,6 @@ export const useFetch = (search) => {
                 if (mounted) {
                     setVideos(data);
                 }
-                history.push('/')
             } catch (error) {
                 throw new Error(error)
             }
@@ -24,7 +21,7 @@ export const useFetch = (search) => {
         return function cleanup() {
             mounted = false
         }
-    }, [search, history])
+    }, [search])
     return {
         videos
     }
