@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from "enzyme";
 import App from "../../components/App/AppComponent";
+window.scrollTo = jest.fn();
 
 describe('tests of the App component', () => {
     let wrapper = mount(< App/>)
