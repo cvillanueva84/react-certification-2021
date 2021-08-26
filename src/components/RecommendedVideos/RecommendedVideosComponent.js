@@ -17,7 +17,7 @@ const RecommendedVideos = ({ videos }) => {
                 : `/favorite-video/${video.id.videoId}`
             }
             style={{ textDecoration: 'none', color: 'var(--black)' }}
-            key={video.id.videoId}
+            key={video.etag}
           >
             <RecommendedVideoCard>
               <RecommendedVideoImg>
