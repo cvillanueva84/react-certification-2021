@@ -5,7 +5,7 @@ export const reducer = (state, action) => {
                 ...state,
                 loading: false,
                 posts: action.payload,
-                error: ''
+                error: '',
             }
 
         case 'FETCH_ERROR':
