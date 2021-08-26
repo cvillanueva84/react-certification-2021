@@ -19,6 +19,7 @@ const VideoListProvider = (props) => {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_SUCCESS', payload: videos });
+    history.push('/')
   }, [search, history, videos])
 
 

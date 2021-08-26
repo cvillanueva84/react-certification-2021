@@ -10,10 +10,10 @@ describe('Test from the useFetch custom hook', () => {
         expect(videos.length).toBe(0)
     })
     test('should return an array with videos', async () => {
-        const { result, waitForValueToChange } = renderHook(() => useFetch('wizeline'))
-        await waitForValueToChange
-        const { videos } = result.current
-        console.log(videos);
+        const { result, waitForNextUpdate } = renderHook(() => useFetch('wizeline'))
+        await waitForNextUpdate()
+        const { videos } = result.current;
+        expect(videos.length).toBe(23)
     })
     
 })
