@@ -21,11 +21,13 @@ const Navbar = () => {
   const { dispatch } = useContext(Context);
   const { authenticated, logout } = useAuth();
   const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim() === '') return;
     setSearch(inputValue);
     setInputValue('');
+    history.push('/')
   };
 
   const handleClick = () => {

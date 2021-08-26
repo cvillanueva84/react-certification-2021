@@ -5,7 +5,8 @@ export const reducer = (state, action) => {
                 ...state,
                 loading: false,
                 posts: action.payload,
-                error: ''
+                error: '',
+                favoriteVideos: []
             }
 
         case 'FETCH_ERROR':

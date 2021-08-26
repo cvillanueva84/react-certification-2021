@@ -13,8 +13,8 @@ const FavoriteDetails = () => {
   const [singleVideo, setSingleVideo] = useState()
   
   useEffect(() => {
-    let obj = favoriteVideos.find(eachVideo => eachVideo.id.videoId === id)
-      setSingleVideo(obj)
+    let currentVideo = favoriteVideos.find(eachVideo => eachVideo.id.videoId === id)
+      setSingleVideo(currentVideo)
     }, [id, favoriteVideos])
     
 
