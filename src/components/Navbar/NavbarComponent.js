@@ -27,6 +27,7 @@ const Navbar = () => {
     if (inputValue.trim() === '') return;
     setSearch(inputValue);
     setInputValue('');
+    history.push('/')
   };
 
   const handleClick = () => {

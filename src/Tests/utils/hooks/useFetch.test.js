@@ -1,6 +1,5 @@
 import { useFetch } from "../../../utils/hooks/useFetch";
 import { renderHook } from '@testing-library/react-hooks'
-
 describe('Test from the useFetch custom hook', () => {
 
     test('should return the inital state, which is an empty object', async  () => {  
@@ -12,6 +11,7 @@ describe('Test from the useFetch custom hook', () => {
     test('should return an array with videos', async () => {
         const { result, waitForNextUpdate } = renderHook(() => useFetch('wizeline'))
         await waitForNextUpdate()
+
         const { videos } = result.current;
         expect(videos.length).toBe(23)
     })

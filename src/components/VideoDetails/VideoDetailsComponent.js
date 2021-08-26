@@ -23,8 +23,8 @@ const VideoDetails = () => {
   };
   
   useEffect(() => {
-  let obj = posts.find(eachVideo => eachVideo.id.videoId === id)
-    setSingleVideo(obj)
+  let currentVideo = posts.find(eachVideo => eachVideo.id.videoId === id)
+    setSingleVideo(currentVideo)
   }, [id, posts])
   
   return (
@@ -42,7 +42,7 @@ const VideoDetails = () => {
               <TitleSpan>{singleVideo.snippet.title}</TitleSpan>
               {authenticated ? (
                 <ReactionBtnPosition>
-                  {favoriteVideos.some((eachVid) => eachVid.id.videoId === id) ? (
+                  {favoriteVideos.some((eachVideo) => eachVideo.id.videoId === id) ? (
                     <ReactionBtn type="button" onClick={() => removeFromFavorites(id)}>
                       <i className="fas fa-thumbs-down" />
                     </ReactionBtn>

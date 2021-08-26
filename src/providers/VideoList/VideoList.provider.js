@@ -20,7 +20,7 @@ const VideoListProvider = (props) => {
   useEffect(() => {
     dispatch({ type: 'FETCH_SUCCESS', payload: videos });
     history.push('/')
-  }, [search, history, videos])
+  }, [search, videos, history])
 
 
   const addToFavorites = (video) => {
