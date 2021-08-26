@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import VideoContext from '../Context/VideoContext';
+import VideoFavoriteContext from '../Context/VideoFavorite';
 import LinkVideo from '../Link.element';
 import {
   CardVideoDisplayerContainer,
@@ -15,6 +16,36 @@ export function CardVideo({ video, id }) {
 
   const handleClick = () => {
     setVideo(video);
+  };
+
+  return (
+    <>
+      <LinkVideo to={urlVideo} onClick={handleClick}>
+        <CardVideoContainer>
+          <CardVideoImage
+            src={
+              video.snippet.thumbnails.high.url
+                ? video.snippet.thumbnails.high.url
+                : video.snippet.thumbnails.default.url
+            }
+          />
+          <CardVideoBottom
+            title={video.snippet.title}
+            description={video.snippet.description}
+          />
+        </CardVideoContainer>
+      </LinkVideo>
+    </>
+  );
+}
+
+export function CardVideoFavorite({ video, id }) {
+  const urlVideo = `favorites/${id}`;
+
+  const { setVideoFavorite } = useContext(VideoFavoriteContext);
+
+  const handleClick = () => {
+    setVideoFavorite(id);
   };
 
   return (

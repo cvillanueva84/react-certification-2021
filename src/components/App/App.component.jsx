@@ -16,10 +16,13 @@ import VideoPlayer from '../../pages/VideoPlayer';
 import ThemeContext from '../Context/ThemeContext';
 import VideoContext from '../Context/VideoContext';
 import { FavoritesProvider } from '../../providers/Favorites/Favorites.provider';
+import FavoriteDetailsPage from '../../pages/FavoriteDetails/FavoriteDetails.page';
+import VideoFavoriteContext from '../Context/VideoFavorite';
 
 function App() {
   const [theme, setTheme] = useState('light');
   const [video, setVideo] = useState({});
+  const [videoFavorite, setVideoFavorite] = useState({});
   return (
     <>
       <ThemeProvider theme={themes[theme]}>
@@ -28,30 +31,37 @@ function App() {
           <AuthProvider>
             <FavoritesProvider>
               <Layout>
-                <VideoContext.Provider value={{ video, setVideo }}>
-                  <ThemeContext.Provider value={{ theme, setTheme }}>
-                    <Switch>
-                      <Route exact path="/">
-                        <HomePage />
-                      </Route>
-                      <Route path="/watch">
-                        <VideoPlayer />
-                      </Route>
-                      <Route exact path="/login">
-                        <LoginPage />
-                      </Route>
-                      <Private exact path="/favorites">
-                        <FavoritesPage />
-                      </Private>
-                      <Private exact path="/secret">
-                        <SecretPage />
-                      </Private>
-                      <Route path="*">
-                        <NotFound />
-                      </Route>
-                    </Switch>
-                  </ThemeContext.Provider>
-                </VideoContext.Provider>
+                <VideoFavoriteContext.Provider
+                  value={{ videoFavorite, setVideoFavorite }}
+                >
+                  <VideoContext.Provider value={{ video, setVideo }}>
+                    <ThemeContext.Provider value={{ theme, setTheme }}>
+                      <Switch>
+                        <Route exact path="/">
+                          <HomePage />
+                        </Route>
+                        <Route path="/watch">
+                          <VideoPlayer />
+                        </Route>
+                        <Route exact path="/login">
+                          <LoginPage />
+                        </Route>
+                        <Private exact path="/favorites">
+                          <FavoritesPage />
+                        </Private>
+                        <Private path="/favorites/">
+                          <FavoriteDetailsPage />
+                        </Private>
+                        <Private exact path="/secret">
+                          <SecretPage />
+                        </Private>
+                        <Route path="*">
+                          <NotFound />
+                        </Route>
+                      </Switch>
+                    </ThemeContext.Provider>
+                  </VideoContext.Provider>
+                </VideoFavoriteContext.Provider>
               </Layout>
             </FavoritesProvider>
           </AuthProvider>

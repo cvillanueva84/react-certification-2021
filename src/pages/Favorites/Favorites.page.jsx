@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Navbar from '../../components/Navbar';
 import SideMenu from '../../components/SideMenu/SideMenu.component';
-import { CardVideo } from '../../components/CardVideo/CardVideo.component';
+import { CardVideoFavorite } from '../../components/CardVideo/CardVideo.component';
 import { useFavorites } from '../../providers/Favorites';
 import {
   RelatedVideosContainer,
@@ -18,7 +18,7 @@ function FavoritesPage() {
     if (state) {
       setListVideo(
         state.map((video) => (
-          <CardVideo id={video.id.videoId} key={video.etag} video={video} />
+          <CardVideoFavorite id={video.id.videoId} key={video.etag} video={video} />
         ))
       );
     }
