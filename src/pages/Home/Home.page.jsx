@@ -1,38 +1,22 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+import { useLocation } from 'react-router';
+import Navbar from '../../components/Navbar';
+import SideMenu from '../../components/SideMenu/SideMenu.component';
+import CardVideoDisplayer from '../../components/CardVideo/CardVideo.component';
+import useVideo from '../../utils/hooks/useVideo';
 
 function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+  const searchQuery = new URLSearchParams(useLocation().search).get('q');
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  const { videos } = useVideo({ searchQuery });
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <>
+      <Navbar />
+      <SideMenu />
+      <CardVideoDisplayer videos={videos} />
+    </>
   );
 }
 
