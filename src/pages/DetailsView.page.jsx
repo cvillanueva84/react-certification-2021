@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 const DetailsView = (props) => {
   const { url, title, description } = props.video;
+  const showRelatedVideo  = props.showRelatedVideo;
+
   return (
     <>
       <div className={props.className}>
@@ -16,9 +18,11 @@ const DetailsView = (props) => {
           {props.relatedVideos.map((video) => (
             <RelatedVideo
               key={video.id.videoId}
+              url={video.id.videoId}
               picture={video.snippet.thumbnails.medium.url}
               title={video.snippet.title}
               description={video.snippet.channelTitle}
+              showRelatedVideo={showRelatedVideo}
             />
           ))}
         </div>

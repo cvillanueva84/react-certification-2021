@@ -6,12 +6,20 @@ const GlobalReducer = (state, action) => {
                 searchText: action.payload.searchText,
             }
         };
-        case 'changeTheme': {
+        case 'CHANGE_THEME': {
             return {
                 ...state,
-                theme: (action.payload.theme === 'light') ? 'dark': 'light',
+                theme: (state.theme === 'light') ? 'dark': 'light',
             }
         };
+
+        case 'OPEN_OR_CLOSE_DRAWER': {
+            return {
+                ...state,
+                drawerOpen: !state.drawerOpen,
+            }
+        }
+
         default:
             return state;
     }

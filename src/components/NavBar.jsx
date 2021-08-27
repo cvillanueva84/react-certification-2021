@@ -20,40 +20,61 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
-const NavBar = ({ className, handleSearchButton }) => {
+const NavBar = ({ className, handleSearchButton, handleDrawerButton }) => {
   const { dispatch, state } = useContext(GlobalContext);
   const handleSearchField = (event) => {
     dispatch({
       type: 'CHANGE_SEARCH_TEXT',
       payload: {
         searchText: event.target.value,
-      }
+      },
     });
-  }
+  };
+
+  const handleSwitchTheme = (e) => {
+    dispatch({
+      type: 'CHANGE_THEME',
+    });
+  };
 
   useEffect(() => {
-    console.log("valor state", state);
+    console.log('valor state', state);
   });
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" color={state.theme === 'light'? 'primary': 'secondary'}>
         <Toolbar>
           <div
-            style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center'}}
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+              alignItems: 'center',
+              backgroundColor: state.theme,
+            }}
           >
-            <div style={{display: 'flex', alignItems:'center'}}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon />
+                <MenuIcon onClick={handleDrawerButton} />
               </IconButton>
-              <StyledInputBase name="searchInput" placeholder="Search" onChange={handleSearchField} defaultValue={state.searchText} />
-              <Button color="secondary" variant="contained" onClick={handleSearchButton}>
+              <StyledInputBase
+                name="searchInput"
+                placeholder="Search"
+                onChange={handleSearchField}
+                defaultValue={state.searchText}
+              />
+              <Button color={state.theme === 'light'? 'secondary': 'primary'} variant="contained" onClick={handleSearchButton}>
                 Search
               </Button>
             </div>
 
-            <div style={{display: 'flex', alignItems:'center'}}>
-              <Switch name="viewMode" />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Switch
+                checked={state.theme === 'light' ? false : true}
+                onChange={handleSwitchTheme}
+                color={state.theme === 'light'? 'secondary': 'primary'}
+              />
               <AccountCircleIcon fontSize="large" />
             </div>
           </div>
@@ -89,6 +110,14 @@ const DarkNavBar = styled(NavBar)`
   justify-content: space-between;
   background-color: #556cd6;
   padding: 10;
+
+  @media screen and (min-width: 430px) {
+    flex-direction: row;
+  }
+
+  @media screen and (max-width: 430px) {
+    flex-direction: column;
+  }
 
   > div {
     display: flex;

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import StyledCardVideo from '../components/CardVideo';
-//import { youtubevideos } from '../mocks/youtubevideos';
+import GlobalContext from '../state/GlobalContext';
 
 const HomePage = ({videos, showDetailView}) => {
+  const { dispatch, state } = useContext(GlobalContext);
 
   return (
     <>
@@ -17,14 +18,6 @@ const HomePage = ({videos, showDetailView}) => {
         showDetailView={showDetailView}
         />
       ))
-      /*youtubevideos.map((video, index) => (
-        <StyledCardVideo
-        key={index} 
-        title={video.snippet.title} 
-        description={video.snippet.description} 
-        picture={video.snippet.thumbnails.medium.url}
-        />
-      ))*/
       }
     </div>
     </>
