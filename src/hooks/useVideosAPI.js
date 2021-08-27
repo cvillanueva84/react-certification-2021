@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+require('dotenv').config()
 
 const useVideoApi = () => {
     const [videos, setVideos] = useState(null);
