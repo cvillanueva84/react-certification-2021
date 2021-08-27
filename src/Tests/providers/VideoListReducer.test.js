@@ -127,7 +127,7 @@ describe('tests of the VideoList reducer actions', () => {
     test('Test of the REMOVE_FROM_FAVORITES action', () => {
         const action = {
             type: 'REMOVE_FROM_FAVORITES',
-            payload: 'nmXMgqjQzls'
+            payload: []
         }
         const initialState = {
             loading:false,
