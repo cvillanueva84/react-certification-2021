@@ -38,9 +38,13 @@ const VideoListProvider = (props) => {
   };
 
   const removeFromFavorites = id => {
+    const favoriteVideosFromLocalStorage = localStorage.getItem('favorite_videos');
+    const arrayOfVideos = JSON.parse(favoriteVideosFromLocalStorage)
+    const filteredVideos = arrayOfVideos.filter(video => video.id.videoId !== id)
+    localStorage.setItem('favorite_videos', JSON.stringify(filteredVideos))
     dispatch({
       type: 'REMOVE_FROM_FAVORITES',
-      payload: id
+      payload: filteredVideos
     })
     Swal.fire(
       'Video has been removed from favorites'
