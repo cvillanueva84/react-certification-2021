@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const RelatedVideo = ({className, picture, title, description}) => {
+const RelatedVideo = ({className, url, picture, title, description, showRelatedVideo}) => {
     return (
         <>
-            <div className={className}>
+            <div className={className} onClick={() => showRelatedVideo(url, title, description)}>
                 <div>
                     <img src={picture} alt="No picture" height="95" width="130" />
                 </div>
