@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { ContenedorStyled, Title } from '../style/HomeScreenStyled';
-import { GlobalContext } from './Context'
-import { FavItem } from './FavItem';
-import { HeaderNav } from './HeaderNav';
-import { HeaderFav, CardFavs } from '../style/FavoriteVideosViewStyled';
+import { ContenedorStyled, Title } from '../../style/HomeScreenStyled';
+import { GlobalContext } from '../Context'
+import { FavItem } from '../FavItem';
+import { HeaderNav } from '../HeaderNav';
+import { HeaderFav, CardFavs } from '../../style/FavoriteVideosViewStyled';
 
 
 export const FavoriteVideosView = () => {

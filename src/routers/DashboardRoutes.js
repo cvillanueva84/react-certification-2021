@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
-import { HomeView } from '../components/HomeView';
+import { HomeView } from '../components/ui/HomeView';
 import { VideoDetailsScreen } from '../components/VideoDetailsScreen';
-import { NotFound } from '../components/NotFound';
-import { FavoriteVideosView } from '../components/FavoriteVideosView';
+import { NotFound } from '../components/ui/NotFound';
+import { FavoriteVideosView } from '../components/ui/FavoriteVideosView';
 import { FavVideoDetailsScreen } from '../components/FavVideoDetailsScreen';
 
 export const DashboardRoutes = () => {

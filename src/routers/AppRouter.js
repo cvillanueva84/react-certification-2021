@@ -5,7 +5,6 @@ import { LoginView } from '../components/LoginView';
 import { DashboardRoutes } from './DashboardRoutes';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
-//import { NotFound } from '../components/NotFound';
 
 export const AppRouter = () => {
 
