@@ -1,8 +1,9 @@
 import React, { useContext} from 'react';
-import { useFetchVideos } from '../hooks/useFetchVideos';
-import { CardItem } from './CardItem';
-import { GlobalContext } from './Context'
-import { ContenedorStyled, Title, CardStyled} from '../style/HomeScreenStyled'
+import { useFetchVideos } from '../../hooks/useFetchVideos';
+import { CardItem } from '../CardItem';
+import { GlobalContext } from '../Context'
+import { ContenedorStyled, Title, CardStyled} from '../../style/HomeScreenStyled'
+//import { CardItemUi } from './ui/CardItemUi';
 
 export const HomeScreen = () => {
 

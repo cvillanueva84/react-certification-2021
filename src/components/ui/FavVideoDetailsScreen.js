@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from './Context';
-import { FavItem } from './FavItem';
-import { HeaderNav } from './HeaderNav';
+import { GlobalContext } from '../Context';
+import { FavItem } from '../FavItem';
+import { HeaderNav } from '../HeaderNav';
 import {
     Contenedor,
     VideoDetails,
     VideoDetailsText,
     ContenedorFavoritos,
     Favoritos
-} from '../style/VideoDetailsScreenStyled';
-import { HeaderFav } from '../style/FavoriteVideosViewStyled';
+} from '../../style/VideoDetailsScreenStyled';
+import { HeaderFav } from '../../style/FavoriteVideosViewStyled';
 
 
 export const FavVideoDetailsScreen = () => {
