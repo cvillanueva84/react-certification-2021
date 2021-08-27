@@ -9,7 +9,7 @@ const useVideoApi = () => {
     const fetchVideos = async (searchText) => {
         setLoading(true);
         try{
-            const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+            const YOUTUBE_API_KEY = 'AIzaSyBPRIGYlC55KfMs3_Xy_Y5An0-g1cH5y1w';
             const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&maxResults=20&type=video&part=snippet&q=${searchText}`);
             const searchResults = await response.json();
             //console.log("resultado", searchResults.items[0].snippet);
