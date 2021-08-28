@@ -4,7 +4,7 @@ import { HomeView } from '../components/ui/HomeView';
 import { VideoDetailsScreen } from '../components/VideoDetailsScreen';
 import { NotFound } from '../components/ui/NotFound';
 import { FavoriteVideosView } from '../components/ui/FavoriteVideosView';
-import { FavVideoDetailsScreen } from '../components/FavVideoDetailsScreen';
+import { FavVideoDetailsScreen } from '../components/ui/FavVideoDetailsScreen';
 
 export const DashboardRoutes = () => {
     return (
