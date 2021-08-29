@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-require('dotenv').config()
+import { youtubevideos } from '../mocks/youtubevideos';
+require('dotenv').config();
 
 const useVideoApi = () => {
     const [videos, setVideos] = useState(null);
@@ -14,6 +15,7 @@ const useVideoApi = () => {
             const searchResults = await response.json();
             //console.log("resultado", searchResults.items[0].snippet);
             setVideos(searchResults.items);
+            //setVideos(youtubevideos);
         } catch(error){
             setError("Ha ocurrido un error:",error.message);
             console.log(error.message);

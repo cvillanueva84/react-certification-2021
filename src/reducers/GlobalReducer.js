@@ -18,6 +18,53 @@ const GlobalReducer = (state, action) => {
                 ...state,
                 drawerOpen: !state.drawerOpen,
             }
+        };
+
+        case 'LOG_IN_USER': {
+            return {
+                ...state,
+                user: {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    avatarUrl: action.payload.avatar,
+                    loggedIn: action.payload.loggedIn,
+                }
+            }
+        };
+
+        case 'LOG_OUT_USER': {
+            return {
+                ...state,
+                user:{
+                    id: '',
+                    name: '',
+                    loggedIn: false,
+                    avatarUrl: '',
+                }
+            }
+        };
+
+        case 'ADD_FAVORITE_VIDEO':{
+            return {
+                ...state,
+                favouriteVideos:[
+                    ...state.favouriteVideos,
+                    action.payload.video,
+                ]
+            }
+        };
+
+        case 'REMOVE_FAVORITE_VIDEO': {
+            return {
+                ...state,
+                favouriteVideos: state.favouriteVideos.filter(video => {
+                    if(video.url == action.payload.id){
+                        return false;
+                    } else{
+                        return true;
+                    }
+                }),
+            }
         }
 
         default:

@@ -1,11 +1,24 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardVideo = ({className, title, description, picture, url, showDetailView}) => {
+
+    const history = useHistory();
+    const location = useLocation();
+    const handleClick = () => {
+        showDetailView(url, title, description, picture);
+        if(location.pathname === '/favourites'){
+            history.push('/watchfavourite');
+        } else {
+            history.push('/watchvideo');
+        }
+    }
+
     return (
         <>
             <div className={className} 
-            onClick={() => showDetailView(url, title, description)} >
+            onClick={() => handleClick()} >
                 <div>
                     <div>
                         <img src={picture} alt="Picture" height="140" width="345" />

@@ -3,25 +3,25 @@ import VideoPlayer from '../components/VideoPlayer';
 import RelatedVideo from '../components/RelatedVideo';
 import styled from 'styled-components';
 
-const DetailsView = (props) => {
-  const { url, title, description, picture } = props.video;
+const FavoriteDetailsView = (props) => {
+  const { url, title, description } = props.video;
   const showRelatedVideo  = props.showRelatedVideo;
 
   return (
     <>
       <div className={props.className}>
         <div style={{ width: '70%' }}>
-          <VideoPlayer url={url} title={title} description={description} picture={picture} />
+          <VideoPlayer url={url} title={title} description={description} />
         </div>
 
         <div style={{ width: '30%', padding: 30 }}>
-          {props.relatedVideos.map((video) => (
+          {props.favouriteVideos.map((video) => (
             <RelatedVideo
-              key={video.id.videoId}
-              url={video.id.videoId}
-              picture={video.snippet.thumbnails.medium.url}
-              title={video.snippet.title}
-              description={video.snippet.channelTitle}
+              key={video.url}
+              url={video.url}
+              picture={video.picture}
+              title={video.title}
+              description={video.description}
               showRelatedVideo={showRelatedVideo}
             />
           ))}
@@ -31,8 +31,8 @@ const DetailsView = (props) => {
   );
 };
 
-const StyledDetailsView = styled(DetailsView)`
+const StyledFavoriteDetailsView = styled(FavoriteDetailsView)`
   display: flex;
 `;
 
-export default StyledDetailsView;
+export default StyledFavoriteDetailsView;

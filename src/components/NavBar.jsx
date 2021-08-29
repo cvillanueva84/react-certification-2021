@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import GlobalContext from '../state/GlobalContext';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
@@ -20,8 +21,9 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
-const NavBar = ({ className, handleSearchButton, handleDrawerButton }) => {
+const NavBar = ({ className, handleSearchButton, handleDrawerButton, handleFormLoginButton }) => {
   const { dispatch, state } = useContext(GlobalContext);
+  const history = useHistory();
   const handleSearchField = (event) => {
     dispatch({
       type: 'CHANGE_SEARCH_TEXT',
@@ -64,7 +66,7 @@ const NavBar = ({ className, handleSearchButton, handleDrawerButton }) => {
                 onChange={handleSearchField}
                 defaultValue={state.searchText}
               />
-              <Button color={state.theme === 'light'? 'secondary': 'primary'} variant="contained" onClick={handleSearchButton}>
+              <Button color={state.theme === 'light'? 'secondary': 'primary'} variant="contained" onClick={() => handleSearchButton(history)}>
                 Search
               </Button>
             </div>
@@ -75,7 +77,9 @@ const NavBar = ({ className, handleSearchButton, handleDrawerButton }) => {
                 onChange={handleSwitchTheme}
                 color={state.theme === 'light'? 'secondary': 'primary'}
               />
-              <AccountCircleIcon fontSize="large" />
+              <IconButton edge="start" color="inherit" aria-label="login" onClick={handleFormLoginButton}>
+                <AccountCircleIcon fontSize="large" />
+              </IconButton>
             </div>
           </div>
         </Toolbar>
