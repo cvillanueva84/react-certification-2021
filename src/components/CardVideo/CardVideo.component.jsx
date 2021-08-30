@@ -83,9 +83,7 @@ function CardVideoDisplayer({ videos }) {
   }, [videos]);
 
   return (
-    <>
-      <CardVideoDisplayerContainer>{listVideos}</CardVideoDisplayerContainer>
-    </>
+    <CardVideoDisplayerContainer>{listVideos}</CardVideoDisplayerContainer>
   );
 }
 

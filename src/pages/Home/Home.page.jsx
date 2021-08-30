@@ -7,7 +7,8 @@ import CardVideoDisplayer from '../../components/CardVideo/CardVideo.component';
 import useVideo from '../../utils/hooks/useVideo';
 
 function HomePage() {
-  const searchQuery = new URLSearchParams(useLocation().search).get('q');
+  const {search} = useLocation();
+  const searchQuery = new URLSearchParams(search).get('q');
 
   const { videos } = useVideo({ searchQuery });
 

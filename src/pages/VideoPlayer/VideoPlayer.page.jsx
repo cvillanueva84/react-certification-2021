@@ -6,7 +6,8 @@ import VideoVisualizer from '../../components/VideoVisualizer/VideoVisualizer.co
 import useVideo from '../../utils/hooks/useVideo';
 
 function VideoPlayer() {
-  const relatedId = new URLSearchParams(useLocation().search).get('v');
+  const {search} = useLocation();
+  const relatedId = new URLSearchParams(search).get('v');
 
   const { videos } = useVideo({ relatedId });
 
