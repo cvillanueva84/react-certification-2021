@@ -27,9 +27,7 @@ export const MainApp = () => {
   }, [myStateReducer]);
 
   return (
-    <GlobalContext.Provider value={{
-      myStateReducer, dispatch,
-    }}>
+    <GlobalContext.Provider value={{myStateReducer, dispatch,} }>
       <ThemeProvider theme={myStateReducer.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <AppRouter />

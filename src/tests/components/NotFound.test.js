@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
 import { GlobalContext } from '../../components/Context';
 import { MemoryRouter, Router } from 'react-router';
-import { NotFound } from '../../components/NotFound';
+import { NotFound } from '../../components/ui/NotFound';
 
 
 describe('Test Favorite Videos View', () => {

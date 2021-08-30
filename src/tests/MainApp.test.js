@@ -2,8 +2,8 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { mount } from 'enzyme';
 import { MemoryRouter, Router } from "react-router";
-import { GlobalContext } from "../../components/Context";
-import { MainApp } from "../../components/MainApp";
+import { GlobalContext } from "../components/Context";
+import { MainApp } from "../../src/MainApp";
 
 
 describe('Test MainApp', () => {
