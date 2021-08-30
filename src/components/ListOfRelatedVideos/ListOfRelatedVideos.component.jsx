@@ -2,6 +2,7 @@ import React from 'react';
 import RelatedVideo from '../../components/RelatedVideo';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { Box } from './ListOfRelatedVideos.styles';
+import { routes } from '../../utils/constants';
 
 function ListOfRelatedVideos(props) {
   const location = useLocation();
@@ -18,10 +19,10 @@ function ListOfRelatedVideos(props) {
     (video) => video.id.kind === 'youtube#video'
   );
   var path = '';
-  if (route === '/video/' + id) {
-    path = 'video';
+  if (route === '/' + routes.video + '/' + id) {
+    path = routes.video;
   } else {
-    path = 'favorites';
+    path = routes.favorites;
   }
   return (
     <Box>

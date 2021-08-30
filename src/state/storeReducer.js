@@ -1,3 +1,4 @@
+import { routes } from '../utils/constants';
 const types = {
   setSearchTerm: 'setSearchTerm',
   setTheme: 'setTheme',
@@ -48,7 +49,7 @@ const storeReducer = (state, action) => {
           },
           {
             title: 'Favorites',
-            path: '/favorites',
+            path: '/' + routes.favorites,
           },
         ],
       };

@@ -5,7 +5,7 @@ import FavoriteVideosViewPage from '../../pages/FavoriteVideosView';
 import FavoriteVideoDetailsView from '../../pages/FavoriteVideoDetailsView';
 import Private from '../Private';
 import NotFound from '../../pages/NotFound';
-import VideoDetailsView from '../../pages/VideoDetailsView';
+import MainVideoDetailsView from '../../pages/MainVideoDetailsView';
 import Layout from '../Layout';
 import { useStoreContext } from '../../state/Store.provider';
 import GlobalStyle from './App.styles';
@@ -33,7 +33,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/video/:id">
-            <VideoDetailsView />
+            <MainVideoDetailsView />
           </Route>
           <Private exact path="/favorites">
             <FavoriteVideosViewPage />

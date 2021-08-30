@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoDetailsView from './VideoDetailsView.page';
+import MainVideoDetailsView from './MainVideoDetailsView.page';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import StoreProvider from '../../state/Store.provider';
 import { BrowserRouter } from 'react-router-dom';
@@ -18,13 +18,13 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-describe('VideoDetailsView', () => {
+describe('MainVideoDetailsView', () => {
   beforeEach(() => {
     render(
       <BrowserRouter>
         <StoreProvider>
           <Header></Header>
-          <VideoDetailsView />
+          <MainVideoDetailsView />
         </StoreProvider>
       </BrowserRouter>
     );

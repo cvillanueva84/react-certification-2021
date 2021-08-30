@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import ListOfRelatedVideos from '../../components/ListOfRelatedVideos';
-import { useYouTube } from '../../utils/hooks/useYouTube';
 import { useStoreContext } from '../../state/Store.provider';
 import { storage } from '../../utils/storage';
 import { FAVORITES_LIST_STORAGE_KEY } from '../../utils/constants';
+import { Actions } from '../../utils/constants';
 import {
   FavoritesBtn,
   Title,
@@ -14,14 +14,13 @@ import {
   Grid,
 } from './VideoDetailsView.styles';
 
-function VideoDetailsView() {
-  const [buttonAction, setButtonAction] = useState('Add');
+function VideoDetailsView(props) {
+  const [buttonAction, setButtonAction] = useState(Actions.ADD);
   const { id } = useParams();
   const location = useLocation();
   const { videoTitle, videoDescription, image } = location.state;
   const url = 'https://www.youtube.com/embed/' + id;
   const { store } = useStoreContext();
-  const { searchTerm } = store;
   const FavoritesList = storage.get(FAVORITES_LIST_STORAGE_KEY);
   const favoriteVideo = {
     id: {
@@ -45,16 +44,16 @@ function VideoDetailsView() {
   useEffect(() => {
     if (FavoritesList?.items) {
       //Add or Remove?
-      let filterFavorites = FavoritesList.items.filter((e) => e.id.videoId === id);
-      if (filterFavorites.length === 1) {
-        setButtonAction('Remove');
+      let alreadyExists = FavoritesList.items.find((e) => e.id.videoId === id);
+      if (alreadyExists) {
+        setButtonAction(Actions.REMOVE);
       } else {
-        setButtonAction('Add');
+        setButtonAction(Actions.ADD);
       }
     }
   }, [FavoritesList, id]);
   function handleClick() {
-    if (buttonAction === 'Add') {
+    if (buttonAction === Actions.ADD) {
       if (!FavoritesList?.items) {
         //First Use
         storage.set(FAVORITES_LIST_STORAGE_KEY, firstFavorite);
@@ -62,15 +61,15 @@ function VideoDetailsView() {
         FavoritesList.items[FavoritesList.items.length] = favoriteVideo;
         storage.set(FAVORITES_LIST_STORAGE_KEY, FavoritesList);
       }
-      setButtonAction('Remove');
-    } else if (buttonAction === 'Remove') {
+      setButtonAction(Actions.REMOVE);
+    } else if (buttonAction === Actions.REMOVE) {
       var index = FavoritesList.items.findIndex(function (e, i) {
         return e.id.videoId === id;
       });
       FavoritesList.items[index].id.videoId = 'deleted';
       FavoritesList.items[index].id.kind = 'youtube#channel';
       storage.set(FAVORITES_LIST_STORAGE_KEY, FavoritesList);
-      setButtonAction('Add');
+      setButtonAction(Actions.ADD);
     }
   }
   return (
@@ -83,13 +82,17 @@ function VideoDetailsView() {
         ) : (
           <>
             <FavoritesBtn data-testid="favoritesBtn" onClick={handleClick}>
-              {buttonAction === 'Add' ? 'Add to favorites' : 'Remove from favorites'}
+              {buttonAction === Actions.ADD
+                ? 'Add to favorites'
+                : 'Remove from favorites'}
             </FavoritesBtn>
           </>
         )}
         <Description>{videoDescription}</Description>
       </VideoDetails>
-      <ListOfRelatedVideos videos={useYouTube(searchTerm)}></ListOfRelatedVideos>
+      <ListOfRelatedVideos
+        videos={props.type === 'Main' ? props.listOfVideos : FavoritesList}
+      ></ListOfRelatedVideos>
     </Grid>
   );
 }

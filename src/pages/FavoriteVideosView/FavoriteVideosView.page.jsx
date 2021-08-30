@@ -6,11 +6,15 @@ import { FAVORITES_LIST_STORAGE_KEY } from '../../utils/constants';
 
 function FavoriteVideosViewPage() {
   const Favorites = storage.get(FAVORITES_LIST_STORAGE_KEY);
+  let withVideos = false;
+  if (Favorites != null) {
+    withVideos = Favorites.items.find((video) => video.id.kind === 'youtube#video');
+  }
   return (
     <>
       <h1 align="center">Favorites: </h1>
       <Grid data-testid="location-FavoriteVideosViewPage" className="grid">
-        <Cards videos={Favorites === null ? 'error' : Favorites}></Cards>
+        <Cards videos={Favorites === null || !withVideos ? 'error' : Favorites}></Cards>
       </Grid>
     </>
   );

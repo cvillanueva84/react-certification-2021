@@ -46,8 +46,7 @@ describe('Header', () => {
   test('should close the LogMenu modal', () => {
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByTestId('Logmenu-close'));
-    const LogMenu = screen.queryAllByText('Login');
-    expect(LogMenu).toHaveLength(0);
+    expect(screen.queryByText('Login')).not.toBeInTheDocument();
   });
   test('should show the Login modal', () => {
     fireEvent.click(screen.getByRole('button'));
@@ -58,8 +57,7 @@ describe('Header', () => {
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByTestId('Logmenu'));
     fireEvent.click(screen.getByText('Cancel'));
-    const cancelButton = screen.queryAllByText('Cancel');
-    expect(cancelButton).toHaveLength(0);
+    expect(screen.queryByText('Cancel')).not.toBeInTheDocument();
   });
   test('should show a error with an incorrect username or password', async () => {
     fireEvent.click(screen.getByRole('button'));
@@ -97,8 +95,7 @@ describe('Header', () => {
       fireEvent.click(screen.getByTestId('LoginButton'));
       jest.advanceTimersByTime(1000);
     });
-    const cancelButton = screen.queryAllByText('Cancel');
-    expect(cancelButton).toHaveLength(0);
+    expect(screen.queryByText('Cancel')).not.toBeInTheDocument();
   });
   test('should show the Login option after Logout', async () => {
     fireEvent.click(screen.getByRole('button'));

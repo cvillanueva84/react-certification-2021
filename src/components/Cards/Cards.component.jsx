@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../components/Card';
 import { useLocation, Link } from 'react-router-dom';
+import { routes } from '../../utils/constants';
 function Cards(props) {
   const location = useLocation();
   const route = location.pathname;
@@ -16,9 +17,9 @@ function Cards(props) {
   );
   var path = '';
   if (route === '/') {
-    path = 'video';
+    path = routes.video;
   } else {
-    path = 'favorites';
+    path = routes.favorites;
   }
   return (
     <>
