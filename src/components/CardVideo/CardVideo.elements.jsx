@@ -64,18 +64,16 @@ const CardVideoDescription = styled.p`
   font-size: 1rem;
 `;
 
-export function CardVideoBottom({ title, description }) {
-  function trucateText(text) {
-    const maxLength = 50;
-    return text.length <= maxLength ? text : `${text.substring(0, maxLength)}...`;
-  }
+function trucateText(text) {
+  const maxLength = 50;
+  return text.length <= maxLength ? text : `${text.substring(0, maxLength)}...`;
+}
 
+export function CardVideoBottom({ title, description }) {
   return (
-    <>
       <CardVideoBottomContainer>
         <CardVideoTitle>{title}</CardVideoTitle>
         <CardVideoDescription>{trucateText(description)}</CardVideoDescription>
       </CardVideoBottomContainer>
-    </>
   );
 }

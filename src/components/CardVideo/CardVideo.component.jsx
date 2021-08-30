@@ -19,7 +19,6 @@ export function CardVideo({ video, id }) {
   };
 
   return (
-    <>
       <LinkVideo to={urlVideo} onClick={handleClick}>
         <CardVideoContainer>
           <CardVideoImage
@@ -35,7 +34,6 @@ export function CardVideo({ video, id }) {
           />
         </CardVideoContainer>
       </LinkVideo>
-    </>
   );
 }
 
@@ -49,7 +47,6 @@ export function CardVideoFavorite({ video, id }) {
   };
 
   return (
-    <>
       <LinkVideo to={urlVideo} onClick={handleClick}>
         <CardVideoContainer>
           <CardVideoImage
@@ -65,7 +62,6 @@ export function CardVideoFavorite({ video, id }) {
           />
         </CardVideoContainer>
       </LinkVideo>
-    </>
   );
 }
 
