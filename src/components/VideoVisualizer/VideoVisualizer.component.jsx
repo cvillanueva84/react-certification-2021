@@ -9,6 +9,7 @@ import {
 import { CardVideo } from '../CardVideo/CardVideo.component';
 import VideoContext from '../Context/VideoContext';
 import { useFavorites } from '../../providers/Favorites';
+import { addFavorite, deleteFavorite } from '../../providers/Favorites/Favorites.provider';
 
 function VideoVisualizer({ videoId, videos }) {
   const [listVideos, setListVideo] = useState();
@@ -32,16 +33,10 @@ function VideoVisualizer({ videoId, videos }) {
   console.log(state);
   const handleFavClick = () => {
     if (buttonClicked) {
-      dispatch({
-        type: 'DELETE',
-        payload: video,
-      });
+      dispatch(deleteFavorite(video));
       setButtonClicked(false);
     } else {
-      dispatch({
-        type: 'ADD',
-        payload: video,
-      });
+      dispatch(addFavorite(video));
       setButtonClicked(true);
     }
   };

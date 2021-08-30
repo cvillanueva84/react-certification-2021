@@ -15,6 +15,20 @@ const useFavorites = () => {
   return context;
 };
 
+const addFavorite = (payload) => {
+  return {
+    type: 'ADD',
+    payload,
+  };
+}
+
+const deleteFavorite = (payload) => {
+  return {
+    type: 'DELETE',
+    payload,
+  };
+}
+ 
 const FavoritesProvider = ({ children }) => {
   const favorites = useReducer(FavoritesReducer, initialState);
 
@@ -23,4 +37,4 @@ const FavoritesProvider = ({ children }) => {
   );
 };
 
-export { useFavorites, FavoritesProvider };
+export { useFavorites, FavoritesProvider, addFavorite, deleteFavorite };
