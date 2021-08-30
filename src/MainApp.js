@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from 'react'
-import { AppRouter } from '../routers/AppRouter'
-import { GlobalContext } from './Context'
-import { globalReducer } from './globalReducer';
+import { AppRouter } from './routers/AppRouter'
+import { GlobalContext } from './components/Context'
+import { globalReducer } from './components/globalReducer';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, lightTheme, darkTheme } from '../style/MainAppStyled';
+import { GlobalStyles, lightTheme, darkTheme } from './style/MainAppStyled';
 
 
 const init = () => {
@@ -27,9 +27,7 @@ export const MainApp = () => {
   }, [myStateReducer]);
 
   return (
-    <GlobalContext.Provider value={{
-      myStateReducer, dispatch,
-    }}>
+    <GlobalContext.Provider value={{myStateReducer, dispatch,} }>
       <ThemeProvider theme={myStateReducer.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <AppRouter />

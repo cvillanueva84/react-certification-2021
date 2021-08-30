@@ -157,7 +157,7 @@ export const AlignBoxInputToggle = styled.div`
     }
 
     button span:hover{
-        color: rgba(24, 223, 22, 0.81);
+        color: #008CBA;;
     }
     
 `;
@@ -175,15 +175,18 @@ export const RightHeader = styled.div`
     button span{
         font-size: 36px;
         color: white;
+        text-decoration: red;
     }
 
     button span:hover{
-        color: rgba(24, 223, 22, 0.81);
+        color: #008CBA;;
     }
 
     small{
         font-size: 12px;
-        color: aqua;
+        color: rgba(24, 223, 22, 0.81);
+        width: 30px;
+        margin-left: 5px;
         margin-right: 5px;
     }
 `;
@@ -200,7 +203,7 @@ export const ButtonHome = styled.button`
     }
 
     i:hover{
-        color: rgba(24, 223, 22, 0.81);
+        color: #008CBA;;
     }
 
 

@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import { MemoryRouter, Router } from 'react-router';
 import { GlobalContext } from '../../components/Context';
 import { FavItem } from "../../components/FavItem";
-import { FavVideoDetailsScreen } from '../../components/FavVideoDetailsScreen';
+import { FavVideoDetailsScreen } from '../../components/ui/FavVideoDetailsScreen';
 
 
 describe('Test Fav Video Details Screen', () => {
