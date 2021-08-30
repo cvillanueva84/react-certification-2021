@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the VideoDetials component should display the component correctly 1`] = `
+<div
+  className="sc-eCApnc bWQtgS"
+>
+  <div
+    className="sc-jSFjdj UhjyJ"
+  >
+    <iframe
+      allowFullScreen={true}
+      className="sc-gKAaRy dNRlKd"
+      frameBorder="0"
+      src="https://www.youtube.com/embed/Po3VwR_NNGk"
+      title="test"
+    />
+  </div>
+  <aside
+    className="sc-crzoAE fkwsqm"
+  >
+    <div>
+      <a
+        href="/video/nmXMgqjQzls"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "var(--black)",
+            "textDecoration": "none",
+          }
+        }
+      >
+        <div
+          className="sc-gtsrHT iRpwMP"
+        >
+          <div
+            className="sc-dlnjwi dIBHvn"
+          >
+            <img
+              alt="Video Tour | Welcome to Wizeline Guadalajara"
+              src="https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg"
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            />
+          </div>
+          <div
+            className="sc-hKFxyN uEZHe"
+          >
+            <span
+              className="sc-bdnxRM eNjdHH"
+            >
+              Video Tour | Welcome to Wizeline Guadalajara
+            </span>
+          </div>
+        </div>
+        <hr
+          style={
+            Object {
+              "color": "var(--main-blue)",
+              "margin": "0 auto",
+              "width": "80%",
+            }
+          }
+        />
+      </a>
+      <a
+        href="/video/HYyRZiwBWc8"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "var(--black)",
+            "textDecoration": "none",
+          }
+        }
+      >
+        <div
+          className="sc-gtsrHT iRpwMP"
+        >
+          <div
+            className="sc-dlnjwi dIBHvn"
+          >
+            <img
+              alt="Wizeline Guadalajara | Bringing Silicon Valley to Mexico"
+              src="https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg"
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            />
+          </div>
+          <div
+            className="sc-hKFxyN uEZHe"
+          >
+            <span
+              className="sc-bdnxRM eNjdHH"
+            >
+              Wizeline Guadalajara | Bringing Silicon Valley to Mexico
+            </span>
+          </div>
+        </div>
+        <hr
+          style={
+            Object {
+              "color": "var(--main-blue)",
+              "margin": "0 auto",
+              "width": "80%",
+            }
+          }
+        />
+      </a>
+    </div>
+  </aside>
+</div>
+`;

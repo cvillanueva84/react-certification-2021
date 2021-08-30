@@ -1,0 +1,40 @@
+:root {
+  --main-blue: #060b26;
+  --main-white: #fafafa;
+  --light-gray: #ccc;
+  --light-blue: #2196f3;
+  --black: #000000bf;
+  --overlay-black: #000000b3;
+  --red-btn: #ff2300;
+  --lighter-gray: #0000001a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  @media only screen and(max-width: $bp-large) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}

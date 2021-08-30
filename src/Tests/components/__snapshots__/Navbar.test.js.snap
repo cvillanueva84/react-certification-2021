@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the Navbar component should render the Navbar component correctly 1`] = `
+Array [
+  <nav
+    className="sc-iqAclL beWAmd"
+  >
+    <div
+      className="sc-crzoAE fXIYbr"
+    >
+      <div
+        className="sc-bqGGPW eyjEsX"
+      >
+        <svg
+          fill="currentColor"
+          height="3rem"
+          onClick={[Function]}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": "#fff",
+            }
+          }
+          viewBox="0 0 512 512"
+          width="3rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M464 256H48a48 48 0 0 0 0 96h416a48 48 0 0 0 0-96zm16 128H32a16 16 0 0 0-16 16v16a64 64 0 0 0 64 64h352a64 64 0 0 0 64-64v-16a16 16 0 0 0-16-16zM58.64 224h394.72c34.57 0 54.62-43.9 34.82-75.88C448 83.2 359.55 32.1 256 32c-103.54.1-192 51.2-232.18 116.11C4 180.09 24.07 224 58.64 224zM384 112a16 16 0 1 1-16 16 16 16 0 0 1 16-16zM256 80a16 16 0 1 1-16 16 16 16 0 0 1 16-16zm-128 32a16 16 0 1 1-16 16 16 16 0 0 1 16-16z"
+            key="0"
+          />
+        </svg>
+      </div>
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          className="sc-hBMUJo bpAzCH"
+          name="search"
+          onChange={[Function]}
+          placeholder="search a video..."
+          type="text"
+          value=""
+        />
+      </form>
+    </div>
+    <div
+      className="sc-dIsUp jjfBRM"
+    >
+      <div
+        className="sc-ksluID gaAEKY"
+      >
+        <svg
+          className="moon-icon"
+          fill="currentColor"
+          height={20}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": "#fff",
+            }
+          }
+          viewBox="0 0 512 512"
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"
+            key="0"
+          />
+        </svg>
+        <label
+          className="switch"
+        >
+          <input
+            onClick={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="slider round"
+          />
+        </label>
+        <svg
+          className="sun-icon"
+          fill="currentColor"
+          height={20}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": "#fff",
+            }
+          }
+          viewBox="0 0 512 512"
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
+            key="0"
+          />
+        </svg>
+      </div>
+      <svg
+        className="user-icon"
+        fill="currentColor"
+        height="3rem"
+        onClick={[Function]}
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": "#fff",
+          }
+        }
+        viewBox="0 0 448 512"
+        width="3rem"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M64 224h13.5c24.7 56.5 80.9 96 146.5 96s121.8-39.5 146.5-96H384c8.8 0 16-7.2 16-16v-96c0-8.8-7.2-16-16-16h-13.5C345.8 39.5 289.6 0 224 0S102.2 39.5 77.5 96H64c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16zm40-88c0-22.1 21.5-40 48-40h144c26.5 0 48 17.9 48 40v24c0 53-43 96-96 96h-48c-53 0-96-43-96-96v-24zm72 72l12-36 36-12-36-12-12-36-12 36-36 12 36 12 12 36zm151.6 113.4C297.7 340.7 262.2 352 224 352s-73.7-11.3-103.6-30.6C52.9 328.5 0 385 0 454.4v9.6c0 26.5 21.5 48 48 48h80v-64c0-17.7 14.3-32 32-32h128c17.7 0 32 14.3 32 32v64h80c26.5 0 48-21.5 48-48v-9.6c0-69.4-52.9-125.9-120.4-133zM272 448c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16zm-96 0c-8.8 0-16 7.2-16 16v48h32v-48c0-8.8-7.2-16-16-16z"
+          key="0"
+        />
+      </svg>
+    </div>
+  </nav>,
+  <nav
+    className="nav-menu"
+  >
+    <ul
+      className="nav-menu-items"
+      onClick={[Function]}
+    >
+      <li
+        className="navbar-toggle"
+        style={
+          Object {
+            "cursor": "pointer",
+            "marginLeft": "2rem",
+          }
+        }
+      >
+        <svg
+          fill="currentColor"
+          height="3rem"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": "#fff",
+            }
+          }
+          viewBox="0 0 512 512"
+          width="3rem"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-83.6 290.5c4.8 4.8 4.8 12.6 0 17.4l-40.5 40.5c-4.8 4.8-12.6 4.8-17.4 0L256 313.3l-66.5 67.1c-4.8 4.8-12.6 4.8-17.4 0l-40.5-40.5c-4.8-4.8-4.8-12.6 0-17.4l67.1-66.5-67.1-66.5c-4.8-4.8-4.8-12.6 0-17.4l40.5-40.5c4.8-4.8 12.6-4.8 17.4 0l66.5 67.1 66.5-67.1c4.8-4.8 12.6-4.8 17.4 0l40.5 40.5c4.8 4.8 4.8 12.6 0 17.4L313.3 256l67.1 66.5z"
+            key="0"
+          />
+        </svg>
+      </li>
+      <li
+        className="nav-text"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="3rem"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": "#fff",
+              }
+            }
+            viewBox="0 0 576 512"
+            width="3rem"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+              key="0"
+            />
+          </svg>
+          <span
+            style={
+              Object {
+                "color": "#fff",
+              }
+            }
+          >
+            Home
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>,
+]
+`;

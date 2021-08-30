@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the RecommendedVideos component should render the component correctly 1`] = `
+<div>
+  <a
+    href="/favorite-video/nmXMgqjQzls"
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "var(--black)",
+        "textDecoration": "none",
+      }
+    }
+  >
+    <div
+      className="sc-gtsrHT iRpwMP"
+    >
+      <div
+        className="sc-dlnjwi dIBHvn"
+      >
+        <img
+          alt="Video Tour | Welcome to Wizeline Guadalajara"
+          src="https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="sc-hKFxyN uEZHe"
+      >
+        <span
+          className="sc-bdnxRM eNjdHH"
+        >
+          Video Tour | Welcome to Wizeline Guadalajara
+        </span>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "color": "var(--main-blue)",
+          "margin": "0 auto",
+          "width": "80%",
+        }
+      }
+    />
+  </a>
+  <a
+    href="/favorite-video/HYyRZiwBWc8"
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "var(--black)",
+        "textDecoration": "none",
+      }
+    }
+  >
+    <div
+      className="sc-gtsrHT iRpwMP"
+    >
+      <div
+        className="sc-dlnjwi dIBHvn"
+      >
+        <img
+          alt="Wizeline Guadalajara | Bringing Silicon Valley to Mexico"
+          src="https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="sc-hKFxyN uEZHe"
+      >
+        <span
+          className="sc-bdnxRM eNjdHH"
+        >
+          Wizeline Guadalajara | Bringing Silicon Valley to Mexico
+        </span>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "color": "var(--main-blue)",
+          "margin": "0 auto",
+          "width": "80%",
+        }
+      }
+    />
+  </a>
+</div>
+`;

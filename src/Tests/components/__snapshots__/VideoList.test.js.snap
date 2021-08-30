@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the VideoList component should render the VideoList component 1`] = `
+<a
+  href="/video/UCPGzT4wecuWM0BH9mPiulXg"
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "var(--black)",
+      "textDecoration": "none",
+    }
+  }
+>
+  <div
+    className="sc-bdnxRM iGUGXW"
+  >
+    <div
+      className="sc-dlnjwi ePNoDg"
+      style={
+        Object {
+          "backgroundImage": "url(https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s240-c-k-c0xffffffff-no-rj-mo)",
+        }
+      }
+    />
+    <span
+      className="sc-hKFxyN kGJpsy"
+    >
+      Wizeline
+    </span>
+    <span
+      className="sc-eCApnc iTWCwi"
+    >
+      Wizeline transforms how teams build technology. Its customers accelerate the delivery of innovative products with proven solutions, which combine Wizeline's ...
+    </span>
+  </div>
+</a>
+`;
