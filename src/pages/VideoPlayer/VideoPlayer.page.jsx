@@ -1,24 +1,23 @@
 import React from 'react';
-
 import { useLocation } from 'react-router';
 import Navbar from '../../components/Navbar';
 import SideMenu from '../../components/SideMenu/SideMenu.component';
-import CardVideoDisplayer from '../../components/CardVideo/CardVideo.component';
+import VideoVisualizer from '../../components/VideoVisualizer/VideoVisualizer.component';
 import useVideo from '../../utils/hooks/useVideo';
 
-function HomePage() {
+function VideoPlayer() {
   const {search} = useLocation();
-  const searchQuery = new URLSearchParams(search).get('q');
+  const relatedId = new URLSearchParams(search).get('v');
 
-  const { videos } = useVideo({ searchQuery });
+  const { videos } = useVideo({ relatedId });
 
   return (
     <>
       <Navbar />
       <SideMenu />
-      <CardVideoDisplayer videos={videos} />
+      <VideoVisualizer videoId={relatedId} videos={videos} />
     </>
   );
 }
 
-export default HomePage;
+export default VideoPlayer;
