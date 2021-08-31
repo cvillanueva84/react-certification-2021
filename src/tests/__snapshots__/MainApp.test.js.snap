@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MainApp should render success darkTheme 1`] = `ReactWrapper {}`;
+
+exports[`Test MainApp should render success lightTheme 1`] = `ReactWrapper {}`;

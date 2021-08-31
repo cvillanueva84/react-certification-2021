@@ -1,0 +1,179 @@
+Mini-Challenge 1 and 2
+
+--------------------|----------|----------|----------|----------|-------------------|
+File                |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+--------------------|----------|----------|----------|----------|-------------------|
+All files           |    78.79 |       50 |       50 |    78.79 |                   |
+ components         |      100 |      100 |      100 |      100 |                   |
+  CardItem.js       |      100 |      100 |      100 |      100 |                   |
+ components/App     |      100 |      100 |      100 |      100 |                   |
+  App.component.jsx |      100 |      100 |      100 |      100 |                   |
+  index.js          |        0 |        0 |        0 |        0 |                   |
+ components/helpers |      100 |      100 |      100 |      100 |                   |
+  getVids.js        |      100 |      100 |      100 |      100 |                   |
+ mock               |      100 |      100 |      100 |      100 |                   |
+  youtubeData.js    |      100 |      100 |      100 |      100 |                   |
+ pages/Fill         |    66.67 |      100 |    33.33 |    66.67 |                   |
+  Fill.jsx          |    66.67 |      100 |    33.33 |    66.67 |             10,18 |
+  index.js          |        0 |        0 |        0 |        0 |                   |
+ pages/Header       |    61.54 |       50 |    16.67 |    61.54 |                   |
+  Header.jsx        |    61.54 |       50 |    16.67 |    61.54 |    31,32,33,74,78 |
+  index.js          |        0 |        0 |        0 |        0 |                   |
+ pages/HomeView     |      100 |      100 |      100 |      100 |                   |
+  HomeView.page.jsx |      100 |      100 |      100 |      100 |                   |
+  index.js          |        0 |        0 |        0 |        0 |                   |
+--------------------|----------|----------|----------|----------|-------------------|
+
+
+
+Mini-Challenge 3
+
+------------------------|----------|----------|----------|----------|-------------------|
+File                    |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------|----------|----------|----------|----------|-------------------|
+All files               |    66.67 |    33.33 |    44.12 |    67.12 |                   |
+ src                    |      100 |      100 |      100 |      100 |                   |
+  constants.js          |      100 |      100 |      100 |      100 |                   |
+ src/components         |      100 |      100 |      100 |      100 |                   |
+  CardItem.js           |      100 |      100 |      100 |      100 |                   |
+  VideoDat.js           |      100 |      100 |      100 |      100 |                   |
+ src/components/App     |      100 |      100 |      100 |      100 |                   |
+  App.component.jsx     |      100 |      100 |      100 |      100 |                   |
+  index.js              |        0 |        0 |        0 |        0 |                   |
+ src/helpers            |      100 |      100 |      100 |      100 |                   |
+  getVids.js            |      100 |      100 |      100 |      100 |                   |
+ src/hooks              |      100 |      100 |      100 |      100 |                   |
+  useFetchVideos.js     |      100 |      100 |      100 |      100 |                   |
+ src/mock               |      100 |      100 |      100 |      100 |                   |
+  youtubeData.js        |      100 |      100 |      100 |      100 |                   |
+ src/pages/Fill         |       80 |       50 |       50 |       80 |                   |
+  Fill.jsx              |       80 |       50 |       50 |       80 |                17 |
+ src/pages/Header       |    60.87 |       25 |       40 |    63.64 |                   |
+  Header.jsx            |    60.87 |       25 |       40 |    63.64 |... ,56,99,103,114 |
+ src/pages/HomeView     |    66.67 |      100 |    33.33 |    66.67 |                   |
+  HomeView.page.jsx     |    66.67 |      100 |    33.33 |    66.67 |             12,22 |
+ src/pages/VideoDetails |       35 |        0 |     9.09 |       35 |                   |
+  VideoDetails.jsx      |       35 |        0 |     9.09 |       35 |... 83,105,106,122 |
+------------------------|----------|----------|----------|----------|-------------------|
+
+
+
+Mini-Challenge 4
+------------------------|----------|----------|----------|----------|-------------------|
+File                    |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------|----------|----------|----------|----------|-------------------|
+All files               |    94.12 |       70 |    83.33 |    94.03 |                   |
+ src                    |      100 |      100 |      100 |      100 |                   |
+  constants.js          |      100 |      100 |      100 |      100 |                   |
+ src/components         |    92.59 |       70 |    78.95 |    92.59 |                   |
+  AppRouter.js          |      100 |      100 |      100 |      100 |                   |
+  CardItem.js           |      100 |      100 |      100 |      100 |                   |
+  Context.js            |      100 |      100 |      100 |      100 |                   |
+  HeaderNav.js          |    86.67 |      100 |    66.67 |    86.67 |             14,97 |
+  HomeScreen.js         |       80 |       50 |       50 |       80 |                19 |
+  HomeView.js           |      100 |      100 |      100 |      100 |                   |
+  MainApp.js            |      100 |       50 |      100 |      100 |                43 |
+  VideoDetailsScreen.js |       80 |      100 |       50 |       80 |                43 |
+  globalReducer.js      |      100 |    83.33 |      100 |      100 |                 7 |
+ src/helpers            |      100 |      100 |      100 |      100 |                   |
+  getVids.js            |      100 |      100 |      100 |      100 |                   |
+ src/hooks              |      100 |      100 |      100 |      100 |                   |
+  useFetchVideos.js     |      100 |      100 |      100 |      100 |                   |
+------------------------|----------|----------|----------|----------|-------------------|
+
+
+
+
+Mini-Challenge 5
+------------------------------|----------|----------|----------|----------|-------------------|
+File                          |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------------|----------|----------|----------|----------|-------------------|
+All files                     |    94.35 |       75 |    85.71 |    94.32 |                   |
+ src                          |      100 |      100 |      100 |      100 |                   |
+  constants.js                |      100 |      100 |      100 |      100 |                   |
+ src/components               |     89.9 |    70.83 |    78.13 |     89.9 |                   |
+  CardItem.js                 |      100 |      100 |      100 |      100 |                   |
+  Context.js                  |      100 |      100 |      100 |      100 |                   |
+  FavItem.js                  |      100 |      100 |      100 |      100 |                   |
+  FavVideoDetailsScreen.js    |       75 |      100 |       50 |       75 |                47 |
+  FavoriteVideosView.js       |       75 |      100 |       50 |       75 |                24 |
+  HeaderNav.js                |    94.44 |      100 |    83.33 |    94.44 |                24 |
+  HomeScreen.js               |       80 |       50 |       50 |       80 |                18 |
+  HomeView.js                 |      100 |      100 |      100 |      100 |                   |
+  LoginView.js                |    78.95 |    33.33 |       80 |    78.95 |       30,31,38,50 |
+  MainApp.js                  |      100 |       75 |      100 |      100 |                33 |
+  NotFound.js                 |      100 |      100 |      100 |      100 |                   |
+  VideoDetailsScreen.js       |    88.89 |      100 |    66.67 |    88.89 |                65 |
+  globalReducer.js            |    92.86 |    91.67 |       50 |    92.86 |                38 |
+ src/firebase                 |      100 |      100 |      100 |      100 |                   |
+  firebase-config.js          |      100 |      100 |      100 |      100 |                   |
+ src/helpers                  |      100 |      100 |      100 |      100 |                   |
+  getVids.js                  |      100 |      100 |      100 |      100 |                   |
+ src/hooks                    |      100 |      100 |      100 |      100 |                   |
+  useFetchVideos.js           |      100 |      100 |      100 |      100 |                   |
+  useForm.js                  |      100 |      100 |      100 |      100 |                   |
+ src/routers                  |      100 |      100 |      100 |      100 |                   |
+  AppRouter.js                |      100 |      100 |      100 |      100 |                   |
+  DashboardRoutes.js          |      100 |      100 |      100 |      100 |                   |
+  PrivateRoute.js             |      100 |      100 |      100 |      100 |                   |
+  PublicRoute.js              |      100 |      100 |      100 |      100 |                   |
+ src/style                    |      100 |      100 |      100 |      100 |                   |
+  FavoriteVideosViewStyled.js |      100 |      100 |      100 |      100 |                   |
+  HeaderNavStyled.js          |      100 |      100 |      100 |      100 |                   |
+  HomeScreenStyled.js         |      100 |      100 |      100 |      100 |                   |
+  LoginViewStyled.js          |      100 |      100 |      100 |      100 |                   |
+  MainAppStyled.js            |      100 |      100 |      100 |      100 |                   |
+  NotFoundStyled.js           |      100 |      100 |      100 |      100 |                   |
+  VideoDetailsScreenStyled.js |      100 |      100 |      100 |      100 |                   |
+------------------------------|----------|----------|----------|----------|-------------------|
+
+
+
+Final-Deliverable
+------------------------------|----------|----------|----------|----------|-------------------|
+File                          |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------------|----------|----------|----------|----------|-------------------|
+All files                     |    94.68 |       75 |    87.04 |    94.65 |                   |
+ src                          |      100 |       75 |      100 |      100 |                   |
+  MainApp.js                  |      100 |       75 |      100 |      100 |                31 |
+  constants.js                |      100 |      100 |      100 |      100 |                   |
+ src/components               |    91.78 |    72.22 |       85 |    91.78 |                   |
+  CardItem.js                 |      100 |      100 |      100 |      100 |                   |
+  Context.js                  |      100 |      100 |      100 |      100 |                   |
+  FavItem.js                  |      100 |      100 |      100 |      100 |                   |
+  HeaderNav.js                |    94.44 |      100 |    83.33 |    94.44 |                14 |
+  LoginView.js                |       80 |    33.33 |       80 |       80 |       25,26,33,45 |
+  VideoDetailsScreen.js       |      100 |      100 |      100 |      100 |                   |
+  globalReducer.js            |    92.86 |    91.67 |       50 |    92.86 |                38 |
+ src/components/ui            |    86.67 |       50 |    71.43 |    86.67 |                   |
+  CardItemUi.js               |      100 |      100 |      100 |      100 |                   |
+  FavItemUi.js                |      100 |      100 |      100 |      100 |                   |
+  FavVideoDetailsScreen.js    |       75 |      100 |       50 |       75 |                47 |
+  FavoriteVideosView.js       |       75 |      100 |       50 |       75 |                24 |
+  HeaderNavUi.js              |      100 |      100 |      100 |      100 |                   |
+  HomeScreen.js               |       80 |       50 |       50 |       80 |                19 |
+  HomeView.js                 |      100 |      100 |      100 |      100 |                   |
+  LoginViewUi.js              |      100 |      100 |      100 |      100 |                   |
+  NotFound.js                 |      100 |      100 |      100 |      100 |                   |
+  VideoDetailsScreenUi.js     |    66.67 |      100 |       50 |    66.67 |                45 |
+ src/firebase                 |      100 |      100 |      100 |      100 |                   |
+  firebase-config.js          |      100 |      100 |      100 |      100 |                   |
+ src/helpers                  |      100 |      100 |      100 |      100 |                   |
+  getVids.js                  |      100 |      100 |      100 |      100 |                   |
+ src/hooks                    |      100 |      100 |      100 |      100 |                   |
+  useFetchVideos.js           |      100 |      100 |      100 |      100 |                   |
+  useForm.js                  |      100 |      100 |      100 |      100 |                   |
+ src/routers                  |      100 |      100 |      100 |      100 |                   |
+  AppRouter.js                |      100 |      100 |      100 |      100 |                   |
+  DashboardRoutes.js          |      100 |      100 |      100 |      100 |                   |
+  PrivateRoute.js             |      100 |      100 |      100 |      100 |                   |
+  PublicRoute.js              |      100 |      100 |      100 |      100 |                   |
+ src/style                    |      100 |      100 |      100 |      100 |                   |
+  FavoriteVideosViewStyled.js |      100 |      100 |      100 |      100 |                   |
+  HeaderNavStyled.js          |      100 |      100 |      100 |      100 |                   |
+  HomeScreenStyled.js         |      100 |      100 |      100 |      100 |                   |
+  LoginViewStyled.js          |      100 |      100 |      100 |      100 |                   |
+  MainAppStyled.js            |      100 |      100 |      100 |      100 |                   |
+  NotFoundStyled.js           |      100 |      100 |      100 |      100 |                   |
+  VideoDetailsScreenStyled.js |      100 |      100 |      100 |      100 |                   |
+------------------------------|----------|----------|----------|----------|-------------------|
