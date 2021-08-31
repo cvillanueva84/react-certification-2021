@@ -9,6 +9,7 @@ import {
   LOAD_VIDEOS,
   SELECT_VIDEO,
   TOGGLE_DARK_MODE,
+  TOGGLE_OPENED_DETAILS,
 } from '../types';
 
 export const StateContext = createContext();
@@ -22,6 +23,7 @@ const AppState = (props) => {
       search: 'wizeline',
       selectedVideo: {},
       videos: [],
+      openedDetails: false,
     },
     darkMode: false,
   };
@@ -55,6 +57,10 @@ const AppState = (props) => {
     dispatch({ type: TOGGLE_DARK_MODE, payload: !mode });
   };
 
+  const toggleOpenedDetails = (openedDetails) => {
+    dispatch({ type: TOGGLE_OPENED_DETAILS, payload: !openedDetails });
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -67,20 +73,9 @@ const AppState = (props) => {
         handleVideosList,
         handleSelectVideo,
         handleDarkMode,
+        toggleOpenedDetails,
       }}
     >
-      {/* 
-        This button is for test StateContext
-      <button
-        type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          console.log('STATE ->');
-          console.log(state);
-        }}
-      >
-        STATE
-      </button> */}
       {props.children}
     </StateContext.Provider>
   );

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { StateContext } from '../../context/State/state';
 
@@ -65,8 +66,9 @@ const DetailDescription = styled.p`
   padding-left: 10px;
 `;
 
-const VideoDetailsView = () => {
+const VideoDetailsView = ({ getVideoPath }) => {
   const stateContext = useContext(StateContext);
+  const { push } = useHistory();
   const {
     darkMode,
     video: { videos, selectedVideo },
@@ -99,7 +101,14 @@ const VideoDetailsView = () => {
           ) : (
             videos.items.map((item, idx) => (
               // eslint-disable-next-line react/no-array-index-key
-              <Card key={idx} onClick={() => handleSelectVideo(item)}>
+              <Card
+                // eslint-disable-next-line react/no-array-index-key
+                key={idx}
+                onClick={() => {
+                  handleSelectVideo(item);
+                  push(getVideoPath(item));
+                }}
+              >
                 <Img src={item.snippet.thumbnails.default.url} alt="Thumbnail" />
                 <DetailDescription>{item.snippet.title}</DetailDescription>
               </Card>

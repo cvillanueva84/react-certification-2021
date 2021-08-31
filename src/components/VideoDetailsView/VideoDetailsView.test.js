@@ -5,6 +5,12 @@ import { ConfigProvider } from '../../context/State/state';
 
 import VideoDetailsView from './index';
 
+jest.mock('react-router-dom', () => ({
+  useHistory: () => ({
+    push: jest.fn(),
+  }),
+}));
+
 beforeEach(() => {
   const valueContextMock = {
     profile: {

@@ -8,6 +8,9 @@ import { ConfigProvider } from '../../context/State/state';
 
 const valueContextMock = {
   darkMode: false,
+  video: {
+    openedDetails: false,
+  },
 };
 
 beforeEach(() => {

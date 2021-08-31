@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import './VideoCard.styles.css';
 
@@ -38,11 +39,20 @@ const Description = styled.p`
   text-align: left;
 `;
 
-const VideoCard = ({ description, title, image, handleOpenDetails, item }) => {
+const VideoCard = ({
+  description,
+  title,
+  image,
+  handleOpenDetails,
+  getVideoPath,
+  item,
+}) => {
+  const { push } = useHistory();
   return (
     <CardContainer
       onClick={() => {
         handleOpenDetails(item);
+        push(getVideoPath(item));
       }}
     >
       <CardDiv>

@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import VideoCard from '../VideoCard';
 import VideoDetailsView from '../VideoDetailsView';
@@ -19,17 +20,25 @@ const CardListContainer = styled.div`
 
 const VideoList = () => {
   const stateContext = useContext(StateContext);
+  const { location } = useHistory();
   const {
-    video: { search },
+    video: { search, openedDetails },
     handleVideosList,
     handleSelectVideo,
+    toggleOpenedDetails,
   } = stateContext;
-  const [openedDetails, setOpenedDetails] = useState(false);
   const { data } = useFetchVideos(search);
 
   const handleOpenDetails = (item) => {
-    setOpenedDetails(!openedDetails);
     handleSelectVideo(item);
+    toggleOpenedDetails(openedDetails);
+  };
+
+  const getVideoPath = (item) => {
+    if (location.pathname.includes('favorites')) {
+      return `/favorites/${item.id.videoId}`;
+    }
+    return `/${item.id.videoId}`;
   };
 
   useEffect(() => {
@@ -43,10 +52,14 @@ const VideoList = () => {
   }, [search]);
 
   return openedDetails ? (
-    <VideoDetailsView />
+    <VideoDetailsView getVideoPath={getVideoPath} />
   ) : (
     <>
-      <h1>Welcome to the Challenge!</h1>
+      {location.pathname.includes('favorites') ? (
+        <h1 style={{ textAlign: 'center' }}>Favorites!</h1>
+      ) : (
+        <h1>Welcome to the Challenge!</h1>
+      )}
       <CardListContainer>
         {data ? (
           data.error ? (
@@ -61,6 +74,7 @@ const VideoList = () => {
                 image={item.snippet.thumbnails.medium.url}
                 handleOpenDetails={handleOpenDetails}
                 item={item}
+                getVideoPath={getVideoPath}
               />
             ))
           )

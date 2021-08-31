@@ -3,6 +3,15 @@ import { render, screen } from '@testing-library/react';
 
 import VideoCard from './index';
 
+jest.mock('react-router-dom', () => ({
+  useHistory: () => ({
+    push: jest.fn(),
+    location: {
+      pathname: 'test',
+    },
+  }),
+}));
+
 beforeEach(() => {
   render(<VideoCard description="test" title="title" image="src" />);
 });

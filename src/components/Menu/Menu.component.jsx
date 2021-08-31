@@ -30,12 +30,34 @@ const Span = styled.span`
 const Menu = ({ open }) => {
   const stateContext = useContext(StateContext);
   const history = useHistory();
-  const { darkMode } = stateContext;
+  const {
+    darkMode,
+    video: { openedDetails },
+    toggleOpenedDetails,
+  } = stateContext;
 
   return (
     <StyledMenu mode={darkMode ? 1 : 0} open={open}>
-      <Span onClick={() => history.push('/')}>HOME</Span>
-      <Span onClick={() => history.push('/favorites')}>FAVORITES</Span>
+      <Span
+        onClick={() => {
+          history.push('/');
+          if (openedDetails) {
+            toggleOpenedDetails(openedDetails);
+          }
+        }}
+      >
+        HOME
+      </Span>
+      <Span
+        onClick={() => {
+          history.push('/favorites');
+          if (openedDetails) {
+            toggleOpenedDetails(openedDetails);
+          }
+        }}
+      >
+        FAVORITES
+      </Span>
     </StyledMenu>
   );
 };

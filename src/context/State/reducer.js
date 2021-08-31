@@ -5,6 +5,7 @@ import {
   LOAD_VIDEOS,
   SELECT_VIDEO,
   TOGGLE_DARK_MODE,
+  TOGGLE_OPENED_DETAILS,
 } from '../types';
 
 const reducer = (state, action) => {
@@ -51,6 +52,15 @@ const reducer = (state, action) => {
         video: {
           ...state.video,
           selectedVideo: payload,
+        },
+      };
+
+    case TOGGLE_OPENED_DETAILS:
+      return {
+        ...state,
+        video: {
+          ...state.video,
+          openedDetails: payload,
         },
       };
 

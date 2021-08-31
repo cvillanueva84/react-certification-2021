@@ -7,3 +7,4 @@ export const TOGGLE_DARK_MODE = 'TOGGLE_DARK_MODE';
 // VideoList types
 export const LOAD_VIDEOS = 'LOAD_VIDEOS';
 export const SELECT_VIDEO = 'SELECT_VIDEO';
+export const TOGGLE_OPENED_DETAILS = 'TOGGLE_OPENED_DETAILS';

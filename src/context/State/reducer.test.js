@@ -9,6 +9,7 @@ const initialStateMock = {
     search: 'wizeline',
     selectedVideo: {},
     videos: [],
+    openedDetails: 'false',
   },
   darkMode: false,
 };
@@ -43,6 +44,20 @@ it('should dispatch new state with action BLUR_PROFILE', () => {
   const updatedState = reducer(initialStateMock, updateAction);
 
   expect(updatedState.profile.showDropdown).toEqual(true);
+});
+
+it('should dispatch new state with action TOGGLE_OPENED_DETAILS', () => {
+  const updateAction = { type: 'TOGGLE_OPENED_DETAILS', payload: true };
+  const updatedState = reducer(initialStateMock, updateAction);
+
+  expect(updatedState.video.openedDetails).toEqual(true);
+});
+
+it('should dispatch new state with action TOGGLE_OPENED_DETAILS', () => {
+  const updateAction = { type: 'TOGGLE_OPENED_DETAILS', payload: false };
+  const updatedState = reducer(initialStateMock, updateAction);
+
+  expect(updatedState.video.openedDetails).toEqual(false);
 });
 
 it('should dispatch new state with action DEFAULT', () => {
