@@ -1,57 +1,57 @@
-import React, { useLayoutEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
-import AuthProvider from '../../providers/Auth';
-import HomePage from '../../pages/Home';
-import LoginPage from '../../pages/Login';
-import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
-import Fortune from '../Fortune';
-import Layout from '../Layout';
-import { random } from '../../utils/fns';
+import StyledDiv from '../StyledDiv';
+import Header from '../Header';
+import Videos from '../Videos/Videos.component';
+import result from '../../mock/youtube-videos-mock';
 
 function App() {
-  useLayoutEffect(() => {
-    const { body } = document;
+  const [toggleStatus, setToggleStatus] = useState(false);
+  const [results, setResults] = useState(result);
+  const [query, setQuery] = useState('wizeline');
 
-    function rotateBackground() {
-      const xPercent = random(100);
-      const yPercent = random(100);
-      body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
-    }
+  function handleToggle() {
+    setToggleStatus((prevState) => !prevState);
+  }
 
-    const intervalId = setInterval(rotateBackground, 3000);
-    body.addEventListener('click', rotateBackground);
+  function onHandleInput(event) {
+    setQuery(event.target.value);
+    console.log(event.target.value);
+  }
 
-    return () => {
-      clearInterval(intervalId);
-      body.removeEventListener('click', rotateBackground);
-    };
-  }, []);
+  useEffect(() => {
+    fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&key=AIzaSyCfUvsxJf2gutiS10RwJX4nfPCAvWg60Z0`
+    )
+      .then((res) => res.json())
+      .then((jsonData) => {
+        setResults(jsonData);
+      });
+  }, [query]);
 
+  if (toggleStatus) {
+    return (
+      <StyledDiv toggleStatus={toggleStatus}>
+        <Header
+          onHandleToggle={handleToggle}
+          toggleStatus={toggleStatus}
+          onHandleInput={onHandleInput}
+          query={query}
+        />
+        <Videos videoList={results.items} />
+      </StyledDiv>
+    );
+  }
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
-      </AuthProvider>
-    </BrowserRouter>
+    <div>
+      <Header
+        onHandleToggle={handleToggle}
+        toggleStatus={toggleStatus}
+        onHandleInput={onHandleInput}
+        query={query}
+      />
+      <Videos videoList={results.items} />
+    </div>
   );
 }
 
