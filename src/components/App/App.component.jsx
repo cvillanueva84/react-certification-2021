@@ -3,13 +3,15 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
+import FavoritesPage from '../../pages/Favorites';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
-import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import AppState from '../../context/State/state';
+import VideoDetailsView from '../VideoDetailsView';
 
 function App() {
   useLayoutEffect(() => {
@@ -31,27 +33,38 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
-      </AuthProvider>
-    </BrowserRouter>
+    <AppState>
+      <BrowserRouter>
+        <AuthProvider>
+          <Layout>
+            <Switch>
+              <Route exact path="/favorites">
+                <FavoritesPage />
+              </Route>
+              <Route exact path="/favorites/:id">
+                <VideoDetailsView />
+              </Route>
+
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+              <Private exact path="/secret">
+                <SecretPage />
+              </Private>
+              <Route exact path="/:id">
+                <VideoDetailsView />
+              </Route>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </Layout>
+        </AuthProvider>
+      </BrowserRouter>
+    </AppState>
   );
 }
 
