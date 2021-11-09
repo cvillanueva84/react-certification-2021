@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 // Styles
-import { BlockElement, Description, VideoThumbnail } from './Content.styles';
+import { BlockElement, Description, VideoThumbnail } from './Video.styles';
 
 
 const VideoComponent = ({description, title, url}) => (

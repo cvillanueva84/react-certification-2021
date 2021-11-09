@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ContentWrapper } from './Content.styles';
+import ContentWrapper from './Content.styles';
 import VideoComponent from './Video.component';
 
 const data = require('../../mockdata/youtube-videos-mock.json');

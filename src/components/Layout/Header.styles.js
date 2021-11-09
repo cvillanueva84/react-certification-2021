@@ -1,17 +1,23 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
+  align-items: center; 
+  background-color: #f0575d;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+  color: "#FFFFFF";
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 10px 0px;
+  padding: 10px 20px;
   width: 100%;
-  background-color: blue;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+
+  p{
+    color: #FFFFFF;
+  }
 `;
  
 export const LogoLink = styled.div`
-    padding-right: 10px;
+    margin: 0px 20px;
     img {
         max-width: 50px;
         height: auto;
@@ -22,7 +28,7 @@ export const MenuToggle = styled.div`
     display: block;
     width: 50px;
     padding: 5px;
-    margin-right: 10px;
+    margin: 0px 20px;
     svg{
         height: auto;
         max-width: 100%;

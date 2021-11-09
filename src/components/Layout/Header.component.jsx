@@ -12,7 +12,7 @@ function HeaderComponent() {
       <ButtonToggle>
         <FontAwesomeIcon icon={faToggleOff} size="6x" style={{ color: 'white'}} title="toggle-button" />
       </ButtonToggle>
-      Dark Mode
+      <p>Dark Mode</p>
       <LogoLink href="#">
         <img src={SessionOutLogo} alt="Logo" />
       </LogoLink>
