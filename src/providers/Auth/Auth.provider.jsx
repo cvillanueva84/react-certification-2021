@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
-import { AUTH_STORAGE_KEY } from '../../utils/constants';
-import { storage } from '../../utils/storage';
+import AUTH_STORAGE_KEY from '../../utils/constants';
+import storage from '../../utils/storage';
 
 const AuthContext = React.createContext(null);
 
@@ -38,6 +39,9 @@ function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
+}
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export { useAuth };

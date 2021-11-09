@@ -8,7 +8,7 @@ import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
 import Layout from '../Layout';
-import { random } from '../../utils/fns';
+import random from '../../utils/fns';
 
 function App() {
   useLayoutEffect(() => {

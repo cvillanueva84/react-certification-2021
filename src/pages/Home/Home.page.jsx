@@ -10,7 +10,7 @@ function HomePage() {
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
 
-  function deAuthenticate(event) {
+  const deAuthenticate = (event) => {
     event.preventDefault();
     logout();
     history.push('/');

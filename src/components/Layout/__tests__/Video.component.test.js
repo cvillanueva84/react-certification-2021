@@ -1,34 +1,31 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react'
 
-
 // Components
 import VideoComponent from '../Video.component';
 
-const props = {
-    description: 'some text', title: 'title of video', url: '/logo512.png'
-}
-
 describe('Video Component', () => {
     it('Should show Video Component', () => {
-      const container = render(<VideoComponent {...props}/>)
+      const container = render(<VideoComponent description='some text' title='title of video' url='/logo512.png' />)
 
       expect(container.firstChild).toMatchSnapshot()
     });
     it('Should render the title', () => {
-        render(<VideoComponent {...props}/>)
+        const title='title of video'
+        render(<VideoComponent  />)
 
-        expect(screen.getByText(props.title)).toBeInTheDocument()
+        expect(screen.getByText(title)).toBeInTheDocument()
     });
     it('Should render the thumbnail', () => {
-        render(<VideoComponent {...props}/>)
+        render(<VideoComponent url='/logo512.png' />)
         const thumbnail = screen.getByRole('img');
 
         expect(thumbnail).toHaveAttribute('src','/logo512.png');
     });
     it('Should render the description', () => {
-        render(<VideoComponent {...props}/>)
+        const description='some text'
+        render(<VideoComponent />)
 
-        expect(screen.getByText(props.description)).toBeInTheDocument()
+        expect(screen.getByText(description)).toBeInTheDocument()
     });
 });

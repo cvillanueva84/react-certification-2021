@@ -10,14 +10,14 @@ function HeaderComponent() {
     <HeaderWrapper>
       <Input type='text' placeholder="Wizeline" />
       <ButtonToggle>
-        <FontAwesomeIcon icon={faToggleOff} size="6x" style={{ color: 'white'}} title={'toggle-button'} />
+        <FontAwesomeIcon icon={faToggleOff} size="6x" style={{ color: 'white'}} title="toggle-button" />
       </ButtonToggle>
       Dark Mode
       <LogoLink href="#">
         <img src={SessionOutLogo} alt="Logo" />
       </LogoLink>
       <MenuToggle href="#">
-        <FontAwesomeIcon icon={faBars} size="6x" style={{ color: 'white'}} title={'menu-toggle'} />
+        <FontAwesomeIcon icon={faBars} size="6x" style={{ color: 'white'}} title="menu-toggle" />
       </MenuToggle>
     </HeaderWrapper>
   );
