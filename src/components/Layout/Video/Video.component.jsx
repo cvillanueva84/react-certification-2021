@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // Styles
 import { BlockElement, Description, VideoThumbnail } from './Video.styles';
 
-
-const VideoComponent = ({description, title, url}) => (
+const VideoComponent = ({ description, title, url }) => (
   <BlockElement>
     <VideoThumbnail src={url} title={title} />
     <Description>
@@ -13,11 +12,11 @@ const VideoComponent = ({description, title, url}) => (
       <div>{description}</div>
     </Description>
   </BlockElement>
-  )
-  
-  VideoComponent.propTypes = {
-      description: PropTypes.string.isRequired,
-      title:PropTypes.string.isRequired,
-      url:PropTypes.string.isRequired
-    }
+);
+
+VideoComponent.propTypes = {
+  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
 export default VideoComponent;
