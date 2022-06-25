@@ -1,58 +1,48 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import AuthProvider from '../../providers/Auth';
+import SideBar from 'components/SideBar/SideBar';
+import FavoritesPage from 'pages/Favorites/FavoritesPage';
+import FavoriteVideoPage from 'pages/FavoriteVideo';
 import HomePage from '../../pages/Home';
+import VideoPage from '../../pages/Video';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
-import Fortune from '../Fortune';
+import Header from '../Header/Header';
 import Layout from '../Layout';
-import { random } from '../../utils/fns';
+import Private from '../Private';
 
-function App() {
-  useLayoutEffect(() => {
-    const { body } = document;
+import GlobalStyle from '../../GlobalStyle';
 
-    function rotateBackground() {
-      const xPercent = random(100);
-      const yPercent = random(100);
-      body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
-    }
+import { lightTheme, darkTheme } from '../../utils/themes';
+import { useGlobalProvider } from '../../store/global.provider';
 
-    const intervalId = setInterval(rotateBackground, 3000);
-    body.addEventListener('click', rotateBackground);
-
-    return () => {
-      clearInterval(intervalId);
-      body.removeEventListener('click', rotateBackground);
-    };
-  }, []);
+export default function App() {
+  const [openSideBar, setOpenSideBar] = useState(false);
+  const {
+    state: { themeValue },
+  } = useGlobalProvider();
+  const themeMode = themeValue === 'light' ? lightTheme : darkTheme;
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyle />
+      <BrowserRouter>
         <Layout>
+          <Header toggleSideBar={setOpenSideBar} />
+          <SideBar open={openSideBar} toggleSideBar={setOpenSideBar} />
           <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/video/:id" component={VideoPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Private exact path="/favorites" component={FavoritesPage} />
+            <Private path="/favorites/:videoId" component={FavoriteVideoPage} />
+            <Route path="*" component={NotFound} />
           </Switch>
-          <Fortune />
         </Layout>
-      </AuthProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
-
-export default App;

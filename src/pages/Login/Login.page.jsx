@@ -1,39 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import ReactDom from 'react-dom';
+// Materialui core
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { useAuth } from '../../providers/Auth';
-import './Login.styles.css';
+import { LoginPromptTextField, ErrorBox } from './Styles';
 
-function LoginPage() {
-  const { login } = useAuth();
+import { useGlobalProvider } from '../../store/global.provider';
+import { loginUser, showModal } from '../../store/globalActions';
+
+export default function LoginPage() {
   const history = useHistory();
 
-  function authenticate(event) {
-    event.preventDefault();
-    login();
-    history.push('/secret');
-  }
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  return (
-    <section className="login">
-      <h1>Welcome back!</h1>
-      <form onSubmit={authenticate} className="login-form">
-        <div className="form-group">
-          <label htmlFor="username">
-            <strong>username </strong>
-            <input required type="text" id="username" />
-          </label>
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">
-            <strong>password </strong>
-            <input required type="password" id="password" />
-          </label>
-        </div>
-        <button type="submit">login</button>
-      </form>
-    </section>
+  const {
+    state: { showModalLogin, errorAuth },
+    dispatch,
+  } = useGlobalProvider();
+
+
+  const close = () => {
+    showModal(dispatch, false);
+    history.push('/');
+  };
+
+  const handleLogin = async () => {
+    const user = await loginUser(dispatch, username, password);
+
+    if (user) {
+      close();
+    }
+  };
+
+  return ReactDom.createPortal(
+    <>
+      <Dialog
+        open={showModalLogin}
+        onClose={close}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        data-testid="login-test-dialog"
+      >
+        <DialogTitle id="alert-dialog-title">Login</DialogTitle>
+        <DialogContent>
+          <LoginPromptTextField
+            label="Username"
+            id="username"
+            placeholder="wizeline"
+            onChange={(e) => setUsername(e.target.value)}
+            fullWidth
+          />
+          <LoginPromptTextField
+            label="Password"
+            id="password"
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={close} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleLogin} color="primary" autoFocus>
+            Login
+          </Button>
+        </DialogActions>
+        {errorAuth && (
+          <ErrorBox>
+            {' '}
+            <h3>{errorAuth}</h3>{' '}
+          </ErrorBox>
+        )}
+      </Dialog>
+    </>,
+    document.getElementById('modal')
   );
 }
-
-export default LoginPage;

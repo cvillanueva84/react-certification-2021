@@ -1,39 +1,29 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-
-import { useAuth } from '../../providers/Auth';
+import React from 'react';
+// Styles
 import './Home.styles.css';
+// Styled components
+import { Grid, Title } from './Styles';
+// Componentes
+import ListVideos from 'components/ListVideos/ListVideos';
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+import { useGlobalProvider } from '../../store/global.provider';
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+export default function HomePage() {
+  const {
+    state: { fetchingVideo, videoList, error, favoriteVideos },
+  } = useGlobalProvider();
+
+  if (error) return <div>Network error</div>;
+  if (fetchingVideo) return <div>loading...</div>;
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
+    <section>
+      <Title>
+        <h1 data-testid="title-home">Welcome to Wizeline</h1>
+      </Title>
+      <Grid>
+        {videoList.items ? <ListVideos videos={videoList} favoriteVideos={favoriteVideos} /> : null}
+      </Grid>
     </section>
   );
 }
-
-export default HomePage;

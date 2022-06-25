@@ -1,14 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { useGlobalProvider } from 'store/global.provider';
 
-import { useAuth } from '../../providers/Auth';
+export default function Private(props) {
+  const {
+    state: { user },
+  } = useGlobalProvider();
 
-function Private({ children, ...rest }) {
-  const { authenticated } = useAuth();
-
-  return (
-    <Route {...rest} render={() => (authenticated ? children : <Redirect to="/" />)} />
-  );
+  return user ? <Route {...props} /> : <Redirect to={{ pathname: '/' }} />;
 }
-
-export default Private;
