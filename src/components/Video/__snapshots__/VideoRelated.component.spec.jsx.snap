@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoRelated component should match snapshot 1`] = `
+<a
+  className="sc-bdnxRM blJTxv"
+  href="/video/T_j60n1zgu0"
+  onClick={[Function]}
+>
+  <div
+    className="sc-gtsrHT gvWcIF"
+    role="listitem"
+  >
+    <img
+      className="sc-dlnjwi ieKdUs"
+      role="img"
+      src="https://i.ytimg.com/vi/T_j60n1zgu0/mqdefault.jpg"
+    />
+    <div
+      className="sc-hKFxyN jnNRJe"
+    >
+      <span
+        className="sc-eCApnc iXAzEw"
+        role="note"
+      >
+        Curso REACT JS ⚛️ - Aprende desde CERO 📈 Componentes, State, JSX (Tutorial Desde Cero en Español)
+      </span>
+      <span
+        className="sc-jSFjdj itozLk"
+      >
+        midudev
+      </span>
+    </div>
+  </div>
+</a>
+`;
