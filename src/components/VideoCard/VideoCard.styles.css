@@ -1,0 +1,22 @@
+.video-card {
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 1px 1px 8px 1px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 1px 1px 8px 1px rgba(0, 0, 0, 0);
+  cursor: pointer;
+  height: 290px;
+  max-height: 290px;
+  margin: 20px;
+  overflow: hidden;
+  padding-bottom: 10px;
+  width: 300px;
+  transition: max-height 0.2s ease-out;
+  -webkit-transition: max-height 0.2s ease-out;
+}
+
+.video-card:hover {
+  height: 350px;
+  max-height: 350px;
+  transition: max-height 0.2s ease-in;
+  -webkit-transition: max-height 0.2s ease-in;
+}

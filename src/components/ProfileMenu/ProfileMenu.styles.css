@@ -1,0 +1,50 @@
+/***************THEME TOGGLE****************/
+.toggle-checkbox {
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  width: 50px;
+}
+
+.toggle-checkbox input {
+  height: 0;
+  opacity: 0;
+  width: 0;
+}
+
+.slider {
+  background-color: #ccc;
+  border-radius: 4px;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  margin-left: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #ffffff;
+  bottom: 3px;
+  border-radius: 4px;
+  content: '';
+  height: 1.2em;
+  left: 3px;
+  position: absolute;
+  width: 1em;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #191a5e;
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  -webkit-transform: translateX(15px);
+}
